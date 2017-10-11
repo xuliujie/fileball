@@ -15,8 +15,8 @@ v1_router.register('jackpot', views.JoinJackpotView, base_name='jackpot')
 
 
 urlpatterns = [
-    url(r'^$', views.home_view, name='home'),
-    url(r'^index/', views.home_view, name='index'),
+    url(r'^$', views.coinflip_view, name='home'),
+    url(r'^index/', views.coinflip_view, name='index'),
     url(r'^jackpot/', views.jackpot_view, name='jackpot'),
     url(r'^coinflip/', views.coinflip_view, name='coinflip'),
     url(r'^betting/', include(v1_router.urls)),

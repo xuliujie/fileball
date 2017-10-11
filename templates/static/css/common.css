@@ -30,7 +30,7 @@ h2, h3 {
 }
 .backgroundImg {
     background-color: black;
-    background-image: url('/static/img/nevermore_2500x1600.jpg');
+    background-image: url('/static/img/csgo_02.jpg');
     background-size: 100% auto;
     background-position:center;
     background-attachment:fixed;
@@ -38,7 +38,7 @@ h2, h3 {
 
 #coinflip-wrapper.backgroundImg,
 #jackpot-wrapper.backgroundImg {
-    background-image: url('/static/img/shadow_fiend_1920x1080.jpg');
+    background-image: url('/static/img/csgo_01.jpg');
 }
 
 
