@@ -19,7 +19,7 @@ from django.contrib import admin
 from betting.start_up import on_start_up
 
 from django.conf.urls.static import static
-from dota2fair import settings
+from fancsgo import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
@@ -36,4 +36,4 @@ urlpatterns = [
 #urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #urlpatterns += staticfiles_urlpatterns()
 
-on_start_up()
+# on_start_up()

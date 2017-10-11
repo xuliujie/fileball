@@ -53,6 +53,5 @@ urlpatterns = [
     url(r'^news/(?P<article_id>[0-9]+)/$', views.newsDetail_view, name='news_detail'),
     url(r'^news/', views.news_view, name='news_list'),
     url(r'^video/(?P<room_type>[0-9]+)/(?P<room_id>[0-9]+)/$', views.videoDetail_view, name='video_detail'),
-    url(r'^video/$', views.video_view, name='video_list'),
-    url(r'^ueditor/', include('DjangoUeditor.urls')),
+    url(r'^video/$', views.video_view, name='video_list')
 ]
