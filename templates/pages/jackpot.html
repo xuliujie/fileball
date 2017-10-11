@@ -1,0 +1,141 @@
+{% extends 'page_base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_header %}
+    <script src="https://cdn.bootcss.com/vue-strap/1.1.37/vue-strap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/jackpot.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+       {# <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>#}
+       {# <script type="text/javascript" src="{% static 'js/jk.js' %}"></script>#}
+    <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>
+    <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>
+    <script type="text/javascript" src="{% static 'backup/jackpot.js' %}"></script>
+{#    <title>Dota2Fair-Jackpot</title>#}
+{% endblock %}
+
+{% block page_content %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <section id="page">
+        <div id="jackpot-wrapper" class="row content-wrapper backgroundImg">
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <div id="admin-messages">
+                    <div class="primary-message_1v1">
+                        {% if anno %}
+                            <div style="color: #515151;">
+                            <img src="{% static 'img/speaker-20.png' %}" style="padding-bottom: 3px;">
+                            {% if LANGUAGE_CODE == 'zh-hans' %}
+                                <b>{{ anno.content|safe }}</b>
+                            {% else %}
+                                <b>{{ anno.content_en|safe }}</b>
+                            {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="deposit_wrapper" class="col-xs-12 col-sm-8 col-md-4" style="padding-top: 0px;">
+                <div class="row">
+                        <div class="col-xs-12 p-body">
+                            <div id="jackpot_summary" class="row">
+                                <div id="knob_wrapper" class="col-xs-12">
+                                    <div id="jackpot_knob">
+                                        <input id="jackpot_knob_item" class="knob" type='text' value='0'
+                                               data-angleOffset="0"
+                                               data-angleArc="360" data-fgColor="" data-bgColor="black"
+                                               data-displayInput=false readonly/>
+                                        <div class="deposit-count-wrapper">
+                                            <span id="deposit_item_count">0</span>/50
+                                        </div>
+                                        <div class="deposit-timer-wrapper">
+                                    <span class="timer-content">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span id="least_minutes">0</span>:<span id="least_seconds">00</span>
+                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="jackpot-more"><span class="jackpot-amount">Jackpot: $<span
+                                            id="jackpotTotalAmount">0.0</span></span></div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="jackpot-more">
+                                        <button id="jackpot_deposit_button" class="btn btn-primary">
+                                            <i class="fa fa-codepen fa-lg"></i>{% trans 'Bet' %}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="jackpot-more">
+                                        <p>{% trans 'Max 12 items/trade - $1 minimum value' %}</p>
+                                    </div>
+                                </div>
+                                <div id="my_jackpot" class="col-xs-12">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-md-4 status-row">
+                                            <i class="fa fa-user"></i>
+                                            <p>^{depositStatus}</p>
+                                        </div>
+                                        <div class="col-xs-4 col-md-4 status-row">
+                                            <span class="number" id="my_jackpot_amount">0</span>
+                                            <p>{% trans 'Total placed' %}</p>
+                                        </div>
+                                        <div class="col-xs-4 col-md-4 status-row">
+                                                <span class="number"><span
+                                                        id="my_jackpot_percent">0.0</span>%</span>
+                                            <p>{% trans 'Chances of winning' %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="item_wrapper" class="col-xs-4 col-sm-4 col-md-2 item-wrapper">
+                    <template v-for="item in items">
+                        <div class="item row" v-tooltip:right="item.name">
+                            <img v-if="item.classid"
+                                 :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + item.appid + '/' + item.classid"
+                                 alt="" class="img-responsive" rel="nofollow">
+                            <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive"
+                                 rel="nofollow">
+                            <div class="top-info">
+                                <div class="price col-xs-3"><span>$^{item.amount.toFixed(2)}</span></div>
+                            </div>
+                            <div class="info">
+                                <div class="col-xs-6 rarity">
+                                    <span :class="item.rarity">
+                                        {% if LANGUAGE_CODE == 'zh-hans' %}
+                                            ^{item.rarity_zh}
+                                        {% else %}
+                                            ^{item.rarity}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div id="winner_wrapper" class="col-xs-8 col-sm-8 col-md-4">
+                    <component is="jackpot_detail" v-for="(item, index) in histories" :key="item.uid" :item="item"
+                               :index="index">
+                    </component>
+                </div>
+                {% include 'common/chat/chat_room.html' %}
+            </div>
+        </div>
+        <div id="noSocket">{% trans 'Connecting' %}...</div>
+    </section>
+    <audio id="rolling_audio" src="{% static 'audio/opening-sound.mp3' %}"></audio>
+{% endblock %}
+
+{% block scripts %}
+    {% include 'common/chat/chat_template.html' %}
+    {% include 'common/inventory/inventory_template.html' %}
+    {% include 'pages/jackpot_template.html' %}
+    <script type="text/javascript">
+    </script>
+{% endblock %}

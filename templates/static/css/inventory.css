@@ -1,0 +1,302 @@
+.inventory-user {
+    background-color: #cfcfcf;
+    min-height: 320px;
+}
+
+.inventory-user .item-holder {
+    overflow: auto;
+    position: relative;
+    padding: 5px;
+}
+
+.modal-inner h5 {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+#invUser #invRefresh {
+    text-shadow: 0 0 5px #ddd;
+}
+
+#invUser button.btn-normal {
+    background: transparent;
+    padding: 0;
+    font-size: 13px;
+    color: #555;
+}
+
+#inventoryModal #inventoryMakeOffer .inventory-selected .highlight {
+    background-color: #3797b4;
+    font-weight: bold;
+    padding: 2px 5px;
+    color: #fff;
+}
+
+#inventoryModal .row-inventory .col-xs-6, #inventoryModal .row-inventory .col-xs-4, #inventoryModal .row-inventory .col-xs-8 {
+    padding: 0;
+}
+
+#inventoryModal #inventoryMakeOffer .row {
+    padding: 0;
+}
+
+.row-team img {
+    height: 58px;
+    width: 58px;
+}
+
+
+#inventoryModal .row-inventory {
+    min-height: 70px;
+    padding: 0;
+}
+
+#invUser .row-header {
+    padding: 0 5px;
+}
+
+#invUser .row-header .col-xs-6 {
+    padding: 0;
+}
+
+#invUser .row-header h5 {
+    margin-top: 0;
+}
+
+#invUser #invRefresh {
+    text-shadow: 0 0 5px #ddd;
+}
+
+#invUser button.btn-normal {
+    background: transparent;
+    padding: 0;
+    font-size: 13px;
+    color: #555;
+}
+
+#inventoryModal #inventoryMakeOffer .row img.selected {
+    border-color: #3797b4;
+}
+
+#inventoryModal #inventoryMakeOffer .row img {
+    border: 2px solid #fff;
+    border-radius: 50px;
+    margin: 0 auto;
+    cursor: pointer;
+    padding: 2px;
+}
+
+#inventoryModal #inventoryMakeOffer .row .col-button {
+    text-align: center;
+}
+
+#inventoryModal #inventoryMakeOffer .row div {
+    padding: 0 2px;
+}
+
+.fa-lg {
+    font-size: 1.33333333em;
+    line-height: .75em;
+    vertical-align: -15%;
+}
+
+#invUser #invRefresh {
+    text-shadow: 0 0 5px #ddd;
+}
+
+#invUser button.btn-normal {
+    background: transparent;
+    padding: 0;
+    font-size: 13px;
+    color: #555;
+}
+
+.inventory-user .item-holder {
+    overflow: auto;
+    position: relative;
+    padding: 5px
+}
+
+.inventory-user .item-holder .col-item {
+    border: 3px solid transparent;
+    position: relative;
+    padding: 0
+}
+
+.inventory-user .item-holder .selected {
+    border-color: #006789
+}
+
+.inventory-user .item-holder .col-item .item {
+    background-color: #f3f3f3;
+    margin: 3px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    min-height: 100px
+}
+
+.dark .inventory-user .item-holder .col-item .item {
+    background-color: #161616
+}
+
+.inventory-user .item-holder .col-item .item img {
+    margin: 0 auto
+}
+
+.inventory-user .item-holder .col-item .bottom-info {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    text-align: center;
+    margin: 3px;
+    width: 96%;
+    color: #ccc
+}
+
+.inventory-user .item-holder .col-item .top-info {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    margin: 3px;
+    width: 96%;
+    color: #ccc
+}
+
+.inventory-user .item-holder .col-item .bottom-info .rarity {
+    background: rgba(220, 220, 220, 0.8);
+    color: #222;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 2px;
+    margin: auto;
+    margin-bottom: 10px;
+    float: none;
+}
+
+.dark .inventory-user .item-holder .col-item .bottom-info .rarity {
+    background: rgba(50, 50, 50, 0.8);
+    color: #ccc
+}
+
+.dark .inventory-user .item-holder .col-item .bottom-info .name {
+    background: rgba(50, 50, 50, 0.8);
+    color: #ccc
+}
+
+.dark .inventory-user .item-holder .col-item.hide-name .bottom-info .name {
+    display: none;
+}
+
+.dark .inventory-user .item-holder .col-item .bottom-info .price span {
+    background: rgba(50, 50, 50, 0.8);
+    color: #ccc
+}
+
+.inventory-user .item-holder .col-item .top-info span {
+    background-color: rgba(240, 240, 240, 0.8);
+    color: #222;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 2px 4px
+}
+
+.dark .inventory-user .item-holder .col-item .top-info span {
+    background-color: rgba(40, 40, 40, 0.8);
+    color: #ccc
+}
+
+/*.inventory-user .item-holder .col-item .top-info .rarity span{*/
+    /*float: right !important;*/
+/*}*/
+
+.rarity .Common{
+    color: #b0c3c9 !important;
+}
+.rarity .Uncommon{
+    color: #5e98d9 !important;
+}
+.rarity .Rare{
+    color: #4b69ff !important;
+}
+.rarity .Mythical{
+    color: #8847ff !important;
+}
+.rarity .Legendary{
+    color: #d32ce6 !important;
+}
+.rarity .Ancient{
+    color: #eb4b4b !important;
+}
+.rarity .Immortal{
+    color: #e4ae39 !important;
+}
+.rarity .Arcana{
+    color: #ade55c !important;
+}
+
+.deposit-loading {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #cfcfcf;
+}
+
+.offer-title {
+    font-size: 20px;
+}
+
+.trade-url {
+    color: #3071a9;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.trade-url-config {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #cfcfcf;
+}
+
+.trade-url-config .tips {
+    color: #3071a9;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#invUser .pagination {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 10px;
+    width: 100%;
+}
+
+#invUser .pager {
+    margin: 0 auto;
+    width: 260px;
+}
+
+#invUser .pager li a {
+    margin: 0 20px;
+    width: 80px;
+    color: black;
+}
+
+#invUser .pager li.disabled a {
+    color: #888;
+}
+
+#invUser .cfCreateOfferLink {
+    display: block;
+}
+
+.security-code {
+    display: block;
+}
+
+#security_code {
+    color: #1b8aab;
+    font-weight: bold;
+}
+
+#shop-wrapper-left .inventory-user .item-holder .col-item{
+
+}

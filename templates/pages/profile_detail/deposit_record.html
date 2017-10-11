@@ -1,0 +1,26 @@
+{% extends 'pages/profile.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block profile_extra_header %}
+    <script src="{% static 'backup/deposit_record.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+{% endblock %}
+
+{% block profile_detail %}
+    <div id="deposit-record" style="padding-bottom: 3em;">
+        <div class="row">
+            <ul class="nav nav-tabs" style="background-color: rgba(25, 25, 25, 1);">
+                <li role="presentation" id="showCoinflipRecord" class=""><a @click="showCoinflipRecord" rel="nofollow">{% trans 'Coinflip history' %}</a></li>
+                <li role="presentation" id="showJackpotRecord" class=""><a @click="showJackpotRecord" rel="nofollow">{% trans 'Jackpot history' %}</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <component :is="record_com" :extra="extraRecordData"></component>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{#    {% include 'common/history/history_template.html' %}#}
+{% endblock %}

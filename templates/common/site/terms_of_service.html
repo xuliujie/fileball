@@ -1,0 +1,62 @@
+{% extends 'page_base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_header %}
+    <title>Dota2Fair-{% trans 'Terms of Service' %}</title>
+{% endblock %}
+
+{% block page_content %}
+    <section id="page">
+        <div class="container">
+            {% blocktrans %}
+                <h1>Terms of Service</h1>
+
+                <h2>Legal Notice:</h2>
+
+                <p>The terms and conditions set out below (the "Terms and Conditions") apply to
+                    and govern any services used by you ("You", the "user") and marketed by us under the brand name
+                    "Dota2Fair" including any services provided through any website with a domain name ending
+                    "Dota2Fair.com" (the "Website"), and to any email and other correspondence between us relating to
+                    such a service.</p>
+
+                <h2>Bet participation:</h2>
+
+                <p>By placing a bet on Dota2Fair.com you are 18 years of age or over, of sound
+                    mind and capable of taking responsibility for your own actions. Dota2Fair.com comes with no
+                    guarantees, expressed or implied, in connection with the service which is provided to you "as is"
+                    and we provide you with no warranty whatsoever regarding its quality, completeness or accuracy. As
+                    such, Dota2Fair.com cannot be held responsible in any event, direct, indirect or consequential with
+                    the use of the website. Dota2Fair.com reserves the right to suspend and/or cancel any bet/wager at
+                    any time. When a platform is suspended, any bets entered will be on hold. Dota2Fair.com also
+                    reserves the right to cease betting at any time without notice.</p>
+
+                <h2>Deposit, withdraw or lost items:</h2>
+
+                <p>If any loss occur during a bet caused by a software or network issue, you
+                    have 7 days to make a claim by opening a ticket at <a href="http://support.dota2fair.com"
+                                                                          target="_blank">support.dota2fair.com</a>,
+                    after which these items will be considered surrendered. We strongly encourage you to withdraw your
+                    winning as soon as possible to avoid any issues. Keep in mind that the items you get after winning a
+                    round may not be the same as the one you deposit, meaning that stickers and nametag may be lost.
+                    However the total value won will stay the same. For every round played on Dota2Fair.com a 0-5%
+                    commission will be taken. It is calculated of the total pot value and is taken from the item pool,
+                    except the winners deposited item. That doesn't apply for coinflip games, where the tax is the same,
+                    but that can be the winner's deposited item too.
+                <h2>Content:</h2>
+
+                <p>The content of the pages of this website is for your general information and
+                    use only. It is subject to change without notice. This website contains material which is owned by
+                    us. This material includes, but is not limited to, the design, layout, look, appearance and
+                    graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms
+                    part of these terms and conditions.</p>
+
+                <h2>Affiliation:</h2>
+
+                <p>Dota2Fair.com is no affiliated with Valve Corporation, Dota2
+                     or any other trademarks of the Valve Corporation.</p>
+            {% endblocktrans %}
+        </div>
+        <div id="dev"></div>
+    </section>
+{% endblock %}

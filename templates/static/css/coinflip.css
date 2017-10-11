@@ -1,0 +1,207 @@
+#coinflip-wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 1000px;
+}
+
+#coinflip-wrapper .status-row {
+    text-align: center;
+    cursor: default;
+    padding: 8px 5px 5px 5px;
+    border-radius: 5px;
+}
+
+#coinflip-wrapper .status-row h1, #coinflip-wrapper .status-row h2 {
+    color: #999;
+    font-size: 13px;
+    text-align: center;
+    padding: 5px 3px 15px 3px;
+    margin: 0;
+}
+
+#coinflip-links {
+    margin: 20px 0 10px 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+}
+
+.coinflip-pots {
+    background-color: #fcfcfc;
+    border-top: 3px solid #ddd;
+    border-collapse: collapse;
+    cursor: default;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+}
+
+#cfRoundView {
+    cursor: default;
+}
+
+#cfRoundView .col-left {
+    float: right;
+}
+
+#cfRoundView .col-header {
+    width: 132px;
+    position: relative;
+}
+
+#cfRoundView .col-header img.img-user {
+    width: 130px;
+    height: auto;
+    border: 1px solid #eee;
+}
+
+#cfRoundView .col-left .icon {
+    bottom: -10px;
+    left: -10px;
+}
+
+#cfRoundView .col-right .icon {
+    bottom: -10px;
+    right: -10px;
+}
+
+#cfRoundView .col-header .icon {
+    position: absolute;
+}
+
+#cfRoundView .col-timer {
+    text-align: center;
+}
+
+#cfanimdone-wrapper {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: -10px;
+}
+
+#coin {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+}
+
+#coin img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+#cfRoundView .col-right {
+    float: left;
+}
+
+#cfRoundView .row-header {
+    background-color: rgba(245,245,245,0.8);
+    text-align: center;
+}
+
+#cfRoundView .verify {
+    color: #999;
+}
+
+#cfRoundView .row-total {
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.coin {
+    border-radius: 50%;
+}
+
+#coinflip-links {
+    margin: 20px 0 10px 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+}
+
+#coinflip-links li {
+    background-color: #f7f7f7;
+    display: inline;
+    font-size: 11px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: .5s background-color;
+}
+
+#coinflip-links li.big {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+#coinflipGetStartedModal table img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+
+.ps-container {
+    -ms-touch-action: none;
+    overflow: hidden !important;
+}
+
+.list-complete-item {
+  transition: all 1s;
+}
+
+.list-complete-enter, .list-complete-leave-active {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.list-complete-leave-active {
+  position: absolute;
+}
+
+#coinflip-wrapper .status-row {
+    background-color: #fcfcfc;
+    border-top: 3px solid #ddd;
+}
+
+#coinflip-wrapper .status-row .number {
+    font-family: 'Lato',sans-serif;
+    font-size: 28px;
+}
+
+
+#coinflip-wrapper .status-row p {
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+
+
+#coinflip-wrapper .status-row i {
+    color: #ccc;
+    font-size: 30px !important;
+}

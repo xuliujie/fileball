@@ -1,0 +1,15 @@
+{% extends 'page_base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_header %}
+{#    <title>{% trans 'Maintenance' %}</title>#}
+{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+        <div class="maintenance">
+            <p class="maintenance-content">{% trans 'The site is on maintenance.' %}</p>
+        </div>
+    </div>
+{% endblock %}

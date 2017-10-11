@@ -1,0 +1,94 @@
+
+.coinflip-pots tbody tr {
+    border-top: none !important;
+    height: 100%;
+}
+
+.coinflip-pots tbody td {
+    border: none !important;
+    border-top: none !important;
+}
+
+.coinflip-pots td {
+    vertical-align: middle !important;
+}
+
+.coinflip-pots .cf-players {
+    width: 150px;
+    text-align: center;
+}
+
+.coinflip-pots img.coin {
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.coinflip-pots .cf-players img {
+    width: 40px;
+    height: 40px;
+}
+
+.coinflip-pots .cf-items {
+    color: #777;
+}
+
+.coinflip-pots h3 {
+    color: #777;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+}
+
+.coinflip-pots .cf-items img {
+    display: inline;
+}
+
+.coinflip-pots .cf-total {
+    width: 160px;
+}
+
+.coinflip-pots tbody tr .cf-timer {
+    width: 60px;
+}
+
+.coinflip-pots .cf-action {
+    width: 15%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.coinflip-pots .cf-action img {
+    width: 40px;
+    height: 40px;
+}
+
+.jk-history-items img {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+
+.coinflip-pots tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.historyPage .pagination-ul {
+    text-align: center;
+}
+
+#historyPage .pagination {
+    margin: 0 auto;
+}
+
+#historyPage .pagination .page-item {
+    cursor: pointer;
+}
+
+#historyPage .pagination .active .page-item {
+    cursor: default;
+}
+
+#historyPage .pagination .disabled .page-item {
+    cursor: not-allowed;
+}

@@ -1,0 +1,83 @@
+{% extends 'page_base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_header %}
+    <script src="{% static 'backup/shop.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+{% endblock %}
+
+{% block page_content %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <div id="shop-wrapper" class="row backgroundImg" style="padding-top: 20px; min-height: 1000px;">
+        <div id="invUser">
+            <div id="shop-body" class="col-sm-10 col-sm-offset-1" style="margin-bottom: 100px;">
+
+                <div id="shop-item-box" class="col-xs-6"style="">
+                    <div class="col-xs-12" style="padding-top: 1em; padding-bottom: 48px; background-color: rgba(25, 25, 25, 1);">
+                        <div class="">
+                            <p>{% trans 'Market' %}</p>
+                            <button class="btn btn-primary" @click="sortByAmount" style="margin-right:1em;">
+                                <i id="amount-arrow" class="fa fa-arrow-down"></i><span> {% trans 'Price' %}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 inventory-user" style="padding-left: 1em; padding-right: 1em; ">
+                        {% if request.user.is_anonymous %}
+                        <a href="{% url 'social:begin' 'steam' %}"><p style="text-align: center; font-weight: bold; font-size:30px;">Please login first.</p></a>
+                        {% else %}
+                        <div class="modal-loading" v-show="inventoryLoading">
+                            <img src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+                        </div>
+                        {% endif %}
+                        <shop-item-detail :inventories="inventoriesShow" @item-selected="selectItem" v-show="inventoryLoaded"></shop-item-detail>
+                        <div v-if="inventoryLoaded && !inventoriesShow.length" style="text-align: center;">
+                            <p class="offer-title">{% trans 'There is no available item in shop.' %}</p>
+                        </div>
+                        <div class="pagination" v-show="inventoryLoaded && inventoriesShow.length">
+                            <ul class="pager">
+                                <li class="previous" :class="{disabled: noPrePage}"><a @click="prePage">&larr;</a></li>
+                                <li class="next" :class="{disabled: noNextPage}"><a @click="nextPage">&rarr;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="selected-item-box" class="col-xs-6">
+                    <div class="col-xs-12" style="padding-top: 1em; padding-bottom: 1em; background-color: rgba(25, 25, 25, 1);">
+                        <div class="">
+                            <p>{% trans 'F coins：' %}<span style="color: yellow;">^{Fcoins} </span><img style="margin-bottom: 3px;" src="{% static 'img/gold-16.png' %}"></p>
+
+                                <p>
+                                    {% blocktrans %}
+                                    Selected: ^{selectedCount} items
+                                    valued at <span style="color: yellow;">^{selectedCoins}</span>
+                                    {% endblocktrans %}
+                                    <img style="margin-bottom: 3px;" src="{% static 'img/gold-16.png' %}">
+                                </p>
+
+                            <button id="itemExchange" class="btn btn-success" style="margin-right:1em;" @click="exchange" :disabled="inventoryLoading">
+                                <i class="fa fa-codepen fa-lg"></i>{% trans 'Buy' %}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 inventory-user" style="padding-left: 1em; padding-right: 1em; ">
+                        <shop-item-detail :inventories="selectedItemsShow" @item-selected="cancelItem" v-show="inventoryLoaded"></shop-item-detail>
+                        <div class="pagination" v-show="selectedItems.length > itemsCountPerPage">
+                            <ul class="pager">
+                                <li class="previous" :class="{disabled: noPrePageSelectedItems}"><a @click="prePageSelectedItems">&larr;</a></li>
+                                <li class="next" :class="{disabled: noNextPageSelectedItems}"><a @click="nextPageSelectedItems">&rarr;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{#    {% include 'common/item/item_template.html' %}#}
+{% endblock %}

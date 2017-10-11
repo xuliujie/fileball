@@ -1,0 +1,76 @@
+{% extends 'pages/profile.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block profile_extra_header %}
+    <script src="{% static 'backup/trade_record.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+{% endblock %}
+
+{% block profile_detail %}
+    <div id="trade-record" style="padding-bottom: 3em;">
+        <div class="row">
+            <ul class="nav nav-tabs" style="background-color: rgba(25, 25, 25, 1);">
+                <li role="presentation" id="showStoreRecord" class=""><a @click="showStoreRecord" rel="nofollow">{% trans 'Store record' %}</a></li>
+                <li role="presentation" id="showWithdrawRecord" class=""><a @click="showWithdrawRecord" rel="nofollow">{% trans 'Withdraw record' %}</a></li>
+                <li role="presentation" id="showFcoinsRecord" class=""><a @click="showFcoinsRecord" rel="nofollow">{% trans 'F coins record' %}</a></li>
+            </ul>
+        </div>
+        <div class="row" v-if="showContent">
+            <template v-if="loading">
+                <div class="modal-loading">
+                    <img src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+                </div>
+            </template>
+            <template v-else>
+                <table class="coinflip-pots table">
+                    <thead>
+                    <tr>
+                        <th>{% trans 'Items' %}</th>
+                        <th>{% trans 'Total' %}</th>
+                        <th>{% trans 'Time' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <template v-for="its in histories">
+                        <tr is="trade-item" :item="its" :extraData="its.winnerData" :type="recordType"></tr>
+                    </template>
+                    </tbody>
+                </table>
+                <div class="status-message" v-if="!histories">
+                    <h2 class="text-center">{% trans 'No history' %}</h2>
+                </div>
+            </template>
+            <div class="pagination-ul" v-if="pages > 1">
+                <pagination-ul :pages="pages" :page="page" v-on:next-page="nextPage"></pagination-ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script id="trade-template" type="text/x-template" xmlns="http://www.w3.org/1999/html">
+    <tr>
+        <td class="cf-items">
+            <h3>^{item.totalItems} items</h3>
+            <div>
+                <template v-for="it in item.itemsShow" :item="it">
+                    <img :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/70fx50f'"
+                         class="img-responsive" :title="it.name + ' - $' + it.amount" alt="">
+                </template>
+                <template v-if="item.itemsMore"><span>+ ^{ item.itemsMore } more</span></template>
+            </div>
+        </td>
+        <td class="cf-total" v-if="type == 'store' || type == 'withdraw'">
+            <i class="fa fa-dollar"></i>
+            ^{ item.amount.toFixed(2) }
+        </td>
+        <td class="cf-total" style="color: yellow;" v-else-if="type == 'Fcoins'">
+            ^{ item.amount } <img style="margin-bottom: 3px;" src="{% static 'img/gold-16.png' %}">
+        </td>
+        <td>
+            ^{ item.time }
+        </td>
+    </tr>
+</script>
+{% endblock %}

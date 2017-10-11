@@ -1,0 +1,69 @@
+{% extends 'page_base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% load bootstrap_pagination %}
+
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'css/video.css' %}"/>
+    <script src="{% static 'backup/video.js' %}"></script>
+{% endblock %}
+
+{% block page_content %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <div id="video-wrapper" class="content-wrapper backgroundImg">
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="margin-bottom: 10px;">
+            <div id="admin-messages">
+                <div class="primary-message_1v1">
+                    {% if anno %}
+                        <div style="color: #515151;">
+                        <img src="{% static 'img/speaker-20.png' %}" style="padding-bottom: 3px;">
+                        {% if LANGUAGE_CODE == 'zh-hans' %}
+                            <b>{{ anno.content|safe }}</b>
+                        {% else %}
+                            <b>{{ anno.content_en|safe }}</b>
+                        {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="video-body col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <div class="row" id="video-nav" style="background-color: rgba(25, 25, 25, 1);">
+                <ul class="nav nav-tabs">
+                  <li role="presentation" id="allVideo" class="active" ><a href="" style="font-weight: bold; color: white;">{% trans 'All vedio' %}</a></li>
+                </ul>
+            </div>
+            <div class="row" id="video-list" style="background-color: rgba(25, 25, 25, 1);">
+                <div class="row video-list" style="padding: 10px;">
+                    <div class="video-info col-xs-6 col-sm-4 col-md-3" style="display: block; padding: 5px;" v-for="room in rooms" :key="room.room_id" :data-roomid="room.room_id">
+                        <div class="col-xs-12 video-pic">
+                            <a :href="room.room_type + '/' + room.room_id">
+                                <img :src="room.room_thumb" class="img-responsive"/>
+                            </a>
+                        </div>
+                        <div class="col-xs-12">
+                            <a :href="room.room_type + '/' + room.room_id"><span class="video-title col-xs-offset-2 col-xs-10" style="font-weight:bold; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" :title="room.room_name">^{ room.room_name }</span></a>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="video-owner" style="font-size:14px; color:gray; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><i class="fa fa-user"></i><span> ^{ room.owner_name }</span></p>
+                        </div>
+                        <div class="col-xs-4">
+                            <p class="video-fans pull-right" style="font-size:14px; color:gray; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><i class="fa fa-eye"></i><span> ^{ room.online }</span></p>
+                        </div>
+                        <div class="video-avatar">
+                            <a :href="room.room_type + '/' + room.room_id">
+                                <img class="" :src="room.avatar" style="width: 60px; height: 60px;position: absolute; left: 15px; bottom: 20%; -webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination-ul" v-if="pages > 1" style="text-align: center;">
+                    <pagination-ul :pages="pages" :page="page" v-on:next-page="nextPage"></pagination-ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

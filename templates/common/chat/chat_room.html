@@ -1,0 +1,46 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<div id="chat" class="col-xs-12 col-sm-4 col-md-2">
+    <div class="hide-chat"><i class="fa fa-chevron-right fa-lg"></i></div>
+    <div id="chat-wrapper">
+        <div class="users-online">
+            <span class="users-online-value">0</span> online
+            <i class="fa fa-ellipsis-v"></i>
+            <button id="mChatRules" class="btn btn-primary">{% trans 'chat rules' %}</button>
+        </div>
+        <div id="messages-wrapper">
+            <ul id="messages">
+                <chat-item v-for="item in items" :item="item" :key="item.id"></chat-item>
+            </ul>
+        </div>
+        <input id="chat_msg" autocomplete="off" placeholder="type your msg here..">
+        <div class="chat-buttons">
+            {% if request.user.is_anonymous %}
+                <a class="btn btn-info" href="{% url 'social:begin' 'steam' %}">Send</a>
+            {% else %}
+                <button id="pushChatMsg" class="btn btn-info">Send</button>
+            {% endif %}
+            <div class="btn-group dropup pull-right">
+                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-smile-o"></i> <span class="caret"></span>
+                </button>
+                <ul id="smile-wrapper" class="dropdown-menu">
+                    {% for s in chat_smiles %}
+                        <img src="{{ s.url }}" data-code="{{ s.code }}" class="chat-smile" style="width:25px;height:25px" />
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="giveaway1">
+            {% if give %}
+            <p class="title">{{ give.title }}</p>
+            <img src="{{ give.img }}" width="110"
+                 height="88">
+            <br><a href="{{ give.href }}" target="_blank">
+            <button class="btn btn-primary">{{ give.button }}</button>
+            </a><br><br>
+            {% endif %}
+        </div>
+    </div>
+</div>

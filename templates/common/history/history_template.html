@@ -1,0 +1,236 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<script id="knob-template" type="text/x-template">
+    <input data-readonly="true" data-displayinput="true" class="cfRoundKnob" :value="seconds" :data-seconds="seconds" readonly>
+</script>
+
+
+<script id="cf-template" type="text/x-template" xmlns="http://www.w3.org/1999/html">
+    <tr :data-amount="item.deposit[0].totalAmount" :data-id="item.gid">
+        <td class="cf-players" :class="{users: item.isUsers}">
+            <template v-if="!item.full">
+                <template v-if="item.deposit[0].team">
+                    <img src="{% static 'img/dire.png' %}" class="coin">
+                </template>
+                <template v-else>
+                    <img src="{% static 'img/radiant.png' %}" class="coin">
+                </template>
+            </template>
+            {% if ld %}<a :href="'http://steamcommunity.com/profiles/' + item.deposit[0].steamid"
+                                        target="_blank">
+                <img :src="item.deposit[0].icon" alt="Profile" :title="item.deposit[0].name"></a>
+            {% else %}
+                <img :src="item.deposit[0].icon" alt="Profile" :title="item.deposit[0].name">
+            {% endif %}
+            <template v-if="item.full">
+                <span class="sep">vs</span>
+                {% if ld %}<a :href="'http://steamcommunity.com/profiles/' + item.deposit[1].steamid"
+                                            target="_blank">
+                    <img :src="item.deposit[1].icon" alt="Profile" :title="item.deposit[1].name"></a>
+                {% else %}
+                    <img :src="item.deposit[1].icon" alt="Profile" :title="item.deposit[1].name">
+                {% endif %}
+            </template>
+        </td>
+        <td class="cf-items">
+            <h3>^{item.totalItems} items</h3>
+            <div>
+                <template v-for="it in item.itemsShow" :item="it">
+                    <img :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/70fx50f'"
+                         class="img-responsive" :title="it.name + ' - $' + it.amount" alt="">
+                </template>
+                <template v-if="item.itemsMore"><span>+ ^{ item.itemsMore } more</span></template>
+            </div>
+        </td>
+        <td class="cf-total">
+            <template v-if="!item.full">
+                <i class="fa fa-dollar"></i> ^{ item.totalAmount }<br><span
+                    class="small">{% trans 'Needs:' %} $^{ item.amount_o.min } - ^{ item.amount_o.max }</span>
+            </template>
+            <template v-else>
+                <i class="fa fa-dollar"></i> ^{ item.totalAmount }
+            </template>
+        </td>
+        <template v-if="!item.isModal">
+            <td class="cf-timer">
+                <div v-if="(!extraData.winnerData && item.joined.status)">
+                    <countdown-knob :seconds="extraData.seconds"></countdown-knob>
+                </div>
+            </td>
+        </template>
+        <td class="cf-action" :data-id="item.gid" :data-team="item.team" :data-steamid="item.deposit[0].steamid">
+            <template v-if="!item.full">
+                <template v-if="!item.joined.status">
+                    {% if not request.user.is_anonymous %}
+                        <template v-if="item.deposit[0].steamid == {{ request.user.steamid }}">
+                            <button class="btn btn-primary cfRoundJoin" disabled="disabled" style="display: none">{% trans 'Join' %}
+                            </button>
+                        </template>
+                        <template v-else>
+                            <button class="btn btn-primary cfRoundJoin" v-on:click="joinGame">{% trans 'Join' %}</button>
+                        </template>
+                    {% else %}
+                        <a class="btn btn-primary cfRoundJoin" href="{% url 'social:begin' 'steam' %}">{% trans 'Join' %}</a>
+                    {% endif %}
+                </template>
+                <template v-else>
+                    {% if ld %}
+                        <a :href="'http://steamcommunity.com/profiles/' + item.joined.steamid" target="_blank">
+                            <img :src="item.joined.icon" alt="Profile" :title="item.joined.name">
+                        </a>
+                    {% else %}
+                        <img :src="item.joined.icon" alt="Profile" :title="item.joined.name">
+                    {% endif %}
+                </template>
+            </template>
+            <template v-else>
+                <template v-if="extraData.winnerData && flipOver">
+                    <template v-if="extraData.winnerData.team">
+                        <img src="{% static 'img/dire.png' %}" class="coin dn">
+                    </template>
+                    <template v-else>
+                        <img src="{% static 'img/radiant.png' %}" class="coin dn">
+                    </template>
+                    {% if ld %}
+                        <a :href="'http://steamcommunity.com/profiles/' + extraData.winnerData.steamid" target="_blank"
+                           class="dn">
+                            <img :src="extraData.winnerData.icon" alt="Profile" :title="extraData.winnerData.name"></a>
+                    {% else %}
+                            <span class="dn">
+                                <img :src="extraData.winnerData.icon" alt="Profile" :title="extraData.winnerData.name"></a>
+                            </span>
+                    {% endif %}
+                </template>
+            </template>
+            <template v-if="!item.isModal">
+                <button class="btn btn-info cfRoundView" :data-id="item.gid" :data-idx="index" v-on:click="showView">
+                    {% trans 'View' %}
+                </button>
+            </template>
+        </td>
+    </tr>
+</script>
+
+<script id="cf-hash-template" type="text/x-template">
+    <tr v-if="item.isModal && item.full">
+        <td colspan="4" class="hash">
+            {% trans 'Hash:' %} ^{item.hash} <span class="sep">|</span>
+            {% trans 'Percentage:' %} ^{item.percentage}% <span class="sep">|</span>
+            {% trans 'Secret:' %} ^{item.secret}
+            <a :href="'/provably-fair/' + item.hash + '-' + item.secret + '-' + item.percentage + '-' + item.totalTickets"
+               rel="nofollow" target="_blank">
+                <i class="fa fa-question-circle" data-toggle="tooltip" title=""
+                   data-original-title="Validate Round"></i>
+            </a>
+        </td>
+    </tr>
+</script>
+
+<script id="cf-history-template" type="text/x-template">
+    <div id="historyPage">
+        <template v-if="loading">
+            <div class="modal-loading">
+                <img src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+            </div>
+        </template>
+        <template v-else>
+            <table class="coinflip-pots table">
+                <thead>
+                <tr>
+                    <th>{% trans 'Players' %}</th>
+                    <th>{% trans 'Items' %}</th>
+                    <th>{% trans 'Total' %}</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <template v-for="it in histories">
+                    <tr is="cf-item" :item="it" :extraData="it.winnerData"></tr>
+                    <tr is="cf-hash" :item="it"></tr>
+                </template>
+                </tbody>
+            </table>
+            <div class="status-message" v-if="!histories">
+                <h2 class="text-center">{% trans 'No games added right now' %}</h2>
+            </div>
+        </template>
+        <div class="pagination-ul" v-if="pages > 1">
+            <pagination-ul :pages="pages" :page="page" v-on:next-page="nextPage"></pagination-ul>
+        </div>
+    </div>
+</script>
+
+<script id="jp-history-template" type="text/x-template">
+    <div id="historyPage">
+        <template v-if="loading">
+            <div class="modal-loading">
+                <img src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+            </div>
+        </template>
+        <template v-else>
+{#            <table class="jackpot-summary table">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th>Total bet</th>#}
+{#                    <th>Total won</th>#}
+{#                    <th>Profit</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                <tr>#}
+{#                    <td><i class="fa fa-dollar"></i> ^{ price_lost }</td>#}
+{#                    <td><i class="fa fa-dollar"></i> ^{ price_win }</td>#}
+{#                    <td><i class="fa fa-dollar"></i> ^{ profit }</td>#}
+{#                </tr>#}
+{#                </tbody>#}
+{#            </table>#}
+            <table class="coinflip-pots table">
+                <thead>
+                <tr>
+                    <th>{% trans 'Items' %}</th>
+                    <th>{% trans 'Amount' %}</th>
+                    <th>{% trans 'Win/lose' %}</th>
+                    <th>{% trans 'Time' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <template v-for="history in histories">
+                    <tr>
+                        <td class="jk-history-items">
+                            <img v-for="it in history.itemsShow" :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/70fx50f'"
+                                 class="img-responsive" :title="it.name + ' - $' + it.amount" alt="">
+                            <span v-if="history.itemsMore">+^{history.itemsMore} items</span>
+                        </td>
+                        <td>
+                            <span><i class="fa fa-dollar"></i>^{history.total_amount.toFixed(2)}</span>
+                        </td>
+                        <td>
+                            <i v-if="history.win" class="fa fa-trophy"> {% trans 'Win' %}</i>
+                            <i v-else class="fa fa-times"> {% trans 'Lose' %}</i>
+                        </td>
+                        <td>
+                            <span>^{history.run_time}</span>
+                        </td>
+                    </tr>
+                    <tr is="cf-hash" :item="history"></tr>
+                </template>
+                </tbody>
+            </table>
+            <div class="status-message" v-show="!histories">
+                <h2 class="text-center">{% trans 'Not found rounds' %}</h2>
+            </div>
+            <div class="pagination-ul">
+                <pagination-ul :pages="pages" :page="page" v-on:next-page="nextPage"></pagination-ul>
+            </div>
+        </template>
+    </div>
+</script>
+
+<script id="pagination-template" type="text/x-template">
+    <ul class="pagination">
+        <li :class="{disabled: page===1}"><span class="page-item" v-on:click="prePage">&laquo;</span></li>
+        <li v-for="p in pages" :key="this" :class="{active: p===page}" ><span class="page-item" v-on:click="gotoPage" :data-page="p" >^{p}</span></li>
+        <li :class="{disabled: page===pages}"><span class="page-item" v-on:click="nextPage">&raquo;</span></li>
+    </ul>
+</script>

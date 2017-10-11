@@ -1,0 +1,93 @@
+{% extends 'pages/profile.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block profile_extra_header %}
+    <script src="{% static 'backup/affiliate.js' %}"></script>
+{#    <link rel="stylesheet" href="{% static 'css/affiliate.css' %}">#}
+{% endblock %}
+
+{% block profile_detail %}
+    <div id="affiliate-body" class="row affiliate_body" style="text-align: center; min-height: 300px; background-color: rgba(25, 25, 25, 1);">
+        <div class="col-sm-offset-1" style="text-align: left; max-width:600px; margin-left: auto; margin-right:auto;">
+            {% blocktrans %}
+                <h2>Affiliate Rules</h2>
+                <p>1.Every user could redeem Promo Code for once, and would get 50 F Coins after redeem the code.</p>
+                <p>2.All promo code creator would get 2% of commission.</p>
+                <p>3.Promo code could not be changed once created.</p>
+                <p><small>Note: We will only count user within 24 hours since registration as promote user.</small></p>
+            {% endblocktrans %}
+        </div>
+
+        <div class="panel panel-default col-sm-offset-1" style="max-width:600px; border:none; margin-top: 20px; margin-left: auto; margin-right:auto;" v-if="affiInfo.is_new">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-sm-3 control-label" style="padding: 5px;">
+                        <label for="tradeUrl">兑换推广码：</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control" placeholder="3-10位的英文或/和数字" v-model="higherCode">
+                        </div>
+                    </div>
+                    <div class="col-sm-1"><input type="submit" name="form" class="btn btn-info" value="保存" @click="inputHigher"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default col-sm-offset-1" style="max-width:600px; border:none; margin-top: 20px; margin-left: auto; margin-right:auto;">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-sm-3 control-label" style="padding: 5px;">
+                        <label for="tradeUrl">我的推广码：</label>
+                    </div>
+                    <div class="col-sm-7" v-if="affiInfo.affi_code">
+                        <div class="input-group col-xs-12" style="padding: 5px;">
+                            <span>^{ affiInfo.affi_code }</span>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <div class="col-sm-6">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control" placeholder="3-10位的英文或/和数字" v-model="affi_code">
+                            </div>
+                        </div>
+                        <div class="col-sm-1"><input type="submit" name="form" class="btn btn-info" value="保存" @click="changeAffiCode"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default col-sm-offset-1" style="max-width:600px; border:none; margin-top: 20px; margin-left: auto; margin-right:auto;">
+            <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-3 control-label" style="padding: 5px;">
+                            <label for="tradeUrl">总推广返利：</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="input-group col-xs-12" style="padding: 5px;">
+                                <span style="color: yellow;">^{ affiInfo.f_coins } </span><img style="margin-bottom: 3px;" src="{% static 'img/gold-16.png' %}">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default col-sm-offset-1" style="max-width:600px; border:none; margin-top: 20px; margin-left: auto; margin-right:auto;">
+            <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-3 control-label" style="padding: 5px;">
+                            <label for="tradeUrl">我推广的人数：</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="input-group col-xs-12" style="padding: 5px;">
+                                <span>^{ affiInfo.lower }</span>
+                            </div>
+                        </div>
+{#                        <div class="col-sm-9"><input type="submit" name="form" class="btn btn-info" value="查看" onclick=""></div>#}
+                    </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

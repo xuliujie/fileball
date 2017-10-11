@@ -1,0 +1,25 @@
+.fa-pencil:before {
+    content: "\f040";
+}
+
+.fa-circle-o-notch:before {
+    content: "\f1ce";
+}
+
+.fa-circle:before {
+    content: "\f111";
+}
+
+.fa-sign-out:before {
+    content: "\f08b";
+}
+
+.dark .nav-tabs .active .nav-selected {
+    color: white;
+    font-weight: bold;
+}
+
+.nav-tabs li:not(.active) a:hover {
+    background-color: rgba(25, 25, 25, 1);
+    color: white;
+}

@@ -1,0 +1,24 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<footer>
+  <div class="col-md-4 col-xs-6">
+    <div class="steam-analyst">
+      <img src="{% static 'img/dota2analyst.png' %}" alt="Steam Analyst"><span class="hidden-xs"> | the price provider</span>
+    </div>
+  </div>
+  <div class="col-md-8 col-xs-6">
+    <ul class="pull-right">
+      <li><a href="{% url 'get_started' %}"><i class="fa fa-play-circle-o"></i> {% trans 'Get started' %}</a></li>
+      <li><a href="{% url 'provably_fair' %}">{% trans 'Provably Fair' %}</a></li>
+      <li><a href="{% url 'terms_of_service' %}">{% trans 'Terms Of Service' %}</a></li>
+      <li class="bot-status">{% trans 'Dota2 Steambot Status:' %}
+          {% if steam_bot %}
+              <span id="steambotStatus" class="steambotOn">on</span>
+          {% else %}
+              <span id="steambotStatus" class="steambotOff">off</span>
+          {% endif %}
+      </li>
+    </ul>
+  </div>
+</footer>

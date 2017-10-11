@@ -1,0 +1,170 @@
+body {
+    /*font-size: 0.9em;*/
+}
+
+section#page {
+    padding: 0 0 80px 0;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    #inventoryModal .modal-dialog, #coinflipModal .modal-dialog, #historyModal .modal-dialog, #coinflipGetStartedModal .modal-dialog, #adminModal .modal-dialog {
+        width: 98%;
+        max-width: 1000px;
+    }
+}
+
+h1 {
+    color: #888;
+    font-size: 24px;
+    padding: 2px 10px 2px 0;
+    margin-bottom: 25px;
+    cursor: default;
+}
+
+h2, h3 {
+    color: #888;
+    font-size: 20px;
+    padding: 2px 0;
+    margin-bottom: 20px;
+}
+.backgroundImg {
+    background-color: black;
+    background-image: url('/static/img/nevermore_2500x1600.jpg');
+    background-size: 100% auto;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+#coinflip-wrapper.backgroundImg,
+#jackpot-wrapper.backgroundImg {
+    background-image: url('/static/img/shadow_fiend_1920x1080.jpg');
+}
+
+
+
+.content-wrapper {
+    background-color: #eeeeee;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 1000px;
+    width: 100%;
+    margin: 0;
+}
+
+.item-wrapper .item {
+    position: relative;
+    background-color: #cfcfcf;
+    margin: 5px;
+    cursor: pointer;
+    min-height: 100px;
+}
+
+.item-wrapper .item img {
+    margin: 0 auto;
+}
+
+.item-wrapper .item .info {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    text-align: center;
+    margin: 3px;
+    width: 96%;
+}
+
+.item-wrapper .item .top-info {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    margin: 3px;
+    width: 96%;
+    color: #ccc
+}
+
+.item-wrapper .item .top-info .price {
+    margin-bottom: 5px;
+}
+
+
+.item-wrapper .item .top-info .price span {
+    background-color: rgba(50, 50, 50, 0.8);
+    font-weight: bold;
+    font-size: 15px;
+    padding: 2px 4px;
+}
+
+
+.item-wrapper .item .info .rarity {
+    float: none;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+
+.item-wrapper .item .info .rarity span {
+    background-color: rgba(50, 50, 50, 0.8);
+    font-weight: bold;
+    font-size: 15px;
+    padding: 2px 4px;
+}
+
+
+.item-wrapper .item .info .name {
+    background: rgba(220, 220, 220, 0.8);
+    color: #222;
+    font-size: 11px;
+    min-height: 28px;
+    padding: 3px 2px;
+}
+
+.fa-user:before {
+    content: "\f007";
+}
+
+.fa-dollar:before, .fa-usd:before {
+    content: "\f155";
+}
+
+.fa-history:before {
+    content: "\f1da";
+}
+
+.flip-list-move {
+    transition: all 1s;
+}
+
+#invUser .small {
+    font-size: 100%;
+}
+
+#noSocket {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 400px;
+    margin: 0 auto;
+    background-color: rgba(240,240,240,0.95);
+    border: 2px solid #ddd;
+    font-size: 22px;
+    text-align: center;
+    padding: 10px 25px;
+    display: none;
+}
+
+.maintenance {
+    min-height: 600px;
+}
+
+.maintenance-content {
+    padding-top: 300px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.dark .nav-tabs li.active a {
+    background-color: rgba(25, 25, 25, 1);
+}
+

@@ -1,0 +1,14 @@
+{% load staticfiles %}
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+<div class="srb-announ">
+{% if anno %}
+    <img class="speaker" src="{% static 'img/speaker-20.png' %}">
+    {% if LANGUAGE_CODE == 'zh-hans' %}
+        <span>{{ anno.content|safe }}</span>
+    {% else %}
+        <span>{{ anno.content_en|safe }}</span>
+    {% endif %}
+{% endif %}
+</div>

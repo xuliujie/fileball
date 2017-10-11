@@ -1,0 +1,10 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<script id="pagination-template" type="text/x-template">
+    <ul class="pagination">
+        <li :class="{disabled: page===1}"><span class="page-item" v-on:click="prePage">&laquo;</span></li>
+        <li v-for="p in pages" :key="this" :class="{active: p===page}" ><span class="page-item" v-on:click="gotoPage" :data-page="p" >^{p}</span></li>
+        <li :class="{disabled: page===pages}"><span class="page-item" v-on:click="nextPage">&raquo;</span></li>
+    </ul>
+</script>

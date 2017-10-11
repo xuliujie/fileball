@@ -1,0 +1,61 @@
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<script id="item-template" type="text/x-template">
+    <div class="row item-holder noselect">
+        <div v-for="item in inventories" :key="item.assetid" class="col-xs-6 col-sm-4 col-md-2 col-item hide-name" :class="{selected: item.selected}" :data-itemid="item.assetid"
+             :data-amount="item.amount" @click="clickItem" @mouseover="showName" @mouseout="hideName">
+            <div class="item">
+                <img v-if="item.classid"
+                     :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + item.appid + '/' + item.classid + '/200fx100f'"
+                     alt="" class="img-responsive" rel="nofollow">
+                <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive" rel="nofollow">
+                <div class="top-info">
+                    <div class="price col-xs-6"><span>$^{item.amount}</span></div>
+                </div>
+                <div class="bottom-info">
+                    <div class="col-xs-6 rarity">
+                        <span :class="item.rarity">
+                            {% if LANGUAGE_CODE == 'zh-hans' %}
+                                ^{item.rarity_zh}
+                            {% else %}
+                                ^{item.rarity}
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="name">^{item.name}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="shop-item-template" type="text/x-template">
+    <div class="row item-holder noselect">
+        <div v-for="item in inventories" :key="item.assetid" class="col-xs-12 col-sm-6 col-md-3 col-item hide-name" :class="{selected: item.selected}" :data-itemid="item.assetid"
+             :data-coins="item.coins" @click="clickItem" @mouseover="showName" @mouseout="hideName">
+            <div class="item">
+                <img v-if="item.classid"
+                     :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + item.appid + '/' + item.classid + '/200fx100f'"
+                     alt="" class="img-responsive" rel="nofollow">
+                <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive" rel="nofollow">
+                <div class="top-info">
+                    <div class="price"><span style="color: yellow;">^{item.coins}<img style="margin-bottom: 3px;" src="{% static 'img/gold-16.png' %}"></span></div>
+                </div>
+                <div class="bottom-info">
+                    <div class="col-xs-6 rarity">
+                        <span :class="item.rarity">
+                            {% if LANGUAGE_CODE == 'zh-hans' %}
+                                ^{item.rarity_zh}
+                            {% else %}
+                                ^{item.rarity}
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="name">^{item.name}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

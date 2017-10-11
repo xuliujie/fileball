@@ -1,0 +1,47 @@
+.modal-body .row {
+    margin: 0;
+    padding: 15px;
+}
+
+.modal-icon i {
+    color: #5bc0de;
+    font-size: 70px;
+    margin: 5px;
+}
+
+.modal-text {
+    padding: 0 30px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+.modal .modal-text ul {
+    margin-left: 30px;
+}
+
+.modal-text ul {
+    padding: 10px 0;
+    line-height: 21px;
+}
+
+.modal-text ul li {
+    font-size: 16px;
+}
+
+.fs11 {
+    font-size: 11px;
+}
+
+.modal-loading {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #cfcfcf;
+}
+
+.icon-loading {
+    width: 30px;
+    height: auto;
+}

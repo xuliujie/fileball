@@ -1,0 +1,44 @@
+.srb-content-wrapper {
+    padding-top: 20px;
+    padding-bottom: 100px;
+    min-height: 1000px;
+}
+
+.loop-1 {
+    color: #ffa200;
+}
+
+.loop-2 {
+    color: #e18d2d;
+}
+
+.loop-3 {
+    color: #8a745f;
+}
+
+.list-type.active {
+    border-bottom: 2px solid #16b2ce;
+}
+
+.list-type.active a {
+    color: #16b2ce;
+}
+
+.list-type.active a:link {
+    color: #16b2ce;
+    text-decoration: none;
+}
+
+.list-type.active a:visited {
+    color: #16b2ce;
+    text-decoration: none;
+}
+
+.list-type.active a:hover {
+    color: #16b2ce;
+    text-decoration: none;
+}
+
+.list-type a:hover {
+    text-decoration: none;
+}

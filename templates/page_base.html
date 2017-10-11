@@ -1,0 +1,65 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% include 'common/common_meta.html' %}
+{#    {% include 'common/common_header.html' %} #}
+    {% include 'common/common_header_cdn.html' %} 
+
+    {% block extra_header %}
+    {% endblock %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link id="theme" rel="stylesheet" href="{% static 'css/moon.css' %}"/>
+    <!-- Bootstrap -->
+    <!--<link href="static/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>{% trans 'Dota2Fair eSport Entertainment Platform' %}</title>
+</head>
+<body class="dark">
+{% block nav %}
+    <header>
+    {% include 'common/nav/nav.html' %}
+    </header>
+{% endblock %}
+
+{% block page_content %}
+{% endblock %}
+
+{% block footer %}
+    <div id="modal_wrapper">
+        <modal-dialog :dlg="modalData" :content-data="contentData" :extra-data="extraData" v-on:close_dlg="close_dlg()"></modal-dialog>
+    </div>
+    <div class="customer-service">
+    {% include 'common/site/qq.html' %}
+    </div>
+<div class="footer-div">
+    {% include 'common/footer/footer.html' %}
+</div>
+{% endblock %}
+
+{% block common_scripts %}
+    {% include 'common/modal/modal_template.html' %}
+    {% include 'common/history/history_template.html' %}
+    {% include 'common/item/item_template.html' %}
+    {% include 'common/pagination_template.html' %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block analytics %}
+    {% include 'common/footer/google_analytics.html' %}
+{% endblock %}
+</body>
+</html>

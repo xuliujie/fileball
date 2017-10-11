@@ -1,0 +1,163 @@
+header {
+    background-color: #eee;
+    position: relative;
+    z-index: 10;
+}
+
+.navbar {
+    border: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #d5d5d5;
+    border-radius: 0;
+}
+
+.navbar-default .navbar-brand {
+    height: 60px;
+    text-align: center;
+    padding: 0 15px;
+    padding-right: 30px;
+}
+
+nav #logo {
+    position: relative;
+    top: 1px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.navbar-nav {
+    height: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-menu>li>a {
+        padding: 20px 20px 20px 12px;
+    }
+
+    .navbar-nav>li>a {
+        height: 60px;
+    }
+
+}
+
+
+.navbar-nav>li {
+    border-right: 1px solid #d5d5d5;
+}
+
+
+.navbar-menu {
+    text-transform: uppercase;
+    float: left;
+    font-size: 12px;
+}
+
+#user-wrapper {
+    float: left;
+    cursor: default;
+    padding-top: 5px;
+}
+
+#steam-login img.profile {
+    width: 30px;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #777;
+}
+
+.nav>li {
+    position: relative;
+    display: block;
+}
+
+#steam-login .steam-auth {
+    padding: 14px 15px 0 15px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+#user-wrapper {
+    float: left;
+    cursor: default;
+    padding-top: 5px;
+}
+
+#steam-login #theme-wrapper, #steam-login #volume-wrapper, #steam-login #admin-wrapper {
+    text-transform: uppercase;
+    float: right;
+    text-align: right;
+    margin-left: 2px;
+    transition: background .5s;
+    -webkit-transition: background .5s;
+}
+
+#volume-wrapper i, #theme-wrapper i {
+    font-size: 17px;
+    padding: 10px 20px;
+}
+
+.dropdown-menu>li>a>i {
+    color: #8696f6;
+    width: 15px;
+}
+
+.dropdown-menu i {
+    margin-right: 5px;
+}
+
+.dropdown-menu li a {
+    padding: 8px 0 8px 15px;
+    cursor: pointer;
+}
+
+#steam-login {
+    position: absolute;
+    right: 0;
+}
+
+#steam-login .lang {
+    float: left;
+    padding: 15px;
+}
+
+#lang_drop {
+    height: 30px;
+}
+
+#lang_drop .flag {
+    float: left;
+    display: inline-block;
+}
+
+.lang .dropdown-menu {
+    min-width: 40px;
+}
+
+.lang .dropdown-menu li {
+    margin: 4px;
+}
+
+.lang .flag {
+    width: 32px;
+    height: 30px;
+    background: url("/static/img/flags_v2.png") no-repeat;
+    cursor: pointer;
+}
+
+.lang .flag.flag-zh-cn {
+    background-position: -32px 0;
+}
+
+.lang .flag.flag-en-us {
+    background-position: -64px -64px;
+}

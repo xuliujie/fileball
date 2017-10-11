@@ -1,0 +1,140 @@
+{% extends 'pages/profile.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block profile_extra_header %}
+    <script src="{% static 'backup/item_store.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+{% endblock %}
+
+{% block profile_detail %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <div id="item_Store">
+        <div id="invUser">
+            <div class="order-tips" style="display: none">
+                <label id="last_order" data-code="{{ security_code }}"></label>
+            </div>
+            <div class="row" style="padding-top: 1em; padding-bottom: 1em; background-color: rgba(25, 25, 25, 1);">
+                <div class="col-sm-3">
+                    <button class="btn btn-primary" @click="sortByAmount"><i id="amount-arrow" class="fa fa-arrow-down"></i><span> {% trans 'Price' %}</span></button>
+                    <button class="btn btn-primary" @click="sortByTime"><i id="time-arrow" class="fa fa-arrow-down"></i><span> {% trans 'Time' %}</span></button>
+                </div>
+                <div class="col-sm-4">
+                    {% blocktrans %}
+                        <div class="inventory-selected">
+                            Total:<span class="highlight">^{selectedCount} items</span>
+                            valued at <span class="highlight">$^{selectedAmount}</span>
+                        </div>
+                    {% endblocktrans %}
+                </div>
+                <div class="pull-right" v-show="!storeLoading">
+                    <button id="invRefresh" class="btn btn-primary" style="margin-right:1em;" @click="refreshInventory">
+                        <template v-if="couldRefresh">
+                            <i class="fa fa-refresh" ></i> {% trans 'Refresh inventory' %}
+                        </template>
+                        <template v-else>
+                            {% blocktrans %}
+                                Could refresh in <span id="invTimer">0</span> secs.
+                            {% endblocktrans %}
+                        </template>
+                    </button>
+                    <button id="selectAll" class="btn btn-primary" style="margin-right:1em;" @click="selectAll" :disabled="inventoryLoading || storeLoading">
+                        {% trans 'Select All' %}
+                    </button>
+                    {% if steam_bot %}
+                    <button id="itemStore" class="btn btn-warning" style="margin-right:1em;" @click="store" :disabled="inventoryLoading || storeLoading">
+                        <i class="fa fa-codepen fa-lg"></i>{% if LANGUAGE_CODE == 'zh-hans' %}存入{% else %}deposit{% endif %}
+                    </button>
+                    {% else %}
+                        <span>{% trans 'The steam bot is down, please wait for a while.' %}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row inventory-user" style="padding-left: 1em; padding-right: 1em; ">
+                {% if request.user.is_anonymous or not request.user.tradeurl %}
+                    <div class="trade-url-config">
+                        <p class="tips">
+                            <a href="{% url 'tradeUrl' %}">
+                                {% trans 'Please go to this page to config your trade url first' %}
+                            </a>
+                        </p>
+                    </div>
+                {% elif request.user.is_authenticated and request.user.tradeurl %}
+                    {% if security_code %}
+                        <div class="last-order" style="text-align: center;">
+                            <p class="cfCreateOffer message" data-offer="">
+                            {% blocktrans %}
+                                <span class="offer-title">You did not accept the offer, please accept it first.</span>
+                                <br>
+                                <span>(if you have accepted the offer already, please contact our customer service and show the security code.)</span>
+                                <br>
+                            {% endblocktrans %}
+                                <span class="cfCreateOfferLink">
+                                    {% if last_order %}
+                                        <a class="trade-url"
+                                           href="https://steamcommunity.com/tradeoffer/{{ last_order }}"
+                                           target="_blank">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        <span>{% trans 'Click here to accept the offer' %}: {{ last_order }}</span>
+                                    </a>
+                                    {% endif %}
+                                    <span class="security-code">{% trans 'Security Code' %}: <span>{{ security_code }}</span></span>
+                                </span>
+                                <br>
+                                <span class="small">
+                                {% blocktrans %}
+                                    You will receive your offer's link here.
+                                    <br>
+                                    Always use the links we provide to you or check the security code of your trade offer to
+                                    defense against fake bots or scammers.
+                                {% endblocktrans %}
+                                </span>
+                            </p>
+                        </div>
+                    {% else %}
+                    <div class="modal-loading" v-show="inventoryLoading">
+                        <img src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+                    </div>
+                    <div class="store-loading" v-show="storeLoading" style="text-align: center;">
+                        <p class="cfCreateOffer message" data-offer="">
+                            <span class="offer-title">{% trans 'We are sending your offer' %}</span>
+                            <br>
+                            <span class="cfCreateOfferLink">
+                                <img v-show="!tradeNo" src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+                                <a v-show="tradeNo" class="trade-url" :href="'https://steamcommunity.com/tradeoffer/' + tradeNo"
+                                   target="_blank">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                    <span>{% trans 'Click here to accept the offer' %} #^{tradeNo}</span>
+                                </a>
+                                <span v-show="securityCode" class="security-code">{% trans 'Security Code' %}: <span id="security_code">^{securityCode}</span></span>
+                            </span>
+                            <span class="small">
+                            {% blocktrans %}
+                                You will receive your offer's link here.
+                                <br>
+                                Always use the links we provide to you or check the security code of your trade offer to
+                                defense against fake bots or scammers.
+                            {% endblocktrans %}
+                        </span>
+                        </p>
+                    </div>
+                    <item-detail :inventories="inventoriesShow" @item-selected="clickItem" @show-name="showName" @hide-name="hideName" v-show="inventoryLoaded"></item-detail>
+                    <div v-if="inventoryLoaded && !inventoriesShow.length" style="text-align: center;">
+                        <p class="offer-title">{% trans 'There is no available item in your steam inventory.' %}</p>
+                    </div>
+                    <div class="pagination" v-show="inventoryLoaded && inventoriesShow.length">
+                        <ul class="pager">
+                            <li class="previous" :class="{disabled: noPrePage}"><a v-on:click="prePage">&larr;</a></li>
+                            <li class="next" :class="{disabled: noNextPage}"><a v-on:click="nextPage">&rarr;</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{#    {% include 'common/item/item_template.html' %}#}
+{% endblock %}

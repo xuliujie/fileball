@@ -1,0 +1,100 @@
+{% extends 'page_base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_header %}
+    <script src="{% static 'common/md5.min.js' %}"></script>
+    <script src="{% static 'js/play_fair.js' %}"></script>
+{#    <title>Dota2Fair-{% trans 'Play Fair' %}</title>#}
+{% endblock %}
+
+{% block page_content %}
+    <section id="page">
+
+        <div class="container">
+            {% blocktrans %}
+                <h1>Provably fair</h1>
+
+                <h2>Items you can bet:</h2>
+                <p>You can only bet Dota2 items. If there is any other items in the trade the trade will be declined!
+                    Max 12 items/trade and min $1.</p>
+
+                <h2>Selecting the winner:</h2>
+
+                <p>
+                    A ticket represents $0.01 in bet value (1 Ticket = $0.01 of the skin you submitted, Ex: $10.00 Skin
+                    = 1000 Tickets).<br>
+                    The more tickets a player has, the more chances of winning he gets. As soon as a round is over, the
+                    winning ticket number will be calculated based on the random percentage and the total number of
+                    tickets with the following formula:</p>
+                <p class="alert alert-warning">floor((TotalNumberOfTickets - 0.0000000001) * (winnerPercentage /
+                    100))</p>
+                <p style="font-size:14px;">
+                    Keep in mind that the order of the tickets are the same as the order of the deposit. For instance,
+                    if the first player places $10.01 into the pot, he will own tickets 0-1000, then if the second
+                    player places $20, he will own tickets from 1001 to 3000. This will keep going until the pot is full
+                    at which point the round is set to end. Also note that the bots may accept a few late bets if there
+                    is any.</p>
+
+                <h2>Round Hash:</h2>
+
+                <p style="font-size:14px;">The hash is a md5 encryption of the round secret and winning percentage in
+                    the following format percentage:secret
+                    When the round is over, both the secret and the winning percentage are revealed.<br>You can verify
+                    that the hash matches with them with filling correctly the form below.</p>
+
+                <h2>Round hash verify:</h2>
+                <p style="font-size:14px;">You can verify each round here. If the parameters are correct, it displays
+                    the winner ticket number of the round.</p>
+            {% endblocktrans %}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form action="" method="post" id="form" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-2 control-label">
+                                <label for="hash">{% trans 'Hash:' %}</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input name="hash" class="form-control" id="hash" value="{{ hash }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2 control-label">
+                                <label for="secret">{% trans 'Secret:' %}</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input name="secret" class="form-control" id="secret" value="{{ secret }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2 control-label">
+                                <label for="percent">{% trans 'Percent:' %}</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input name="percent" class="form-control" id="percent" value="{{ percent }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2 control-label">
+                                <label for="numberOfTickets">{% trans 'Number of tickets:' %}</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input name="numberOfTickets" class="form-control" id="numberOfTickets"
+                                       value="{{ tickets }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2 control-label"></div>
+                            <div class="col-sm-10">
+                                <button type="button" name="form" id="findWinningTicket" class="btn btn-info">
+                                    {% trans 'Find Winning Ticket' %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="dev"></div>
+    </section>
+{% endblock %}

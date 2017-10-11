@@ -1,0 +1,394 @@
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<script id="cf-view-template" type="text/x-template">
+    <div id="cfRoundView" :data-id="item.gid" :data-hash="item.hash">
+        <div class="row">
+            <div class="col-xs-4">
+                <template v-if="item.deposit[0]">
+                    <div class="col-header col-left">
+                        <img :src="item.deposit[0].icon_full" :alt="item.deposit[0].name" class="img-user">
+                        <div class="icon">
+                            <template v-if="item.deposit[0].team">
+                                <img src="{% static 'img/dire.png' %}" class="coin">
+                            </template>
+                            <template v-else>
+                                <img src="{% static 'img/radiant.png' %}" class="coin">
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="col-xs-4 col-timer">
+                <template v-if="item.joined.status">
+                    <div v-if="extra.winnerData">
+                        <div id="cfanimdone-wrapper">
+                            <div id="coin">
+                                <template v-if="flip">
+                                    <div class="front">
+                                        <img src="{% static 'img/dire.png' %}" class="coin">
+                                    </div>
+                                    <div class="back">
+                                        <img src="{% static 'img/radiant.png' %}" class="coin">
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <img v-if="!extra.winnerData.team" src="{% static 'img/radiant.png' %}"
+                                         class="coin">
+                                    <img v-else src="{% static 'img/dire.png' %}" class="coin">
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <div>
+                            <countdown-knob :seconds="extra.seconds"></countdown-knob>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="col-xs-4">
+                <template v-if="item.deposit[1]">
+                    <div class="col-header col-right">
+                        <img :src="item.deposit[1].icon_full" :alt="item.deposit[1].name" class="img-user">
+                        <div class="icon">
+                            <template v-if="item.deposit[1].team">
+                                <img src="{% static 'img/dire.png' %}" class="coin">
+                            </template>
+                            <template v-else>
+                                <img src="{% static 'img/radiant.png' %}" class="coin">
+                            </template>
+                        </div>
+                    </div>
+                </template>
+                <template v-if="item.joined.status && !item.deposit[1]">
+                    <div class="col-header col-right">
+                        <img :src="item.joined.icon_full" :alt="item.joined.name" class="img-user">
+                        <div class="icon">
+                            <template v-if="item.deposit[0].team">
+                                <img src="{% static 'img/radiant.png' %}" class="coin">
+                            </template>
+                            <template v-else>
+                                <img src="{% static 'img/dire.png' %}" class="coin">
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div class="row row-header">
+            <div class="col-xs-4 lname text-right">
+                {% if ld %}
+                    <a :href="'https://steamcommunity.com/profiles/' + item.deposit[0].steamid" target="_blank"
+                       rel="nofollow">^{item.deposit[0].name}
+                    </a>
+                {% else %}
+                    ^{item.deposit[0].name}
+                {% endif %}
+            </div>
+            <div class="col-xs-4 verify">
+                {% trans 'Hash:' %} ^{item.hash}
+                <div v-if="extra.winnerData && flipped" class="secret" style="display: block;">
+                    {% trans 'Percentage:' %} ^{item.percentage}
+                    <br>
+                    {% trans 'Secret:' %} ^{item.secret}
+                    <a :href="'/provably-fair/' + item.hash + '-' + item.secret + '-' + item.percentage + '-' + item.totalTickets"
+                       rel="nofollow" target="_blank">
+                        <i class="fa fa-question-circle" data-toggle="tooltip" title=""
+                           data-original-title="Validate round">
+                        </i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-4 text-left">
+                <template v-if="item.deposit[1]">
+                    {% if ld %}
+                        <a :href="'https://steamcommunity.com/profiles/' + item.deposit[1].steamid"
+                           target="_blank" rel="nofollow">
+                            ^{item.deposit[1].name}</a>
+                    {% else %}
+                        ^{item.deposit[1].name}
+                    {% endif %}
+                </template>
+                <template v-else>
+                    <template v-if="item.joined.status">
+                        {% if ld %}
+                            <a :href="'https://steamcommunity.com/profiles/' + item.joined.steamid" target="_blank"
+                               rel="nofollow">
+                                ^{item.joined.name}</a>
+                        {% else %}
+                            ^{item.joined.name}
+                        {% endif %}
+                    </template>
+                </template>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <template v-if="item.deposit[0]">
+                    <div class="row row-total">
+                        <div class="col-xs-4"><i class="fa fa-dollar"></i> ^{item.deposit[0].totalAmount}</div>
+                        <div class="col-xs-4">^{item.deposit[0].totalItems} items</div>
+                        <div class="col-xs-4">
+                            <template v-if="item.deposit[0].chance">^{item.deposit[0].chance}%</template>
+                            <template v-else>~50%</template>
+                        </div>
+                    </div>
+                    <div class="col-items">
+                        <template v-for="it in item.deposit[0].items" :item="it">
+                            <div class="row row-item">
+                                <div class="col-xs-12 col-sm-3 col-item">
+                                    <img :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/120fx100f'"
+                                         alt="" class="img-responsive" v-tooltip:right="it.name">
+                                </div>
+                                <div class="col-xs-12 col-sm-6 rarity" style="text-align: center">
+                                    <span :class="it.rarity" style="font-weight: bold;">
+                                        {% if LANGUAGE_CODE == 'zh-hans' %}
+                                            ^{it.rarity_zh}
+                                        {% else %}
+                                            ^{it.rarity}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-amount"><i class="fa fa-dollar"></i> ^{it.amount}</div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+            <div id="cfRoundOpponent" class="col-xs-6">
+                <template v-if="item.deposit[1]">
+                    <div class="row row-total">
+                        <div class="col-xs-4"><i class="fa fa-dollar"></i> ^{item.deposit[1].totalAmount}</div>
+                        <div class="col-xs-4">^{item.deposit[1].totalItems} items</div>
+                        <div class="col-xs-4">
+                            <template v-if="item.deposit[0].chance">^{item.deposit[1].chance}%</template>
+                            <template v-else>~50%</template>
+                        </div>
+                    </div>
+                    <div class="col-items">
+                        <template v-for="it in item.deposit[1].items" :item="it">
+                            <div class="row row-item">
+                                <div class="col-xs-12 col-md-3 col-item">
+                                    <img :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/120fx100f'"
+                                         alt="" class="img-responsive" v-tooltip:right="it.name">
+                                </div>
+                                <div class="col-xs-12 col-sm-6 rarity" style="text-align: center">
+                                    <span :class="it.rarity" style="font-weight: bold;">
+                                        {% if LANGUAGE_CODE == 'zh-hans' %}
+                                            ^{it.rarity_zh}
+                                        {% else %}
+                                            ^{it.rarity}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                <div class="col-xs-12 col-md-3 col-amount"><i class="fa fa-dollar"></i> ^{it.amount}
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template v-else>
+                    <template v-if="item.joined.status">
+                        <p class="text-center">{% trans 'User joining' %}...</p>
+                    </template>
+                    <template v-if="item.random">
+                        <p class="cfCreateOffer message" data-offer="">{% trans 'We are sending your offer' %}<br>
+                            <span class="cfCreateOfferLink">
+                                <img src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+                            </span>
+                            <br>
+                            <span class="small">
+                                {% blocktrans %}
+                                    You will receive your offer's link here.<br>Always use the links we provide to you
+                                    or check the security code of your trade offer to defense against fake bots or
+                                    scammers.</span>
+                                {% endblocktrans %}
+                        </p>
+                    </template>
+                </template>
+            </div>
+        </div>
+        <template v-if="!item.joined.status">
+            <div class="text-right">{% trans 'Expires at' %} ^{item.expires} CET</div>
+        </template>
+    </div>
+</script>
+
+<script id="cf-getstarted-template" type="text/x-template">
+    <div class="row">
+        <div class="col-sm-6">
+            {% blocktrans %}
+                <h2>About the System</h2>
+                <p>You can create a new coinflip round or join to an existing one. You need to select the items from
+                    your
+                    Inventory on our page, and then click to Deposit button if it is valid.</p>
+                <p>After that we will send you an offer in no time contains the items you selected. You need to accept
+                    that
+                    offer and confirm it via mobile or email. After you confirm - and you are in time if joining - you
+                    will
+                    get into the round.</p>
+                <h2>Winner items</h2>
+                <p>As of a round ends, the winner will be shown. The winner will get all of the items in the round. For
+                    every round played, a 0-5% commission will be taken if it could. It is calculated on the total round
+                    value and is taken from the items pool.</p>
+                <h2>Provably fair</h2>
+                <p>When each round begins - someone creates a game - a random percetage will be generated for choosing
+                    the
+                    winner. It will be shown as a md5 encrypted hash with a secret in the following format:
+                    percentage:secret. When the round is over, both the secret and the winning percentage are revealed.
+                    You
+                    can verify that the hash matches with the secret and percentage. You can read more about this
+                    process
+                    under the Provably Fair menu at bottom of the page.</p>
+                <h2>Winner offers</h2>
+                <p>As of a round ends, we will send an offer to the winner contains the items he/she won. In normal it
+                    is in
+                    a minute, except the Steam systems have some delays or our bots are temporaly down. 99% of the
+                    offers
+                    will be sent normally, in other cases please be patient. If there is any problem please open a
+                    ticket in
+                    our Support system.</p>
+            {% endblocktrans %}
+        </div>
+        <div class="col-sm-6">
+            <h2>{% trans 'Deposit information' %}</h2>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>{% trans 'Minimum amount per deposit:' %}</td>
+                    <td><i class="fa fa-dollar"></i>^{ minamount }</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'Maximum items in a deposit:' %}</td>
+                    <td>^{ maxitems }</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'Maximum active rounds:' %}</td>
+                    <td>{% trans 'not set' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'Coins:' %}</td>
+                    <td>
+                        <img src="{% static 'img/dire.png' %}"> 0-50%
+                        <img src="{% static 'img/radiant.png' %}"> 50-100%
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            {% blocktrans %}
+                <h2>Create a game</h2>
+                <p>As a game was created, there are 30 minutes to someone join in. If the time is up (you can check it
+                    in
+                    bottom of the round View) we'll send back your items in an offer and remove your round.</p>
+                <h2>Join to a game</h2>
+                <p>You can join to a round by pressing the Join button in their row. Your joining will be active if you
+                    press the Deposit button, expect someone else clicked on it early. Then we will not send the offer
+                    for
+                    you, and you'll see someone else joined to the round or it's closed. If the round is still open, we
+                    send
+                    you an offer and you have 90 seconds to confirm it. Note that in this time there are a few Steam
+                    queries, so if Steam is down, you can go out of this time. If the time is up, we'll cancel the sent
+                    offer and the round opens again.</p><br>
+                <p><i class="fa fa-mobile"></i> In order to deposit on our page, you need to have the Steam Mobile
+                    Authenticator enabled on your account for at least 7 days as well as the trade confirmations turned
+                    on.
+                    If you don't have it, we won't send any offer for you, so you can't play on our page.</p>
+            {% endblocktrans %}
+        </div>
+    </div>
+</script>
+
+
+<script id="loading-template" type="text/x-template">
+    <div class="loading">
+        <i class=" fa fa-refresh"></i>
+        <p class="loading-text">{% trans 'Loading' %}...</p>
+    </div>
+</script>
+
+<script id="modal-pagination-template" type="text/x-template">
+    <ul class="pagination">
+        <template v-for="page in pages" :item="page">
+            <li v-if="page.actual" data-page="{{ this.page }}" class="active"><span>{{ this.page }}</span></li>
+            <li v-else data-page="{{ this.page }}"><span>{{ this.page }}</span></li>
+        </template>
+    </ul>
+</script>
+
+
+<script id="jp-template" type="text/x-template">
+    <tr>
+        <td class="cf-items">
+            <div>
+                <template v-if="item.itemsShow">
+                    <img v-for="it in item.itemsShow" :key='it.classid'
+                         :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/70fx50f'"
+                         class="img-responsive" :title="it.name" alt="">
+                </template>
+                <span v-if="item.itemsMore">+ ^{item.itemsMore} more</span>
+            </div>
+        </td>
+        <td class="cf-total">
+            <i class="fa fa-dollar"></i> ^{item.totalAmount}
+        </td>
+        <td class="winlose">
+            <i class="fa" :class="[item.win ? fa-chevron-up : fa-chevron-down]"></i>
+        </td>
+        <td class="time"><i class="fa fa-calendar-o" data-toggle="tooltip" title=""
+                            :data-original-title="item.date CET"></i></td>
+    </tr>
+    <tr>
+        <td colspan="4" class="hash">{% trans 'Hash:' %} ^{item.hash} <span
+                class="sep">|</span> {% trans 'Percentage:' %} ^{percentage}% <span
+                class="sep">|</span> {% trans 'Secret:' %} ^{secret}
+            <a :href="'/provably-fair/' + item.hash + '-' + item.secret + '-' + item.percentage + '-' + item.totalTickets"
+               rel="nofollow" target="_blank">
+                <i class="fa fa-question-circle" data-toggle="tooltip" title=""
+                   data-original-title="Validate Round"></i>
+            </a>
+        </td>
+    </tr>
+</script>
+
+<script id="winner-template" type="text/x-template">
+    <div class="winner">
+        <div class="winner-background"></div>
+        <div class="effect-wrapper" v-if="item.effect">
+            <div class="winner-arrow"><i class="fa fa-caret-down"></i></div>
+            <div class="winner-effect">
+                <div class="effect-holder">
+                    <div v-for="it in item.effect" class="item">
+                        <img :src="it.icon" rel="nofollow" style="border-top:3px solid;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="winner-wrapper" :class="{hide : item.effect}">
+            <p class="winner-text text-center">
+                {% if ld %}
+                    <a :href="'http://steamcommunity.com/profiles/' + item.winner.steamid" target="_blank"
+                       title="Steam profile">
+                        <img :src="item.winner.icon" alt="" rel="nofollow">
+                    </a>
+                    <a class="name" :href="'http://steamcommunity.com/profiles/' + item.winner.steamid" target="_blank"
+                       title="Steam profile">
+                        ^{winner.name}
+                    </a>
+                {% else %}
+                    <img :src="item.winner.icon" alt="" rel="nofollow">^{winner.name}
+                {% endif %}
+                {% blocktrans %}
+                    won $^{item.winner.amount} with a chance of ^{item.winner.chance}%
+                {% endblocktrans %}
+            </p>
+            <p class="winner-info text-right">{% trans 'Secret:' %} ^{secret} | {% trans 'Percentage:' %} ^{percentage}%
+                <a :href="'/provably-fair/' + item.hash + '-' + item.secret + '-' + item.percentage + '-' + item.totalTickets"
+                   rel="nofollow">
+                    <i class="fa fa-question-circle" data-toggle="tooltip" title="what's this?"></i>
+                </a>
+            </p>
+        </div>
+    </div>
+</script>

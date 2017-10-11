@@ -1,0 +1,17 @@
+{% extends 'page_base.html' %}
+
+{% block extra_header %}
+    <title>{{ article.title }}</title>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="article-body">
+        <div class="article-content">
+            {% autoescape off %}
+            {{ article.content_html }}
+            {% endautoescape %}
+        </div>
+    </div>
+</div>
+{% endblock %}

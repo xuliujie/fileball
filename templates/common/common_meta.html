@@ -1,0 +1,11 @@
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<meta name="sessionKey" data-value="{{ request.session.session_key }}">
+<meta name="avatar" data-value="{{ request.user.avatar }}">
+<meta name="steamid" data-value="{{ request.user.steamid }}">
+<meta name="language" data-value={{ LANGUAGE_CODE }}>
+<meta name="title" content="Dota2Fair最公平的电竞娱乐平台-Dota2饰品翻硬币|轮盘游戏">
+<meta name="description" content="Dota2Fair电竞娱乐平台，提供比赛预测，饰品翻硬币，幸运轮盘游戏，饰品游戏公平验证；致力于提供玩家最公平，优质的电竞饰品游戏体验。">
+<meta name="keywords" content="Dota2翻硬币,Dota2轮盘,Dota2夺宝,Dota2菠菜,Dota2推单">

@@ -1,0 +1,142 @@
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<script id="steamer_template" type="text/x-template">
+    <div class="steamer-text">
+        {% if ld %}
+            <a :href="'http://steamcommunity.com/profiles/' + item.steamid"
+               target="_blank"
+               title="Steam profile">
+                <img :src="item.icon" alt="" rel="nofollow">
+            </a>
+            <a class="name"
+               :href="'http://steamcommunity.com/profiles/' + item.steamid"
+               target="_blank"
+               title="Steam profile">
+                ^{item.name}
+            </a>
+        {% else %}
+            <img :src="item.icon" alt="" rel="nofollow">^{item.name}
+        {% endif %}
+        <slot></slot>
+    </div>
+</script>
+
+<script id="scroll_template" type="text/x-template">
+    <div :id="deposit.uid" class="frame">
+        <ul class="slidee">
+            <li v-for="(it, index) in deposit.joiners">
+                <img :src="it.steamer.icon_full" alt="" rel="nofollow" class="img-responsive"/>
+            </li>
+        </ul>
+        <i class="winner-line"></i>
+    </div>
+</script>
+
+<script id="jackpot_detail_template" type="text/x-template">
+    <div>
+        <component :id="item.deposit.uid" is="scroll-sel" v-if="!rolled && item.deposit" :deposit="item.deposit"
+                   v-on:winnerRolled="onWinnerRolled()"></component>
+        <div class="panel panel-info">
+            <div v-show="rolled" v-if="item.winner" class="panel-heading winner-wrapper" style="">
+                <component is="steamer" :item="item.winner.steamer">
+                    {% blocktrans %}
+                        won $^{item.winner.amount} with a chance of ^{item.winner.chance}%
+                    {% endblocktrans %}
+                </component>
+                <p class="winner-info text-right">{% trans 'Secret:' %} ^{item.secret} | {% trans 'Percentage:' %}
+                    ^{item.percentage}%
+                    <a :href="'/provably-fair/' + item.hash + '-' + item.secret + '-' + item.percentage + '-' + item.totalTickets"
+                       target="_blank"
+                       rel="nofollow">
+                        <i class="fa fa-question-circle" data-toggle="tooltip" title="what's this?"></i>
+                    </a>
+                </p>
+            </div>
+        <div class="panel-body">
+            <div class="jackpot-joiner">
+                <div class="joiner-li bet" v-for="de in item.deposits">
+                    <table class="table-bet">
+                        <tbody>
+                        <tr>
+
+                            {% if ld %}
+                                <td class="icon">
+                                    <a :href="'http://steamcommunity.com/profiles/' + de.steamer.steamid"
+                                       target="_blank"
+                                       title="Steam profile">
+                                        <img :src="de.steamer.icon" alt="" rel="nofollow">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="name"
+                                       :href="'http://steamcommunity.com/profiles/' + de.steamer.steamid"
+                                       target="_blank"
+                                       title="Steam profile">
+                                        ^{de.steamer.name}
+                                    </a> {% blocktrans %}placed ^{de.item_count} items valued at $^{de.item_amount}{% endblocktrans %}
+                                </td>
+                            {% else %}
+                                <td class="icon"><img :src="item.icon" alt="" rel="nofollow"></td>
+                                <td>^{de.steamer.name}</td> {% blocktrans %}placed ^{de.item_count} items valued at $^{de.item_amount}{% endblocktrans %}
+                            {% endif %}
+                            <td class="more-td">
+                                <i class="glyphicon glyphicon-arrow-down joiner-more" onclick="toggleItems(this)"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="joiner-items row items" style="display: none">
+                        <div v-for="it in de.items" class="item" v-tooltip:right="it.name">
+                            <img v-if="it.classid"
+                                 :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/120fx100f'"
+                                 alt="" class="img-responsive" rel="nofollow">
+                            <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive"
+                                 rel="nofollow">
+                            <div class="top-info">
+                                <div class="price"><span>$^{it.amount}</span></div>
+                            </div>
+                            <div class="info">
+                                <div class="col-xs-12 rarity">
+                                    <span :class="it.rarity">
+                                        {% if LANGUAGE_CODE == 'zh-hans' %}
+                                            ^{it.rarity_zh}
+                                        {% else %}
+                                            ^{it.rarity}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jackpot-hash">
+                <span>
+                    {% blocktrans %}
+                        New round started with hash: ^{item.hash}
+                    {% endblocktrans %}
+                </span>
+            </div>
+        </div>
+        </div>
+    </div>
+</script>
+
+
+<script id="jackpot_winner_template" type="text/x-template">
+    <div id="jackpot_winner_tips">
+        {% blocktrans %}
+            <p>You won $^{item.winner.amount}!</p>
+            <br>
+            <p>At any problems, send us an email contains the problems and the round hash:
+                <span class="win-hash"><i class="fa fa-envelope"></i>^{item.hash}</span>
+            </p>
+        {% endblocktrans %}
+    </div>
+</script>
+
+<script id="jackpot_winner_icon_template" type="text/x-template">
+    <i class="fa fa-child"></i>
+</script>

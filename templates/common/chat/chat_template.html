@@ -1,0 +1,49 @@
+{% load i18n %}
+
+<script id="chat-rules-template" type="text/x-template">
+    <div>
+        {% blocktrans %}
+        <p>Everyone could use our chat platform by following these rules:</p>
+        <ul>
+            <li>No advertising</li>
+            <li>No spamming</li>
+            <li>No begging</li>
+            <li>Not harassing other people</li>
+            <li>No caps</li>
+            <li>No trading/selling messages</li>
+        </ul>
+        <p>If you don't follow the rules, you could get a mute between 5 minutes and 30 days. In extreme
+            cases you could get a lifetime chat mute.</p>
+        <p>If you wanna get helped talk in english please. you have any problems with trades, send us an email at <a
+                href="/support/" target="_blank">Support</a>. Mostly we response in 24-48 hours,
+            but occurs when we need more time to fix it.</p>
+        {% endblocktrans %}
+    </div>
+</script>
+
+<script id="chat-template" type="text/x-template">
+    <li class="msg" :data-steamid="item.steamid" :data-id="item.id">
+        <div class="header">
+            {% if ld %}
+                <a :href="'https://steamcommunity.com/profiles/' + item.steamid" target="_blank" title="Steam profile"
+                   :class="{'name-admin': item.isAdmin}" rel="nofollow">
+                    <img :src="item.icon" alt="" rel="nofollow">
+                    <span class="name">^{item.name}</span>
+                </a>
+            {% else %}
+                <img :src="item.icon" alt="" rel="nofollow">
+                <span class="name">^{item.name}</span>
+            {% endif %}
+            {% if ld %}
+                <span v-if="item.isAdmin" class="group">(admin)</span>
+                <span v-if="item.isModerator" class="group">(moderator)</span>
+                <span v-if="item.isSupport" class="group">(support)</span>
+            {% endif %}
+        </div>
+        <p ref="chat_msg_content" class="chat-msg">^{item.msg}</p>
+    </li>
+</script>
+
+<script id="handel-icon-template" type="text/x-template">
+    <i class="fa fa-hand-peace-o"></i>
+</script>

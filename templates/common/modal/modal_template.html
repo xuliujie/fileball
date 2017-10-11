@@ -1,0 +1,48 @@
+<script id="modal-template" type="text/x-template">
+    <div :id="dlg.id" class="modal fade" tabindex="-1" role="dialog" rel="vuemodal" aria-labelledby="confirmModalLabel">
+        <div>^{ dlg.id }</div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close_dlg()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="confirmModalLabel">^{dlg.title}</h4>
+                </div>
+                <div class="modal-body">
+                    <template v-if="!dlg.isFull">
+                        <div class="row">
+                            <div class="col-md-2 modal-icon">
+                                <comment :is="dlg.modal_icon"></comment>
+                            </div>
+                            <div class="col-md-10 modal-text">
+                                <template v-if="dlg.content_com">
+                                    <component :is="dlg.content_com" :item="contentData" :extra="extraData"></component>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="modal-inner">
+                            <template v-if="dlg.content_com">
+                                <component :is="dlg.content_com" :item="contentData" :extra="extraData"></component>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <div class="modal-footer">
+                    <template v-if="dlg.text_close">
+                        <button type="button" class="btn btn-default" id="modal_close_button" data-dismiss="modal" v-on:click="close_dlg()">
+                            ^{dlg.text_close}
+                        </button>
+                    </template>
+                    <template v-if="dlg.text_save">
+                        <button type="button" class="btn btn-success" id="modal_save_button" data-dismiss="modal" v-on:click="save_dlg">
+                            ^{dlg.text_save}
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

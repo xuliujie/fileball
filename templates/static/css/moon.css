@@ -1,0 +1,644 @@
+body {
+    color: #555;
+}
+
+body .dark {
+    background-color: #202020;
+    color: #ccc;
+}
+
+.dark .navbar {
+    background-color: #202020;
+    color: #ccc;
+}
+
+.dark .content-wrapper {
+    /*background: #181818;*/
+    color: #ccc;
+}
+
+.dark .navbar-nav>li, .dark .navbar {
+    border-color: #555;
+}
+
+.dark #steam-login .user-menu{
+    background-color: #444444;
+}
+
+.dark .alert-info {
+    background-color: #2f354b;
+    border-color: #2f354b;
+    color: #ccc;
+}
+
+.dark .status-row {
+    background-color: #282828;
+    border-top: 3px solid #444;
+}
+
+.dark #coinflip-wrapper .status-row {
+    background-color: #282828;
+    border-top: 3px solid #444;
+}
+
+.dark footer {
+    background-color: #222;
+    border-color: #2a2a2a;
+}
+
+.dark #coinflip-links li {
+    background-color: #222;
+}
+
+.dark .coinflip-pots {
+    background-color: #282828;
+    border-top: 3px solid #075f7c;
+}
+
+.dark .coinflip-pots th {
+    border-bottom: 2px solid #222;
+    background-color: #191919;
+}
+
+.dark #chat #messages li a.name-moderator, .dark #chat #messages li a.name-support {
+    color: #db8d4d
+}
+
+.dark .inventory-wrapper .item {
+    border-color: #595959
+}
+
+.dark .inventory-wrapper .item .price, .inventory-wrapper .table-box .points {
+    background-color: rgba(52, 135, 160, 0.7)
+}
+
+.dark .dropdown-menu .divider {
+    background-color: #555
+}
+
+.dark i.featured {
+    color: #f97e7e
+}
+
+.dark .dropdown-menu {
+    background: #333
+}
+
+.dark .btn-default, .dark .btn-default:focus, .dark .btn-default:active {
+    background: #333;
+    color: #ccc;
+    border-color: #444
+}
+
+.dark .btn-default:hover {
+    background: #373737
+}
+
+.dark .btn-warning, .dark .btn-warning:focus, .dark .btn-warning:active {
+    background: #a96d04;
+    border-color: #a26700;
+    color: #eee
+}
+
+.dark .btn-warning:hover {
+    background: #9b6300
+}
+
+.dark #roundtime-wrapper .timer-wrapper {
+    border-color: #393939
+}
+
+.dark .row-success {
+    background-color: #154f15
+}
+
+.dark .main {
+    color: #56b4d0
+}
+
+.dark .bet-history > div {
+    border-color: #444
+}
+
+body.dark {
+    background-color: #202020;
+    color: #ccc;
+}
+
+.dark a, .dark a:active, .dark a:focus, .dark a:visited {
+    color: #ddd
+}
+
+.dark .navbar-default {
+    background-color: #2d2d2d;
+    border-color: #404040
+}
+
+.dark .navbar-default .navbar-nav > li > a {
+    color: #ccc
+}
+
+.dark .navbar-default .navbar-nav > li > a:hover, .dark .navbar-default .navbar-nav > li > a:active, .dark .navbar-default .navbar-nav > li > a:focus {
+    background-color: #444;
+    color: #ddd
+}
+
+@media only screen and (min-width: 768px) {
+    .dark .navbar-nav > li {
+        border-color: #555
+    }
+
+    .control-label {
+        text-align: right
+    }
+}
+
+.dark footer {
+    background-color: #222;
+    border-color: #2a2a2a
+}
+
+.dark #deposit-wrapper {
+    background-color: #272727;
+    border-color: #444
+}
+
+.dark #user-status {
+    background-color: #22252f;
+    border-color: #343c5a;
+    color: #ddd;
+    padding: 15px 5px 10px 5px
+}
+
+.dark #user-status .number {
+    color: #eee
+}
+
+.dark #user-status .client-queue {
+    border-color: #888
+}
+
+.dark #pot-info .pot-price {
+    border-color: #393939
+}
+
+.dark #messages-wrapper {
+    background-color: #222;
+    border-color: #444
+}
+
+.dark #chat #messages li {
+    color: #ddd
+}
+
+.dark #chat #messages li:nth-child(odd) {
+    background-color: #2f2f2f
+}
+
+.dark #chat #messages li a.name-admin {
+    color: #f97e7e
+}
+
+.dark #chat form#chat_form {
+    background-color: #333
+}
+
+.dark #chat input#chat_msg {
+    background-color: #444;
+    color: #ddd;
+    border-color: #555
+}
+
+.dark #chat .chat-buttons {
+    background-color: #222
+}
+
+.dark #round-bets {
+    border-color: #444
+}
+
+.dark #round-bets .round {
+    background-color: #262626;
+    border-bottom-color: #444;
+    border-left-color: #5b668f
+}
+
+.dark #round-bets .table-users tr {
+    background-color: #2a2a2a
+}
+
+.dark #round-bets .round .bet {
+    color: #bbb
+}
+
+.dark .navbar-default .navbar-nav > .active > a, .dark .navbar-default .navbar-nav > .active > a:focus, .dark .navbar-default .navbar-nav > .active > a:hover {
+    background-color: #444
+}
+
+.dark #steam-login > .navbar-nav > li.active a:hover {
+    background-color: #555
+}
+
+.dark #steam-login img.profile {
+    border-color: #636b87
+}
+
+.dark #round-bets .table-bet tr:hover, .dark #round-bets .table-bet.active tr {
+    background-color: #333
+}
+
+.dark #round-bets .table-bet td.time i {
+    color: #777
+}
+
+.dark #round-bets .table-bet td.time i:hover {
+    color: #bbb
+}
+
+.dark #round-bets .winner {
+    background-color: #2f354b;
+    color: #ccc
+}
+
+.dark #round-bets .winner .winner-info i:hover {
+    color: #ccc
+}
+
+.dark #round-bets .round .items {
+    background-color: #222
+}
+
+.dark #round-items .item, .dark .bet .items .item {
+    background-color: #282828;
+    border-color: #333
+}
+
+.dark #round-items .price, .dark .bet .items .price {
+    background-color: rgba(69, 77, 106, 0.8)
+}
+
+.dark .panel-default > .panel-heading {
+    background-color: #444;
+    color: #eee;
+    border-color: #777
+}
+
+.dark .panel-default {
+    background-color: #252525;
+    border-color: #656565
+}
+
+.dark .list-group-item {
+    background-color: #333;
+    border-color: #656565
+}
+
+.dark .dropdown-menu > li > a {
+    color: #ddd
+}
+
+.dark .dropdown-menu > li > a:hover {
+    background-color: transparent
+}
+
+.dark #steam-login .logout:hover {
+    background-color: #444
+}
+
+.dark #round-bets h4 {
+    color: #636b87
+}
+
+.dark input {
+    background-color: #333;
+    border-color: #555;
+    color: #eee
+}
+
+.dark table.table-hover tr:hover {
+    background-color: #3b3b3b
+}
+
+.dark .profile-col img {
+    border-color: #777
+}
+
+.dark .modal-content {
+    background-color: rgba(25, 25, 25, 0.8)
+}
+
+.dark .modal-header {
+    border-color: #333
+}
+
+.dark .modal-footer {
+    border-color: #333
+}
+
+.dark .pot-info-wrapper {
+    color: #656565
+}
+
+.dark .winner-effect {
+    border-color: #333
+}
+
+.dark .alert-info {
+    background-color: #2f354b;
+    border-color: #2f354b;
+    color: #ccc
+}
+
+.dark .alert-warning {
+    background-color: #897b71;
+    border-color: #9d8d81;
+    color: #eee
+}
+
+.dark .btn-info {
+    background-color: #2774b7;
+    border-color: #2e6da4
+}
+
+.dark .btn-info:hover {
+    background-color: #286090;
+    border-color: #122b40
+}
+
+.dark .btn-info.focus, .dark .btn-info:focus {
+    color: #fff;
+    background-color: #286090;
+    border-color: #122b40
+}
+
+.dark .alert-danger {
+    background-color: #6d3636;
+    border-color: #7a4343;
+    color: #bbb
+}
+
+.dark .table-info .row-invalid, .dark .table-info .row-invalid a {
+    color: #555
+}
+
+.dark .table > tbody > tr > td, .dark .table > tbody > tr > th, .dark .table > tfoot > tr > td, .dark .table > tfoot > tr > th, .dark .table > thead > tr > td, .dark .table > thead > tr > th {
+    border-color: #222
+}
+
+.modal-body ul.pagination {
+    font-size: inherit
+}
+
+.dark .modal-body hr {
+    border-top-color: #393939;
+    margin: 25px 10px
+}
+
+textarea {
+    max-width: 100%
+}
+
+.dark .row-info {
+    background-color: #424473
+}
+
+.dark .row-warn {
+    background-color: #6e5633
+}
+
+.dark .row-error {
+    background-color: #814141
+}
+
+.mt4 {
+    margin-top: 4px
+}
+
+.dark .pagination > li > a, .dark .pagination > li > span {
+    background-color: #000;
+    border-color: #111;
+    color: #ccc;
+    padding: 8px 14px
+}
+
+.dark .pagination > li.active > a, .dark .pagination > li.active > span {
+    background-color: #075f7c
+}
+
+.dark .navbar-default .navbar-nav > .open > a, .dark .navbar-default .navbar-nav > .open > a:focus, .dark .navbar-default .navbar-nav > .open > a:hover {
+    background-color: #555
+}
+
+.dark .form-control {
+    background-color: #444;
+    color: #ddd;
+    border-color: #555
+}
+
+.dark .table > tbody > tr.active > td, .dark .table > tbody > tr.active > th, .dark .table > tbody > tr > td.active, .dark .table > tbody > tr > th.active, .dark .table > tfoot > tr.active > td, .dark .table > tfoot > tr.active > th, .dark .table > tfoot > tr > td.active, .dark .table > tfoot > tr > th.active, .dark .table > thead > tr.active > td, .dark .table > thead > tr.active > th, .dark .table > thead > tr > td.active, .dark .table > thead > tr > th.active {
+    background-color: #3a3a3a
+}
+
+.dark .table-hover > tbody > tr.active:hover > td, .dark .table-hover > tbody > tr.active:hover > th, .dark .table-hover > tbody > tr:hover > .active, .dark .table-hover > tbody > tr > td.active:hover, .dark .table-hover > tbody > tr > th.active:hover {
+    background-color: #3a3a3a
+}
+
+.dark #chat #messages li a.name-moderator {
+    color: #9cc9ef
+}
+
+#smile-wrapper {
+    padding: 8px
+}
+
+.dark #smile-wrapper {
+    background-color: #333;
+    border: 1px solid #6a6a6a
+}
+
+.dark .giveaway1 {
+    background-color: #242424;
+    border-color: #333
+}
+
+.dark .giveaway1:hover {
+    background-color: #22252f
+}
+
+.dark .giveaway1 .title {
+    background-color: #1a1a1a
+}
+
+.dark #coinflip-wrapper {
+    /*background: #181818;*/
+}
+
+.dark #coinflip-links li {
+    background-color: #222;
+}
+
+.dark #coinflip-links li:hover {
+    background-color: #333
+}
+
+.dark .coinflip-pots tbody tr:nth-child(even) {
+    background-color: #151515
+}
+
+.dark #historyModal .coinflip-pots tbody tr {
+    background-color: #1f1f1f
+}
+
+#historyModal .coinflip-pots tbody tr:nth-child(even) {
+    font-size: 10px
+}
+
+.dark #historyModal .coinflip-pots tbody tr:nth-child(even) {
+    background-color: #1c1c1c;
+    color: #555
+}
+
+.dark #historyModal .coinflip-pots tbody tr:nth-child(even) i {
+    color: #555
+}
+
+.dark #historyModal .coinflip-pots tbody tr:nth-child(even):hover {
+    color: #888
+}
+
+.dark .coinflip-pots tbody tr:hover {
+    background-color: #2d2d2d
+}
+
+.dark .coinflip-pots tbody tr:nth-child(even):hover {
+    background-color: #111
+}
+
+.dark .coinflip-pots h3 {
+    color: #999
+}
+
+.coinflip-pots .cf-items {
+    color: #777
+}
+
+.dark .coinflip-pots .cf-items {
+    color: #999
+}
+
+.dark .coinflip-pots .btn-info {
+    background-color: #0c6984;
+    border-color: #122b40
+}
+
+.dark .coinflip-pots .btn-info:hover {
+    background-color: #064254;
+    border-color: #122b40
+}
+
+.dark #inventoryModal #inventoryMakeOffer .row img {
+    border-color: #222
+}
+
+#inventoryModal #inventoryMakeOffer .row img.selected {
+    border-color: #3797b4
+}
+
+.dark #inventoryModal #inventoryMakeOffer .row img.selected {
+    border-color: #fff
+}
+
+.dark #inventoryModal #inventoryMakeOffer .inventory-selected .highlight {
+    background-color: #00384b
+}
+
+.dark #invUser button.btn-normal {
+    color: #ccc
+}
+
+.dark #invUser button.btn-normal:hover, .dark #invUser button.btn-normal:focus {
+    color: #ccc
+}
+
+.dark .inventory-user {
+    background-color: rgba(25, 25, 25, 0.5);
+}
+
+.dark .modal-loading {
+    background-color: rgba(25, 25, 25, 0);
+}
+
+.dark .deposit-loading {
+    background-color: #202020;
+}
+
+.dark #jackpot_summary {
+    background-color: #222222;
+}
+
+.dark #my_jackpot .row {
+    color: white;
+    background-color: #282828;
+}
+
+.dark #item_wrapper .item {
+    background-color: #161616;
+}
+
+.dark #item_wrapper .item .info .name {
+    background: inherit;
+    color: white;
+}
+
+.dark #item_wrapper .item .info .price span {
+    background-color: rgba(40, 40, 40, 0.8);
+    color: #ccc;
+}
+
+.dark .panel .panel-heading {
+    background-color: #2f354b;
+}
+
+.dark .panel-info {
+    border-color: #2f354b;
+}
+
+.dark .panel-group .panel-heading+.panel-collapse>.list-group, .dark .panel-group .panel-heading+.panel-collapse>.panel-body {
+    border-top: 1px solid #2f354b;
+    background-color: #222222;
+}
+
+.dark .jackpot-hash {
+    border-color: #2f354b;
+}
+
+.dark #cfRoundView .row-header {
+    background-color: rgba(35,35,35,0.7);
+}
+
+.dark #cfRoundView .row-total {
+    background-color: #22354d;
+}
+
+.dark #cfRoundView .row-item {
+    background-color: #202020;
+    border-color: #111;
+}
+
+.dark .trade-url-config {
+    background-color: #202020;
+}
+
+.dark #winner_wrapper .panel-info {
+    border-left-color: #5b668f;
+    background-color: #2f354b;
+}
+
+.dark #winner_wrapper .panel-body {
+        background-color: #2f2f2f;
+}
+
+.dark #noSocket {
+    background-color: rgba(20,20,20,0.95);
+    border-color: #333;
+}

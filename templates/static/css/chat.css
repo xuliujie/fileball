@@ -1,0 +1,93 @@
+
+#chat .hide-chat {
+    text-align: right;
+    cursor: pointer;
+    display: none;
+}
+
+@media (min-width: 992px) {
+    #chat .hide-chat {
+        display: block;
+    }
+}
+
+#chat .users-online {
+    text-align: center;
+    padding: 5px 0;
+    cursor: default;
+}
+
+#messages-wrapper {
+    position: relative;
+    height: 240px;
+    background-color: #fff;
+    border: 1px dashed #ddd;
+}
+
+#chat #messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+#chat #messages li:nth-child(odd) {
+    background: #f8f8f8;
+}
+
+#chat #messages li {
+    color: #555;
+    padding: 5px 10px;
+}
+
+#chat #messages li img {
+    width: 25px;
+    height: auto;
+}
+
+@media (min-width: 992px) {
+    #messages-wrapper {
+        height: 420px;
+    }
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+#chat button {
+    margin: 5px;
+}
+
+#smile-wrapper {
+    padding: 8px;
+}
+
+#chat input#chat_msg, #chat input#chat_msg:active, #chat input#chat_msg:focus {
+    border: 1px dashed #ccc;
+    width: 100%;
+    padding: 10px;
+}
+
+
+.giveaway1 {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding-top: 10px;
+    text-align: center;
+    transition: 1s;
+    cursor: default;
+    margin-top: 15px;
+}
+
+.giveaway1 .title {
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    padding: 10px 5px;
+}
