@@ -1,5 +1,5 @@
 """
-WSGI config for dota2fair project.
+WSGI config for fancsgo project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dota2fair.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fancsgo.settings")
 
 application = get_wsgi_application()

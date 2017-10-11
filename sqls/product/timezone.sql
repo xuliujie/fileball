@@ -1,6 +1,6 @@
 -- MySQL dump 10.14  Distrib 5.5.55-MariaDB, for Linux (x86_64)
 --
--- Host: dota2fair.clpylooxd1kw.ap-northeast-1.rds.amazonaws.com    Database: mysql
+-- Host: fancsgo.clpylooxd1kw.ap-northeast-1.rds.amazonaws.com    Database: mysql
 -- ------------------------------------------------------
 -- Server version	5.6.27-log
 
