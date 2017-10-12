@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^', include('betting.urls')),
     url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^fanmin/', admin.site.urls),
     url(r'^', include('social_django.urls', namespace='social')),
     url(r'^', include('social_auth.urls', namespace='auth')),
 ]
