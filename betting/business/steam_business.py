@@ -24,7 +24,8 @@ from betting.knapsack import knapsack
 
 _logger = logging.getLogger(__name__)
 
-_inventory_url_base = 'http://steamcommunity.com/inventory/{steamid}/{appid}/2?l=english&count=2000&start_assetid={s_assetid}'
+_inventory_url_base_en = 'http://steamcommunity.com/inventory/{steamid}/{appid}/2?l=english&count=2000&start_assetid={s_assetid}'
+_inventory_url_base_zh = 'http://steamcommunity.com/inventory/{steamid}/{appid}/2?l=schinese&count=2000&start_assetid={s_assetid}'
 
 _c5_item_price_url_base = 'https://www.c5game.com/api/item/overview'
 
@@ -33,12 +34,15 @@ _trade_list_key = 'trade_list'
 _send_list_key = 'send_list'
 
 
-def get_user_inventories(steam_id, s_assetid=None):
+def get_user_inventories(steam_id, s_assetid=None, lang='en'):
     inventory = {
         'items': [],
         'total_count': 0
     }
     try:
+        _inventory_url_base = _inventory_url_base_en
+        if lang != 'en':
+            _inventory_url_base = _inventory_url_base_zh
         t_url = _inventory_url_base.format(steamid=steam_id, appid=settings.BETTING_APP_ID, s_assetid=s_assetid)
         resp = requests.get(t_url, timeout=settings.STEAM_REQUEST_TIMEOUT)
         body = json.loads(resp.content, encoding='utf-8')
@@ -57,8 +61,7 @@ def get_user_inventories(steam_id, s_assetid=None):
             item = desc_map.get(asset['classid'], None)
             if item and item.get('tradable', 0) and item.get('marketable', 0):
                 market_hash_name = item['market_hash_name']
-                # if settings.RANDOM_PRICE:
-                if False:
+                if settings.RANDOM_PRICE:
                     price = random.uniform(1, 10)
                     price = round(price, 2)
                 else:
@@ -69,7 +72,7 @@ def get_user_inventories(steam_id, s_assetid=None):
                     prop_item[u'sid'] = asset['assetid']
                     prop_item[u'amount'] = price * settings.ITEM_PRICE_SCALE
                     prop_item[u'name'] = item['name']
-                    prop_item[u'rarity'] = item['tags'][1]['localized_tag_name']
+                    prop_item[u'tags'] = {t.category: t.internal_name for t in item['tags']}
                     items.append(prop_item)
                     inventory_map[asset['assetid']] = prop_item
         cache_user_inventory(steam_id, inventory_map)

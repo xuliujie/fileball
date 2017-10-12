@@ -317,7 +317,7 @@ class InventoryQueryView(views.APIView):
         try:
             steamer = current_user(request)
             s_assetid = request.query_params.get('s_assetid', None)
-            items = get_user_inventories(steamer.steamid, s_assetid)
+            items = get_user_inventories(steamer.steamid, s_assetid, lang=request.LANGUAGE_CODE)
             if items is None:
                 return reformat_ret(311, {}, _l("We get issues when query inventory from steam, try again later."))
             resp_data = {

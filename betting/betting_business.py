@@ -538,6 +538,8 @@ def update_online():
 
 
 _steamrobot_api_url = "http://api.steamrobot.me/api/get_item_price/?hash_name={hash_name}"
+_steamrobot_api_base = "http://api.steamrobot.me/api/get_item_price/"
+
 
 def market_item_update():
     try:
@@ -560,27 +562,29 @@ def market_item_update():
 
 
 def get_item_price_from_steamrobot(hash_name):
-    # hash_name_split = hash_name.split()
-    # hash_name = '+'.join(hash_name_split)
-    hash_name = hash_name.replace(' ', '+')
     try:
         _logger.warning(hash_name)
-        t_url = _steamrobot_api_url.format(hash_name=hash_name)
-        resp = requests.get(t_url, timeout=settings.STEAM_REQUEST_TIMEOUT)
-        item_data = json.loads(resp.content, encoding='utf-8')
-        item = {
-            u'hash_name': item_data[u'hash_name'],
-            u'item_recent_7_avg_price': item_data.get(u'item_recent_7_avg_price', None),
-            u'item_refer_price_dollar': item_data.get(u'item_refer_price_dollar', None),
-            u'steam_sale_price_dollar': item_data.get(u'steam_sale_price_dollar', None),
-            u'steam_normal_price_dollar': item_data.get(u'steam_normal_price_dollar', None)
+        params = {
+            'hash_name': hash_name
         }
+        resp = requests.get(_steamrobot_api_base, params=params, timeout=settings.STEAM_REQUEST_TIMEOUT)
+        item_data = json.loads(resp.content, encoding='utf-8')
+        item = None
+        if item_data:
+            item = {
+                u'hash_name': item_data[u'hash_name'],
+                u'item_recent_7_avg_price': item_data.get(u'item_recent_7_avg_price', None),
+                u'item_refer_price_dollar': item_data.get(u'item_refer_price_dollar', None),
+                u'steam_sale_price_dollar': item_data.get(u'steam_sale_price_dollar', None),
+                u'steam_normal_price_dollar': item_data.get(u'steam_normal_price_dollar', None)
+            }
         if item:
             md5_data = hashlib.md5(item[u'hash_name'].encode('utf-8'))
             hash_key = md5_data.hexdigest()
             SteamrobotApiItem.objects.update_or_create(md5=hash_key, defaults=item)
     except Exception as e:
         _logger.exception(e)
+
 
 def steamrobot_Api_Item_Update():
     items = SteamrobotApiItem.objects.all()

@@ -7,9 +7,9 @@ from settings import *
 
 DEBUG = True
 
-ON_TEST = True
+ON_TEST = False
 
-RANDOM_PRICE = True
+RANDOM_PRICE = False
 
 REDIS_HOST = '127.0.0.1'
 REDIS_PASSWORD = ''
