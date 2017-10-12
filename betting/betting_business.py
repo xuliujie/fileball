@@ -38,13 +38,6 @@ _logger = logging.getLogger(__name__)
 
 _trade_list_key = 'trade_list'
 _send_list = 'send_list'
-_steam_analyst_url = 'https://api.steamanalyst.com/dota2/zo7LxKVFMGdqaDdBf'
-
-
-# def secret_generator(size=10, chars=string.ascii_uppercase):
-#     return ''.join(random.choice(chars) for _ in range(size))
-
-
 
 
 def get_last_chat_msg():
@@ -55,71 +48,6 @@ def get_last_chat_msg():
         msgs.append(MessageSerializer(m).data)
     msgs = msgs[::-1]
     return msgs
-
-
-# def create_new_game_hash():
-#     percentage = random.uniform(0, 100)
-#     secret = secret_generator(size=10)
-#     data = '{0:.13f}:{1}'.format(percentage, secret)
-#     md5_data = hashlib.md5(data)
-#     hash_key = md5_data.hexdigest()
-#     ret = {
-#         'percentage': percentage,
-#         'secret': secret,
-#         'hash': hash_key
-#     }
-#     return ret
-#
-#
-# def create_new_coinflip_game(game_type=0, **kwargs):
-#     cheating_hash_data = None
-#     gamer = kwargs.get('gamer', None)
-#     team = kwargs.get('team', None)
-#     if game_type == 0 and gamer and gamer.is_cheating and team is not None:
-#         if team == 0:
-#             cheating_hash = TempGameHash.objects.filter(percentage__range=(1.00, 45.0), used=0).first()
-#         else:
-#             cheating_hash = TempGameHash.objects.filter(percentage__range=(55.0, 99.0), used=0).first()
-#         if cheating_hash:
-#             cheating_hash_data = TempGameHashSerializer(cheating_hash).data
-#             cheating_hash.used += 1
-#             cheating_hash.save()
-#     data = cheating_hash_data or create_new_game_hash()
-#     game = CoinFlipGame.objects.create(status=GameStatus.Joinable.value, game_type=game_type, **data)
-#     return game
-#
-#
-# def get_winner(game):
-#     deposits = game.deposits.filter(accept=1).all()
-#     win_num = -1
-#     winner = None
-#     win_deposit_amount = 0
-#     if game.win_ticket == 0:
-#         win_ticket = math.floor((game.total_tickets - 0.0000000001) * (game.percentage / 100))
-#         game.win_ticket = win_ticket if win_ticket >= 1 else 1
-#         game.save()
-#     for i, d in enumerate(deposits):
-#         if d.tickets_begin <= game.win_ticket <= d.tickets_end:
-#             win_num = d.team
-#             winner = d.steamer
-#             win_deposit_amount = d.amount
-#             break
-#
-#     win_deposits = game.deposits.filter(accept=1, steamer__steamid=winner.steamid).all()
-#     win_deposit_amount = sum([wd.amount for wd in win_deposits])
-#
-#     ts = aware_datetime_to_timestamp(game.win_ts)
-#     coinflip_winner = {
-#         'num': win_num,
-#         'totalTickets': game.total_tickets,
-#         'ts': ts
-#     }
-#     jackpot_winner = {
-#         'steamer': SteamerSerializer(winner).data,
-#         'amount': game.total_amount,
-#         'chance': '{0:.2f}'.format(win_deposit_amount / game.total_amount*100)
-#     }
-#     return coinflip_winner, jackpot_winner
 
 
 def format_jackpot_joiners(game, winner):

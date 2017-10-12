@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^provably-fair/$', views.provably_fair, name='provably_fair'),
     # url(r'^support/', views.support_view, name='support'),
     url(r'^provably-fair/(?P<fairs>[^/]+)/$', views.provably_fair, name='provably_fair_params'),
-    url(r'^get-started/', views.get_started_view, name='get_started'),
+    # url(r'^get-started/', views.get_started_view, name='get_started'),
     # url(r'^terms-of-service/', views.terms_of_service, name='terms_of_service'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

@@ -92,18 +92,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'fancsgo',
-        'HOST': '127.0.0.1',
+        'HOST': 'rm-j6ce9s980129czvd9.mysql.rds.aliyuncs.com',
         'PORT': 3306,
-        'USER': 'root',
-        'PASSWORD': ''
+        'USER': 'fancsgo',
+        'PASSWORD': 'fancsgo@db1'
     }
 }
 
 
-REDIS_HOST = '127.0.0.1'
+REDIS_HOST = 'r-j6c87b3a6a24d1b4.redis.rds.aliyuncs.com'
 REDIS_PORT = 6379
 REDIS_USER = ''
-REDIS_PASSWORD = ''
+REDIS_PASSWORD = 'Fancsgo123456'
 REDIS_DB_INDEX = 0
 
 

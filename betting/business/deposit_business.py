@@ -33,9 +33,9 @@ from betting.knapsack import knapsack
 
 _logger = logging.getLogger(__name__)
 
-# _steam_analyst_url = 'https://api.steamanalyst.com/dota2/zo7LxKVFMGdqaDdBf'
 _cf_game_set = 'cf_game_set'
 _jackpot_key = 'current_jackpot'
+
 
 def is_connection_usable():
     try:
