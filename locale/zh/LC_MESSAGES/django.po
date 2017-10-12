@@ -1154,27 +1154,27 @@ msgstr ""
 
 #: .\templates\pages\coinflip_template.html:252
 msgid "Deposit information"
-msgstr "存入信息"
+msgstr ""
 
 #: .\templates\pages\coinflip_template.html:256
 msgid "Minimum amount per deposit:"
-msgstr "最低单次存入金额:"
+msgstr ""
 
 #: .\templates\pages\coinflip_template.html:260
 msgid "Maximum items in a deposit:"
-msgstr "最高单次存入物品数量:"
+msgstr ""
 
 #: .\templates\pages\coinflip_template.html:264
 msgid "Maximum active rounds:"
-msgstr "最高局数限制:"
+msgstr ""
 
 #: .\templates\pages\coinflip_template.html:265
 msgid "not set"
-msgstr "未设置"
+msgstr ""
 
 #: .\templates\pages\coinflip_template.html:268
 msgid "Coins:"
-msgstr "硬币:"
+msgstr ""
 
 #: .\templates\pages\coinflip_template.html:276
 msgid ""
@@ -1208,28 +1208,6 @@ msgid ""
 "so you can't play on our page.</p>\n"
 "            "
 msgstr ""
-"\n"
-"            <h2>创建游戏</h2>\n"
-"            <p>在一局游戏创建后，将有30分钟的假如时间。 若30分钟后 (您可以"
-"在\n"
-"                这局游戏的底部查看时间) 没有人加入，您会收到 一个包含您所有下"
-"注物品的交易报价，当局游戏会被取消。</p>\n"
-"            <h2>加入游戏</h2>\n"
-"            <p>您可以点击 加入 按键来加入一局游戏 您的参与将会在您点击 存入 "
-"按键\n"
-"                后被激活, 除非另一玩家先于您 点击了 存入 按键。您便不会收到交"
-"易\n"
-"                报价, 之后您会看到另一玩家加入了游戏或 加入失败。 若此时这局"
-"游戏仍然为可加入状态\n"
-"                我们会给您发送一个交易报价，并给予您90秒来确认报价。 注意，在"
-"这一步如果Steam已下线，\n"
-"                我们将不会给您发送报价。 如果90秒过去还未收到您的确认，\n"
-"                这局游戏将再次进入可加入状态。</p><br>\n"
-"            <p><i class=\"fa fa-mobile\"></i> 若要在我们的 网站下注，\n"
-"                您需要启用Steam手机验证端至少7天并开启交易提醒。\n"
-"                若您未满足此条件，网站不能给 您发送报价，您也不能在网站进行任"
-"何游戏。</p>\n"
-"            "
 
 #: .\templates\pages\coinflip_template.html:303
 msgid "Loading"
