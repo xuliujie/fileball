@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100114
 File Encoding         : 65001
 
-Date: 2017-10-12 09:42:30
+Date: 2017-10-12 11:03:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,7 +61,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of auth_permission
@@ -72,30 +72,30 @@ INSERT INTO `auth_permission` VALUES ('3', 'Can delete pinned application', '1',
 INSERT INTO `auth_permission` VALUES ('4', 'Can add bookmark', '2', 'add_bookmark');
 INSERT INTO `auth_permission` VALUES ('5', 'Can change bookmark', '2', 'change_bookmark');
 INSERT INTO `auth_permission` VALUES ('6', 'Can delete bookmark', '2', 'delete_bookmark');
-INSERT INTO `auth_permission` VALUES ('7', 'Can add log entry', '3', 'add_logentry');
-INSERT INTO `auth_permission` VALUES ('8', 'Can change log entry', '3', 'change_logentry');
-INSERT INTO `auth_permission` VALUES ('9', 'Can delete log entry', '3', 'delete_logentry');
-INSERT INTO `auth_permission` VALUES ('10', 'Can add group', '4', 'add_group');
-INSERT INTO `auth_permission` VALUES ('11', 'Can change group', '4', 'change_group');
-INSERT INTO `auth_permission` VALUES ('12', 'Can delete group', '4', 'delete_group');
-INSERT INTO `auth_permission` VALUES ('13', 'Can add permission', '5', 'add_permission');
-INSERT INTO `auth_permission` VALUES ('14', 'Can change permission', '5', 'change_permission');
-INSERT INTO `auth_permission` VALUES ('15', 'Can delete permission', '5', 'delete_permission');
-INSERT INTO `auth_permission` VALUES ('16', 'Can add content type', '6', 'add_contenttype');
-INSERT INTO `auth_permission` VALUES ('17', 'Can change content type', '6', 'change_contenttype');
-INSERT INTO `auth_permission` VALUES ('18', 'Can delete content type', '6', 'delete_contenttype');
-INSERT INTO `auth_permission` VALUES ('19', 'Can add session', '7', 'add_session');
-INSERT INTO `auth_permission` VALUES ('20', 'Can change session', '7', 'change_session');
-INSERT INTO `auth_permission` VALUES ('21', 'Can delete session', '7', 'delete_session');
-INSERT INTO `auth_permission` VALUES ('22', 'Can add site', '8', 'add_site');
-INSERT INTO `auth_permission` VALUES ('23', 'Can change site', '8', 'change_site');
-INSERT INTO `auth_permission` VALUES ('24', 'Can delete site', '8', 'delete_site');
-INSERT INTO `auth_permission` VALUES ('25', 'Can add user profile', '9', 'add_userprofile');
-INSERT INTO `auth_permission` VALUES ('26', 'Can change user profile', '9', 'change_userprofile');
-INSERT INTO `auth_permission` VALUES ('27', 'Can delete user profile', '9', 'delete_userprofile');
-INSERT INTO `auth_permission` VALUES ('28', 'Can add Send Records', '10', 'add_sendrecord');
-INSERT INTO `auth_permission` VALUES ('29', 'Can change Send Records', '10', 'change_sendrecord');
-INSERT INTO `auth_permission` VALUES ('30', 'Can delete Send Records', '10', 'delete_sendrecord');
+INSERT INTO `auth_permission` VALUES ('7', 'Can add user dashboard module', '3', 'add_userdashboardmodule');
+INSERT INTO `auth_permission` VALUES ('8', 'Can change user dashboard module', '3', 'change_userdashboardmodule');
+INSERT INTO `auth_permission` VALUES ('9', 'Can delete user dashboard module', '3', 'delete_userdashboardmodule');
+INSERT INTO `auth_permission` VALUES ('10', 'Can add log entry', '4', 'add_logentry');
+INSERT INTO `auth_permission` VALUES ('11', 'Can change log entry', '4', 'change_logentry');
+INSERT INTO `auth_permission` VALUES ('12', 'Can delete log entry', '4', 'delete_logentry');
+INSERT INTO `auth_permission` VALUES ('13', 'Can add group', '5', 'add_group');
+INSERT INTO `auth_permission` VALUES ('14', 'Can change group', '5', 'change_group');
+INSERT INTO `auth_permission` VALUES ('15', 'Can delete group', '5', 'delete_group');
+INSERT INTO `auth_permission` VALUES ('16', 'Can add permission', '6', 'add_permission');
+INSERT INTO `auth_permission` VALUES ('17', 'Can change permission', '6', 'change_permission');
+INSERT INTO `auth_permission` VALUES ('18', 'Can delete permission', '6', 'delete_permission');
+INSERT INTO `auth_permission` VALUES ('19', 'Can add content type', '7', 'add_contenttype');
+INSERT INTO `auth_permission` VALUES ('20', 'Can change content type', '7', 'change_contenttype');
+INSERT INTO `auth_permission` VALUES ('21', 'Can delete content type', '7', 'delete_contenttype');
+INSERT INTO `auth_permission` VALUES ('22', 'Can add session', '8', 'add_session');
+INSERT INTO `auth_permission` VALUES ('23', 'Can change session', '8', 'change_session');
+INSERT INTO `auth_permission` VALUES ('24', 'Can delete session', '8', 'delete_session');
+INSERT INTO `auth_permission` VALUES ('25', 'Can add site', '9', 'add_site');
+INSERT INTO `auth_permission` VALUES ('26', 'Can change site', '9', 'change_site');
+INSERT INTO `auth_permission` VALUES ('27', 'Can delete site', '9', 'delete_site');
+INSERT INTO `auth_permission` VALUES ('28', 'Can add user profile', '10', 'add_userprofile');
+INSERT INTO `auth_permission` VALUES ('29', 'Can change user profile', '10', 'change_userprofile');
+INSERT INTO `auth_permission` VALUES ('30', 'Can delete user profile', '10', 'delete_userprofile');
 INSERT INTO `auth_permission` VALUES ('31', 'Can add Games', '11', 'add_coinflipgame');
 INSERT INTO `auth_permission` VALUES ('32', 'Can change Games', '11', 'change_coinflipgame');
 INSERT INTO `auth_permission` VALUES ('33', 'Can delete Games', '11', 'delete_coinflipgame');
@@ -114,86 +114,51 @@ INSERT INTO `auth_permission` VALUES ('45', 'Can delete User Posts', '15', 'dele
 INSERT INTO `auth_permission` VALUES ('46', 'Can add Betting Bots', '16', 'add_bettingbot');
 INSERT INTO `auth_permission` VALUES ('47', 'Can change Betting Bots', '16', 'change_bettingbot');
 INSERT INTO `auth_permission` VALUES ('48', 'Can delete Betting Bots', '16', 'delete_bettingbot');
-INSERT INTO `auth_permission` VALUES ('49', 'Can add steamrobot api item', '17', 'add_steamrobotapiitem');
-INSERT INTO `auth_permission` VALUES ('50', 'Can change steamrobot api item', '17', 'change_steamrobotapiitem');
-INSERT INTO `auth_permission` VALUES ('51', 'Can delete steamrobot api item', '17', 'delete_steamrobotapiitem');
-INSERT INTO `auth_permission` VALUES ('52', 'Can add market item', '18', 'add_marketitem');
-INSERT INTO `auth_permission` VALUES ('53', 'Can change market item', '18', 'change_marketitem');
-INSERT INTO `auth_permission` VALUES ('54', 'Can delete market item', '18', 'delete_marketitem');
-INSERT INTO `auth_permission` VALUES ('55', 'Can add News', '19', 'add_article');
-INSERT INTO `auth_permission` VALUES ('56', 'Can change News', '19', 'change_article');
-INSERT INTO `auth_permission` VALUES ('57', 'Can delete News', '19', 'delete_article');
-INSERT INTO `auth_permission` VALUES ('58', 'Can add room', '20', 'add_room');
-INSERT INTO `auth_permission` VALUES ('59', 'Can change room', '20', 'change_room');
-INSERT INTO `auth_permission` VALUES ('60', 'Can delete room', '20', 'delete_room');
-INSERT INTO `auth_permission` VALUES ('61', 'Can add F coins Records', '21', 'add_fcoinsrecord');
-INSERT INTO `auth_permission` VALUES ('62', 'Can change F coins Records', '21', 'change_fcoinsrecord');
-INSERT INTO `auth_permission` VALUES ('63', 'Can delete F coins Records', '21', 'delete_fcoinsrecord');
-INSERT INTO `auth_permission` VALUES ('64', 'Can add Give Away', '22', 'add_giveaway');
-INSERT INTO `auth_permission` VALUES ('65', 'Can change Give Away', '22', 'change_giveaway');
-INSERT INTO `auth_permission` VALUES ('66', 'Can delete Give Away', '22', 'delete_giveaway');
-INSERT INTO `auth_permission` VALUES ('67', 'Can add affiliate', '23', 'add_affiliate');
-INSERT INTO `auth_permission` VALUES ('68', 'Can change affiliate', '23', 'change_affiliate');
-INSERT INTO `auth_permission` VALUES ('69', 'Can delete affiliate', '23', 'delete_affiliate');
-INSERT INTO `auth_permission` VALUES ('70', 'Can add Carousel', '24', 'add_carousel');
-INSERT INTO `auth_permission` VALUES ('71', 'Can change Carousel', '24', 'change_carousel');
-INSERT INTO `auth_permission` VALUES ('72', 'Can delete Carousel', '24', 'delete_carousel');
-INSERT INTO `auth_permission` VALUES ('73', 'Can add Prop Items', '25', 'add_propitem');
-INSERT INTO `auth_permission` VALUES ('74', 'Can change Prop Items', '25', 'change_propitem');
-INSERT INTO `auth_permission` VALUES ('75', 'Can delete Prop Items', '25', 'delete_propitem');
-INSERT INTO `auth_permission` VALUES ('76', 'Can add Deposit', '26', 'add_deposit');
-INSERT INTO `auth_permission` VALUES ('77', 'Can change Deposit', '26', 'change_deposit');
-INSERT INTO `auth_permission` VALUES ('78', 'Can delete Deposit', '26', 'delete_deposit');
-INSERT INTO `auth_permission` VALUES ('79', 'Can add Store Records', '27', 'add_storerecord');
-INSERT INTO `auth_permission` VALUES ('80', 'Can change Store Records', '27', 'change_storerecord');
-INSERT INTO `auth_permission` VALUES ('81', 'Can delete Store Records', '27', 'delete_storerecord');
-INSERT INTO `auth_permission` VALUES ('82', 'Can add Video', '28', 'add_video');
-INSERT INTO `auth_permission` VALUES ('83', 'Can change Video', '28', 'change_video');
-INSERT INTO `auth_permission` VALUES ('84', 'Can delete Video', '28', 'delete_video');
-INSERT INTO `auth_permission` VALUES ('85', 'Can add Announcements', '29', 'add_announcement');
-INSERT INTO `auth_permission` VALUES ('86', 'Can change Announcements', '29', 'change_announcement');
-INSERT INTO `auth_permission` VALUES ('87', 'Can delete Announcements', '29', 'delete_announcement');
-INSERT INTO `auth_permission` VALUES ('88', 'Can add steam user', '30', 'add_steamuser');
-INSERT INTO `auth_permission` VALUES ('89', 'Can change steam user', '30', 'change_steamuser');
-INSERT INTO `auth_permission` VALUES ('90', 'Can delete steam user', '30', 'delete_steamuser');
-INSERT INTO `auth_permission` VALUES ('91', 'Can add association', '31', 'add_association');
-INSERT INTO `auth_permission` VALUES ('92', 'Can change association', '31', 'change_association');
-INSERT INTO `auth_permission` VALUES ('93', 'Can delete association', '31', 'delete_association');
-INSERT INTO `auth_permission` VALUES ('94', 'Can add user social auth', '32', 'add_usersocialauth');
-INSERT INTO `auth_permission` VALUES ('95', 'Can change user social auth', '32', 'change_usersocialauth');
-INSERT INTO `auth_permission` VALUES ('96', 'Can delete user social auth', '32', 'delete_usersocialauth');
-INSERT INTO `auth_permission` VALUES ('97', 'Can add nonce', '33', 'add_nonce');
-INSERT INTO `auth_permission` VALUES ('98', 'Can change nonce', '33', 'change_nonce');
-INSERT INTO `auth_permission` VALUES ('99', 'Can delete nonce', '33', 'delete_nonce');
-INSERT INTO `auth_permission` VALUES ('100', 'Can add code', '34', 'add_code');
-INSERT INTO `auth_permission` VALUES ('101', 'Can change code', '34', 'change_code');
-INSERT INTO `auth_permission` VALUES ('102', 'Can delete code', '34', 'delete_code');
-INSERT INTO `auth_permission` VALUES ('103', 'Can add partial', '35', 'add_partial');
-INSERT INTO `auth_permission` VALUES ('104', 'Can change partial', '35', 'change_partial');
-INSERT INTO `auth_permission` VALUES ('105', 'Can delete partial', '35', 'delete_partial');
-
--- ----------------------------
--- Table structure for betting_affiliate
--- ----------------------------
-DROP TABLE IF EXISTS `betting_affiliate`;
-CREATE TABLE `betting_affiliate` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `f_coins` int(11) NOT NULL,
-  `affi_code` varchar(64) DEFAULT NULL,
-  `can_buy` tinyint(1) NOT NULL,
-  `is_new` tinyint(1) NOT NULL,
-  `higher_id` int(11) DEFAULT NULL,
-  `steamer_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `steamer_id` (`steamer_id`),
-  KEY `betting_affiliate_higher_id_6fffff6f_fk_social_auth_steamuser_id` (`higher_id`),
-  CONSTRAINT `betting_affiliate_higher_id_6fffff6f_fk_social_auth_steamuser_id` FOREIGN KEY (`higher_id`) REFERENCES `social_auth_steamuser` (`id`),
-  CONSTRAINT `betting_affiliate_steamer_id_e7563105_fk_social_au` FOREIGN KEY (`steamer_id`) REFERENCES `social_auth_steamuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of betting_affiliate
--- ----------------------------
+INSERT INTO `auth_permission` VALUES ('49', 'Can add market item', '17', 'add_marketitem');
+INSERT INTO `auth_permission` VALUES ('50', 'Can change market item', '17', 'change_marketitem');
+INSERT INTO `auth_permission` VALUES ('51', 'Can delete market item', '17', 'delete_marketitem');
+INSERT INTO `auth_permission` VALUES ('52', 'Can add room', '18', 'add_room');
+INSERT INTO `auth_permission` VALUES ('53', 'Can change room', '18', 'change_room');
+INSERT INTO `auth_permission` VALUES ('54', 'Can delete room', '18', 'delete_room');
+INSERT INTO `auth_permission` VALUES ('55', 'Can add Announcements', '19', 'add_announcement');
+INSERT INTO `auth_permission` VALUES ('56', 'Can change Announcements', '19', 'change_announcement');
+INSERT INTO `auth_permission` VALUES ('57', 'Can delete Announcements', '19', 'delete_announcement');
+INSERT INTO `auth_permission` VALUES ('58', 'Can add Give Away', '20', 'add_giveaway');
+INSERT INTO `auth_permission` VALUES ('59', 'Can change Give Away', '20', 'change_giveaway');
+INSERT INTO `auth_permission` VALUES ('60', 'Can delete Give Away', '20', 'delete_giveaway');
+INSERT INTO `auth_permission` VALUES ('61', 'Can add steamrobot api item', '21', 'add_steamrobotapiitem');
+INSERT INTO `auth_permission` VALUES ('62', 'Can change steamrobot api item', '21', 'change_steamrobotapiitem');
+INSERT INTO `auth_permission` VALUES ('63', 'Can delete steamrobot api item', '21', 'delete_steamrobotapiitem');
+INSERT INTO `auth_permission` VALUES ('64', 'Can add Prop Items', '22', 'add_propitem');
+INSERT INTO `auth_permission` VALUES ('65', 'Can change Prop Items', '22', 'change_propitem');
+INSERT INTO `auth_permission` VALUES ('66', 'Can delete Prop Items', '22', 'delete_propitem');
+INSERT INTO `auth_permission` VALUES ('67', 'Can add Send Records', '23', 'add_sendrecord');
+INSERT INTO `auth_permission` VALUES ('68', 'Can change Send Records', '23', 'change_sendrecord');
+INSERT INTO `auth_permission` VALUES ('69', 'Can delete Send Records', '23', 'delete_sendrecord');
+INSERT INTO `auth_permission` VALUES ('70', 'Can add Deposit', '24', 'add_deposit');
+INSERT INTO `auth_permission` VALUES ('71', 'Can change Deposit', '24', 'change_deposit');
+INSERT INTO `auth_permission` VALUES ('72', 'Can delete Deposit', '24', 'delete_deposit');
+INSERT INTO `auth_permission` VALUES ('73', 'Can add Store Records', '25', 'add_storerecord');
+INSERT INTO `auth_permission` VALUES ('74', 'Can change Store Records', '25', 'change_storerecord');
+INSERT INTO `auth_permission` VALUES ('75', 'Can delete Store Records', '25', 'delete_storerecord');
+INSERT INTO `auth_permission` VALUES ('76', 'Can add steam user', '26', 'add_steamuser');
+INSERT INTO `auth_permission` VALUES ('77', 'Can change steam user', '26', 'change_steamuser');
+INSERT INTO `auth_permission` VALUES ('78', 'Can delete steam user', '26', 'delete_steamuser');
+INSERT INTO `auth_permission` VALUES ('79', 'Can add association', '27', 'add_association');
+INSERT INTO `auth_permission` VALUES ('80', 'Can change association', '27', 'change_association');
+INSERT INTO `auth_permission` VALUES ('81', 'Can delete association', '27', 'delete_association');
+INSERT INTO `auth_permission` VALUES ('82', 'Can add user social auth', '28', 'add_usersocialauth');
+INSERT INTO `auth_permission` VALUES ('83', 'Can change user social auth', '28', 'change_usersocialauth');
+INSERT INTO `auth_permission` VALUES ('84', 'Can delete user social auth', '28', 'delete_usersocialauth');
+INSERT INTO `auth_permission` VALUES ('85', 'Can add nonce', '29', 'add_nonce');
+INSERT INTO `auth_permission` VALUES ('86', 'Can change nonce', '29', 'change_nonce');
+INSERT INTO `auth_permission` VALUES ('87', 'Can delete nonce', '29', 'delete_nonce');
+INSERT INTO `auth_permission` VALUES ('88', 'Can add code', '30', 'add_code');
+INSERT INTO `auth_permission` VALUES ('89', 'Can change code', '30', 'change_code');
+INSERT INTO `auth_permission` VALUES ('90', 'Can delete code', '30', 'delete_code');
+INSERT INTO `auth_permission` VALUES ('91', 'Can add partial', '31', 'add_partial');
+INSERT INTO `auth_permission` VALUES ('92', 'Can change partial', '31', 'change_partial');
+INSERT INTO `auth_permission` VALUES ('93', 'Can delete partial', '31', 'delete_partial');
 
 -- ----------------------------
 -- Table structure for betting_announcement
@@ -217,27 +182,6 @@ CREATE TABLE `betting_announcement` (
 
 -- ----------------------------
 -- Records of betting_announcement
--- ----------------------------
-
--- ----------------------------
--- Table structure for betting_article
--- ----------------------------
-DROP TABLE IF EXISTS `betting_article`;
-CREATE TABLE `betting_article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `author` varchar(64) NOT NULL,
-  `summary` longtext NOT NULL,
-  `content_html` longtext NOT NULL,
-  `views` int(11) NOT NULL,
-  `published_time` datetime(6) NOT NULL,
-  `update_time` datetime(6) NOT NULL,
-  `pic` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of betting_article
 -- ----------------------------
 
 -- ----------------------------
@@ -266,25 +210,6 @@ CREATE TABLE `betting_bettingbot` (
 
 -- ----------------------------
 -- Records of betting_bettingbot
--- ----------------------------
-
--- ----------------------------
--- Table structure for betting_carousel
--- ----------------------------
-DROP TABLE IF EXISTS `betting_carousel`;
-CREATE TABLE `betting_carousel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `index` int(11) NOT NULL,
-  `href` varchar(200) DEFAULT NULL,
-  `pic` varchar(100) NOT NULL,
-  `description` longtext,
-  `remark` varchar(128) NOT NULL,
-  `enable` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of betting_carousel
 -- ----------------------------
 
 -- ----------------------------
@@ -344,28 +269,6 @@ CREATE TABLE `betting_deposit` (
 
 -- ----------------------------
 -- Records of betting_deposit
--- ----------------------------
-
--- ----------------------------
--- Table structure for betting_fcoinsrecord
--- ----------------------------
-DROP TABLE IF EXISTS `betting_fcoinsrecord`;
-CREATE TABLE `betting_fcoinsrecord` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` varchar(63) NOT NULL,
-  `create_time` datetime(6) NOT NULL,
-  `update_time` datetime(6) NOT NULL,
-  `amount` double NOT NULL,
-  `trade_ts` datetime(6) NOT NULL,
-  `steamer_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uid` (`uid`),
-  KEY `betting_fcoinsrecord_steamer_id_6a6230f2_fk_social_au` (`steamer_id`),
-  CONSTRAINT `betting_fcoinsrecord_steamer_id_6a6230f2_fk_social_au` FOREIGN KEY (`steamer_id`) REFERENCES `social_auth_steamuser` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of betting_fcoinsrecord
 -- ----------------------------
 
 -- ----------------------------
@@ -491,25 +394,6 @@ CREATE TABLE `betting_propitem_deposit` (
 
 -- ----------------------------
 -- Records of betting_propitem_deposit
--- ----------------------------
-
--- ----------------------------
--- Table structure for betting_propitem_f_coins_record
--- ----------------------------
-DROP TABLE IF EXISTS `betting_propitem_f_coins_record`;
-CREATE TABLE `betting_propitem_f_coins_record` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `propitem_id` int(11) NOT NULL,
-  `fcoinsrecord_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `betting_propitem_F_coins_propitem_id_fcoinsrecord_9fd4039e_uniq` (`propitem_id`,`fcoinsrecord_id`),
-  KEY `betting_propitem_F_c_fcoinsrecord_id_ed5c206b_fk_betting_f` (`fcoinsrecord_id`),
-  CONSTRAINT `betting_propitem_F_c_fcoinsrecord_id_ed5c206b_fk_betting_f` FOREIGN KEY (`fcoinsrecord_id`) REFERENCES `betting_fcoinsrecord` (`id`),
-  CONSTRAINT `betting_propitem_F_c_propitem_id_efe385fa_fk_betting_p` FOREIGN KEY (`propitem_id`) REFERENCES `betting_propitem` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of betting_propitem_f_coins_record
 -- ----------------------------
 
 -- ----------------------------
@@ -728,22 +612,6 @@ CREATE TABLE `betting_userprofile` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for betting_video
--- ----------------------------
-DROP TABLE IF EXISTS `betting_video`;
-CREATE TABLE `betting_video` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `site` int(11) NOT NULL,
-  `room` varchar(64) NOT NULL,
-  `index` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of betting_video
--- ----------------------------
-
--- ----------------------------
 -- Table structure for django_admin_log
 -- ----------------------------
 DROP TABLE IF EXISTS `django_admin_log`;
@@ -777,46 +645,42 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of django_content_type
 -- ----------------------------
-INSERT INTO `django_content_type` VALUES ('3', 'admin', 'logentry');
-INSERT INTO `django_content_type` VALUES ('4', 'auth', 'group');
-INSERT INTO `django_content_type` VALUES ('5', 'auth', 'permission');
-INSERT INTO `django_content_type` VALUES ('23', 'betting', 'affiliate');
-INSERT INTO `django_content_type` VALUES ('29', 'betting', 'announcement');
-INSERT INTO `django_content_type` VALUES ('19', 'betting', 'article');
+INSERT INTO `django_content_type` VALUES ('4', 'admin', 'logentry');
+INSERT INTO `django_content_type` VALUES ('5', 'auth', 'group');
+INSERT INTO `django_content_type` VALUES ('6', 'auth', 'permission');
+INSERT INTO `django_content_type` VALUES ('19', 'betting', 'announcement');
 INSERT INTO `django_content_type` VALUES ('16', 'betting', 'bettingbot');
-INSERT INTO `django_content_type` VALUES ('24', 'betting', 'carousel');
 INSERT INTO `django_content_type` VALUES ('11', 'betting', 'coinflipgame');
-INSERT INTO `django_content_type` VALUES ('26', 'betting', 'deposit');
-INSERT INTO `django_content_type` VALUES ('21', 'betting', 'fcoinsrecord');
-INSERT INTO `django_content_type` VALUES ('22', 'betting', 'giveaway');
-INSERT INTO `django_content_type` VALUES ('18', 'betting', 'marketitem');
+INSERT INTO `django_content_type` VALUES ('24', 'betting', 'deposit');
+INSERT INTO `django_content_type` VALUES ('20', 'betting', 'giveaway');
+INSERT INTO `django_content_type` VALUES ('17', 'betting', 'marketitem');
 INSERT INTO `django_content_type` VALUES ('13', 'betting', 'message');
-INSERT INTO `django_content_type` VALUES ('25', 'betting', 'propitem');
-INSERT INTO `django_content_type` VALUES ('20', 'betting', 'room');
-INSERT INTO `django_content_type` VALUES ('10', 'betting', 'sendrecord');
+INSERT INTO `django_content_type` VALUES ('22', 'betting', 'propitem');
+INSERT INTO `django_content_type` VALUES ('18', 'betting', 'room');
+INSERT INTO `django_content_type` VALUES ('23', 'betting', 'sendrecord');
 INSERT INTO `django_content_type` VALUES ('14', 'betting', 'siteconfig');
-INSERT INTO `django_content_type` VALUES ('17', 'betting', 'steamrobotapiitem');
-INSERT INTO `django_content_type` VALUES ('27', 'betting', 'storerecord');
+INSERT INTO `django_content_type` VALUES ('21', 'betting', 'steamrobotapiitem');
+INSERT INTO `django_content_type` VALUES ('25', 'betting', 'storerecord');
 INSERT INTO `django_content_type` VALUES ('12', 'betting', 'tempgamehash');
 INSERT INTO `django_content_type` VALUES ('15', 'betting', 'userpost');
-INSERT INTO `django_content_type` VALUES ('9', 'betting', 'userprofile');
-INSERT INTO `django_content_type` VALUES ('28', 'betting', 'video');
-INSERT INTO `django_content_type` VALUES ('6', 'contenttypes', 'contenttype');
+INSERT INTO `django_content_type` VALUES ('10', 'betting', 'userprofile');
+INSERT INTO `django_content_type` VALUES ('7', 'contenttypes', 'contenttype');
 INSERT INTO `django_content_type` VALUES ('2', 'jet', 'bookmark');
 INSERT INTO `django_content_type` VALUES ('1', 'jet', 'pinnedapplication');
-INSERT INTO `django_content_type` VALUES ('7', 'sessions', 'session');
-INSERT INTO `django_content_type` VALUES ('8', 'sites', 'site');
-INSERT INTO `django_content_type` VALUES ('30', 'social_auth', 'steamuser');
-INSERT INTO `django_content_type` VALUES ('31', 'social_django', 'association');
-INSERT INTO `django_content_type` VALUES ('34', 'social_django', 'code');
-INSERT INTO `django_content_type` VALUES ('33', 'social_django', 'nonce');
-INSERT INTO `django_content_type` VALUES ('35', 'social_django', 'partial');
-INSERT INTO `django_content_type` VALUES ('32', 'social_django', 'usersocialauth');
+INSERT INTO `django_content_type` VALUES ('3', 'jet', 'userdashboardmodule');
+INSERT INTO `django_content_type` VALUES ('8', 'sessions', 'session');
+INSERT INTO `django_content_type` VALUES ('9', 'sites', 'site');
+INSERT INTO `django_content_type` VALUES ('26', 'social_auth', 'steamuser');
+INSERT INTO `django_content_type` VALUES ('27', 'social_django', 'association');
+INSERT INTO `django_content_type` VALUES ('30', 'social_django', 'code');
+INSERT INTO `django_content_type` VALUES ('29', 'social_django', 'nonce');
+INSERT INTO `django_content_type` VALUES ('31', 'social_django', 'partial');
+INSERT INTO `django_content_type` VALUES ('28', 'social_django', 'usersocialauth');
 
 -- ----------------------------
 -- Table structure for django_migrations
@@ -828,44 +692,45 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of django_migrations
 -- ----------------------------
-INSERT INTO `django_migrations` VALUES ('1', 'contenttypes', '0001_initial', '2017-10-12 01:41:49.776000');
-INSERT INTO `django_migrations` VALUES ('2', 'admin', '0001_initial', '2017-10-12 01:41:50.382000');
-INSERT INTO `django_migrations` VALUES ('3', 'admin', '0002_logentry_remove_auto_add', '2017-10-12 01:41:50.393000');
-INSERT INTO `django_migrations` VALUES ('4', 'contenttypes', '0002_remove_content_type_name', '2017-10-12 01:41:50.796000');
-INSERT INTO `django_migrations` VALUES ('5', 'auth', '0001_initial', '2017-10-12 01:41:52.020000');
-INSERT INTO `django_migrations` VALUES ('6', 'auth', '0002_alter_permission_name_max_length', '2017-10-12 01:41:52.175000');
-INSERT INTO `django_migrations` VALUES ('7', 'auth', '0003_alter_user_email_max_length', '2017-10-12 01:41:52.195000');
-INSERT INTO `django_migrations` VALUES ('8', 'auth', '0004_alter_user_username_opts', '2017-10-12 01:41:52.243000');
-INSERT INTO `django_migrations` VALUES ('9', 'auth', '0005_alter_user_last_login_null', '2017-10-12 01:41:52.255000');
-INSERT INTO `django_migrations` VALUES ('10', 'auth', '0006_require_contenttypes_0002', '2017-10-12 01:41:52.258000');
-INSERT INTO `django_migrations` VALUES ('11', 'auth', '0007_alter_validators_add_error_messages', '2017-10-12 01:41:52.268000');
-INSERT INTO `django_migrations` VALUES ('12', 'auth', '0008_alter_user_username_max_length', '2017-10-12 01:41:52.279000');
-INSERT INTO `django_migrations` VALUES ('13', 'betting', '0001_initial', '2017-10-12 01:41:57.680000');
-INSERT INTO `django_migrations` VALUES ('14', 'jet', '0001_initial', '2017-10-12 01:41:58.089000');
-INSERT INTO `django_migrations` VALUES ('15', 'jet', '0002_delete_userdashboardmodule', '2017-10-12 01:41:58.174000');
-INSERT INTO `django_migrations` VALUES ('16', 'sessions', '0001_initial', '2017-10-12 01:41:58.351000');
-INSERT INTO `django_migrations` VALUES ('17', 'sites', '0001_initial', '2017-10-12 01:41:58.494000');
-INSERT INTO `django_migrations` VALUES ('18', 'sites', '0002_alter_domain_unique', '2017-10-12 01:41:58.522000');
-INSERT INTO `django_migrations` VALUES ('19', 'default', '0001_initial', '2017-10-12 01:41:59.302000');
-INSERT INTO `django_migrations` VALUES ('20', 'social_auth', '0001_initial', '2017-10-12 01:41:59.307000');
-INSERT INTO `django_migrations` VALUES ('21', 'default', '0002_add_related_name', '2017-10-12 01:41:59.475000');
-INSERT INTO `django_migrations` VALUES ('22', 'social_auth', '0002_add_related_name', '2017-10-12 01:41:59.480000');
-INSERT INTO `django_migrations` VALUES ('23', 'default', '0003_alter_email_max_length', '2017-10-12 01:41:59.573000');
-INSERT INTO `django_migrations` VALUES ('24', 'social_auth', '0003_alter_email_max_length', '2017-10-12 01:41:59.577000');
-INSERT INTO `django_migrations` VALUES ('25', 'default', '0004_auto_20160423_0400', '2017-10-12 01:41:59.609000');
-INSERT INTO `django_migrations` VALUES ('26', 'social_auth', '0004_auto_20160423_0400', '2017-10-12 01:41:59.613000');
-INSERT INTO `django_migrations` VALUES ('27', 'social_auth', '0005_auto_20160727_2333', '2017-10-12 01:41:59.638000');
-INSERT INTO `django_migrations` VALUES ('28', 'social_django', '0006_partial', '2017-10-12 01:41:59.743000');
-INSERT INTO `django_migrations` VALUES ('29', 'social_django', '0002_add_related_name', '2017-10-12 01:41:59.751000');
-INSERT INTO `django_migrations` VALUES ('30', 'social_django', '0003_alter_email_max_length', '2017-10-12 01:41:59.755000');
-INSERT INTO `django_migrations` VALUES ('31', 'social_django', '0001_initial', '2017-10-12 01:41:59.759000');
-INSERT INTO `django_migrations` VALUES ('32', 'social_django', '0004_auto_20160423_0400', '2017-10-12 01:41:59.763000');
-INSERT INTO `django_migrations` VALUES ('33', 'social_django', '0005_auto_20160727_2333', '2017-10-12 01:41:59.793000');
+INSERT INTO `django_migrations` VALUES ('1', 'contenttypes', '0001_initial', '2017-10-12 03:03:28.718000');
+INSERT INTO `django_migrations` VALUES ('2', 'admin', '0001_initial', '2017-10-12 03:03:28.985000');
+INSERT INTO `django_migrations` VALUES ('3', 'admin', '0002_logentry_remove_auto_add', '2017-10-12 03:03:28.996000');
+INSERT INTO `django_migrations` VALUES ('4', 'contenttypes', '0002_remove_content_type_name', '2017-10-12 03:03:29.268000');
+INSERT INTO `django_migrations` VALUES ('5', 'auth', '0001_initial', '2017-10-12 03:03:29.884000');
+INSERT INTO `django_migrations` VALUES ('6', 'auth', '0002_alter_permission_name_max_length', '2017-10-12 03:03:29.963000');
+INSERT INTO `django_migrations` VALUES ('7', 'auth', '0003_alter_user_email_max_length', '2017-10-12 03:03:29.974000');
+INSERT INTO `django_migrations` VALUES ('8', 'auth', '0004_alter_user_username_opts', '2017-10-12 03:03:29.985000');
+INSERT INTO `django_migrations` VALUES ('9', 'auth', '0005_alter_user_last_login_null', '2017-10-12 03:03:29.996000');
+INSERT INTO `django_migrations` VALUES ('10', 'auth', '0006_require_contenttypes_0002', '2017-10-12 03:03:29.999000');
+INSERT INTO `django_migrations` VALUES ('11', 'auth', '0007_alter_validators_add_error_messages', '2017-10-12 03:03:30.016000');
+INSERT INTO `django_migrations` VALUES ('12', 'auth', '0008_alter_user_username_max_length', '2017-10-12 03:03:30.027000');
+INSERT INTO `django_migrations` VALUES ('13', 'betting', '0001_initial', '2017-10-12 03:03:33.144000');
+INSERT INTO `django_migrations` VALUES ('14', 'jet', '0001_initial', '2017-10-12 03:03:33.387000');
+INSERT INTO `django_migrations` VALUES ('15', 'jet', '0002_delete_userdashboardmodule', '2017-10-12 03:03:33.409000');
+INSERT INTO `django_migrations` VALUES ('16', 'jet', '0003_userdashboardmodule', '2017-10-12 03:03:33.484000');
+INSERT INTO `django_migrations` VALUES ('17', 'sessions', '0001_initial', '2017-10-12 03:03:33.546000');
+INSERT INTO `django_migrations` VALUES ('18', 'sites', '0001_initial', '2017-10-12 03:03:33.589000');
+INSERT INTO `django_migrations` VALUES ('19', 'sites', '0002_alter_domain_unique', '2017-10-12 03:03:33.613000');
+INSERT INTO `django_migrations` VALUES ('20', 'default', '0001_initial', '2017-10-12 03:03:34.082000');
+INSERT INTO `django_migrations` VALUES ('21', 'social_auth', '0001_initial', '2017-10-12 03:03:34.086000');
+INSERT INTO `django_migrations` VALUES ('22', 'default', '0002_add_related_name', '2017-10-12 03:03:34.217000');
+INSERT INTO `django_migrations` VALUES ('23', 'social_auth', '0002_add_related_name', '2017-10-12 03:03:34.224000');
+INSERT INTO `django_migrations` VALUES ('24', 'default', '0003_alter_email_max_length', '2017-10-12 03:03:34.324000');
+INSERT INTO `django_migrations` VALUES ('25', 'social_auth', '0003_alter_email_max_length', '2017-10-12 03:03:34.328000');
+INSERT INTO `django_migrations` VALUES ('26', 'default', '0004_auto_20160423_0400', '2017-10-12 03:03:34.354000');
+INSERT INTO `django_migrations` VALUES ('27', 'social_auth', '0004_auto_20160423_0400', '2017-10-12 03:03:34.358000');
+INSERT INTO `django_migrations` VALUES ('28', 'social_auth', '0005_auto_20160727_2333', '2017-10-12 03:03:34.383000');
+INSERT INTO `django_migrations` VALUES ('29', 'social_django', '0006_partial', '2017-10-12 03:03:34.435000');
+INSERT INTO `django_migrations` VALUES ('30', 'social_django', '0002_add_related_name', '2017-10-12 03:03:34.443000');
+INSERT INTO `django_migrations` VALUES ('31', 'social_django', '0003_alter_email_max_length', '2017-10-12 03:03:34.447000');
+INSERT INTO `django_migrations` VALUES ('32', 'social_django', '0001_initial', '2017-10-12 03:03:34.451000');
+INSERT INTO `django_migrations` VALUES ('33', 'social_django', '0004_auto_20160423_0400', '2017-10-12 03:03:34.456000');
+INSERT INTO `django_migrations` VALUES ('34', 'social_django', '0005_auto_20160727_2333', '2017-10-12 03:03:34.460000');
 
 -- ----------------------------
 -- Table structure for django_session
@@ -931,6 +796,28 @@ CREATE TABLE `jet_pinnedapplication` (
 
 -- ----------------------------
 -- Records of jet_pinnedapplication
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for jet_userdashboardmodule
+-- ----------------------------
+DROP TABLE IF EXISTS `jet_userdashboardmodule`;
+CREATE TABLE `jet_userdashboardmodule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `module` varchar(255) NOT NULL,
+  `app_label` varchar(255) DEFAULT NULL,
+  `user` int(10) unsigned NOT NULL,
+  `column` int(10) unsigned NOT NULL,
+  `order` int(11) NOT NULL,
+  `settings` longtext NOT NULL,
+  `children` longtext NOT NULL,
+  `collapsed` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of jet_userdashboardmodule
 -- ----------------------------
 
 -- ----------------------------
