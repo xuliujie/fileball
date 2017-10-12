@@ -25,7 +25,7 @@ from betting.knapsack import knapsack
 _logger = logging.getLogger(__name__)
 
 _inventory_url_base_en = 'http://steamcommunity.com/inventory/{steamid}/{appid}/2?l=english&count=2000&start_assetid={s_assetid}'
-_inventory_url_base_zh = 'http://steamcommunity.com/inventory/{steamid}/{appid}/2?l=schinese&count=2000&start_assetid={s_assetid}'
+# _inventory_url_base_zh = 'http://steamcommunity.com/inventory/{steamid}/{appid}/2?l=schinese&count=2000&start_assetid={s_assetid}'
 
 _c5_item_price_url_base = 'https://www.c5game.com/api/item/overview'
 
@@ -40,10 +40,10 @@ def get_user_inventories(steam_id, s_assetid=None, lang='en'):
         'total_count': 0
     }
     try:
-        _inventory_url_base = _inventory_url_base_en
-        if lang != 'en':
-            _inventory_url_base = _inventory_url_base_zh
-        t_url = _inventory_url_base.format(steamid=steam_id, appid=settings.BETTING_APP_ID, s_assetid=s_assetid)
+        # _inventory_url_base = _inventory_url_base_en
+        # if lang != 'en':
+        #     _inventory_url_base = _inventory_url_base_zh
+        t_url = _inventory_url_base_en.format(steamid=steam_id, appid=settings.BETTING_APP_ID, s_assetid=s_assetid)
         resp = requests.get(t_url, timeout=settings.STEAM_REQUEST_TIMEOUT)
         body = json.loads(resp.content, encoding='utf-8')
         if body is None:

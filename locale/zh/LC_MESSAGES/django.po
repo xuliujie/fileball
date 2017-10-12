@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 10:28+0800\n"
+"POT-Creation-Date: 2017-10-12 15:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr "创建时间"
 msgid "Update Time"
 msgstr "更新时间"
 
-#: .\betting\models.py:79 .\betting\models.py:229
+#: .\betting\models.py:79 .\betting\models.py:217
 msgid "Name"
 msgstr "名称"
 
@@ -33,9 +33,8 @@ msgstr "名称"
 msgid "Label"
 msgstr "标签"
 
-#: .\betting\models.py:87 .\betting\models.py:160 .\betting\models.py:179
-#: .\betting\models.py:197 .\betting\models.py:215 .\betting\models.py:309
-#: .\betting\models.py:444
+#: .\betting\models.py:87 .\betting\models.py:161 .\betting\models.py:180
+#: .\betting\models.py:198 .\betting\models.py:300
 msgid "Steamer"
 msgstr "玩家"
 
@@ -55,12 +54,12 @@ msgstr "时间戳"
 msgid "Temp Game Hash"
 msgstr "Temp Game Hash"
 
-#: .\betting\models.py:115 .\betting\models.py:253
+#: .\betting\models.py:115 .\betting\models.py:244
 #: .\templates\common\nav\nav.html:23
 msgid "Coinflip"
 msgstr "翻硬币"
 
-#: .\betting\models.py:116 .\betting\models.py:254
+#: .\betting\models.py:116 .\betting\models.py:245
 #: .\templates\common\nav\nav.html:25
 msgid "Jackpot"
 msgstr "轮盘"
@@ -85,7 +84,7 @@ msgstr "Secret"
 msgid "Percentage"
 msgstr "Percentage"
 
-#: .\betting\models.py:129 .\betting\models.py:164
+#: .\betting\models.py:129 .\betting\models.py:165
 msgid "Game Type"
 msgstr "游戏类型"
 
@@ -113,7 +112,7 @@ msgstr "获胜票号"
 msgid "Win at"
 msgstr "获胜时间"
 
-#: .\betting\models.py:136 .\betting\models.py:180 .\betting\models.py:199
+#: .\betting\models.py:136 .\betting\models.py:181 .\betting\models.py:200
 msgid "Status"
 msgstr "状态"
 
@@ -145,41 +144,41 @@ msgstr "交易已接受"
 msgid "Cancelled"
 msgstr "已取消"
 
-#: .\betting\models.py:159
+#: .\betting\models.py:160
 msgid "Team"
 msgstr "队伍"
 
-#: .\betting\models.py:161
+#: .\betting\models.py:162
 msgid "Is Creator"
 msgstr ""
 
-#: .\betting\models.py:162
+#: .\betting\models.py:163
 msgid "Is Joined"
 msgstr ""
 
-#: .\betting\models.py:163
+#: .\betting\models.py:164
 msgid "Game"
 msgstr "游戏"
 
-#: .\betting\models.py:165 .\betting\models.py:198 .\betting\models.py:216
+#: .\betting\models.py:166 .\betting\models.py:199
 #: .\templates\common\history\history_template.html:192
 msgid "Amount"
 msgstr "数量"
 
-#: .\betting\models.py:166
+#: .\betting\models.py:167
 msgid "Ticket Begin"
 msgstr "起始票号"
 
-#: .\betting\models.py:167
+#: .\betting\models.py:168
 msgid "Ticket End"
 msgstr "结束票号"
 
-#: .\betting\models.py:171 .\betting\models.py:172 .\betting\models.py:236
-#: .\templates\common\nav\nav.html:28 .\templates\pages\profile.html:83
+#: .\betting\models.py:172 .\betting\models.py:173 .\betting\models.py:228
+#: .\templates\common\nav\nav.html:28 .\templates\pages\profile.html:51
 msgid "Deposit"
 msgstr "饰品存入"
 
-#: .\betting\models.py:182 .\betting\models.py:200
+#: .\betting\models.py:183 .\betting\models.py:201
 #: .\templates\pages\profile_detail\package.html:83
 #: .\templates\pages\profile_detail\package.html:111
 #: .\templates\pages\profile_detail\store.html:81
@@ -187,277 +186,246 @@ msgstr "饰品存入"
 msgid "Security Code"
 msgstr "安全码"
 
-#: .\betting\models.py:183 .\betting\models.py:201
+#: .\betting\models.py:184 .\betting\models.py:202
 msgid "Trade No."
 msgstr "交易编号"
 
-#: .\betting\models.py:184 .\betting\models.py:202
+#: .\betting\models.py:185 .\betting\models.py:203
 msgid "Bot Status"
 msgstr "机器人状态"
 
-#: .\betting\models.py:185 .\betting\models.py:203
+#: .\betting\models.py:186 .\betting\models.py:204
 msgid "Bot Message"
 msgstr "机器人消息"
 
-#: .\betting\models.py:186 .\betting\models.py:204 .\betting\models.py:217
+#: .\betting\models.py:187 .\betting\models.py:205
 msgid "Trade Time"
 msgstr "交易时间"
 
-#: .\betting\models.py:192 .\betting\models.py:193
+#: .\betting\models.py:193 .\betting\models.py:194
 msgid "Send Records"
 msgstr "发货记录"
 
-#: .\betting\models.py:230 .\templates\pages\profile_detail\package.html:18
+#: .\betting\models.py:218
+msgid "Market Name"
+msgstr "商城"
+
+#: .\betting\models.py:219
+msgid "Market Hash Name"
+msgstr "Hash Name"
+
+#: .\betting\models.py:220 .\templates\pages\profile_detail\package.html:18
 #: .\templates\pages\profile_detail\shop.html:22
 #: .\templates\pages\profile_detail\store.html:19
 msgid "Price"
 msgstr "价格"
 
-#: .\betting\models.py:231
+#: .\betting\models.py:221
 msgid "Rarity"
 msgstr "稀有度"
 
-#: .\betting\models.py:232
+#: .\betting\models.py:222
+msgid "Rarity Color"
+msgstr "颜色"
+
+#: .\betting\models.py:223
+msgid "Exterior"
+msgstr "外观"
+
+#: .\betting\models.py:224
 msgid "AssetID(Negative numbers if item is virtual)"
 msgstr ""
 
-#: .\betting\models.py:233
+#: .\betting\models.py:225
 msgid "AppID"
 msgstr ""
 
-#: .\betting\models.py:234
+#: .\betting\models.py:226
 msgid "ClassID"
 msgstr ""
 
-#: .\betting\models.py:235
+#: .\betting\models.py:227
 msgid "ContextID"
 msgstr ""
 
-#: .\betting\models.py:237
+#: .\betting\models.py:229
 msgid "Send Record"
 msgstr "发货记录"
 
-#: .\betting\models.py:238
+#: .\betting\models.py:230
 msgid "Store Record"
 msgstr "存入记录"
 
-#: .\betting\models.py:239
-msgid "F coins Record"
-msgstr "F币消费记录"
-
-#: .\betting\models.py:241
+#: .\betting\models.py:232
 msgid "owner"
 msgstr "拥有者"
 
-#: .\betting\models.py:242
+#: .\betting\models.py:233
 msgid "Is Locked"
 msgstr ""
 
-#: .\betting\models.py:248 .\betting\models.py:249
+#: .\betting\models.py:239 .\betting\models.py:240
 msgid "Prop Items"
 msgstr "下注物品"
 
-#: .\betting\models.py:255 .\betting\models.py:423 .\betting\models.py:424
-#: .\templates\news\news_detail.html:7 .\templates\pages\home.html:83
+#: .\betting\models.py:246 .\templates\pages\home.html:83
 msgid "News"
 msgstr "新闻"
 
-#: .\betting\models.py:256 .\betting\models.py:439 .\betting\models.py:440
-#: .\templates\pages\home.html:54
+#: .\betting\models.py:247 .\templates\pages\home.html:54
 msgid "Video"
 msgstr "直播"
 
-#: .\betting\models.py:257
+#: .\betting\models.py:248
 msgid "Homepage"
 msgstr ""
 
-#: .\betting\models.py:258
+#: .\betting\models.py:249
 msgid "All pages"
 msgstr "全部新闻"
 
-#: .\betting\models.py:262
+#: .\betting\models.py:253
 msgid "Info"
 msgstr "通知"
 
-#: .\betting\models.py:263
+#: .\betting\models.py:254
 msgid "Warning"
 msgstr "警告"
 
-#: .\betting\models.py:268
+#: .\betting\models.py:259
 msgid "Page Type"
 msgstr "页面类型"
 
-#: .\betting\models.py:269
+#: .\betting\models.py:260
 msgid "Anno Type"
 msgstr "通知类型"
 
-#: .\betting\models.py:270
+#: .\betting\models.py:261
 msgid "Content(zh)"
 msgstr "内容（中文）"
 
-#: .\betting\models.py:271
+#: .\betting\models.py:262
 msgid "Content(en)"
 msgstr "内容（英文）"
 
-#: .\betting\models.py:272 .\betting\models.py:297 .\betting\models.py:328
-#: .\betting\models.py:458
+#: .\betting\models.py:263 .\betting\models.py:288 .\betting\models.py:319
 msgid "Enable"
 msgstr "是否启用"
 
-#: .\betting\models.py:273 .\betting\models.py:296
+#: .\betting\models.py:264 .\betting\models.py:287
 msgid "Num."
 msgstr "序号"
 
-#: .\betting\models.py:274 .\betting\models.py:298 .\betting\models.py:311
-#: .\betting\models.py:329 .\betting\models.py:457
+#: .\betting\models.py:265 .\betting\models.py:289 .\betting\models.py:302
+#: .\betting\models.py:320
 msgid "Remark"
 msgstr "备注"
 
-#: .\betting\models.py:280 .\betting\models.py:281
+#: .\betting\models.py:271 .\betting\models.py:272
 msgid "Announcements"
 msgstr "通知"
 
-#: .\betting\models.py:285
+#: .\betting\models.py:276
 msgid "Common"
 msgstr "普通推广"
 
-#: .\betting\models.py:286
+#: .\betting\models.py:277
 msgid "Personal"
 msgstr "个人推广"
 
-#: .\betting\models.py:291
+#: .\betting\models.py:282
 msgid "Title"
 msgstr "标题"
 
-#: .\betting\models.py:292
+#: .\betting\models.py:283
 msgid "Img Url"
 msgstr "图片url"
 
-#: .\betting\models.py:293 .\betting\models.py:454
+#: .\betting\models.py:284
 msgid "Target Url"
 msgstr "跳转目标url"
 
-#: .\betting\models.py:294
+#: .\betting\models.py:285
 msgid "Button"
 msgstr "按钮文字"
 
-#: .\betting\models.py:295
+#: .\betting\models.py:286
 msgid "GiveAway Type"
 msgstr "推广类型"
 
-#: .\betting\models.py:304 .\betting\models.py:305
+#: .\betting\models.py:295 .\betting\models.py:296
 msgid "Give Away"
 msgstr "推广"
 
-#: .\betting\models.py:310
+#: .\betting\models.py:301
 msgid "GiveAway"
 msgstr "推广"
 
-#: .\betting\models.py:317 .\betting\models.py:318
+#: .\betting\models.py:308 .\betting\models.py:309
 msgid "User Posts"
 msgstr "定制推广"
 
-#: .\betting\models.py:335 .\betting\models.py:336
+#: .\betting\models.py:326 .\betting\models.py:327
 msgid "Site Configs"
 msgstr "站点配置"
 
-#: .\betting\models.py:340
+#: .\betting\models.py:331
 msgid "BotAccount"
 msgstr "机器人帐号"
 
-#: .\betting\models.py:341
+#: .\betting\models.py:332
 msgid "Enable Coinflip"
 msgstr "开启Coinflip"
 
-#: .\betting\models.py:342
+#: .\betting\models.py:333
 msgid "Coinflip Joinable"
 msgstr "允许加入Coinflip"
 
-#: .\betting\models.py:343
+#: .\betting\models.py:334
 msgid "Coinflip Join Idle"
 msgstr "加入Coinflip前等待时间(秒)"
 
-#: .\betting\models.py:344
+#: .\betting\models.py:335
 msgid "Coinflip Creatable"
 msgstr "允许创建Coinflip"
 
-#: .\betting\models.py:345
+#: .\betting\models.py:336
 msgid "Coinflip Create Idle"
 msgstr "创建Coinflip前等待时间(秒)"
 
-#: .\betting\models.py:346
+#: .\betting\models.py:337
 msgid "Coinflip Min Value"
 msgstr "Coinflip最小金额"
 
-#: .\betting\models.py:347
+#: .\betting\models.py:338
 msgid "Coinflip Max Value"
 msgstr "Coinflip最大金额"
 
-#: .\betting\models.py:348
+#: .\betting\models.py:339
 msgid "Max Coinflip Count"
 msgstr "同时最多创建的Coinflip房间"
 
-#: .\betting\models.py:349
+#: .\betting\models.py:340
 msgid "Enable Jackpot"
 msgstr "开启Jackpot"
 
-#: .\betting\models.py:350
+#: .\betting\models.py:341
 msgid "Jackpot Join Idle"
 msgstr "加入Jackpot前等待时间(秒)"
 
-#: .\betting\models.py:351
+#: .\betting\models.py:342
 msgid "Jackpot Min Value"
 msgstr "Jackpot最小金额"
 
-#: .\betting\models.py:352
+#: .\betting\models.py:343
 msgid "Jackpot Max Value"
 msgstr "Jackpot最大金额"
 
-#: .\betting\models.py:355 .\betting\models.py:356
+#: .\betting\models.py:346 .\betting\models.py:347
 msgid "Betting Bots"
 msgstr "下注机器人"
 
-#: .\betting\models.py:429
-msgid "douyu"
-msgstr "斗鱼"
-
-#: .\betting\models.py:445
-msgid "F coins"
-msgstr "F币"
-
-#: .\betting\models.py:446
-msgid "Affiliate Code"
-msgstr "推广码"
-
-#: .\betting\models.py:447
-msgid "Higher"
-msgstr "上级"
-
-#: .\betting\models.py:448
-msgid "Can Buy"
-msgstr "可在商城购买"
-
-#: .\betting\models.py:449
-msgid "Is New"
-msgstr "可输入兑换码"
-
-#: .\betting\models.py:453
-msgid "Index"
-msgstr ""
-
-#: .\betting\models.py:455
-msgid "Picture(width:1135)"
-msgstr ""
-
-#: .\betting\models.py:456
-msgid "Description"
-msgstr ""
-
-#: .\betting\models.py:464 .\betting\models.py:465
-msgid "Carousel"
-msgstr "首页轮播图"
-
-#: .\betting\views.py:320 .\betting\views.py:343
+#: .\betting\views.py:271 .\betting\views.py:294
 msgid "The site in on maintenance, please wait for a while."
 msgstr "网站正在维护中，请稍等。"
 
@@ -517,11 +485,6 @@ msgid ""
 "        <p>If you don't follow the rules, you could get a mute between 5 "
 "minutes and 30 days. In extreme\n"
 "            cases you could get a lifetime chat mute.</p>\n"
-"        <p>If you wanna get helped talk in english please. you have any "
-"problems with trades, send us an email at <a\n"
-"                href=\"/support/\" target=\"_blank\">Support</a>. Mostly we "
-"response in 24-48 hours,\n"
-"            but occurs when we need more time to fix it.</p>\n"
 "        "
 msgstr ""
 "\n"
@@ -535,11 +498,6 @@ msgstr ""
 "        </ul>\n"
 "        <p>如果您不遵守以上规则，您可能会受到5分钟至30天的禁言。\n"
 "            极端情况下您可能会受到永久禁言。</p>\n"
-"        <p>如果您需要任何帮助，请用英文表述。如果您与网站交易报价有任何问题请"
-"发送邮件至 <a\n"
-"                href=\"/support/\" target=\"_blank\">Support</a>. 通常情况下"
-"我们会于24-48小时进行回复\n"
-"            ，若出现我们需要花更多时间解决的问题，时间会被延长。</p>\n"
 "        "
 
 #: .\templates\common\footer\footer.html:12 .\templates\pages\coinflip.html:73
@@ -549,10 +507,6 @@ msgstr "教程"
 #: .\templates\common\footer\footer.html:13
 msgid "Provably Fair"
 msgstr "公平验证"
-
-#: .\templates\common\footer\footer.html:14
-msgid "Terms Of Service"
-msgstr "服务条款"
 
 #: .\templates\common\footer\footer.html:15
 msgid "CSGO Steambot Status:"
@@ -574,23 +528,23 @@ msgstr "观看"
 
 #: .\templates\common\history\history_template.html:118
 #: .\templates\pages\coinflip_template.html:91
-#: .\templates\pages\coinflip_template.html:343
+#: .\templates\pages\coinflip_template.html:339
 #: .\templates\pages\play_fair.html:55
 msgid "Hash:"
 msgstr "Hash"
 
 #: .\templates\common\history\history_template.html:119
 #: .\templates\pages\coinflip_template.html:93
-#: .\templates\pages\coinflip_template.html:344
-#: .\templates\pages\coinflip_template.html:386
+#: .\templates\pages\coinflip_template.html:340
+#: .\templates\pages\coinflip_template.html:382
 #: .\templates\pages\jackpot_template.html:48
 msgid "Percentage:"
 msgstr "Percentage:"
 
 #: .\templates\common\history\history_template.html:120
 #: .\templates\pages\coinflip_template.html:95
-#: .\templates\pages\coinflip_template.html:345
-#: .\templates\pages\coinflip_template.html:386
+#: .\templates\pages\coinflip_template.html:341
+#: .\templates\pages\coinflip_template.html:382
 #: .\templates\pages\jackpot_template.html:48
 #: .\templates\pages\play_fair.html:63
 msgid "Secret:"
@@ -604,13 +558,13 @@ msgstr "玩家"
 #: .\templates\common\history\history_template.html:142
 #: .\templates\common\history\history_template.html:191
 #: .\templates\pages\coinflip.html:81
-#: .\templates\pages\profile_detail\trade_record.html:29
+#: .\templates\pages\profile_detail\trade_record.html:28
 msgid "Items"
 msgstr "物品"
 
 #: .\templates\common\history\history_template.html:143
 #: .\templates\pages\coinflip.html:82
-#: .\templates\pages\profile_detail\trade_record.html:30
+#: .\templates\pages\profile_detail\trade_record.html:29
 msgid "Total"
 msgstr "总共"
 
@@ -625,7 +579,7 @@ msgstr "胜利/失败"
 
 #: .\templates\common\history\history_template.html:194
 #: .\templates\pages\profile_detail\store.html:20
-#: .\templates\pages\profile_detail\trade_record.html:31
+#: .\templates\pages\profile_detail\trade_record.html:30
 msgid "Time"
 msgstr "时间"
 
@@ -744,7 +698,7 @@ msgstr "您的库存中没有任何饰品，请从Steam背包存入饰品。"
 msgid "Click here to deposit item."
 msgstr "点击来存入物品。"
 
-#: .\templates\common\nav\nav.html:30 .\templates\pages\profile.html:82
+#: .\templates\common\nav\nav.html:30 .\templates\pages\profile.html:50
 msgid "Inventory"
 msgstr "饰品背包"
 
@@ -1133,25 +1087,6 @@ msgstr ""
 "                    或任何Valve Corporation 的商标。</p>\n"
 "            "
 
-#: .\templates\news\news_detail.html:34 .\templates\news\news_list.html:57
-#: .\templates\pages\home.html:103
-msgid "author: "
-msgstr "作者："
-
-#: .\templates\news\news_detail.html:35 .\templates\news\news_list.html:57
-#: .\templates\pages\home.html:103
-msgid "publish in: "
-msgstr "发布于："
-
-#: .\templates\news\news_detail.html:36 .\templates\news\news_list.html:57
-#: .\templates\pages\home.html:103
-msgid "views: "
-msgstr "浏览量："
-
-#: .\templates\news\news_list.html:33
-msgid "All news"
-msgstr "全部新闻"
-
 #: .\templates\page_base.html:27
 msgid "fancsgo eSport Entertainment Platform"
 msgstr "fancsgo电竞娱乐平台|CSGO翻硬币|CSGO夺宝|CSGO推单"
@@ -1192,17 +1127,17 @@ msgstr "历史"
 msgid "Connecting"
 msgstr "连接中"
 
-#: .\templates\pages\coinflip_template.html:194
+#: .\templates\pages\coinflip_template.html:190
 msgid "User joining"
 msgstr "用户加入中"
 
-#: .\templates\pages\coinflip_template.html:197
+#: .\templates\pages\coinflip_template.html:193
 #: .\templates\pages\profile_detail\package.html:102
 #: .\templates\pages\profile_detail\store.html:100
 msgid "We are sending your offer"
 msgstr "正在发送报价"
 
-#: .\templates\pages\coinflip_template.html:203
+#: .\templates\pages\coinflip_template.html:199
 msgid ""
 "\n"
 "                                    You will receive your offer's link here."
@@ -1217,11 +1152,11 @@ msgstr ""
 "为您提供的交易链接 或检查您的交易安全码以防被骗。</span>\n"
 "                                "
 
-#: .\templates\pages\coinflip_template.html:214
+#: .\templates\pages\coinflip_template.html:210
 msgid "Expires at"
 msgstr "过期于:"
 
-#: .\templates\pages\coinflip_template.html:222
+#: .\templates\pages\coinflip_template.html:218
 #, python-format
 msgid ""
 "\n"
@@ -1304,31 +1239,31 @@ msgstr ""
 "                发送申述邮件。</p>\n"
 "            "
 
-#: .\templates\pages\coinflip_template.html:256
+#: .\templates\pages\coinflip_template.html:252
 msgid "Deposit information"
 msgstr "存入信息"
 
-#: .\templates\pages\coinflip_template.html:260
+#: .\templates\pages\coinflip_template.html:256
 msgid "Minimum amount per deposit:"
 msgstr "最低单次存入金额:"
 
-#: .\templates\pages\coinflip_template.html:264
+#: .\templates\pages\coinflip_template.html:260
 msgid "Maximum items in a deposit:"
 msgstr "最高单次存入物品数量:"
 
-#: .\templates\pages\coinflip_template.html:268
+#: .\templates\pages\coinflip_template.html:264
 msgid "Maximum active rounds:"
 msgstr "最高局数限制:"
 
-#: .\templates\pages\coinflip_template.html:269
+#: .\templates\pages\coinflip_template.html:265
 msgid "not set"
 msgstr "未设置"
 
-#: .\templates\pages\coinflip_template.html:272
+#: .\templates\pages\coinflip_template.html:268
 msgid "Coins:"
 msgstr "硬币:"
 
-#: .\templates\pages\coinflip_template.html:280
+#: .\templates\pages\coinflip_template.html:276
 msgid ""
 "\n"
 "                <h2>Create a game</h2>\n"
@@ -1383,11 +1318,11 @@ msgstr ""
 "何游戏。</p>\n"
 "            "
 
-#: .\templates\pages\coinflip_template.html:307
+#: .\templates\pages\coinflip_template.html:303
 msgid "Loading"
 msgstr "加载中"
 
-#: .\templates\pages\coinflip_template.html:382
+#: .\templates\pages\coinflip_template.html:378
 #, python-format, python-brace-format
 msgid ""
 "\n"
@@ -1399,6 +1334,18 @@ msgstr ""
 "                    赢得 $^{item.winner.amount} 赢率为 ^{item.winner."
 "chance}%%\n"
 "                    "
+
+#: .\templates\pages\home.html:103
+msgid "author: "
+msgstr "作者："
+
+#: .\templates\pages\home.html:103
+msgid "publish in: "
+msgstr "发布于："
+
+#: .\templates\pages\home.html:103
+msgid "views: "
+msgstr "浏览量："
 
 #: .\templates\pages\home.html:117
 msgid "Week Winnings"
@@ -1582,52 +1529,17 @@ msgstr ""
 msgid "Find Winning Ticket"
 msgstr ""
 
-#: .\templates\pages\profile.html:30
-#: .\templates\pages\profile_detail\shop.html:50
-msgid "F coins："
-msgstr "F币："
-
-#: .\templates\pages\profile.html:84
+#: .\templates\pages\profile.html:52
 msgid "Inventory History"
 msgstr "库存历史"
 
-#: .\templates\pages\profile.html:85
+#: .\templates\pages\profile.html:53
 msgid "Bet History"
 msgstr "下注记录"
 
-#: .\templates\pages\profile.html:86
-msgid "Affiliate"
-msgstr "推广"
-
-#: .\templates\pages\profile.html:87
+#: .\templates\pages\profile.html:54
 msgid "Trade URL"
 msgstr "交易链接"
-
-#: .\templates\pages\profile_detail\affiliate.html:13
-#, python-format
-msgid ""
-"\n"
-"                <h2>Affiliate Rules</h2>\n"
-"                <p>1.Every user could redeem Promo Code for once, and would "
-"get 50 F Coins after redeem the code.</p>\n"
-"                <p>2.All promo code creator would get 2%% of commission.</"
-"p>\n"
-"                <p>3.Promo code could not be changed once created.</p>\n"
-"                <p><small>Note: We will only count user within 24 hours "
-"since registration as promote user.</small></p>\n"
-"            "
-msgstr ""
-"\n"
-"                <h2>推广规则</h2>\n"
-"                <p>1.所有未使用过他人推广码的用户在使用推广码之后即可获得50 F"
-"币注册奖励。</p>\n"
-"                <p>2.所有推广码发起人都将获得使用其推广码的新用户总流水2%%的"
-"奖励。</p>\n"
-"                <p>3.所有用户都可以创建自己独特的推广码，推广码一经创建不能修"
-"改。</p>\n"
-"                <p><small>注:推广下线仅计算于网站首次登录24小时以内的用户</"
-"small></p>\n"
-"            "
 
 #: .\templates\pages\profile_detail\deposit_record.html:14
 msgid "Coinflip history"
@@ -1768,6 +1680,10 @@ msgstr "商城"
 msgid "There is no available item in shop."
 msgstr "您的Steam库存中没有可用的饰品。"
 
+#: .\templates\pages\profile_detail\shop.html:50
+msgid "F coins："
+msgstr "F币："
+
 #: .\templates\pages\profile_detail\shop.html:53
 #, python-brace-format
 msgid ""
@@ -1832,17 +1748,72 @@ msgstr "存入记录"
 msgid "Withdraw record"
 msgstr "取出记录"
 
-#: .\templates\pages\profile_detail\trade_record.html:16
-msgid "F coins record"
-msgstr "F币消费记录"
-
-#: .\templates\pages\profile_detail\trade_record.html:41
+#: .\templates\pages\profile_detail\trade_record.html:40
 msgid "No history"
 msgstr "没有历史记录。"
 
-#: .\templates\video\video_list.html:33
-msgid "All vedio"
-msgstr "全部直播"
+#~ msgid "F coins Record"
+#~ msgstr "F币消费记录"
+
+#~ msgid "douyu"
+#~ msgstr "斗鱼"
+
+#~ msgid "F coins"
+#~ msgstr "F币"
+
+#~ msgid "Affiliate Code"
+#~ msgstr "推广码"
+
+#~ msgid "Higher"
+#~ msgstr "上级"
+
+#~ msgid "Can Buy"
+#~ msgstr "可在商城购买"
+
+#~ msgid "Is New"
+#~ msgstr "可输入兑换码"
+
+#~ msgid "Carousel"
+#~ msgstr "首页轮播图"
+
+#~ msgid "Terms Of Service"
+#~ msgstr "服务条款"
+
+#~ msgid "All news"
+#~ msgstr "全部新闻"
+
+#~ msgid "Affiliate"
+#~ msgstr "推广"
+
+#~ msgid ""
+#~ "\n"
+#~ "                <h2>Affiliate Rules</h2>\n"
+#~ "                <p>1.Every user could redeem Promo Code for once, and "
+#~ "would get 50 F Coins after redeem the code.</p>\n"
+#~ "                <p>2.All promo code creator would get 2%% of commission.</"
+#~ "p>\n"
+#~ "                <p>3.Promo code could not be changed once created.</p>\n"
+#~ "                <p><small>Note: We will only count user within 24 hours "
+#~ "since registration as promote user.</small></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "                <h2>推广规则</h2>\n"
+#~ "                <p>1.所有未使用过他人推广码的用户在使用推广码之后即可获得"
+#~ "50 F币注册奖励。</p>\n"
+#~ "                <p>2.所有推广码发起人都将获得使用其推广码的新用户总流水2%%"
+#~ "的奖励。</p>\n"
+#~ "                <p>3.所有用户都可以创建自己独特的推广码，推广码一经创建不"
+#~ "能修改。</p>\n"
+#~ "                <p><small>注:推广下线仅计算于网站首次登录24小时以内的用户"
+#~ "</small></p>\n"
+#~ "            "
+
+#~ msgid "F coins record"
+#~ msgstr "F币消费记录"
+
+#~ msgid "All vedio"
+#~ msgstr "全部直播"
 
 #~ msgid "Home"
 #~ msgstr "首页"

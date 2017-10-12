@@ -246,11 +246,13 @@ def check_sending():
                     val = r.get(key)
                     if val:
                         trade = json.loads(val, encoding='utf-8')
-                        trade_no = trade.get('trade_no', None)
-                        if trade_no:
-                            update_send_trade_no(trade['uid'], trade_no, data=trade)
 
                         result = trade.get('status', TradeStatus.Initialed.value)
+                        if result == TradeStatus.Active.value:
+                            trade_no = trade.get('trade_no', None)
+                            if trade_no:
+                                update_send_trade_no(trade['uid'], trade_no, data=trade)
+
                         if result == TradeStatus.Accepted.value:
                             confirm_send_items(trade['uid'], data=trade)
                             r.lrem(_send_list_key, key, num=1)
@@ -266,6 +268,7 @@ def check_sending():
         except Exception as e:
             _logger.exception(e)
 
+
 def setup_send_checker():
     th = Thread(target=check_sending)
     th.start()
@@ -274,7 +277,7 @@ def setup_send_checker():
 def update_send_trade_no(uid, trade_no, **kwargs):
     data = kwargs.get('data', {})
     record = SendRecord.objects.filter(uid=uid).first()
-    if record:
+    if record and not record.trade_no:
         record.trade_no = trade_no
         record.bot_status = data.get('bot_status', 0)
         record.bot_msg = data.get('bot_msg', '')
@@ -287,6 +290,7 @@ def confirm_send_items(uid, **kwargs):
     if record:
         item_del_owner(data.get('myItems', []), record.steamer)
         record.status = data.get('status', TradeStatus.Accepted.value)
+        record.trade_no = data.get('trade_no', '')
         record.bot_status = data.get('bot_status', 0)
         record.bot_msg = data.get('bot_msg', '')
         record.save()

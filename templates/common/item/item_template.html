@@ -15,12 +15,12 @@
                     <div class="price col-xs-6"><span>$^{item.amount}</span></div>
                 </div>
                 <div class="bottom-info">
-                    <div class="col-xs-6 rarity" v-if="item.tags && item.tags.Exterior">
-                        <span :style="'color: #' + item.tags.Rarity.color + ';'">
-                            ^{item.tags.Exterior.localized_tag_name}
+                    <div class="col-xs-6 rarity" v-if="item.exterior">
+                        <span :style="'color: #' + item.rarity_color + ';'">
+                            ^{item.exterior}
                         </span>
                     </div>
-                    <div class="name">^{item.name}</div>
+                    <div class="name">^{item.market_name}</div>
                 </div>
             </div>
         </div>

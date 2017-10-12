@@ -38,7 +38,7 @@
             <div>
                 <template v-for="it in item.itemsShow" :item="it">
                     <img :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/70fx50f'"
-                         class="img-responsive" :title="it.name + ' - $' + it.amount" alt="">
+                         class="img-responsive" :title="it.market_name + ' - $' + it.amount" alt="">
                 </template>
                 <template v-if="item.itemsMore"><span>+ ^{ item.itemsMore } more</span></template>
             </div>

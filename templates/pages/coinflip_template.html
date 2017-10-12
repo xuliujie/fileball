@@ -140,15 +140,11 @@
                             <div class="row row-item">
                                 <div class="col-xs-12 col-sm-3 col-item">
                                     <img :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/120fx100f'"
-                                         alt="" class="img-responsive" v-tooltip:right="it.name">
+                                         alt="" class="img-responsive">
                                 </div>
                                 <div class="col-xs-12 col-sm-6 rarity" style="text-align: center">
                                     <span :class="it.rarity" style="font-weight: bold;">
-                                        {% if LANGUAGE_CODE == 'zh-hans' %}
-                                            ^{it.rarity_zh}
-                                        {% else %}
-                                            ^{it.rarity}
-                                        {% endif %}
+                                        ^{it.market_name}
                                     </span>
                                 </div>
                                 <div class="col-xs-12 col-sm-3 col-amount"><i class="fa fa-dollar"></i> ^{it.amount}</div>
