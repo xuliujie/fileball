@@ -19,7 +19,6 @@ from betting.business.deposit_business import join_coinflip_game, join_jackpot_g
 from betting.business.trade_business import store_items_by_user, withdraw_items_by_user, get_user_package
 from betting.business.steam_business import get_user_inventories
 from betting.business.video_business import get_room, get_room_list
-from betting.business.affiliate_business import get_user_affiliate, save_user_affiliate, exchange_items_by_user
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_current_jackpot_id, get_steam_bot_status
 from betting.forms import TradeUrlForm
 from betting.models import Deposit, CoinFlipGame, Announcement, GiveAway, UserProfile, Article, SendRecord, StoreRecord, Video, Affiliate, Carousel
@@ -251,12 +250,6 @@ class DepositRecordView(ProfileView):
 deposit_record_view = DepositRecordView.as_view()
 
 
-class AffiliateView(ProfileView):
-    template_name = 'pages/profile_detail/affiliate.html'
-
-affiliate_view = AffiliateView.as_view()
-
-
 class ShopView(TemplateView):
     template_name = 'pages/profile_detail/shop.html'
 
@@ -265,47 +258,6 @@ class ShopView(TemplateView):
         return context
 
 shop_view = ShopView.as_view()
-
-
-class AffiliateQueryView(views.APIView):
-
-    def query_affiliate(self, request):
-        try:
-            user = current_user(self.request)
-            if user:
-                ret = get_user_affiliate(steamer=user)
-                return reformat_ret(0, ret, 'Successfully')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, u'查询异常')
-        return reformat_ret(103, {}, u"无效参数")
-
-    def get(self, request, format=None):
-        return self.query_affiliate(request)
-
-affiliate_query_view = AffiliateQueryView.as_view()
-
-
-class AffiliateSaveView(views.APIView):
-
-    def save_affiliate(self, request):
-        try:
-            user = current_user(self.request)
-            if user and user.is_authenticated():
-                code, resp = save_user_affiliate(steamer=user, data=request.data)
-                if code == 0:
-                    return reformat_ret(0, {}, resp)
-                else:
-                    return reformat_ret(code, {}, resp)
-            return reformat_ret(101, {}, u'无效用户')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, u'保存异常')
-
-    def post(self, request, format=None):
-        return self.save_affiliate(request)
-
-affiliate_save_view = AffiliateSaveView.as_view()
 
 
 class JoinJackpotView(mixins.CreateModelMixin, viewsets.GenericViewSet):
@@ -706,140 +658,3 @@ class UpdateThemeView(views.APIView):
 
 
 update_theme_view = UpdateThemeView.as_view()
-
-
-class NewsView(ListView):
-    model = Article
-    template_name = 'news/news_list.html'
-    context_object_name = 'article_list'
-    paginate_by = 6
-
-    def get_context_data(self, **kwargs):
-        context = super(NewsView, self).get_context_data(**kwargs)
-        context['anno'] = get_announcement(page_type=2)
-        return context
-
-news_view = NewsView.as_view()
-
-
-class NewsDetailView(DetailView):
-    model = Article
-    template_name = 'news/news_detail.html'
-    context_object_name = 'article'
-    pk_url_kwarg = 'article_id'
-    
-    def get_object(self, **kwargs):
-        try:
-            article = Article.objects.get(id=self.kwargs.get(self.pk_url_kwarg, None))
-            article.views += 1
-            article.save()
-        except Article.DoesNotExist:
-            return reformat_ret(404, {}, 'Page not found')
-        return article
-
-    def get_context_data(self, **kwargs):
-        context = super(NewsDetailView, self).get_context_data(**kwargs)
-        context['anno'] = get_announcement(page_type=2)
-        return context
-
-newsDetail_view = NewsDetailView.as_view()
-
-
-class VideoView(TemplateView):
-    template_name = 'video/video_list.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(VideoView, self).get_context_data(**kwargs)
-        context['anno'] = get_announcement(page_type=3)
-        return context
-
-video_view = VideoView.as_view()
-
-
-class RoomView(views.APIView):
-    permission_classes = (AllowAny,)
-
-    def room_query(self, request):
-        try:
-            roomCount = request.query_params.get('count', None)
-            type = request.data.get('Type', 'all')
-            page = request.data.get('page', 1)
-            page = 1 if page < 1 else page
-
-            ret = get_room_list(page=page, type=type, roomCount=roomCount)
-
-            return reformat_ret(0, ret, 'query room successfully')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, 'exception')
-
-    def get(self, request, format=None):
-        return self.room_query(request)
-
-    def post(self, request, format=None):
-        return self.room_query(request)
-
-room_query_view = RoomView.as_view()
-
-
-class VideoDetailView(TemplateView):
-    template_name = 'video/video_detail.html'
-    pk_room_type = 'room_type'
-    pk_room_id = 'room_id'
-
-    def get_context_data(self, **kwargs):
-        context = super(VideoDetailView, self).get_context_data(**kwargs)
-        roomInfo = get_room(room=self.kwargs.get(self.pk_room_id, None), site=int(self.kwargs.get(self.pk_room_type, None)))
-        context['room'] = roomInfo
-        context['anno'] = get_announcement(page_type=3)
-        return context
-
-videoDetail_view = VideoDetailView.as_view()
-
-
-class HomeView(TemplateView):
-    template_name = 'pages/home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        user = current_user(self.request)
-
-        carousels = Carousel.objects.all()
-        # video_list = Video.objects.all().order_by('index')[0:4]
-        # videos = []
-        # for video in video_list:
-        #     videos.append(get_room(video.room))
-
-        news_list = Article.objects.all().order_by('-published_time')[0:6]
-
-        context['give'] = get_giveaway(user)
-        context['anno'] = get_announcement(page_type=4)
-        context['carousels'] = carousels
-        context['news_list'] = news_list
-        return context
-
-home_view = HomeView.as_view()
-
-
-class RankingListView(views.APIView):
-    permission_classes = (AllowAny,)
-
-    def ranking_list_query(self, request):
-        try:
-            type = request.data.get('type', None)
-            days = request.data.get('days', None)
-
-            ret = format_ranking_list(type=type, days=days)
-
-            return reformat_ret(0, ret, 'query list successfully')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, 'exception')
-
-    def get(self, request, format=None):
-        return self.ranking_list_query(request)
-
-    def post(self, request, format=None):
-        return self.ranking_list_query(request)
-
-ranking_list_view = RankingListView.as_view()

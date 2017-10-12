@@ -13,7 +13,6 @@ def page_base_processor(request):
     ld = request.user.is_authenticated()
     bot = get_steam_bot_status()
 
-    Fcoins = 0
     times = 0
     wpct = 0
     cost = 0.0
@@ -25,9 +24,6 @@ def page_base_processor(request):
 
     user = current_user(request)
     if user and user.is_authenticated():
-        affiliate = Affiliate.objects.filter(steamer=user).first()
-        if affiliate:
-            Fcoins = affiliate.f_coins
         times, wpct, cost, income = getWins(user)
         times_week, wpct_week, cost_week, income_week = getWins(user, 6)
 
@@ -36,7 +32,6 @@ def page_base_processor(request):
         'maintenance': m,
         'ld': ld,
         'steam_bot': bot,
-        'Fcoins': Fcoins,
         'times': times,
         'wpct': wpct,
         'cost': cost,

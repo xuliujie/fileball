@@ -27,54 +27,22 @@
 					</div>
                     <div class="row">
                         <p class="col-sm-2" style="padding-top: 10px;">
-                            <span style="white-space:nowrap;">{% trans 'F coins：' %}</span>
-                            <span style="color: yellow; white-space:nowrap;">{{ Fcoins }} <img style="margin-bottom: 3px;" src="{% static 'img/gold-16.png' %}"></span>
                         </p>
                         <div class="col-sm-9">
-                            <p>
-                            <span style="white-space:nowrap; margin-right: 20px;">总游戏次数：{{ times }}</span>
-                            <span style="white-space:nowrap; margin-right: 20px;">总流水：{{ cost }}$</span>
-                            <span style="white-space:nowrap; margin-right: 20px;">总收益：{% if income >= 0 %}+{% endif %}{{ income|floatformat:"2" }}$</span>
-                            <span style="white-space:nowrap; margin-right: 20px;">总胜率：{{ wpct|floatformat:"2" }}%</span>
-                            </p>
-                            <p>
-                            <span style="white-space:nowrap; margin-right: 20px;">周游戏次数：{{ times_week }}</span>
-                            <span style="white-space:nowrap; margin-right: 20px;">周流水：{{ cost_week }}$</span>
-                            <span style="white-space:nowrap; margin-right: 20px;">周收益：{% if income >= 0 %}+{% endif %}{{ income_week|floatformat:"2" }}$</span>
-                            <span style="white-space:nowrap; margin-right: 20px;">周胜率：{{ wpct_week|floatformat:"2" }}%</span>
-                            </p>
+{#                            <p>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">总游戏次数：{{ times }}</span>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">总流水：{{ cost }}$</span>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">总收益：{% if income >= 0 %}+{% endif %}{{ income|floatformat:"2" }}$</span>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">总胜率：{{ wpct|floatformat:"2" }}%</span>#}
+{#                            </p>#}
+{#                            <p>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">周游戏次数：{{ times_week }}</span>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">周流水：{{ cost_week }}$</span>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">周收益：{% if income >= 0 %}+{% endif %}{{ income_week|floatformat:"2" }}$</span>#}
+{#                            <span style="white-space:nowrap; margin-right: 20px;">周胜率：{{ wpct_week|floatformat:"2" }}%</span>#}
+{#                            </p>#}
                         </div>
                     </div>
-{#					<div class="row">#}
-{#						<div class="panel panel-default col-xs-10 col-xs-offset-1 col-sm-11 col-sm-offset-0" style="border:none">#}
-{#							<div class="panel-body">#}
-{#								{% for msg in messages %}#}
-{#									<div class="alert alert-success" role="alert">{{ msg }}</div>#}
-{#								{% endfor %}#}
-{#								{% for err in form.tradeUrl.errors %}#}
-{#									<div class="alert alert-danger" role="alert">{{ err|escape }}</div>#}
-{#								{% endfor %}#}
-{#								<form action="" method="post" id="form" class="form-horizontal">#}
-{#								{% csrf_token %}#}
-{#									<div class="form-group">#}
-{#										<div class="col-sm-3 col-md-2 control-label">#}
-{#											<label for="tradeUrl">{% trans 'Trade URL:' %}</label>#}
-{#										</div>#}
-{#										<div class="col-sm-8">#}
-{#											<div class="input-group">#}
-{#												<span class="input-group-btn">#}
-{#												  <button class="btn btn-default " type="button"  onclick="window.open('{{ user.profileurl }}tradeoffers/privacy#trade_offer_access_url', '_blank'); return false;"><i class="fa fa-check "></i></button>#}
-{#												</span>#}
-{#												{{ form.tradeUrl }}#}
-{#											</div>#}
-{#											<p class="form-description text-right"><a href="{{ user.profileurl }}tradeoffers/privacy#trade_offer_access_url" target="_blank" style="color:red">{% trans 'Find your Trade URL here' %}</a></p>#}
-{#										</div>#}
-{#										<div class="col-sm-1"><input type="submit" name="form" class="btn btn-info" value="{% trans 'Edit profile' %}" onclick="document.getElementById('form').submit();"></div>#}
-{#									</div>#}
-{#								</form>#}
-{#							</div>#}
-{#						</div>#}
-{#					</div>#}
 				</div>
 			</div>
 			<div class="row" id="profile-nav" style="background-color: rgba(25, 25, 25, 1);">
@@ -83,7 +51,6 @@
                   <li role="presentation" id="itemStore" class=""><a href="{% url 'store' %}">{% trans 'Deposit' %}</a></li>
                   <li role="presentation" id="tradeRecord" class=""><a href="{% url 'trade_record' %}">{% trans 'Inventory History' %}</a></li>
                   <li role="presentation" id="depositRecord" class=""><a href="{% url 'deposit_record' %}">{% trans 'Bet History' %}</a></li>
-                  <li role="presentation" id="affiliate" class=""><a href="{% url 'affiliate' %}">{% trans 'Affiliate' %}</a></li>
                   <li role="presentation" id="tradeUrl" class=""><a href="{% url 'tradeUrl' %}">{% trans 'Trade URL' %}</a></li>
                 </ul>
 			</div>

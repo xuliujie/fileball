@@ -1,0 +1,1851 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-12 10:28+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\betting\models.py:40
+msgid "Create Time"
+msgstr "创建时间"
+
+#: .\betting\models.py:41
+msgid "Update Time"
+msgstr "更新时间"
+
+#: .\betting\models.py:79 .\betting\models.py:229
+msgid "Name"
+msgstr "名称"
+
+#: .\betting\models.py:80
+msgid "Label"
+msgstr "标签"
+
+#: .\betting\models.py:87 .\betting\models.py:160 .\betting\models.py:179
+#: .\betting\models.py:197 .\betting\models.py:215 .\betting\models.py:309
+#: .\betting\models.py:444
+msgid "Steamer"
+msgstr "玩家"
+
+#: .\betting\models.py:88
+msgid "Room"
+msgstr "房间"
+
+#: .\betting\models.py:89
+msgid "Message"
+msgstr "消息"
+
+#: .\betting\models.py:90
+msgid "Timestamp"
+msgstr "时间戳"
+
+#: .\betting\models.py:110 .\betting\models.py:111
+msgid "Temp Game Hash"
+msgstr "Temp Game Hash"
+
+#: .\betting\models.py:115 .\betting\models.py:253
+#: .\templates\common\nav\nav.html:23
+msgid "Coinflip"
+msgstr "翻硬币"
+
+#: .\betting\models.py:116 .\betting\models.py:254
+#: .\templates\common\nav\nav.html:25
+msgid "Jackpot"
+msgstr "轮盘"
+
+#: .\betting\models.py:120
+msgid "Not End"
+msgstr "未结束"
+
+#: .\betting\models.py:121
+msgid "End"
+msgstr "已结束"
+
+#: .\betting\models.py:126
+msgid "Hash"
+msgstr "Hash"
+
+#: .\betting\models.py:127
+msgid "Secret"
+msgstr "Secret"
+
+#: .\betting\models.py:128
+msgid "Percentage"
+msgstr "Percentage"
+
+#: .\betting\models.py:129 .\betting\models.py:164
+msgid "Game Type"
+msgstr "游戏类型"
+
+#: .\betting\models.py:130
+msgid "Run at"
+msgstr "游戏开始时间"
+
+#: .\betting\models.py:131
+msgid "Total Amount"
+msgstr "总金额"
+
+#: .\betting\models.py:132
+msgid "Total Items"
+msgstr "总物品"
+
+#: .\betting\models.py:133
+msgid "Total Tickets"
+msgstr "总物品"
+
+#: .\betting\models.py:134
+msgid "Win Ticket"
+msgstr "获胜票号"
+
+#: .\betting\models.py:135
+msgid "Win at"
+msgstr "获胜时间"
+
+#: .\betting\models.py:136 .\betting\models.py:180 .\betting\models.py:199
+msgid "Status"
+msgstr "状态"
+
+#: .\betting\models.py:137
+msgid "Is End"
+msgstr "是否已结束"
+
+#: .\betting\models.py:141 .\betting\models.py:142
+msgid "Games"
+msgstr "游戏"
+
+#: .\betting\models.py:148
+msgid "Radiant"
+msgstr "近卫"
+
+#: .\betting\models.py:149
+msgid "Dire"
+msgstr "天灾"
+
+#: .\betting\models.py:153
+msgid "Initialed"
+msgstr "初始化"
+
+#: .\betting\models.py:154
+msgid "Accepted"
+msgstr "交易已接受"
+
+#: .\betting\models.py:155
+msgid "Cancelled"
+msgstr "已取消"
+
+#: .\betting\models.py:159
+msgid "Team"
+msgstr "队伍"
+
+#: .\betting\models.py:161
+msgid "Is Creator"
+msgstr ""
+
+#: .\betting\models.py:162
+msgid "Is Joined"
+msgstr ""
+
+#: .\betting\models.py:163
+msgid "Game"
+msgstr "游戏"
+
+#: .\betting\models.py:165 .\betting\models.py:198 .\betting\models.py:216
+#: .\templates\common\history\history_template.html:192
+msgid "Amount"
+msgstr "数量"
+
+#: .\betting\models.py:166
+msgid "Ticket Begin"
+msgstr "起始票号"
+
+#: .\betting\models.py:167
+msgid "Ticket End"
+msgstr "结束票号"
+
+#: .\betting\models.py:171 .\betting\models.py:172 .\betting\models.py:236
+#: .\templates\common\nav\nav.html:28 .\templates\pages\profile.html:83
+msgid "Deposit"
+msgstr "饰品存入"
+
+#: .\betting\models.py:182 .\betting\models.py:200
+#: .\templates\pages\profile_detail\package.html:83
+#: .\templates\pages\profile_detail\package.html:111
+#: .\templates\pages\profile_detail\store.html:81
+#: .\templates\pages\profile_detail\store.html:109
+msgid "Security Code"
+msgstr "安全码"
+
+#: .\betting\models.py:183 .\betting\models.py:201
+msgid "Trade No."
+msgstr "交易编号"
+
+#: .\betting\models.py:184 .\betting\models.py:202
+msgid "Bot Status"
+msgstr "机器人状态"
+
+#: .\betting\models.py:185 .\betting\models.py:203
+msgid "Bot Message"
+msgstr "机器人消息"
+
+#: .\betting\models.py:186 .\betting\models.py:204 .\betting\models.py:217
+msgid "Trade Time"
+msgstr "交易时间"
+
+#: .\betting\models.py:192 .\betting\models.py:193
+msgid "Send Records"
+msgstr "发货记录"
+
+#: .\betting\models.py:230 .\templates\pages\profile_detail\package.html:18
+#: .\templates\pages\profile_detail\shop.html:22
+#: .\templates\pages\profile_detail\store.html:19
+msgid "Price"
+msgstr "价格"
+
+#: .\betting\models.py:231
+msgid "Rarity"
+msgstr "稀有度"
+
+#: .\betting\models.py:232
+msgid "AssetID(Negative numbers if item is virtual)"
+msgstr ""
+
+#: .\betting\models.py:233
+msgid "AppID"
+msgstr ""
+
+#: .\betting\models.py:234
+msgid "ClassID"
+msgstr ""
+
+#: .\betting\models.py:235
+msgid "ContextID"
+msgstr ""
+
+#: .\betting\models.py:237
+msgid "Send Record"
+msgstr "发货记录"
+
+#: .\betting\models.py:238
+msgid "Store Record"
+msgstr "存入记录"
+
+#: .\betting\models.py:239
+msgid "F coins Record"
+msgstr "F币消费记录"
+
+#: .\betting\models.py:241
+msgid "owner"
+msgstr "拥有者"
+
+#: .\betting\models.py:242
+msgid "Is Locked"
+msgstr ""
+
+#: .\betting\models.py:248 .\betting\models.py:249
+msgid "Prop Items"
+msgstr "下注物品"
+
+#: .\betting\models.py:255 .\betting\models.py:423 .\betting\models.py:424
+#: .\templates\news\news_detail.html:7 .\templates\pages\home.html:83
+msgid "News"
+msgstr "新闻"
+
+#: .\betting\models.py:256 .\betting\models.py:439 .\betting\models.py:440
+#: .\templates\pages\home.html:54
+msgid "Video"
+msgstr "直播"
+
+#: .\betting\models.py:257
+msgid "Homepage"
+msgstr ""
+
+#: .\betting\models.py:258
+msgid "All pages"
+msgstr "全部新闻"
+
+#: .\betting\models.py:262
+msgid "Info"
+msgstr "通知"
+
+#: .\betting\models.py:263
+msgid "Warning"
+msgstr "警告"
+
+#: .\betting\models.py:268
+msgid "Page Type"
+msgstr "页面类型"
+
+#: .\betting\models.py:269
+msgid "Anno Type"
+msgstr "通知类型"
+
+#: .\betting\models.py:270
+msgid "Content(zh)"
+msgstr "内容（中文）"
+
+#: .\betting\models.py:271
+msgid "Content(en)"
+msgstr "内容（英文）"
+
+#: .\betting\models.py:272 .\betting\models.py:297 .\betting\models.py:328
+#: .\betting\models.py:458
+msgid "Enable"
+msgstr "是否启用"
+
+#: .\betting\models.py:273 .\betting\models.py:296
+msgid "Num."
+msgstr "序号"
+
+#: .\betting\models.py:274 .\betting\models.py:298 .\betting\models.py:311
+#: .\betting\models.py:329 .\betting\models.py:457
+msgid "Remark"
+msgstr "备注"
+
+#: .\betting\models.py:280 .\betting\models.py:281
+msgid "Announcements"
+msgstr "通知"
+
+#: .\betting\models.py:285
+msgid "Common"
+msgstr "普通推广"
+
+#: .\betting\models.py:286
+msgid "Personal"
+msgstr "个人推广"
+
+#: .\betting\models.py:291
+msgid "Title"
+msgstr "标题"
+
+#: .\betting\models.py:292
+msgid "Img Url"
+msgstr "图片url"
+
+#: .\betting\models.py:293 .\betting\models.py:454
+msgid "Target Url"
+msgstr "跳转目标url"
+
+#: .\betting\models.py:294
+msgid "Button"
+msgstr "按钮文字"
+
+#: .\betting\models.py:295
+msgid "GiveAway Type"
+msgstr "推广类型"
+
+#: .\betting\models.py:304 .\betting\models.py:305
+msgid "Give Away"
+msgstr "推广"
+
+#: .\betting\models.py:310
+msgid "GiveAway"
+msgstr "推广"
+
+#: .\betting\models.py:317 .\betting\models.py:318
+msgid "User Posts"
+msgstr "定制推广"
+
+#: .\betting\models.py:335 .\betting\models.py:336
+msgid "Site Configs"
+msgstr "站点配置"
+
+#: .\betting\models.py:340
+msgid "BotAccount"
+msgstr "机器人帐号"
+
+#: .\betting\models.py:341
+msgid "Enable Coinflip"
+msgstr "开启Coinflip"
+
+#: .\betting\models.py:342
+msgid "Coinflip Joinable"
+msgstr "允许加入Coinflip"
+
+#: .\betting\models.py:343
+msgid "Coinflip Join Idle"
+msgstr "加入Coinflip前等待时间(秒)"
+
+#: .\betting\models.py:344
+msgid "Coinflip Creatable"
+msgstr "允许创建Coinflip"
+
+#: .\betting\models.py:345
+msgid "Coinflip Create Idle"
+msgstr "创建Coinflip前等待时间(秒)"
+
+#: .\betting\models.py:346
+msgid "Coinflip Min Value"
+msgstr "Coinflip最小金额"
+
+#: .\betting\models.py:347
+msgid "Coinflip Max Value"
+msgstr "Coinflip最大金额"
+
+#: .\betting\models.py:348
+msgid "Max Coinflip Count"
+msgstr "同时最多创建的Coinflip房间"
+
+#: .\betting\models.py:349
+msgid "Enable Jackpot"
+msgstr "开启Jackpot"
+
+#: .\betting\models.py:350
+msgid "Jackpot Join Idle"
+msgstr "加入Jackpot前等待时间(秒)"
+
+#: .\betting\models.py:351
+msgid "Jackpot Min Value"
+msgstr "Jackpot最小金额"
+
+#: .\betting\models.py:352
+msgid "Jackpot Max Value"
+msgstr "Jackpot最大金额"
+
+#: .\betting\models.py:355 .\betting\models.py:356
+msgid "Betting Bots"
+msgstr "下注机器人"
+
+#: .\betting\models.py:429
+msgid "douyu"
+msgstr "斗鱼"
+
+#: .\betting\models.py:445
+msgid "F coins"
+msgstr "F币"
+
+#: .\betting\models.py:446
+msgid "Affiliate Code"
+msgstr "推广码"
+
+#: .\betting\models.py:447
+msgid "Higher"
+msgstr "上级"
+
+#: .\betting\models.py:448
+msgid "Can Buy"
+msgstr "可在商城购买"
+
+#: .\betting\models.py:449
+msgid "Is New"
+msgstr "可输入兑换码"
+
+#: .\betting\models.py:453
+msgid "Index"
+msgstr ""
+
+#: .\betting\models.py:455
+msgid "Picture(width:1135)"
+msgstr ""
+
+#: .\betting\models.py:456
+msgid "Description"
+msgstr ""
+
+#: .\betting\models.py:464 .\betting\models.py:465
+msgid "Carousel"
+msgstr "首页轮播图"
+
+#: .\betting\views.py:320 .\betting\views.py:343
+msgid "The site in on maintenance, please wait for a while."
+msgstr "网站正在维护中，请稍等。"
+
+#: .\social_auth\models.py:54
+msgid "date joined"
+msgstr "加入时间"
+
+#: .\templates\404.html:5 .\templates\404.html:9
+msgid "Not Found"
+msgstr "未找到"
+
+#: .\templates\500.html:5 .\templates\500.html:9
+msgid "Server Exception"
+msgstr "服务器异常"
+
+#: .\templates\admin\submit_line.html:3
+msgid "Save"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:6
+msgid "Delete"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:8
+msgid "Save as new"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:9
+msgid "Save and add another"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:10
+msgid "Save and continue editing"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:12
+msgid "Re-Send"
+msgstr ""
+
+#: .\templates\common\chat\chat_room.html:10
+msgid "chat rules"
+msgstr "聊天规则"
+
+#: .\templates\common\chat\chat_template.html:5
+msgid ""
+"\n"
+"        <p>Everyone could use our chat platform by following these rules:</"
+"p>\n"
+"        <ul>\n"
+"            <li>No advertising</li>\n"
+"            <li>No spamming</li>\n"
+"            <li>No begging</li>\n"
+"            <li>Not harassing other people</li>\n"
+"            <li>No caps</li>\n"
+"            <li>No trading/selling messages</li>\n"
+"        </ul>\n"
+"        <p>If you don't follow the rules, you could get a mute between 5 "
+"minutes and 30 days. In extreme\n"
+"            cases you could get a lifetime chat mute.</p>\n"
+"        <p>If you wanna get helped talk in english please. you have any "
+"problems with trades, send us an email at <a\n"
+"                href=\"/support/\" target=\"_blank\">Support</a>. Mostly we "
+"response in 24-48 hours,\n"
+"            but occurs when we need more time to fix it.</p>\n"
+"        "
+msgstr ""
+"\n"
+"        <p>每个用户都拥有在遵守以下规则使用聊天室的资格:</p>\n"
+"        <ul>\n"
+"            <li>禁止任何形式的广告</li>\n"
+"            <li>禁止刷屏</li>\n"
+"            <li>禁止向本网站用户乞求饰品</li>\n"
+"            <li>禁止骚扰他人</li>\n"
+"            <li>禁止发送交易/买卖饰品相关信息</li>\n"
+"        </ul>\n"
+"        <p>如果您不遵守以上规则，您可能会受到5分钟至30天的禁言。\n"
+"            极端情况下您可能会受到永久禁言。</p>\n"
+"        <p>如果您需要任何帮助，请用英文表述。如果您与网站交易报价有任何问题请"
+"发送邮件至 <a\n"
+"                href=\"/support/\" target=\"_blank\">Support</a>. 通常情况下"
+"我们会于24-48小时进行回复\n"
+"            ，若出现我们需要花更多时间解决的问题，时间会被延长。</p>\n"
+"        "
+
+#: .\templates\common\footer\footer.html:12 .\templates\pages\coinflip.html:73
+msgid "Get started"
+msgstr "教程"
+
+#: .\templates\common\footer\footer.html:13
+msgid "Provably Fair"
+msgstr "公平验证"
+
+#: .\templates\common\footer\footer.html:14
+msgid "Terms Of Service"
+msgstr "服务条款"
+
+#: .\templates\common\footer\footer.html:15
+msgid "CSGO Steambot Status:"
+msgstr "交易机器人状态:"
+
+#: .\templates\common\history\history_template.html:49
+msgid "Needs:"
+msgstr "需求:"
+
+#: .\templates\common\history\history_template.html:67
+#: .\templates\common\history\history_template.html:71
+#: .\templates\common\history\history_template.html:74
+msgid "Join"
+msgstr "加入"
+
+#: .\templates\common\history\history_template.html:108
+msgid "View"
+msgstr "观看"
+
+#: .\templates\common\history\history_template.html:118
+#: .\templates\pages\coinflip_template.html:91
+#: .\templates\pages\coinflip_template.html:343
+#: .\templates\pages\play_fair.html:55
+msgid "Hash:"
+msgstr "Hash"
+
+#: .\templates\common\history\history_template.html:119
+#: .\templates\pages\coinflip_template.html:93
+#: .\templates\pages\coinflip_template.html:344
+#: .\templates\pages\coinflip_template.html:386
+#: .\templates\pages\jackpot_template.html:48
+msgid "Percentage:"
+msgstr "Percentage:"
+
+#: .\templates\common\history\history_template.html:120
+#: .\templates\pages\coinflip_template.html:95
+#: .\templates\pages\coinflip_template.html:345
+#: .\templates\pages\coinflip_template.html:386
+#: .\templates\pages\jackpot_template.html:48
+#: .\templates\pages\play_fair.html:63
+msgid "Secret:"
+msgstr "Secret:"
+
+#: .\templates\common\history\history_template.html:141
+#: .\templates\pages\coinflip.html:80
+msgid "Players"
+msgstr "玩家"
+
+#: .\templates\common\history\history_template.html:142
+#: .\templates\common\history\history_template.html:191
+#: .\templates\pages\coinflip.html:81
+#: .\templates\pages\profile_detail\trade_record.html:29
+msgid "Items"
+msgstr "物品"
+
+#: .\templates\common\history\history_template.html:143
+#: .\templates\pages\coinflip.html:82
+#: .\templates\pages\profile_detail\trade_record.html:30
+msgid "Total"
+msgstr "总共"
+
+#: .\templates\common\history\history_template.html:155
+#: .\templates\pages\coinflip.html:94
+msgid "No games added right now"
+msgstr "暂无游戏"
+
+#: .\templates\common\history\history_template.html:193
+msgid "Win/lose"
+msgstr "胜利/失败"
+
+#: .\templates\common\history\history_template.html:194
+#: .\templates\pages\profile_detail\store.html:20
+#: .\templates\pages\profile_detail\trade_record.html:31
+msgid "Time"
+msgstr "时间"
+
+#: .\templates\common\history\history_template.html:209
+msgid "Win"
+msgstr "胜利"
+
+#: .\templates\common\history\history_template.html:210
+msgid "Lose"
+msgstr "失败"
+
+#: .\templates\common\history\history_template.html:221
+msgid "Not found rounds"
+msgstr "回合未找到"
+
+#: .\templates\common\inventory\inventory_template.html:9
+#, python-brace-format
+msgid ""
+"\n"
+"                        <template v-if=\"item.user.join_amount.min\">\n"
+"                            min. $^{item.user.join_amount.min}, max. $^{item."
+"user.join_amount.max},\n"
+"                        </template>\n"
+"                        <template v-else>\n"
+"                            min. $<span id=\"cfMinAmount\">^{item.settings."
+"minamount}</span>,\n"
+"                        </template>\n"
+"                        max. <span id=\"cfMaxItems\">^{item.settings."
+"maxitems}</span> items.\n"
+"                        <br>Select from your items, choose team if needs, "
+"and then click to Send Trade Request.\n"
+"                        <br>You will receive an offer contains the selected "
+"items which you can confirm.\n"
+"                    "
+msgstr ""
+"\n"
+"                    <template v-if=\"item.user.join_amount.min\">\n"
+"                        最低 $^{item.user.join_amount.min}, 最高 $^{item."
+"user.join_amount.max},\n"
+"                    </template>\n"
+"                    <template v-else>\n"
+"                        最低 $<span id=\"cfMinAmount\">^{item.settings."
+"minamount}</span>,\n"
+"                    </template>\n"
+"                    最高 <span id=\"cfMaxItems\">^{item.settings.maxitems}</"
+"span> items.\n"
+"                    <br>从您的库存中选择物品, 选择一个队伍, 然后 点击来获得"
+"Steam报价。\n"
+"                    <br>您会收到含有您选中 物品的报价。\n"
+"                    "
+
+#: .\templates\common\inventory\inventory_template.html:54
+#, python-brace-format
+msgid ""
+"\n"
+"                                <div class=\"inventory-selected\" v-if="
+"\"selectedItems\">\n"
+"                                    Total:<span class=\"highlight"
+"\">^{selectedItems.length} items</span>\n"
+"                                    valued at <span class=\"highlight\">"
+"$^{selectedAmount}</span>\n"
+"                                </div>\n"
+"                            "
+msgstr ""
+"\n"
+"                            <div class=\"inventory-selected\" v-if="
+"\"selectedItems\">\n"
+"                               总共:<span class=\"highlight"
+"\">^{selectedItems.length} 物品</span>\n"
+"                                价值为 <span class=\"highlight\">"
+"$^{selectedAmount}</span>\n"
+"                            </div>\n"
+"                            "
+
+#: .\templates\common\inventory\inventory_template.html:63
+#: .\templates\pages\jackpot.html:66
+msgid "Bet"
+msgstr "下注"
+
+#: .\templates\common\inventory\inventory_template.html:71
+msgid "Your inventory"
+msgstr "库存"
+
+#: .\templates\common\inventory\inventory_template.html:75
+#: .\templates\pages\profile_detail\package.html:35
+#: .\templates\pages\profile_detail\store.html:33
+msgid "Refresh inventory"
+msgstr "刷新库存"
+
+#: .\templates\common\inventory\inventory_template.html:78
+msgid ""
+"\n"
+"                            Could refresh in <span id=\"invTimer\">0</span> "
+"secs.\n"
+"                        "
+msgstr ""
+"\n"
+"                        <span id=\"invTimer\">0</span>秒内可刷新 \n"
+"                        "
+
+#: .\templates\common\inventory\inventory_template.html:90
+#: .\templates\pages\profile_detail\package.html:60
+#: .\templates\pages\profile_detail\store.html:58
+msgid "Please go to this page to config your trade url first"
+msgstr "请先转到此界面设置您的交易链接"
+
+#: .\templates\common\inventory\inventory_template.html:100
+#: .\templates\pages\profile_detail\package.html:126
+msgid ""
+"There is no item in your inventory, Please deposit item from your steam "
+"inventory first."
+msgstr "您的库存中没有任何饰品，请从Steam背包存入饰品。"
+
+#: .\templates\common\inventory\inventory_template.html:103
+#: .\templates\pages\profile_detail\package.html:129
+msgid "Click here to deposit item."
+msgstr "点击来存入物品。"
+
+#: .\templates\common\nav\nav.html:30 .\templates\pages\profile.html:82
+msgid "Inventory"
+msgstr "饰品背包"
+
+#: .\templates\common\nav\nav.html:81
+msgid "Profile"
+msgstr "个人主页"
+
+#: .\templates\common\nav\nav.html:87
+msgid "Logout"
+msgstr "退出"
+
+#: .\templates\common\site\get_started.html:6
+msgid "Get Started"
+msgstr "教程"
+
+#: .\templates\common\site\get_started.html:13
+msgid ""
+"\n"
+"                <h1>Get Started:</h1>\n"
+"\n"
+"                <h2>Principle of operation:</h2>\n"
+"                <p>\n"
+"                    Players deposit skins in a round.<br>\n"
+"                    When the number of required deposited skins is reached, "
+"a winner will be picked based on the number\n"
+"                    of tickets his deposit worth and will be awarded all the "
+"skins in the pot!<br>\n"
+"                    For every $0.01 a player will get 1 ticket, so a higher "
+"number of tickets means a better chance of\n"
+"                    winning! You can see the details under the <a href=\"/"
+"provably-fair/\">Provably Fair section</a>.</p>\n"
+"\n"
+"                <h2>How to play?</h2>\n"
+"                <ol style=\"margin-bottom:30px;\">\n"
+"                    <li>You should login with your Steam account.</li>\n"
+"                    <li>\n"
+"                        Set your trade link by editing your Steam Profile "
+"URL.\n"
+"                        <p>This is a necessary step to receive the items you "
+"win and also to deposit skins.</p>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        After it you can start to deposit. Verify the total "
+"value of your bet and confirm to enter the\n"
+"                        current round.\n"
+"                        <p>(So you can not accidentally deposit your skins, "
+"you have to confirm it on this page!)</p>\n"
+"                    </li>\n"
+"                    <li>Once the item threshold of 50 items is reached, the "
+"winner will be announced.<br>\n"
+"                        If you won, you will receive all the items in the "
+"pot and you will receive a tradeoffer very\n"
+"                        soon.\n"
+"                    </li>\n"
+"                </ol>\n"
+"\n"
+"                <div class=\"clearfix\"></div>\n"
+"                <div class=\"panel panel-default\" style=\"margin-top:30px;"
+"\">\n"
+"                    <div class=\"panel-heading\">What you can deposit</div>\n"
+"                    <div class=\"panel-body\">\n"
+"                        <ul class=\"list-group\">\n"
+"                            <li class=\"list-group-item\">Only CSGO items "
+"from your Steam CSGO inventory.</li>\n"
+"                            <li class=\"list-group-item\">You can place a "
+"total of 12 items in a deposit.</li>\n"
+"                            <li class=\"list-group-item\">Your deposit value "
+"must be at least $1.</li>\n"
+"                        </ul>\n"
+"                    </div>\n"
+"                </div>\n"
+"                <div class=\"clearfix\"></div>\n"
+"            "
+msgstr ""
+"\n"
+"                <h1>教程:</h1>\n"
+"\n"
+"                <h2>游戏原理:</h2>\n"
+"                <p>\n"
+"                    玩家选择饰品并加入一局游戏。<br>\n"
+"                    当达到所需饰品数量或倒计时结束时, 根据玩家存入的金额\n"
+"                    随机抽取一名胜者， 胜者将获得这局游戏中的所有饰品!<br>\n"
+"                    每 0.01$ 将代表一票, 票数越多，代表着胜率越高。\n"
+"                    您可以从<a href=\"/provably-fair/\">公平验证</a>获取更多"
+"信息。</p>\n"
+"\n"
+"                <h2>如何游戏？</h2>\n"
+"                <ol style=\"margin-bottom:30px;\">\n"
+"                    <li>首先登录您的Steam帐号。</li>\n"
+"                    <li>\n"
+"                        设置您的Steam交易链接。。\n"
+"                        <p>这是收到您赢取的饰品以及存入饰品的必要步骤。</p>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        设置完毕后您可以存入您选中的饰品\n"
+"                        到当前的游戏中。\n"
+"                        <p>(为防止意外加入游戏 请务必在接受报价之前确认加"
+"入。)</p>\n"
+"                    </li>\n"
+"                    <li>当一局游戏中总饰品达到50件或在90秒倒计时结束后 获胜者"
+"将被宣布。<br>\n"
+"                        如果您获得了胜利 您将收到包含这局游戏所有饰品的\n"
+"                        交易报价。\n"
+"                    </li>\n"
+"                </ol>\n"
+"\n"
+"                <div class=\"clearfix\"></div>\n"
+"                <div class=\"panel panel-default\" style=\"margin-top:30px;"
+"\">\n"
+"                    <div class=\"panel-heading\">可存入的物品。</div>\n"
+"                    <div class=\"panel-body\">\n"
+"                        <ul class=\"list-group\">\n"
+"                            <li class=\"list-group-item\">在您Steam CSGO 库存"
+"中的CSGO饰品。.</li>\n"
+"                            <li class=\"list-group-item\">您一次性总共可存入 "
+"12个饰品。</li>\n"
+"                            <li class=\"list-group-item\">您存入饰品的总金额 "
+"最低为 1$。</li>\n"
+"                        </ul>\n"
+"                    </div>\n"
+"                </div>\n"
+"                <div class=\"clearfix\"></div>\n"
+"            "
+
+#: .\templates\common\site\qq.html:6
+msgid "QQ Group"
+msgstr "QQ群"
+
+#: .\templates\common\site\qq.html:10
+msgid "QQ Custom Service"
+msgstr "客服QQ"
+
+#: .\templates\common\site\qq.html:14
+msgid "Steam Group"
+msgstr "Steam组"
+
+#: .\templates\common\site\support.html:6
+msgid "Support"
+msgstr "帮助"
+
+#: .\templates\common\site\support.html:14
+#, python-format
+msgid ""
+"\n"
+"                    <h1>Support</h1>\n"
+"                    <p>\n"
+"                        If you are experiencing missing items or any "
+"problems related to the site,\n"
+"                        feel free to send us a mail: support@fancsgo.com.\n"
+"                    </p>\n"
+"\n"
+"                    <h2>Notice:</h2>\n"
+"                    <p>\n"
+"                        Please include your problem in your mail tile(Ex:"
+"[missing items]),\n"
+"                        provide round hash number if you are experiencing "
+"missing items or problems related to betting and\n"
+"                        trading.\n"
+"                        Be patient about the reply, most likely it would "
+"take 24-48 hours.\n"
+"                    </p>\n"
+"\n"
+"                    <h2>Business/Advertising Inquiry:</h2>\n"
+"                    <p>If you are a YouTuber with 5k+ subs, and willing to "
+"have paid sponsored video with us.\n"
+"                        Send us an email at admin@fancsgo.com with your "
+"channel link and details about yourself, we are\n"
+"                        more than welcome to have you to be our partner.</"
+"p>\n"
+"\n"
+"                    <br>\n"
+"                    <h1>FAQ</h1>\n"
+"                    <h2>1. Didn't receive your winnings?</h2>\n"
+"                    <p>A canceled winning offer will be re­sent in no more "
+"than 5 minutes.\n"
+"                        The site will refund an unjoined game in 30 "
+"minutes.\n"
+"                        A winning trade offer will contain the exact same "
+"items that were wagered in the round (without\n"
+"                        taxed items).\n"
+"                    </p>\n"
+"\n"
+"                    <h2>2. How much percentage does the house take?</h2>\n"
+"                    <p>The house cut 0%% with “fancsgo.com” in steam name, "
+"0~5%% without.\n"
+"                        We will never take more than above mentioned "
+"percentages from a game.</p>\n"
+"\n"
+"                    <h2>3. My bet didn't appear, what should I do?</h2>\n"
+"                    <p>Our great team refunds items couple times per day. If "
+"you didn't receive items in 4 hours, please\n"
+"                        send us an email.</p>\n"
+"\n"
+"                    <br>\n"
+"                    <h2>QQ</h2>\n"
+"                    <p>At any problem, you could also contact us by using "
+"QQ. Join our QQ group: 654672374 or have a live\n"
+"                        chat with our QQ customer service：251051385. (QQ "
+"customer service only support Chinese language)\n"
+"                    </p>\n"
+"\n"
+"                "
+msgstr ""
+"\n"
+"                <h1>帮助</h1>\n"
+"                <p>\n"
+"                    如果您面临缺失物品或任何与网站技术相关的问题，请发送邮件"
+"到:support@fancsgo.com。\n"
+"                </p>\n"
+"\n"
+"                <h2>注意:</h2>\n"
+"                <p>\n"
+"                    请在您邮件的标题标注您所面临的问题(例:[missing items])，"
+"如果出现任何与游戏/交易相关的问题请附上游戏Hash数列。\n"
+"                    请耐心等待我们的回复，通常您会在24-48小时收到您的回复。\n"
+"                    <br>帮助邮箱暂仅支持英文申诉，中文邮件将会被忽略.\n"
+"                </p>\n"
+"\n"
+"                <h2>商务/推广合作:</h2>\n"
+"                <p>如果您有任何商务合作或推广合作需求，                    请"
+"发送邮件至 admin@fancsgo.com。\n"
+"我们欢迎任何形式的网站推广以及商务合作，请在您的邮件中附上您的推广渠道或商务"
+"合作的细节。</p>\n"
+"\n"
+"                <br>\n"
+"                <h1>FAQ</h1>\n"
+"                <h2>1. 没有收到你的胜利品？</h2>\n"
+"                <p>被拒绝的胜利品交易报价将会在5分钟内重新发送。\n"
+"                    30分钟内无人加入的游戏将会被退还。\n"
+"                    胜利品交易报价将会获得该局游戏中完全相同的物品(去除抽"
+"成)。\n"
+"                </p>\n"
+"\n"
+"                <h2>2. 我们抽取多少佣金?</h2>\n"
+"                <p>我们将会对Steam名中没有”fancsgo.com”的普通用户进行0~5%%的"
+"抽成，对名中带有fancsgo.com”的用户将不进行抽成。\n"
+"我们永远不会抽取高于上文所述百分比的物品。</p>\n"
+"\n"
+"                <h2>3. 我的赌注没有出现，我该怎么办？</h2>\n"
+"                <p>如果您在4小时内未收到交易报价，请给我们发送申诉邮件。</"
+"p>\n"
+"\n"
+"                <br>\n"
+"                <h2>QQ群/客服</h2>\n"
+"                <p>若有任何问题，您可加入我们的QQ群：654672374或联系客服："
+"251051385 进行讨论。（QQ群/客服仅支持中文用户）                </p>\n"
+"\n"
+"            "
+
+#: .\templates\common\site\terms_of_service.html:6
+msgid "Terms of Service"
+msgstr "服务条款"
+
+#: .\templates\common\site\terms_of_service.html:12
+#, python-format
+msgid ""
+"\n"
+"                <h1>Terms of Service</h1>\n"
+"\n"
+"                <h2>Legal Notice:</h2>\n"
+"\n"
+"                <p>The terms and conditions set out below (the \"Terms and "
+"Conditions\") apply to\n"
+"                    and govern any services used by you (\"You\", the \"user"
+"\") and marketed by us under the brand name\n"
+"                    \"fancsgo\" including any services provided through any "
+"website with a domain name ending\n"
+"                    \"fancsgo.com\" (the \"Website\"), and to any email and "
+"other correspondence between us relating to\n"
+"                    such a service.</p>\n"
+"\n"
+"                <h2>Bet participation:</h2>\n"
+"\n"
+"                <p>By placing a bet on fancsgo.com you are 18 years of age "
+"or over, of sound\n"
+"                    mind and capable of taking responsibility for your own "
+"actions. fancsgo.com comes with no\n"
+"                    guarantees, expressed or implied, in connection with the "
+"service which is provided to you \"as is\"\n"
+"                    and we provide you with no warranty whatsoever regarding "
+"its quality, completeness or accuracy. As\n"
+"                    such, fancsgo.com cannot be held responsible in any "
+"event, direct, indirect or consequential with\n"
+"                    the use of the website. fancsgo.com reserves the right "
+"to suspend and/or cancel any bet/wager at\n"
+"                    any time. When a platform is suspended, any bets entered "
+"will be on hold. fancsgo.com also\n"
+"                    reserves the right to cease betting at any time without "
+"notice.</p>\n"
+"\n"
+"                <h2>Deposit, withdraw or lost items:</h2>\n"
+"\n"
+"                <p>If any loss occur during a bet caused by a software or "
+"network issue, you\n"
+"                    have 7 days to make a claim by opening a ticket at <a "
+"href=\"http://support.fancsgo.com\"\n"
+"                                                                          target="
+"\"_blank\">support.fancsgo.com</a>,\n"
+"                    after which these items will be considered surrendered. "
+"We strongly encourage you to withdraw your\n"
+"                    winning as soon as possible to avoid any issues. Keep in "
+"mind that the items you get after winning a\n"
+"                    round may not be the same as the one you deposit, "
+"meaning that stickers and nametag may be lost.\n"
+"                    However the total value won will stay the same. For "
+"every round played on fancsgo.com a 0-5%%\n"
+"                    commission will be taken. It is calculated of the total "
+"pot value and is taken from the item pool,\n"
+"                    except the winners deposited item. That doesn't apply "
+"for coinflip games, where the tax is the same,\n"
+"                    but that can be the winner's deposited item too.\n"
+"                <h2>Content:</h2>\n"
+"\n"
+"                <p>The content of the pages of this website is for your "
+"general information and\n"
+"                    use only. It is subject to change without notice. This "
+"website contains material which is owned by\n"
+"                    us. This material includes, but is not limited to, the "
+"design, layout, look, appearance and\n"
+"                    graphics. Reproduction is prohibited other than in "
+"accordance with the copyright notice, which forms\n"
+"                    part of these terms and conditions.</p>\n"
+"\n"
+"                <h2>Affiliation:</h2>\n"
+"\n"
+"                <p>fancsgo.com is no affiliated with Valve Corporation, "
+"CSGO\n"
+"                     or any other trademarks of the Valve Corporation.</p>\n"
+"            "
+msgstr ""
+"\n"
+"                <h1>服务条款</h1>\n"
+"\n"
+"                <h2>法律信息:</h2>\n"
+"\n"
+"                <p>以下 条款 (\"条款以及情况\") 适用于\n"
+"                    您 (\"您\", \"用户\")管理和使用的任何服务 并由我们的商"
+"标\n"
+"                    \"fancsgo\" 提供 包含通过以下方式提供的任何服务 任何网站"
+"的域名结尾为\n"
+"                    \"fancsgo.com\" (\"网站\"), 以及于我们之间有此类服务的 任"
+"何电子邮件\n"
+"                    和其它信件。</p>\n"
+"\n"
+"                <h2>投注参与:</h2>\n"
+"\n"
+"                <p>通过 fancsgo.com下注您的年龄为18岁或以上，\n"
+"                    并有能力为您的行为负责。 fancsgo.com 不附带任何对提供给您"
+"的服务的\n"
+"                   明示或暗示的保证。fancsgo.com不能对任何因使用网站网站造成"
+"的                    事件，直接，间接的因果负责。 fancsgo.com有权在任何时间"
+"取消\n"
+"                    或关闭任何赌注 当平台维护/关闭时，任何进行中的赌注会被暂"
+"缓与fancsgo.com。                    同时fancsgo.com拥有在未通知的情况下在任"
+"何时间停止投注的权利。notice.</p>\n"
+"\n"
+"                <h2>存入,取出,或丢失物品:</h2>\n"
+"\n"
+"                <p>如果投注因为网络，程序产生任何问题,\n"
+"                    请在7天之内向我们发送邮件进行申诉<a href=\"http://"
+"support.fancsgo.com\"\n"
+"                                                                          target="
+"\"_blank\">support.fancsgo.com</a>,\n"
+"                    7天后则视为放弃 我们强烈建议您尽快取出\n"
+"                    您的胜利品来避免任何问题。 请记住 您在当局游戏获得的胜利"
+"品可能\n"
+"                    不是您所存入的相同饰品, 请谨慎存入特殊物品。\n"
+"                    但是，胜利的总金额将不会产生变化。 每一局 于fancsgo.com产"
+"生的游戏中都将抽取0-5%%\n"
+"                    的佣金。佣金将于 下注总额计算并抽取,\n"
+"                    但不会从获胜者存入的饰品中抽取。 Coinflip 的抽水系统等"
+"同,\n"
+"                    上述。\n"
+"                <h2>内容:</h2>\n"
+"\n"
+"                <p>本网页的内容 仅供参考。\n"
+"                    可随时在未进行任何同志的情况下更改。 我们拥有 此网站上"
+"的\n"
+"                    所有材料。 该材料包括但不限于设计，布局，外观，外观\n"
+"                    和图像。 复制以及抄袭是禁止的，除了版权申明，\n"
+"                    这也是条款的一部分。</p>\n"
+"\n"
+"                <h2>关联:</h2>\n"
+"\n"
+"                <p>fancsgo.com 不隶属于 Valve Corporation, CSGO\n"
+"                    或任何Valve Corporation 的商标。</p>\n"
+"            "
+
+#: .\templates\news\news_detail.html:34 .\templates\news\news_list.html:57
+#: .\templates\pages\home.html:103
+msgid "author: "
+msgstr "作者："
+
+#: .\templates\news\news_detail.html:35 .\templates\news\news_list.html:57
+#: .\templates\pages\home.html:103
+msgid "publish in: "
+msgstr "发布于："
+
+#: .\templates\news\news_detail.html:36 .\templates\news\news_list.html:57
+#: .\templates\pages\home.html:103
+msgid "views: "
+msgstr "浏览量："
+
+#: .\templates\news\news_list.html:33
+msgid "All news"
+msgstr "全部新闻"
+
+#: .\templates\page_base.html:27
+msgid "fancsgo eSport Entertainment Platform"
+msgstr "fancsgo电竞娱乐平台|CSGO翻硬币|CSGO夺宝|CSGO推单"
+
+#: .\templates\pages\coinflip.html:29
+msgid "Coinflip summary"
+msgstr "Coinflip概要"
+
+#: .\templates\pages\coinflip.html:32
+msgid "Total amount"
+msgstr "总金额"
+
+#: .\templates\pages\coinflip.html:35 .\templates\pages\coinflip.html:53
+msgid "Total items"
+msgstr "总物品"
+
+#: .\templates\pages\coinflip.html:38
+msgid "Joinable games"
+msgstr "可加入的游戏"
+
+#: .\templates\pages\coinflip.html:45
+msgid "Coinflip status"
+msgstr "Coinflip 状态"
+
+#: .\templates\pages\coinflip.html:57
+msgid "Total value"
+msgstr "总金额"
+
+#: .\templates\pages\coinflip.html:62 .\templates\pages\coinflip.html:64
+msgid "Create new"
+msgstr "创建游戏"
+
+#: .\templates\pages\coinflip.html:74
+msgid "History"
+msgstr "历史"
+
+#: .\templates\pages\coinflip.html:101 .\templates\pages\jackpot.html:130
+msgid "Connecting"
+msgstr "连接中"
+
+#: .\templates\pages\coinflip_template.html:194
+msgid "User joining"
+msgstr "用户加入中"
+
+#: .\templates\pages\coinflip_template.html:197
+#: .\templates\pages\profile_detail\package.html:102
+#: .\templates\pages\profile_detail\store.html:100
+msgid "We are sending your offer"
+msgstr "正在发送报价"
+
+#: .\templates\pages\coinflip_template.html:203
+msgid ""
+"\n"
+"                                    You will receive your offer's link here."
+"<br>Always use the links we provide to you\n"
+"                                    or check the security code of your trade "
+"offer to defense against fake bots or\n"
+"                                    scammers.</span>\n"
+"                                "
+msgstr ""
+"\n"
+"                                交易报价链接将在这里出现<br>请使用fancsgo.com"
+"为您提供的交易链接 或检查您的交易安全码以防被骗。</span>\n"
+"                                "
+
+#: .\templates\pages\coinflip_template.html:214
+msgid "Expires at"
+msgstr "过期于:"
+
+#: .\templates\pages\coinflip_template.html:222
+#, python-format
+msgid ""
+"\n"
+"                <h2>About the System</h2>\n"
+"                <p>You can create a new coinflip round or join to an "
+"existing one. You need to select the items from\n"
+"                    your\n"
+"                    Inventory on our page, and then click to Deposit button "
+"if it is valid.</p>\n"
+"                <p>After that we will send you an offer in no time contains "
+"the items you selected. You need to accept\n"
+"                    that\n"
+"                    offer and confirm it via mobile or email. After you "
+"confirm - and you are in time if joining - you\n"
+"                    will\n"
+"                    get into the round.</p>\n"
+"                <h2>Winner items</h2>\n"
+"                <p>As of a round ends, the winner will be shown. The winner "
+"will get all of the items in the round. For\n"
+"                    every round played, a 0-5%% commission will be taken if "
+"it could. It is calculated on the total round\n"
+"                    value and is taken from the items pool.</p>\n"
+"                <h2>Provably fair</h2>\n"
+"                <p>When each round begins - someone creates a game - a "
+"random percetage will be generated for choosing\n"
+"                    the\n"
+"                    winner. It will be shown as a md5 encrypted hash with a "
+"secret in the following format:\n"
+"                    percentage:secret. When the round is over, both the "
+"secret and the winning percentage are revealed.\n"
+"                    You\n"
+"                    can verify that the hash matches with the secret and "
+"percentage. You can read more about this\n"
+"                    process\n"
+"                    under the Provably Fair menu at bottom of the page.</p>\n"
+"                <h2>Winner offers</h2>\n"
+"                <p>As of a round ends, we will send an offer to the winner "
+"contains the items he/she won. In normal it\n"
+"                    is in\n"
+"                    a minute, except the Steam systems have some delays or "
+"our bots are temporaly down. 99%% of the\n"
+"                    offers\n"
+"                    will be sent normally, in other cases please be patient. "
+"If there is any problem please open a\n"
+"                    ticket in\n"
+"                    our Support system.</p>\n"
+"            "
+msgstr ""
+"\n"
+"            <h2>系统相关</h2>\n"
+"            <p>您可以创建或加入一个Coinflip 游戏。 您需要在网页上从您的库存"
+"中\n"
+"                选择下注的物品, 然后点击 存入  按键。</p>\n"
+"            <p>之后我们会给您发送一个包含您所选择 的物品的交易报价。 您需要接"
+"受交易报价\n"
+"                并与手机客户端/邮箱进行验证。 如果您在规定的时间内进行了 确"
+"认，您会l\n"
+"                加入当前的游戏。</p>\n"
+"            <h2>获胜者的物品</h2>\n"
+"            <p>在回合结束后 胜者会于网页出现， 并获得当局游戏中的所有物"
+"品。 \n"
+"                如果可能，网站会抽取0-5%%的 佣金。 这将于奖池总金额进行计算\n"
+"                并从失败者所存入的物品中进行抽取。</p>\n"
+"            <h2>公平验证</h2>\n"
+"            <p>当一局游戏被发起时 - 将产生一个 随机的百分比\n"
+"                用来选去胜者。 它将会出现在一个md-5算法加密的 hash中并带有一"
+"个以以下格式出现的Secret中:\n"
+"                percentage:secret. 当回合结束后 Secret和胜利百分比都会被揭"
+"晓。 您\n"
+"                可以使用hash来验证Secret是否和percentage 匹配。 您可以从页面"
+"底部的\n"
+"                验证公平页面了解更多。</p>\n"
+"            <h2>获胜者的交易报价</h2>\n"
+"            <p>在回合结束后，我们会发送一个附有他/她所赢得的物品的交易报价。 "
+"通常报价会在1分钟内\n"
+"                发出, 除非是Steam所产生的延迟导致的 交易机器人暂时离线。 99%%"
+"的报价\n"
+"                会被正常的发送，如发生其他情况请耐心等待。 如果 出现任何其它"
+"问题，请发送于我们的帮助系统\n"
+"                发送申述邮件。</p>\n"
+"            "
+
+#: .\templates\pages\coinflip_template.html:256
+msgid "Deposit information"
+msgstr "存入信息"
+
+#: .\templates\pages\coinflip_template.html:260
+msgid "Minimum amount per deposit:"
+msgstr "最低单次存入金额:"
+
+#: .\templates\pages\coinflip_template.html:264
+msgid "Maximum items in a deposit:"
+msgstr "最高单次存入物品数量:"
+
+#: .\templates\pages\coinflip_template.html:268
+msgid "Maximum active rounds:"
+msgstr "最高局数限制:"
+
+#: .\templates\pages\coinflip_template.html:269
+msgid "not set"
+msgstr "未设置"
+
+#: .\templates\pages\coinflip_template.html:272
+msgid "Coins:"
+msgstr "硬币:"
+
+#: .\templates\pages\coinflip_template.html:280
+msgid ""
+"\n"
+"                <h2>Create a game</h2>\n"
+"                <p>As a game was created, there are 30 minutes to someone "
+"join in. If the time is up (you can check it\n"
+"                    in\n"
+"                    bottom of the round View) we'll send back your items in "
+"an offer and remove your round.</p>\n"
+"                <h2>Join to a game</h2>\n"
+"                <p>You can join to a round by pressing the Join button in "
+"their row. Your joining will be active if you\n"
+"                    press the Deposit button, expect someone else clicked on "
+"it early. Then we will not send the offer\n"
+"                    for\n"
+"                    you, and you'll see someone else joined to the round or "
+"it's closed. If the round is still open, we\n"
+"                    send\n"
+"                    you an offer and you have 90 seconds to confirm it. Note "
+"that in this time there are a few Steam\n"
+"                    queries, so if Steam is down, you can go out of this "
+"time. If the time is up, we'll cancel the sent\n"
+"                    offer and the round opens again.</p><br>\n"
+"                <p><i class=\"fa fa-mobile\"></i> In order to deposit on our "
+"page, you need to have the Steam Mobile\n"
+"                    Authenticator enabled on your account for at least 7 "
+"days as well as the trade confirmations turned\n"
+"                    on.\n"
+"                    If you don't have it, we won't send any offer for you, "
+"so you can't play on our page.</p>\n"
+"            "
+msgstr ""
+"\n"
+"            <h2>创建游戏</h2>\n"
+"            <p>在一局游戏创建后，将有30分钟的假如时间。 若30分钟后 (您可以"
+"在\n"
+"                这局游戏的底部查看时间) 没有人加入，您会收到 一个包含您所有下"
+"注物品的交易报价，当局游戏会被取消。</p>\n"
+"            <h2>加入游戏</h2>\n"
+"            <p>您可以点击 加入 按键来加入一局游戏 您的参与将会在您点击 存入 "
+"按键\n"
+"                后被激活, 除非另一玩家先于您 点击了 存入 按键。您便不会收到交"
+"易\n"
+"                报价, 之后您会看到另一玩家加入了游戏或 加入失败。 若此时这局"
+"游戏仍然为可加入状态\n"
+"                我们会给您发送一个交易报价，并给予您90秒来确认报价。 注意，在"
+"这一步如果Steam已下线，\n"
+"                我们将不会给您发送报价。 如果90秒过去还未收到您的确认，\n"
+"                这局游戏将再次进入可加入状态。</p><br>\n"
+"            <p><i class=\"fa fa-mobile\"></i> 若要在我们的 网站下注，\n"
+"                您需要启用Steam手机验证端至少7天并开启交易提醒。\n"
+"                若您未满足此条件，网站不能给 您发送报价，您也不能在网站进行任"
+"何游戏。</p>\n"
+"            "
+
+#: .\templates\pages\coinflip_template.html:307
+msgid "Loading"
+msgstr "加载中"
+
+#: .\templates\pages\coinflip_template.html:382
+#, python-format, python-brace-format
+msgid ""
+"\n"
+"                    won $^{item.winner.amount} with a chance of ^{item."
+"winner.chance}%%\n"
+"                "
+msgstr ""
+"\n"
+"                    赢得 $^{item.winner.amount} 赢率为 ^{item.winner."
+"chance}%%\n"
+"                    "
+
+#: .\templates\pages\home.html:117
+msgid "Week Winnings"
+msgstr "周收益榜"
+
+#: .\templates\pages\home.html:118
+msgid "Week Losts"
+msgstr "周寒微榜"
+
+#: .\templates\pages\jackpot.html:72
+msgid "Max 12 items/trade - $1 minimum value"
+msgstr "最多12个道具/最低$1"
+
+#: .\templates\pages\jackpot.html:83
+msgid "Total placed"
+msgstr "下注总数"
+
+#: .\templates\pages\jackpot.html:88
+msgid "Chances of winning"
+msgstr "获胜几率"
+
+#: .\templates\pages\jackpot_template.html:44
+#, python-format, python-brace-format
+msgid ""
+"\n"
+"                        won $^{item.winner.amount} with a chance of ^{item."
+"winner.chance}%%\n"
+"                    "
+msgstr ""
+"\n"
+"                    赢得 $^{item.winner.amount} 赢率为 ^{item.winner."
+"chance}%%\n"
+"                    "
+
+#: .\templates\pages\jackpot_template.html:78
+#: .\templates\pages\jackpot_template.html:82
+#, python-brace-format
+msgid "placed ^{de.item_count} items valued at $^{de.item_amount}"
+msgstr "存入了 ^{de.item_count} 件物品 总价值为 $^{de.item_amount}"
+
+#: .\templates\pages\jackpot_template.html:117
+#, python-brace-format
+msgid ""
+"\n"
+"                        New round started with hash: ^{item.hash}\n"
+"                    "
+msgstr ""
+"\n"
+"                        新回合Hash: ^{item.hash}\n"
+"                    "
+
+#: .\templates\pages\jackpot_template.html:130
+#, python-brace-format
+msgid ""
+"\n"
+"            <p>You won $^{item.winner.amount}!</p>\n"
+"            <br>\n"
+"            <p>At any problems, send us an email contains the problems and "
+"the round hash:\n"
+"                <span class=\"win-hash\"><i class=\"fa fa-envelope\"></"
+"i>^{item.hash}</span>\n"
+"            </p>\n"
+"        "
+msgstr ""
+"\n"
+"            <p>您赢得了$^{item.winner.amount}!</p>\n"
+"            <br>\n"
+"            <p>如果有任何问题，请给我们发送一个带有当局游戏hash数列的邮件:\n"
+"                <span class=\"win-hash\"><i class=\"fa fa-envelope\"></i> "
+"^{item.hash}</span>\n"
+"            </p>\n"
+"        "
+
+#: .\templates\pages\maintenance.html:12
+msgid "The site is on maintenance."
+msgstr "网站正在维护中"
+
+#: .\templates\pages\play_fair.html:15
+msgid ""
+"\n"
+"                <h1>Provably fair</h1>\n"
+"\n"
+"                <h2>Items you can bet:</h2>\n"
+"                <p>You can only bet CSGO items. If there is any other items "
+"in the trade the trade will be declined!\n"
+"                    Max 12 items/trade and min $1.</p>\n"
+"\n"
+"                <h2>Selecting the winner:</h2>\n"
+"\n"
+"                <p>\n"
+"                    A ticket represents $0.01 in bet value (1 Ticket = $0.01 "
+"of the skin you submitted, Ex: $10.00 Skin\n"
+"                    = 1000 Tickets).<br>\n"
+"                    The more tickets a player has, the more chances of "
+"winning he gets. As soon as a round is over, the\n"
+"                    winning ticket number will be calculated based on the "
+"random percentage and the total number of\n"
+"                    tickets with the following formula:</p>\n"
+"                <p class=\"alert alert-warning\">floor((TotalNumberOfTickets "
+"- 0.0000000001) * (winnerPercentage /\n"
+"                    100))</p>\n"
+"                <p style=\"font-size:14px;\">\n"
+"                    Keep in mind that the order of the tickets are the same "
+"as the order of the deposit. For instance,\n"
+"                    if the first player places $10.01 into the pot, he will "
+"own tickets 0-1000, then if the second\n"
+"                    player places $20, he will own tickets from 1001 to "
+"3000. This will keep going until the pot is full\n"
+"                    at which point the round is set to end. Also note that "
+"the bots may accept a few late bets if there\n"
+"                    is any.</p>\n"
+"\n"
+"                <h2>Round Hash:</h2>\n"
+"\n"
+"                <p style=\"font-size:14px;\">The hash is a md5 encryption of "
+"the round secret and winning percentage in\n"
+"                    the following format percentage:secret\n"
+"                    When the round is over, both the secret and the winning "
+"percentage are revealed.<br>You can verify\n"
+"                    that the hash matches with them with filling correctly "
+"the form below.</p>\n"
+"\n"
+"                <h2>Round hash verify:</h2>\n"
+"                <p style=\"font-size:14px;\">You can verify each round here. "
+"If the parameters are correct, it displays\n"
+"                    the winner ticket number of the round.</p>\n"
+"            "
+msgstr ""
+"\n"
+"                <h1>公平验证</h1>\n"
+"\n"
+"                <h2>可下注物品:</h2>\n"
+"                <p>您只能使用CSGO物品来参与游戏，如果交易中出现其它物品 交易"
+"会被拒绝！\n"
+"                    最高单次下注数量:12 最低单次下注金额: $1。</p>\n"
+"\n"
+"                <h2>选择赢家:</h2>\n"
+"\n"
+"                <p>\n"
+"                    一张Ticket代表游戏中的 0.01$ (1 Ticket = $0.01 您所存入的"
+"物品, 例: $10.00 的物品\n"
+"                    = 1000 Tickets).<br>\n"
+"                    拥有更多Ticket玩家拥有更高的获胜 概率。 在回合结束后\n"
+"                    中奖的Ticket号会根据 Random Percentage 以及总Ticket\n"
+"                    数运用一下公式计算出:</p>\n"
+"                <p class=\"alert alert-warning\">floor((TotalNumberOfTickets "
+"- 0.0000000001) * (winnerPercentage /\n"
+"                    100))</p>\n"
+"                <p>\n"
+"                    请记住Ticket的排列方式将和 存入的先后有关。 例如，\n"
+"                    如果第一个玩家存入了价值 $10.01的物品， 他会获得0-1000号"
+"的Ticket, 如果第二个玩家存入了\n"
+"                    价值 $20的物品 他会获得1001-3000号 的Ticket。 这将持续进"
+"行，知道游戏达到制定的物品数量或倒计时\n"
+"                    结束。 另请注意 交易机器人可能会接受少量的延迟\n"
+"                    下注。</p>\n"
+"\n"
+"                <h2>回合Hash:</h2>\n"
+"\n"
+"                <p>Hash是一串被Md-5算法加密并以以下格式出现的的回合Secret以"
+"及\n"
+"                    Percentage:percentage:secret\n"
+"                    回合结束时, Secret和Winning Percentage 会被揭晓。<br>您可"
+"填写以下的表格\n"
+"                    来验证Hash 是否匹配。</p>\n"
+"\n"
+"                <h2>回合 Hash 验证:</h2>\n"
+"                <p>您可以在此验证每局游戏。 如果参数正确，则会显示\n"
+"                    此局游戏获胜者的Ticket。</p>\n"
+"            "
+
+#: .\templates\pages\play_fair.html:71
+msgid "Percent:"
+msgstr ""
+
+#: .\templates\pages\play_fair.html:79
+msgid "Number of tickets:"
+msgstr ""
+
+#: .\templates\pages\play_fair.html:90
+msgid "Find Winning Ticket"
+msgstr ""
+
+#: .\templates\pages\profile.html:30
+#: .\templates\pages\profile_detail\shop.html:50
+msgid "F coins："
+msgstr "F币："
+
+#: .\templates\pages\profile.html:84
+msgid "Inventory History"
+msgstr "库存历史"
+
+#: .\templates\pages\profile.html:85
+msgid "Bet History"
+msgstr "下注记录"
+
+#: .\templates\pages\profile.html:86
+msgid "Affiliate"
+msgstr "推广"
+
+#: .\templates\pages\profile.html:87
+msgid "Trade URL"
+msgstr "交易链接"
+
+#: .\templates\pages\profile_detail\affiliate.html:13
+#, python-format
+msgid ""
+"\n"
+"                <h2>Affiliate Rules</h2>\n"
+"                <p>1.Every user could redeem Promo Code for once, and would "
+"get 50 F Coins after redeem the code.</p>\n"
+"                <p>2.All promo code creator would get 2%% of commission.</"
+"p>\n"
+"                <p>3.Promo code could not be changed once created.</p>\n"
+"                <p><small>Note: We will only count user within 24 hours "
+"since registration as promote user.</small></p>\n"
+"            "
+msgstr ""
+"\n"
+"                <h2>推广规则</h2>\n"
+"                <p>1.所有未使用过他人推广码的用户在使用推广码之后即可获得50 F"
+"币注册奖励。</p>\n"
+"                <p>2.所有推广码发起人都将获得使用其推广码的新用户总流水2%%的"
+"奖励。</p>\n"
+"                <p>3.所有用户都可以创建自己独特的推广码，推广码一经创建不能修"
+"改。</p>\n"
+"                <p><small>注:推广下线仅计算于网站首次登录24小时以内的用户</"
+"small></p>\n"
+"            "
+
+#: .\templates\pages\profile_detail\deposit_record.html:14
+msgid "Coinflip history"
+msgstr "Coinflip历史"
+
+#: .\templates\pages\profile_detail\deposit_record.html:15
+msgid "Jackpot history"
+msgstr "Jackpot历史"
+
+#: .\templates\pages\profile_detail\package.html:21
+#, python-brace-format
+msgid ""
+"\n"
+"                        <div class=\"inventory-selected\">\n"
+"                            Total:<span class=\"highlight\">^{TotalCount} "
+"items</span>\n"
+"                            valued at <span class=\"highlight\">"
+"$^{TotalAmount}</span>\n"
+"                        </div>\n"
+"                        <div class=\"inventory-selected\">\n"
+"                            Selected:<span class=\"highlight"
+"\">^{selectedCount} items</span>\n"
+"                            valued at <span class=\"highlight\">"
+"$^{selectedAmount}</span>\n"
+"                        </div>\n"
+"                    "
+msgstr ""
+"\n"
+"                        <div class=\"inventory-selected\">\n"
+"                            总共：<span class=\"highlight\">^{TotalCount} 物"
+"品</span>\n"
+"                            价值为：<span class=\"highlight\">$^{TotalAmount}"
+"</span>\n"
+"                        </div>\n"
+"                        <div class=\"inventory-selected\">\n"
+"                            选中：<span class=\"highlight\">^{selectedCount} "
+"items</span>\n"
+"                            价值为：<span class=\"highlight\">"
+"$^{selectedAmount}</span>\n"
+"                        </div>\n"
+"                    "
+
+#: .\templates\pages\profile_detail\package.html:38
+#: .\templates\pages\profile_detail\store.html:36
+msgid ""
+"\n"
+"                                Could refresh in <span id=\"invTimer\">0</"
+"span> secs.\n"
+"                            "
+msgstr ""
+"\n"
+"                        <span id=\"invTimer\">0</span>秒内可刷新 \n"
+"                        "
+
+#: .\templates\pages\profile_detail\package.html:44
+#: .\templates\pages\profile_detail\store.html:42
+msgid "Select All"
+msgstr "全选"
+
+#: .\templates\pages\profile_detail\package.html:48
+msgid "Withdraw"
+msgstr "取出"
+
+#: .\templates\pages\profile_detail\package.html:51
+#: .\templates\pages\profile_detail\store.html:49
+msgid "The steam bot is down, please wait for a while."
+msgstr "Steam交易机器人已下线，请稍等。"
+
+#: .\templates\pages\profile_detail\package.html:68
+#: .\templates\pages\profile_detail\store.html:66
+msgid ""
+"\n"
+"                                <span class=\"offer-title\">You did not "
+"accept the offer, please accept it first.</span>\n"
+"                                <br>\n"
+"                                <span>(if you have accepted the offer "
+"already, please contact our customer service and show the security code.)</"
+"span>\n"
+"                                <br>\n"
+"                            "
+msgstr ""
+"\n"
+"                                <span class=\"offer-title\">您有尚未处理的兑"
+"换报价单，请先将其处理后再继续兑换。</span>\n"
+"                                <br>\n"
+"                                <span>（如果您对应的报价单已处理，但仍然显示"
+"此页面，请联系我们的客服，并提供提示这里的安全码。）</span>\n"
+"                                <br>\n"
+"                            "
+
+#: .\templates\pages\profile_detail\package.html:80
+#: .\templates\pages\profile_detail\package.html:109
+#: .\templates\pages\profile_detail\store.html:78
+#: .\templates\pages\profile_detail\store.html:107
+msgid "Click here to accept the offer"
+msgstr "点击来接受报价"
+
+#: .\templates\pages\profile_detail\package.html:87
+#: .\templates\pages\profile_detail\store.html:85
+msgid ""
+"\n"
+"                                    You will receive your offer's link "
+"here.\n"
+"                                    <br>\n"
+"                                    Always use the links we provide to you "
+"or check the security code of your trade offer to\n"
+"                                    defense against fake bots or scammers.\n"
+"                                "
+msgstr ""
+"\n"
+"                        您可以在这里找到您的交易链接。\n"
+"                        <br>\n"
+"                        请点击链接或检查交易安全码来确认您的报价。\n"
+"                        "
+
+#: .\templates\pages\profile_detail\package.html:114
+#: .\templates\pages\profile_detail\store.html:112
+msgid ""
+"\n"
+"                                You will receive your offer's link here.\n"
+"                                <br>\n"
+"                                Always use the links we provide to you or "
+"check the security code of your trade offer to\n"
+"                                defense against fake bots or scammers.\n"
+"                            "
+msgstr ""
+"\n"
+"                        您可以在这里找到您的交易链接。\n"
+"                        <br>\n"
+"                        请点击链接或检查交易安全码来确认您的报价。\n"
+"                        "
+
+#: .\templates\pages\profile_detail\shop.html:20
+msgid "Market"
+msgstr "商城"
+
+#: .\templates\pages\profile_detail\shop.html:36
+msgid "There is no available item in shop."
+msgstr "您的Steam库存中没有可用的饰品。"
+
+#: .\templates\pages\profile_detail\shop.html:53
+#, python-brace-format
+msgid ""
+"\n"
+"                                    Selected: ^{selectedCount} items\n"
+"                                    valued at <span style=\"color: yellow;"
+"\">^{selectedCoins}</span>\n"
+"                                    "
+msgstr ""
+"\n"
+"                                    选择: ^{selectedCount} 物品\n"
+"                                    价值为：<span style=\"color: yellow;"
+"\">^{selectedCoins}</span>\n"
+"                                    "
+
+#: .\templates\pages\profile_detail\shop.html:61
+msgid "Buy"
+msgstr "兑换"
+
+#: .\templates\pages\profile_detail\store.html:23
+#, python-brace-format
+msgid ""
+"\n"
+"                        <div class=\"inventory-selected\">\n"
+"                            Total:<span class=\"highlight\">^{selectedCount} "
+"items</span>\n"
+"                            valued at <span class=\"highlight\">"
+"$^{selectedAmount}</span>\n"
+"                        </div>\n"
+"                    "
+msgstr ""
+"\n"
+"                        <div class=\"inventory-selected\">\n"
+"                            总共：<span class=\"highlight\">^{selectedCount} "
+"物品</span>\n"
+"                            价值为：<span class=\"highlight\">"
+"$^{selectedAmount}</span>\n"
+"                        </div>\n"
+"                    "
+
+#: .\templates\pages\profile_detail\store.html:123
+msgid "There is no available item in your steam inventory."
+msgstr "您的Steam库存中没有可用的饰品。"
+
+#: .\templates\pages\profile_detail\tradeUrl.html:23
+msgid "Trade URL:"
+msgstr "交易链接"
+
+#: .\templates\pages\profile_detail\tradeUrl.html:32
+msgid "Find your Trade URL here"
+msgstr "点此获取您的交易链接"
+
+#: .\templates\pages\profile_detail\tradeUrl.html:34
+msgid "Edit profile"
+msgstr "保存"
+
+#: .\templates\pages\profile_detail\trade_record.html:14
+msgid "Store record"
+msgstr "存入记录"
+
+#: .\templates\pages\profile_detail\trade_record.html:15
+msgid "Withdraw record"
+msgstr "取出记录"
+
+#: .\templates\pages\profile_detail\trade_record.html:16
+msgid "F coins record"
+msgstr "F币消费记录"
+
+#: .\templates\pages\profile_detail\trade_record.html:41
+msgid "No history"
+msgstr "没有历史记录。"
+
+#: .\templates\video\video_list.html:33
+msgid "All vedio"
+msgstr "全部直播"
+
+#~ msgid "Home"
+#~ msgstr "首页"
+
+#~ msgid "Shop"
+#~ msgstr "商城"
