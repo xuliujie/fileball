@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100114
 File Encoding         : 65001
 
-Date: 2017-10-12 11:03:43
+Date: 2017-10-12 15:28:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -358,8 +358,12 @@ CREATE TABLE `betting_propitem` (
   `update_time` datetime(6) NOT NULL,
   `sid` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `market_name` varchar(255) NOT NULL,
+  `market_hash_name` varchar(255) NOT NULL,
   `amount` double NOT NULL,
   `rarity` varchar(128) DEFAULT NULL,
+  `rarity_color` varchar(128) DEFAULT NULL,
+  `exterior` varchar(128) DEFAULT NULL,
   `assetid` varchar(128) DEFAULT NULL,
   `appid` varchar(128) NOT NULL,
   `classid` varchar(128) NOT NULL,
@@ -697,40 +701,40 @@ CREATE TABLE `django_migrations` (
 -- ----------------------------
 -- Records of django_migrations
 -- ----------------------------
-INSERT INTO `django_migrations` VALUES ('1', 'contenttypes', '0001_initial', '2017-10-12 03:03:28.718000');
-INSERT INTO `django_migrations` VALUES ('2', 'admin', '0001_initial', '2017-10-12 03:03:28.985000');
-INSERT INTO `django_migrations` VALUES ('3', 'admin', '0002_logentry_remove_auto_add', '2017-10-12 03:03:28.996000');
-INSERT INTO `django_migrations` VALUES ('4', 'contenttypes', '0002_remove_content_type_name', '2017-10-12 03:03:29.268000');
-INSERT INTO `django_migrations` VALUES ('5', 'auth', '0001_initial', '2017-10-12 03:03:29.884000');
-INSERT INTO `django_migrations` VALUES ('6', 'auth', '0002_alter_permission_name_max_length', '2017-10-12 03:03:29.963000');
-INSERT INTO `django_migrations` VALUES ('7', 'auth', '0003_alter_user_email_max_length', '2017-10-12 03:03:29.974000');
-INSERT INTO `django_migrations` VALUES ('8', 'auth', '0004_alter_user_username_opts', '2017-10-12 03:03:29.985000');
-INSERT INTO `django_migrations` VALUES ('9', 'auth', '0005_alter_user_last_login_null', '2017-10-12 03:03:29.996000');
-INSERT INTO `django_migrations` VALUES ('10', 'auth', '0006_require_contenttypes_0002', '2017-10-12 03:03:29.999000');
-INSERT INTO `django_migrations` VALUES ('11', 'auth', '0007_alter_validators_add_error_messages', '2017-10-12 03:03:30.016000');
-INSERT INTO `django_migrations` VALUES ('12', 'auth', '0008_alter_user_username_max_length', '2017-10-12 03:03:30.027000');
-INSERT INTO `django_migrations` VALUES ('13', 'betting', '0001_initial', '2017-10-12 03:03:33.144000');
-INSERT INTO `django_migrations` VALUES ('14', 'jet', '0001_initial', '2017-10-12 03:03:33.387000');
-INSERT INTO `django_migrations` VALUES ('15', 'jet', '0002_delete_userdashboardmodule', '2017-10-12 03:03:33.409000');
-INSERT INTO `django_migrations` VALUES ('16', 'jet', '0003_userdashboardmodule', '2017-10-12 03:03:33.484000');
-INSERT INTO `django_migrations` VALUES ('17', 'sessions', '0001_initial', '2017-10-12 03:03:33.546000');
-INSERT INTO `django_migrations` VALUES ('18', 'sites', '0001_initial', '2017-10-12 03:03:33.589000');
-INSERT INTO `django_migrations` VALUES ('19', 'sites', '0002_alter_domain_unique', '2017-10-12 03:03:33.613000');
-INSERT INTO `django_migrations` VALUES ('20', 'default', '0001_initial', '2017-10-12 03:03:34.082000');
-INSERT INTO `django_migrations` VALUES ('21', 'social_auth', '0001_initial', '2017-10-12 03:03:34.086000');
-INSERT INTO `django_migrations` VALUES ('22', 'default', '0002_add_related_name', '2017-10-12 03:03:34.217000');
-INSERT INTO `django_migrations` VALUES ('23', 'social_auth', '0002_add_related_name', '2017-10-12 03:03:34.224000');
-INSERT INTO `django_migrations` VALUES ('24', 'default', '0003_alter_email_max_length', '2017-10-12 03:03:34.324000');
-INSERT INTO `django_migrations` VALUES ('25', 'social_auth', '0003_alter_email_max_length', '2017-10-12 03:03:34.328000');
-INSERT INTO `django_migrations` VALUES ('26', 'default', '0004_auto_20160423_0400', '2017-10-12 03:03:34.354000');
-INSERT INTO `django_migrations` VALUES ('27', 'social_auth', '0004_auto_20160423_0400', '2017-10-12 03:03:34.358000');
-INSERT INTO `django_migrations` VALUES ('28', 'social_auth', '0005_auto_20160727_2333', '2017-10-12 03:03:34.383000');
-INSERT INTO `django_migrations` VALUES ('29', 'social_django', '0006_partial', '2017-10-12 03:03:34.435000');
-INSERT INTO `django_migrations` VALUES ('30', 'social_django', '0002_add_related_name', '2017-10-12 03:03:34.443000');
-INSERT INTO `django_migrations` VALUES ('31', 'social_django', '0003_alter_email_max_length', '2017-10-12 03:03:34.447000');
-INSERT INTO `django_migrations` VALUES ('32', 'social_django', '0001_initial', '2017-10-12 03:03:34.451000');
-INSERT INTO `django_migrations` VALUES ('33', 'social_django', '0004_auto_20160423_0400', '2017-10-12 03:03:34.456000');
-INSERT INTO `django_migrations` VALUES ('34', 'social_django', '0005_auto_20160727_2333', '2017-10-12 03:03:34.460000');
+INSERT INTO `django_migrations` VALUES ('1', 'contenttypes', '0001_initial', '2017-10-12 07:28:14.720000');
+INSERT INTO `django_migrations` VALUES ('2', 'admin', '0001_initial', '2017-10-12 07:28:14.963000');
+INSERT INTO `django_migrations` VALUES ('3', 'admin', '0002_logentry_remove_auto_add', '2017-10-12 07:28:14.974000');
+INSERT INTO `django_migrations` VALUES ('4', 'contenttypes', '0002_remove_content_type_name', '2017-10-12 07:28:15.153000');
+INSERT INTO `django_migrations` VALUES ('5', 'auth', '0001_initial', '2017-10-12 07:28:15.699000');
+INSERT INTO `django_migrations` VALUES ('6', 'auth', '0002_alter_permission_name_max_length', '2017-10-12 07:28:15.875000');
+INSERT INTO `django_migrations` VALUES ('7', 'auth', '0003_alter_user_email_max_length', '2017-10-12 07:28:15.885000');
+INSERT INTO `django_migrations` VALUES ('8', 'auth', '0004_alter_user_username_opts', '2017-10-12 07:28:15.896000');
+INSERT INTO `django_migrations` VALUES ('9', 'auth', '0005_alter_user_last_login_null', '2017-10-12 07:28:15.907000');
+INSERT INTO `django_migrations` VALUES ('10', 'auth', '0006_require_contenttypes_0002', '2017-10-12 07:28:15.909000');
+INSERT INTO `django_migrations` VALUES ('11', 'auth', '0007_alter_validators_add_error_messages', '2017-10-12 07:28:15.922000');
+INSERT INTO `django_migrations` VALUES ('12', 'auth', '0008_alter_user_username_max_length', '2017-10-12 07:28:15.932000');
+INSERT INTO `django_migrations` VALUES ('13', 'betting', '0001_initial', '2017-10-12 07:28:19.492000');
+INSERT INTO `django_migrations` VALUES ('14', 'jet', '0001_initial', '2017-10-12 07:28:19.730000');
+INSERT INTO `django_migrations` VALUES ('15', 'jet', '0002_delete_userdashboardmodule', '2017-10-12 07:28:19.758000');
+INSERT INTO `django_migrations` VALUES ('16', 'jet', '0003_userdashboardmodule', '2017-10-12 07:28:19.849000');
+INSERT INTO `django_migrations` VALUES ('17', 'sessions', '0001_initial', '2017-10-12 07:28:19.924000');
+INSERT INTO `django_migrations` VALUES ('18', 'sites', '0001_initial', '2017-10-12 07:28:19.976000');
+INSERT INTO `django_migrations` VALUES ('19', 'sites', '0002_alter_domain_unique', '2017-10-12 07:28:20.000000');
+INSERT INTO `django_migrations` VALUES ('20', 'default', '0001_initial', '2017-10-12 07:28:20.512000');
+INSERT INTO `django_migrations` VALUES ('21', 'social_auth', '0001_initial', '2017-10-12 07:28:20.516000');
+INSERT INTO `django_migrations` VALUES ('22', 'default', '0002_add_related_name', '2017-10-12 07:28:20.654000');
+INSERT INTO `django_migrations` VALUES ('23', 'social_auth', '0002_add_related_name', '2017-10-12 07:28:20.658000');
+INSERT INTO `django_migrations` VALUES ('24', 'default', '0003_alter_email_max_length', '2017-10-12 07:28:20.837000');
+INSERT INTO `django_migrations` VALUES ('25', 'social_auth', '0003_alter_email_max_length', '2017-10-12 07:28:20.843000');
+INSERT INTO `django_migrations` VALUES ('26', 'default', '0004_auto_20160423_0400', '2017-10-12 07:28:20.882000');
+INSERT INTO `django_migrations` VALUES ('27', 'social_auth', '0004_auto_20160423_0400', '2017-10-12 07:28:20.886000');
+INSERT INTO `django_migrations` VALUES ('28', 'social_auth', '0005_auto_20160727_2333', '2017-10-12 07:28:20.914000');
+INSERT INTO `django_migrations` VALUES ('29', 'social_django', '0006_partial', '2017-10-12 07:28:20.973000');
+INSERT INTO `django_migrations` VALUES ('30', 'social_django', '0002_add_related_name', '2017-10-12 07:28:20.980000');
+INSERT INTO `django_migrations` VALUES ('31', 'social_django', '0003_alter_email_max_length', '2017-10-12 07:28:20.984000');
+INSERT INTO `django_migrations` VALUES ('32', 'social_django', '0001_initial', '2017-10-12 07:28:20.988000');
+INSERT INTO `django_migrations` VALUES ('33', 'social_django', '0004_auto_20160423_0400', '2017-10-12 07:28:20.992000');
+INSERT INTO `django_migrations` VALUES ('34', 'social_django', '0005_auto_20160727_2333', '2017-10-12 07:28:20.995000');
 
 -- ----------------------------
 -- Table structure for django_session
