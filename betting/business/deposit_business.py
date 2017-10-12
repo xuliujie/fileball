@@ -23,7 +23,7 @@ from channels import Group
 from channels.sessions import channel_session
 from social_auth.models import SteamUser
 
-from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord, Affiliate
+from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord
 from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, StoreRecordSerializer, SendRecordSerializer, PropItemSerializer
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_online, get_steam_bot_status, get_current_coinflip_games
 from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id, read_inventory_from_cache
@@ -437,6 +437,7 @@ def get_winner(game):
 
 _pump_bot = 'pump_bot'
 
+
 def trade_items_to_game_winner(game):
     deposits = game.deposits.all()
     total_items = []
@@ -448,14 +449,6 @@ def trade_items_to_game_winner(game):
         total_items.extend(items)
         if deposit.tickets_begin <= game.win_ticket <= deposit.tickets_end:
             winner = deposit
-
-        my_affiliate = Affiliate.objects.filter(steamer=deposit.steamer).first()
-        if my_affiliate:
-            if my_affiliate.higher:
-                higher_affiliate = Affiliate.objects.filter(steamer=my_affiliate.higher).first()
-                if higher_affiliate:
-                    higher_affiliate.f_coins += int(deposit.amount*2)
-                    higher_affiliate.save()
 
     items_map = {i.assetid: i for i in total_items}
     found_items = []

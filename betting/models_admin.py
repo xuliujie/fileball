@@ -4,7 +4,7 @@
 from django.contrib.admin import ModelAdmin, TabularInline, StackedInline
 from django.core import urlresolvers
 
-from betting.models import PropItem, Deposit, Affiliate
+from betting.models import PropItem, Deposit
 from betting.business.trade_business import resend_record
 
 
@@ -91,16 +91,6 @@ class PropItemSendInline(TabularInline):
         return False
 
 
-class PropItemFcoinsInline(TabularInline):
-    model = PropItem.F_coins_record.through
-    can_delete = False
-
-    def has_add_permission(self, request):
-        return False
-
-
-
-
 class PropItemAdmin(ModelAdmin):
     list_display = ('uid', 'name', 'assetid', 'owner', 'is_locked')
     readonly_fields = ('appid', 'contextid')
@@ -109,7 +99,7 @@ class PropItemAdmin(ModelAdmin):
     ordering = ('-create_time',)
     date_hierarchy = 'create_time'
     list_filter = ('owner',)
-    inlines = [PropItemDepositInline, PropItemStoreInline, PropItemSendInline, PropItemFcoinsInline]
+    inlines = [PropItemDepositInline, PropItemStoreInline, PropItemSendInline]
     list_per_page = 50
 
     def has_delete_permission(self, request, obj=None):
@@ -188,16 +178,6 @@ class StoreRecordAdmin(ModelAdmin):
         return False
 
 
-class FcoinsRecordAdmin(ReadOnlyAdmin):
-    list_display = ('steamer', 'amount', 'create_time')
-    search_fields = ('steamer__personaname',)
-    ordering = ('-create_time',)
-    list_filter = ('steamer',)
-    date_hierarchy = 'create_time'
-    inlines = [PropItemFcoinsInline, ]
-    list_per_page = 50
-
-
 class SiteConfigAdmin(ModelAdmin):
     list_display = ('remark', 'key', 'enable', 'value', 'value_string')
 
@@ -206,30 +186,6 @@ class BettingBotAdmin(ModelAdmin):
     list_display = ('steamer', 'coinflip_enable', 'coinflip_joinable', 'coinflip_creatable',
                     'jackpot_enable', 'jackpot_join_idle')
     list_editable = ('coinflip_enable', 'jackpot_enable')
-
-    
-class ArticleAdmin(ModelAdmin):
-    list_display = ('title', 'author', 'summary', 'published_time')
-    search_fields = ('title', 'author')
-    list_filter = ('published_time',)
-    ordering = ('-published_time',)
-
-
-class VideoAdmin(ModelAdmin):
-    list_display = ('room', 'site', 'index')
-    search_fields = ('room',)
-    list_filter = ('site',)
-
-
-class AffiliateAdmin(ModelAdmin):
-    list_display = ('steamer','f_coins', 'affi_code', 'higher', 'can_buy', 'is_new')
-    search_fields = ('steamer__personaname',)
-    readonly_fields = ('steamer', 'affi_code', 'higher')
-
-
-class CarouselAdmin(ModelAdmin):
-    list_display = ('remark', 'index', 'enable')
-    search_fields = ('remark',)
 
 
 class MarketItemAdmin(ModelAdmin):

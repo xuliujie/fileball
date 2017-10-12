@@ -155,6 +155,7 @@ TRADE_STATUS = (
     (TradeStatus.Cancelled.value, _("Cancelled"))
 )
 
+
 class Deposit(ModelBase):
     team = models.IntegerField(default=0, verbose_name=_('Team'), choices=TEAM_TYPE)
     steamer = models.ForeignKey(SteamUser, related_name='deposits', on_delete=models.CASCADE, verbose_name=_("Steamer"))
@@ -211,19 +212,6 @@ class StoreRecord(ModelBase):
         verbose_name_plural = u"Store Records"
 
 
-class FcoinsRecord(ModelBase):
-    steamer = models.ForeignKey(SteamUser, related_name='F_coins_records', verbose_name=_("Steamer"))
-    amount = models.FloatField(default=0, verbose_name=_("Amount"))
-    trade_ts = models.DateTimeField(default=dt.now, verbose_name=_("Trade Time"))
-
-    def __unicode__(self):
-        return self.uid
-
-    class Meta:
-        verbose_name = u"F coins Records"
-        verbose_name_plural = u"F coins Records"
-
-
 class PropItem(ModelBase):
     sid = models.CharField(max_length=255)
     name = models.CharField(max_length=255, verbose_name=_("Name"))
@@ -236,7 +224,6 @@ class PropItem(ModelBase):
     deposit = models.ManyToManyField(Deposit, related_name='items', default=None, blank=True, verbose_name=_("Deposit"))
     send_record = models.ManyToManyField(SendRecord, related_name='items', default=None, blank=True, verbose_name=_("Send Record"))
     store_record = models.ManyToManyField(StoreRecord, related_name='items', default=None, blank=True, verbose_name=_("Store Record"))
-    F_coins_record = models.ManyToManyField(FcoinsRecord, related_name='items', default=None, blank=True, verbose_name=_("F coins Record"))
     instanceid = models.CharField(max_length=128, null=True, default=None, blank=True)
     owner = models.ForeignKey(SteamUser, related_name='items', on_delete=models.CASCADE, null=True, default=None, verbose_name=_("owner"))
     is_locked = models.BooleanField(default=False, verbose_name=_("Is Locked"))
@@ -396,70 +383,3 @@ class SteamrobotApiItem(models.Model):
     item_sell_record_url = models.URLField(null=True, max_length=1024)
     steam_sale_price_dollar = models.FloatField(null=True)
     steam_normal_price_dollar = models.FloatField(null=True)
-
-    
-from django.utils import timezone
-from django.urls import reverse
-from DjangoUeditor.models import UEditorField
-
-
-class Article(models.Model):
-    title = models.CharField(max_length=255)
-    author = models.CharField(max_length=64)
-    summary = models.TextField(max_length=64, blank=True)
-    content_html = UEditorField()
-    views = models.IntegerField(default=0)
-    published_time = models.DateTimeField(default=timezone.now)
-    update_time = models.DateTimeField(default=timezone.now)
-    pic = models.ImageField(upload_to='images/overview/', null=True, blank=True)
-
-    def __unicode__(self):
-        return self.title
-        
-    def get_absolute_url(self):
-        return reverse('news_detail', kwargs={'article_id': self.pk})
-
-    class Meta:
-        verbose_name = _(u'News')
-        verbose_name_plural = _(u'News')
-        ordering = ['-published_time']
-
-
-SITE_TYPE = (
-    (0, _("douyu")),
-)
-
-
-class Video(models.Model):
-    site = models.IntegerField(default=0, choices=SITE_TYPE)
-    room = models.CharField(max_length=64)
-    index = models.IntegerField(default=0)
-
-    class Meta:
-        verbose_name = _(u'Video')
-        verbose_name_plural = _(u'Video')
-
-
-class Affiliate(models.Model):
-    steamer = models.OneToOneField(SteamUser, related_name='affiliate', verbose_name=_("Steamer"))
-    f_coins = models.IntegerField(default=0, verbose_name=_("F coins"))
-    affi_code = models.CharField(max_length=64, default="", null=True, blank=True, verbose_name=_("Affiliate Code"))
-    higher = models.ForeignKey(SteamUser, default=None, null=True, blank=True, related_name='lower', verbose_name=_("Higher"))
-    can_buy = models.BooleanField(default=False, verbose_name=_("Can Buy"))
-    is_new = models.BooleanField(default=True, verbose_name=_("Is New"))
-
-
-class Carousel(models.Model):
-    index = models.IntegerField(default=0, verbose_name=_("Index"))
-    href = models.URLField(default=None, null=True, blank=True, verbose_name=_("Target Url"))
-    pic = models.ImageField(upload_to='images/carousel/', verbose_name=_("Picture(width:1135)"))
-    description = models.TextField(default=None, null=True, blank=True, verbose_name=_('Description'))
-    remark = models.CharField(max_length=128, verbose_name=_("Remark"))
-    enable = models.BooleanField(default=True, verbose_name=_("Enable"))
-
-    def __unicode__(self):
-        return self.remark
-
-    class Meta:
-        verbose_name = _(u'Carousel')
-        verbose_name_plural = _(u'Carousel')

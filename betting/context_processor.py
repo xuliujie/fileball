@@ -4,7 +4,6 @@
 from betting.utils import get_maintenance, current_user
 from betting.business.deposit_business import getWins
 from betting.business.cache_manager import get_steam_bot_status
-from betting.models import Affiliate
 from betting.common_data import chat_smiles
 
 

@@ -4,7 +4,7 @@
 from rest_framework import serializers
 
 from betting.common_data import TradeStatus
-from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, GiveAway, StoreRecord, SendRecord, FcoinsRecord
+from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, GiveAway, StoreRecord, SendRecord
 from social_auth.models import SteamUser
 from betting.utils import id_generator
 
@@ -54,6 +54,7 @@ class SteamerSerializer(serializers.ModelSerializer):
     def get_icon_full(self, obj):
         return obj.avatarfull
 
+
 def rarityTrans(rarity):
     if rarity == 'Common':
         return u'普通'
@@ -71,6 +72,7 @@ def rarityTrans(rarity):
         return u'不朽'
     if rarity == 'Arcana':
         return u'至宝'
+
 
 class PropItemSerializer(serializers.ModelSerializer):
     rarity_zh = serializers.SerializerMethodField()
@@ -186,11 +188,3 @@ class SendRecordSerializer(serializers.ModelSerializer):
                 own_item.is_locked = True
                 own_item.save()
         return record
-
-class FcoinsRecordSerializer(serializers.ModelSerializer):
-    items = PropItemSerializer(many=True)
-    steamer = SteamerSerializer(many=False, required=False)
-
-    class Meta:
-        model = FcoinsRecord
-        fields = ('uid', 'steamer', 'items', 'amount')

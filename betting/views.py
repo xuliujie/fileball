@@ -18,10 +18,9 @@ from betting.betting_business import get_my_coinflip_history, get_my_jackpot_his
 from betting.business.deposit_business import join_coinflip_game, join_jackpot_game, ws_send_cf_news, create_random_hash, getWins
 from betting.business.trade_business import store_items_by_user, withdraw_items_by_user, get_user_package
 from betting.business.steam_business import get_user_inventories
-from betting.business.video_business import get_room, get_room_list
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_current_jackpot_id, get_steam_bot_status
 from betting.forms import TradeUrlForm
-from betting.models import Deposit, CoinFlipGame, Announcement, GiveAway, UserProfile, Article, SendRecord, StoreRecord, Video, Affiliate, Carousel
+from betting.models import Deposit, CoinFlipGame, Announcement, GiveAway, UserProfile, SendRecord, StoreRecord
 from betting.serializers import DepositSerializer, AnnouncementSerializer, GiveawaySerializer, StoreRecordSerializer, SteamerSerializer
 from betting.utils import current_user, reformat_ret, get_maintenance, get_string_config_from_site_config
 
@@ -361,73 +360,6 @@ class PackageQueryView(views.APIView):
         return self.get_inventories(request)
 
 package_query_view = PackageQueryView.as_view()
-
-
-_shop_bot = 'shop_bot'
-
-class ShopQueryView(views.APIView):
-
-    def get_inventories(self, request):
-        try:
-            steamer = current_user(request)
-            shop_bot_steamid = get_string_config_from_site_config(_shop_bot, settings.SHOP_BOT)
-            shop_bot = SteamUser.objects.filter(steamid=shop_bot_steamid)
-            items = get_user_package(shop_bot)
-            if items is None:
-                return reformat_ret(311, {}, _l("We get issues when query shop, try again later."))
-
-            affiliate = Affiliate.objects.filter(steamer=steamer).first()
-            if not affiliate:
-                affiliate = Affiliate.objects.create(steamer=steamer)
-            Fcoins = affiliate.f_coins
-
-            if not affiliate.can_buy:
-                deposits = steamer.deposits.all()
-                for deposit in deposits:
-                    if deposit.game.end:
-                        affiliate.can_buy = True
-                        affiliate.save()
-            can_buy = affiliate.can_buy
-
-            resp_data = {
-                'inventory': items,
-                'Fcoins': Fcoins,
-                'canBuy': can_buy
-            }
-            return reformat_ret(0, resp_data, 'success')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, 'exception')
-
-    def get(self, request, format=None):
-        return self.get_inventories(request)
-
-    def post(self, request, format=None):
-        return self.get_inventories(request)
-
-shop_query_view = ShopQueryView.as_view()
-
-
-class ExchangeView(views.APIView):
-
-    def exchange_item(self, request):
-        try:
-            steamer = current_user(request)
-            if steamer and steamer.is_authenticated():
-                code, resp = exchange_items_by_user(steamer, request.data)
-                if code == 0:
-                    return reformat_ret(0, resp, u"Success")
-                else:
-                    return reformat_ret(code, {}, resp)
-            return reformat_ret(101, {}, u'无效用户')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, u"兑换异常，请稍后重试.")
-
-    def post(self, request, format=None):
-        return self.exchange_item(request)
-
-exchange_item_view = ExchangeView.as_view()
 
 
 class CoinflipHistoryQueryView(views.APIView):

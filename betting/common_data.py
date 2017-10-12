@@ -28,4 +28,6 @@ class TradeStatus(Enum):
     Initialed = 0
     Accepted = 1
     Cancelled = 2
-    Exchanged = 3
+    Submitted = 11
+    TradeNoUpdated = 12
+    Active = 13

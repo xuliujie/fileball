@@ -24,8 +24,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from channels import Group
 from channels.sessions import channel_session
 
-from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord, FcoinsRecord, SteamrobotApiItem
-from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, StoreRecordSerializer, SendRecordSerializer, FcoinsRecordSerializer
+from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord, SteamrobotApiItem
+from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, StoreRecordSerializer, SendRecordSerializer
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_online, get_steam_bot_status, get_current_coinflip_games
 from betting.business.deposit_business import is_connection_usable
 from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id, read_inventory_from_cache
@@ -209,7 +209,7 @@ def get_my_trade_record(user, type, page=1, **kwargs):
     dt_begin = dt_now - timedelta(days=6)
     dt_end = dt_now + timedelta(days=1)
     rd = []
-
+    records = []
     if type == "store":
         records = StoreRecord.objects.filter(
             create_time__gte=dt_begin.date(),
@@ -226,14 +226,6 @@ def get_my_trade_record(user, type, page=1, **kwargs):
             status=1
         ).all().order_by('-create_time')
         format_func = SendRecordSerializer
-    elif type == "Fcoins":
-        records = FcoinsRecord.objects.filter(
-            create_time__gte=dt_begin.date(),
-            create_time__lte=dt_now,
-            steamer__steamid=user.steamid,
-        ).all().order_by('-create_time')
-        format_func = FcoinsRecordSerializer
-
     paginator = Paginator(records, settings.DEFAULT_PAGINATION_PAGE)
     try:
         ret_records = paginator.page(page)
