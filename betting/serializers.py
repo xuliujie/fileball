@@ -55,31 +55,10 @@ class SteamerSerializer(serializers.ModelSerializer):
         return obj.avatarfull
 
 
-def rarityTrans(rarity):
-    if rarity == 'Common':
-        return u'普通'
-    if rarity == 'Uncommon':
-        return u'罕见'
-    if rarity == 'Rare':
-        return u'稀有'
-    if rarity == 'Mythical':
-        return u'神话'
-    if rarity == 'Legendary':
-        return u'传说'
-    if rarity == 'Ancient':
-        return u'远古'
-    if rarity == 'Immortal':
-        return u'不朽'
-    if rarity == 'Arcana':
-        return u'至宝'
-
-
 class PropItemSerializer(serializers.ModelSerializer):
-    rarity_zh = serializers.SerializerMethodField()
-
     class Meta:
         model = PropItem
-        fields = ('uid', 'sid', 'name', 'amount', 'classid', 'appid', 'contextid', 'assetid', 'rarity', 'rarity_zh')
+        fields = ('uid', 'sid', 'name', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid', 'rarity', 'rarity_color', 'exterior')
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)
@@ -90,9 +69,6 @@ class PropItemSerializer(serializers.ModelSerializer):
             existing = set(self.fields.keys())
             for field_name in existing - allowed:
                 self.fields.pop(field_name)
-
-    def get_rarity_zh(self, obj):
-        return rarityTrans(obj.rarity)
 
 
 class DepositSerializer(serializers.ModelSerializer):
@@ -162,9 +138,11 @@ class StoreRecordSerializer(serializers.ModelSerializer):
         for item_data in items:
             item_exist = PropItem.objects.filter(assetid=item_data['assetid']).first()
             if not item_exist:
-                item_exist = PropItem.objects.create(is_locked=True, **item_data)
-            item_exist.store_record.add(record)
-            item_exist.save()
+                item_serializer = PropItemSerializer(data=item_data)
+                if item_serializer.is_valid():
+                    item_exist = item_serializer.save(is_locked=True)
+            if item_exist:
+                item_exist.store_record.add(record)
         return record
 
 

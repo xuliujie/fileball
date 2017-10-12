@@ -215,8 +215,12 @@ class StoreRecord(ModelBase):
 class PropItem(ModelBase):
     sid = models.CharField(max_length=255)
     name = models.CharField(max_length=255, verbose_name=_("Name"))
+    market_name = models.CharField(max_length=255, verbose_name=_("Market Name"))
+    market_hash_name = models.CharField(max_length=255, verbose_name=_("Market Hash Name"))
     amount = models.FloatField(default=0.0, verbose_name=_("Price"))
     rarity = models.CharField(max_length=128, null=True, verbose_name=_("Rarity"))
+    rarity_color = models.CharField(max_length=128, null=True, verbose_name=_("Rarity Color"))
+    exterior = models.CharField(max_length=128, null=True, verbose_name=_("Exterior"))
     assetid = models.CharField(max_length=128, null=True, default=None, verbose_name=_("AssetID(Negative numbers if item is virtual)"))
     appid = models.CharField(max_length=128, default=570, verbose_name=_("AppID"))
     classid = models.CharField(max_length=128, verbose_name=_("ClassID"))

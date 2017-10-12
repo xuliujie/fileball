@@ -15,13 +15,9 @@
                     <div class="price col-xs-6"><span>$^{item.amount}</span></div>
                 </div>
                 <div class="bottom-info">
-                    <div class="col-xs-6 rarity">
-                        <span :class="item.rarity">
-                            {% if LANGUAGE_CODE == 'zh-hans' %}
-                                ^{item.rarity_zh}
-                            {% else %}
-                                ^{item.rarity}
-                            {% endif %}
+                    <div class="col-xs-6 rarity" v-if="item.tags && item.tags.Exterior">
+                        <span :style="'color: #' + item.tags.Rarity.color + ';'">
+                            ^{item.tags.Exterior.localized_tag_name}
                         </span>
                     </div>
                     <div class="name">^{item.name}</div>

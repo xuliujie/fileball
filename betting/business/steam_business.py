@@ -72,7 +72,15 @@ def get_user_inventories(steam_id, s_assetid=None, lang='en'):
                     prop_item[u'sid'] = asset['assetid']
                     prop_item[u'amount'] = price * settings.ITEM_PRICE_SCALE
                     prop_item[u'name'] = item['name']
-                    prop_item[u'tags'] = {t.category: t.internal_name for t in item['tags']}
+                    prop_item[u'market_name'] = item['market_name']
+                    prop_item[u'market_hash_name'] = item['market_hash_name']
+                    tags = item['tags']
+                    tags_map = {t['category']: t for t in tags}
+                    rarity = tags_map.get('Rarity', None)
+                    prop_item[u'rarity'] = rarity['localized_tag_name'] if rarity else None
+                    prop_item[u'rarity_color'] = rarity['color'] if rarity else None
+                    exterior = tags_map.get('Exterior', None)
+                    prop_item[u'exterior'] = exterior['localized_tag_name'] if exterior else None
                     items.append(prop_item)
                     inventory_map[asset['assetid']] = prop_item
         cache_user_inventory(steam_id, inventory_map)
