@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 16:53+0800\n"
+"POT-Creation-Date: 2017-10-12 18:05+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -268,11 +268,11 @@ msgstr ""
 msgid "Prop Items"
 msgstr "下注物品"
 
-#: .\betting\models.py:246 .\templates\pages\home.html:83
+#: .\betting\models.py:246
 msgid "News"
 msgstr "新闻"
 
-#: .\betting\models.py:247 .\templates\pages\home.html:54
+#: .\betting\models.py:247
 msgid "Video"
 msgstr "直播"
 
@@ -1030,8 +1030,8 @@ msgstr ""
 "            "
 
 #: .\templates\page_base.html:27
-msgid "fancsgo eSport Entertainment Platform"
-msgstr "fancsgo电竞娱乐平台|CSGO翻硬币|CSGO夺宝|CSGO推单"
+msgid "FanCSGO"
+msgstr ""
 
 #: .\templates\pages\coinflip.html:29
 msgid "Coinflip summary"
@@ -1225,26 +1225,6 @@ msgstr ""
 "                    赢得 $^{item.winner.amount} 赢率为 ^{item.winner."
 "chance}%%\n"
 "                    "
-
-#: .\templates\pages\home.html:103
-msgid "author: "
-msgstr "作者："
-
-#: .\templates\pages\home.html:103
-msgid "publish in: "
-msgstr "发布于："
-
-#: .\templates\pages\home.html:103
-msgid "views: "
-msgstr "浏览量："
-
-#: .\templates\pages\home.html:117
-msgid "Week Winnings"
-msgstr "周收益榜"
-
-#: .\templates\pages\home.html:118
-msgid "Week Losts"
-msgstr "周寒微榜"
 
 #: .\templates\pages\jackpot.html:72
 msgid "Max 12 items/trade - $1 minimum value"
@@ -1600,3 +1580,21 @@ msgstr "取出记录"
 #: .\templates\pages\profile_detail\trade_record.html:40
 msgid "No history"
 msgstr "没有历史记录。"
+
+#~ msgid "fancsgo eSport Entertainment Platform"
+#~ msgstr "fancsgo电竞娱乐平台|CSGO翻硬币|CSGO夺宝|CSGO推单"
+
+#~ msgid "author: "
+#~ msgstr "作者："
+
+#~ msgid "publish in: "
+#~ msgstr "发布于："
+
+#~ msgid "views: "
+#~ msgstr "浏览量："
+
+#~ msgid "Week Winnings"
+#~ msgstr "周收益榜"
+
+#~ msgid "Week Losts"
+#~ msgstr "周寒微榜"
