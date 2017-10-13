@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 17:34+0800\n"
+"POT-Creation-Date: 2017-10-13 18:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,12 +55,12 @@ msgid "Temp Game Hash"
 msgstr "Temp Game Hash"
 
 #: .\betting\models.py:115 .\betting\models.py:244
-#: .\templates\common\nav\nav.html:23
+#: .\templates\common\nav\nav.html:21
 msgid "Coinflip"
 msgstr "翻硬币"
 
 #: .\betting\models.py:116 .\betting\models.py:245
-#: .\templates\common\nav\nav.html:25
+#: .\templates\common\nav\nav.html:23
 msgid "Jackpot"
 msgstr "轮盘"
 
@@ -174,7 +174,7 @@ msgid "Ticket End"
 msgstr "结束票号"
 
 #: .\betting\models.py:172 .\betting\models.py:173 .\betting\models.py:228
-#: .\templates\common\nav\nav.html:28 .\templates\pages\profile.html:51
+#: .\templates\common\nav\nav.html:26 .\templates\pages\profile.html:51
 msgid "Deposit"
 msgstr "饰品存入"
 
@@ -550,25 +550,25 @@ msgid "Secret:"
 msgstr "Secret:"
 
 #: .\templates\common\history\history_template.html:141
-#: .\templates\pages\coinflip.html:80
+#: .\templates\pages\coinflip.html:92
 msgid "Players"
 msgstr "玩家"
 
 #: .\templates\common\history\history_template.html:142
 #: .\templates\common\history\history_template.html:191
-#: .\templates\pages\coinflip.html:81
+#: .\templates\pages\coinflip.html:93
 #: .\templates\pages\profile_detail\trade_record.html:28
 msgid "Items"
 msgstr "物品"
 
 #: .\templates\common\history\history_template.html:143
-#: .\templates\pages\coinflip.html:82
+#: .\templates\pages\coinflip.html:94
 #: .\templates\pages\profile_detail\trade_record.html:29
 msgid "Total"
 msgstr "总共"
 
 #: .\templates\common\history\history_template.html:155
-#: .\templates\pages\coinflip.html:94
+#: .\templates\pages\coinflip.html:106
 msgid "No games added right now"
 msgstr "暂无游戏"
 
@@ -654,7 +654,7 @@ msgstr ""
 "                            "
 
 #: .\templates\common\inventory\inventory_template.html:63
-#: .\templates\pages\jackpot.html:66
+#: .\templates\pages\jackpot.html:78
 msgid "Bet"
 msgstr "下注"
 
@@ -697,15 +697,19 @@ msgstr "您的库存中没有任何饰品，请从Steam背包存入饰品。"
 msgid "Click here to deposit item."
 msgstr "点击来存入物品。"
 
-#: .\templates\common\nav\nav.html:30 .\templates\pages\profile.html:50
+#: .\templates\common\nav\nav.html:28 .\templates\pages\profile.html:50
 msgid "Inventory"
 msgstr "饰品背包"
 
-#: .\templates\common\nav\nav.html:81
+#: .\templates\common\nav\nav.html:30 .\templates\common\site\qq.html:6
+msgid "QQ Group"
+msgstr "QQ群"
+
+#: .\templates\common\nav\nav.html:79
 msgid "Profile"
 msgstr "个人主页"
 
-#: .\templates\common\nav\nav.html:87
+#: .\templates\common\nav\nav.html:85
 msgid "Logout"
 msgstr "退出"
 
@@ -772,10 +776,6 @@ msgid ""
 "                <div class=\"clearfix\"></div>\n"
 "            "
 msgstr ""
-
-#: .\templates\common\site\qq.html:6
-msgid "QQ Group"
-msgstr "QQ群"
 
 #: .\templates\common\site\qq.html:10
 msgid "QQ Custom Service"
@@ -1041,43 +1041,53 @@ msgstr ""
 msgid "DaLaoCSGO"
 msgstr ""
 
-#: .\templates\pages\coinflip.html:29
+#: .\templates\pages\coinflip.html:31
 msgid "Coinflip summary"
 msgstr "Coinflip概要"
 
-#: .\templates\pages\coinflip.html:32
+#: .\templates\pages\coinflip.html:34
 msgid "Total amount"
 msgstr "总金额"
 
-#: .\templates\pages\coinflip.html:35 .\templates\pages\coinflip.html:53
+#: .\templates\pages\coinflip.html:37 .\templates\pages\coinflip.html:55
 msgid "Total items"
 msgstr "总物品"
 
-#: .\templates\pages\coinflip.html:38
+#: .\templates\pages\coinflip.html:40
 msgid "Joinable games"
 msgstr "可加入的游戏"
 
-#: .\templates\pages\coinflip.html:45
+#: .\templates\pages\coinflip.html:47
 msgid "Coinflip status"
 msgstr "Coinflip 状态"
 
-#: .\templates\pages\coinflip.html:57
+#: .\templates\pages\coinflip.html:59
 msgid "Total value"
 msgstr "总金额"
 
-#: .\templates\pages\coinflip.html:62 .\templates\pages\coinflip.html:64
+#: .\templates\pages\coinflip.html:64 .\templates\pages\coinflip.html:66
 msgid "Create new"
 msgstr "创建游戏"
 
-#: .\templates\pages\coinflip.html:73
+#: .\templates\pages\coinflip.html:76
+msgid ""
+"\n"
+"                            <p>Please login first.</p>\n"
+"                            "
+msgstr ""
+"\n"
+"                            <p>请先使用您的Steam帐号登录.</p>\n"
+"                            "
+
+#: .\templates\pages\coinflip.html:85
 msgid "Get started"
 msgstr "教程"
 
-#: .\templates\pages\coinflip.html:74
+#: .\templates\pages\coinflip.html:86
 msgid "History"
 msgstr "历史"
 
-#: .\templates\pages\coinflip.html:101 .\templates\pages\jackpot.html:130
+#: .\templates\pages\coinflip.html:116 .\templates\pages\jackpot.html:142
 msgid "Connecting"
 msgstr "连接中"
 
@@ -1234,15 +1244,25 @@ msgstr ""
 "chance}%%\n"
 "                    "
 
-#: .\templates\pages\jackpot.html:72
+#: .\templates\pages\jackpot.html:43
+msgid ""
+"\n"
+"                        <p>Please login first.</p>\n"
+"                        "
+msgstr ""
+"\n"
+"                        <span id=\"invTimer\">0</span>秒内可刷新 \n"
+"                        "
+
+#: .\templates\pages\jackpot.html:84
 msgid "Max 12 items/trade - $1 minimum value"
 msgstr "最多12个道具/最低$1"
 
-#: .\templates\pages\jackpot.html:83
+#: .\templates\pages\jackpot.html:95
 msgid "Total placed"
 msgstr "下注总数"
 
-#: .\templates\pages\jackpot.html:88
+#: .\templates\pages\jackpot.html:100
 msgid "Chances of winning"
 msgstr "获胜几率"
 

@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="{% static 'css/announcement.css' %}"/>
 {#        <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>#}
 {#        <script type="text/javascript" src="{% static 'js/cf.js' %}"></script>#}
+    {% if not request.user.is_anonymous %}
     <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>
     <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>
     <script type="text/javascript" src="{% static 'backup/coinflip.js' %}"></script>
+    {% endif %}
 {#    <title>dalaocsgo-{% trans 'Coinflip' %}</title>#}
 {% endblock %}
 
@@ -68,6 +70,16 @@
 							</div>
 						</div>
 					</div>
+                    {% if request.user.is_anonymous %}
+                    <div class="col-xs-12">
+                        <div class="steam-auth" style="text-align: center; margin: 150px auto 200px">
+                            {% blocktrans %}
+                            <p>Please login first.</p>
+                            {% endblocktrans %}
+                            <a href="{% url 'social:begin' 'steam' %}"><img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png" alt="Login with Steam"></a>
+                        </div>
+                    </div>
+                    {% else %}
 					<div class="col-xs-12">
 						<ul id="coinflip-links">
 							<li id="coinflipGetStarted">{% trans 'Get started' %}</li>
@@ -94,9 +106,12 @@
 							<h2 class="text-center">{% trans 'No games added right now' %}</h2>
 						</div>
 					</div>
+                    {% endif %}
 				</div>
             </div>
+        {% if not request.user.is_anonymous %}
             {% include 'common/chat/chat_room.html' %}
+        {% endif %}
         </div>
         <div id="noSocket">{% trans 'Connecting' %}...</div>
     </section>
