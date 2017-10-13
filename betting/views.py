@@ -301,7 +301,7 @@ class JoinCoinflipViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
                 elif code == 201:
                     return reformat_ret(201, {}, _l("Someone has joined the game."))
                 else:
-                    return reformat_ret(101, request.errors, result.error_messages)
+                    return reformat_ret(101, {}, result.error_messages)
             return reformat_ret(0, {}, 'coinflip')
         except CoinFlipGame.DoesNotExist as e:
             _logger.error(e)

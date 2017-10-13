@@ -208,8 +208,8 @@ class StoreRecord(ModelBase):
         return self.uid
 
     class Meta:
-        verbose_name = u"Store Records"
-        verbose_name_plural = u"Store Records"
+        verbose_name = _('Store Record')
+        verbose_name_plural = _('Store Record')
 
 
 class PropItem(ModelBase):

@@ -158,7 +158,7 @@ SITE_ID = 1
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-SITE_NAME_KEY = 'fancsgo.com'
+SITE_NAME_KEY = 'dalaocsgo.com'
 
 
 JACKPOT_COUNTDOWN = 120

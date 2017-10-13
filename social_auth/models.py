@@ -59,7 +59,7 @@ class SteamUser(AbstractBaseUser, PermissionsMixin):
     objects = SteamUserManager()
     tradeurl = models.CharField(max_length=300)
     level = models.IntegerField(default=1)
-    is_cheating = models.BooleanField(default=False)
+    is_cheating = models.BooleanField(default=False, verbose_name=_(u'Cheating'))
     can_chat = models.BooleanField(default=True)
 
     def __unicode__(self):
@@ -70,3 +70,7 @@ class SteamUser(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         return self.personaname
+
+    class Meta:
+        verbose_name = _('SteamUsers')
+        verbose_name_plural = _('SteamUsers')
