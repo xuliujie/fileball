@@ -48,6 +48,7 @@ class SteamUser(AbstractBaseUser, PermissionsMixin):
     avatar = models.CharField(max_length=255)
     avatarmedium = models.CharField(max_length=255)
     avatarfull = models.CharField(max_length=255)
+    email = models.CharField(default='', blank=True, max_length=255)
 
     # Add the other fields that can be retrieved from the Web-API if required
 

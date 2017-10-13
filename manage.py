@@ -19,4 +19,8 @@ if __name__ == "__main__":
                 "forget to activate a virtual environment?"
             )
         raise
+
+    import sys
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
     execute_from_command_line(sys.argv)
