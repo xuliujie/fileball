@@ -4,7 +4,7 @@
 from rest_framework import serializers
 
 from betting.common_data import TradeStatus
-from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, GiveAway, StoreRecord, SendRecord
+from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, StoreRecord, SendRecord
 from social_auth.models import SteamUser
 from betting.utils import id_generator
 
@@ -112,13 +112,6 @@ class AnnouncementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Announcement
-        exclude = ('create_time', 'update_time')
-
-
-class GiveawaySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = GiveAway
         exclude = ('create_time', 'update_time')
 
 

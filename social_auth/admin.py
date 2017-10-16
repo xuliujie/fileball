@@ -16,14 +16,3 @@ class SteamUserAdmin(admin.ModelAdmin):
     list_editable = ('is_cheating',)
     search_fields = ('steamid', 'personaname')
     list_filter = ('is_superuser', 'is_cheating')
-
-    # def steam_id(self, obj):
-    #     deposits = Deposit.objects.filter(steamer=obj, game__end=1).values('game__uid').distinct().order_by('-create_time')[:5]
-    #     losing_streak = 0
-    #     for d in deposits:
-    #         if not d.game.win_ticket in range(d.tickets_begin, d.tickets_end):
-    #             losing_streak += 1
-    #     if losing_streak < 5:
-    #         return obj.steamid
-    #     else:
-    #         return obj.steamid + " （连输五次）"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 18:34+0800\n"
+"POT-Creation-Date: 2017-10-16 11:55+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgid "Label"
 msgstr "标签"
 
 #: .\betting\models.py:87 .\betting\models.py:161 .\betting\models.py:180
-#: .\betting\models.py:198 .\betting\models.py:300
+#: .\betting\models.py:198
 msgid "Steamer"
 msgstr "玩家"
 
@@ -176,7 +176,7 @@ msgstr "结束票号"
 #: .\betting\models.py:172 .\betting\models.py:173 .\betting\models.py:228
 #: .\templates\common\nav\nav.html:26 .\templates\pages\profile.html:51
 msgid "Deposit"
-msgstr "饰品存入"
+msgstr "下注记录"
 
 #: .\betting\models.py:183 .\betting\models.py:201
 #: .\templates\pages\profile_detail\package.html:83
@@ -308,16 +308,15 @@ msgstr "内容（中文）"
 msgid "Content(en)"
 msgstr "内容（英文）"
 
-#: .\betting\models.py:263 .\betting\models.py:288 .\betting\models.py:319
+#: .\betting\models.py:263 .\betting\models.py:282
 msgid "Enable"
 msgstr "是否启用"
 
-#: .\betting\models.py:264 .\betting\models.py:287
+#: .\betting\models.py:264
 msgid "Num."
 msgstr "序号"
 
-#: .\betting\models.py:265 .\betting\models.py:289 .\betting\models.py:302
-#: .\betting\models.py:320
+#: .\betting\models.py:265 .\betting\models.py:283
 msgid "Remark"
 msgstr "备注"
 
@@ -325,107 +324,67 @@ msgstr "备注"
 msgid "Announcements"
 msgstr "通知"
 
-#: .\betting\models.py:276
-msgid "Common"
-msgstr "普通推广"
-
-#: .\betting\models.py:277
-msgid "Personal"
-msgstr "个人推广"
-
-#: .\betting\models.py:282
-msgid "Title"
-msgstr "标题"
-
-#: .\betting\models.py:283
-msgid "Img Url"
-msgstr "图片url"
-
-#: .\betting\models.py:284
-msgid "Target Url"
-msgstr "跳转目标url"
-
-#: .\betting\models.py:285
-msgid "Button"
-msgstr "按钮文字"
-
-#: .\betting\models.py:286
-msgid "GiveAway Type"
-msgstr "推广类型"
-
-#: .\betting\models.py:295 .\betting\models.py:296
-msgid "Give Away"
-msgstr "推广"
-
-#: .\betting\models.py:301
-msgid "GiveAway"
-msgstr "推广"
-
-#: .\betting\models.py:308 .\betting\models.py:309
-msgid "User Posts"
-msgstr "定制推广"
-
-#: .\betting\models.py:326 .\betting\models.py:327
+#: .\betting\models.py:289 .\betting\models.py:290
 msgid "Site Configs"
 msgstr "站点配置"
 
-#: .\betting\models.py:331
+#: .\betting\models.py:294
 msgid "BotAccount"
 msgstr "机器人帐号"
 
-#: .\betting\models.py:332
+#: .\betting\models.py:295
 msgid "Enable Coinflip"
 msgstr "开启Coinflip"
 
-#: .\betting\models.py:333
+#: .\betting\models.py:296
 msgid "Coinflip Joinable"
 msgstr "允许加入Coinflip"
 
-#: .\betting\models.py:334
+#: .\betting\models.py:297
 msgid "Coinflip Join Idle"
 msgstr "加入Coinflip前等待时间(秒)"
 
-#: .\betting\models.py:335
+#: .\betting\models.py:298
 msgid "Coinflip Creatable"
 msgstr "允许创建Coinflip"
 
-#: .\betting\models.py:336
+#: .\betting\models.py:299
 msgid "Coinflip Create Idle"
 msgstr "创建Coinflip前等待时间(秒)"
 
-#: .\betting\models.py:337
+#: .\betting\models.py:300
 msgid "Coinflip Min Value"
 msgstr "Coinflip最小金额"
 
-#: .\betting\models.py:338
+#: .\betting\models.py:301
 msgid "Coinflip Max Value"
 msgstr "Coinflip最大金额"
 
-#: .\betting\models.py:339
+#: .\betting\models.py:302
 msgid "Max Coinflip Count"
 msgstr "同时最多创建的Coinflip房间"
 
-#: .\betting\models.py:340
+#: .\betting\models.py:303
 msgid "Enable Jackpot"
 msgstr "开启Jackpot"
 
-#: .\betting\models.py:341
+#: .\betting\models.py:304
 msgid "Jackpot Join Idle"
 msgstr "加入Jackpot前等待时间(秒)"
 
-#: .\betting\models.py:342
+#: .\betting\models.py:305
 msgid "Jackpot Min Value"
 msgstr "Jackpot最小金额"
 
-#: .\betting\models.py:343
+#: .\betting\models.py:306
 msgid "Jackpot Max Value"
 msgstr "Jackpot最大金额"
 
-#: .\betting\models.py:346 .\betting\models.py:347
+#: .\betting\models.py:309 .\betting\models.py:310
 msgid "Betting Bots"
 msgstr "下注机器人"
 
-#: .\betting\views.py:271 .\betting\views.py:294
+#: .\betting\views.py:258 .\betting\views.py:281
 msgid "The site in on maintenance, please wait for a while."
 msgstr "网站正在维护中，请稍等。"
 
@@ -433,9 +392,17 @@ msgstr "网站正在维护中，请稍等。"
 msgid "date joined"
 msgstr "加入时间"
 
+#: .\social_auth\models.py:57
+msgid "Is Staff"
+msgstr ""
+
 #: .\social_auth\models.py:62
 msgid "Cheating"
 msgstr "作弊"
+
+#: .\social_auth\models.py:63
+msgid "Can Chat"
+msgstr "允许聊天"
 
 #: .\social_auth\models.py:75 .\social_auth\models.py:76
 msgid "SteamUsers"
@@ -1608,6 +1575,36 @@ msgstr "取出记录"
 #: .\templates\pages\profile_detail\trade_record.html:40
 msgid "No history"
 msgstr "没有历史记录。"
+
+#~ msgid "Common"
+#~ msgstr "普通推广"
+
+#~ msgid "Personal"
+#~ msgstr "个人推广"
+
+#~ msgid "Title"
+#~ msgstr "标题"
+
+#~ msgid "Img Url"
+#~ msgstr "图片url"
+
+#~ msgid "Target Url"
+#~ msgstr "跳转目标url"
+
+#~ msgid "Button"
+#~ msgstr "按钮文字"
+
+#~ msgid "GiveAway Type"
+#~ msgstr "推广类型"
+
+#~ msgid "Give Away"
+#~ msgstr "推广"
+
+#~ msgid "GiveAway"
+#~ msgstr "推广"
+
+#~ msgid "User Posts"
+#~ msgstr "定制推广"
 
 #~ msgid "dalaocsgo eSport Entertainment Platform"
 #~ msgstr "dalaocsgo电竞娱乐平台|CSGO翻硬币|CSGO夺宝|CSGO推单"

@@ -272,43 +272,6 @@ class Announcement(ModelBase):
         verbose_name_plural = _("Announcements")
 
 
-GIVEAWAY_TYPE = (
-    (0, _("Common")),
-    (1, _("Personal"))
-)
-
-
-class GiveAway(ModelBase):
-    title = models.CharField(max_length=128, verbose_name=_("Title"))
-    img = models.URLField(verbose_name=_("Img Url"))
-    href = models.URLField(verbose_name=_("Target Url"))
-    button = models.CharField(max_length=64, verbose_name=_("Button"))
-    g_type = models.SmallIntegerField(default=0, verbose_name=_("GiveAway Type"), choices=GIVEAWAY_TYPE)
-    num = models.IntegerField(default=1, verbose_name=_("Num."))
-    enable = models.BooleanField(default=True, verbose_name=_("Enable"))
-    remark = models.CharField(max_length=64, verbose_name=_("Remark"))
-
-    def __unicode__(self):
-        return self.remark
-
-    class Meta:
-        verbose_name = _("Give Away")
-        verbose_name_plural = _("Give Away")
-
-
-class UserPost(ModelBase):
-    steamer = models.OneToOneField(SteamUser, related_name='post', verbose_name=_("Steamer"))
-    give = models.ForeignKey(GiveAway, related_name='post', verbose_name=_("GiveAway"))
-    remark = models.CharField(max_length=64, verbose_name=_("Remark"))
-
-    def __unicode__(self):
-        return self.remark
-
-    class Meta:
-        verbose_name = _('User Posts')
-        verbose_name_plural = _('User Posts')
-
-
 MAINTENANCE_KEY = 'maintenance'
 
 

@@ -29,7 +29,7 @@ def page_base_processor(request):
     context = {
         'chat_smiles': chat_smiles,
         'maintenance': m,
-        'ld': ld,
+        'ld': False,
         'steam_bot': bot,
         'times': times,
         'wpct': wpct,

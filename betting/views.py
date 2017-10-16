@@ -20,8 +20,8 @@ from betting.business.trade_business import store_items_by_user, withdraw_items_
 from betting.business.steam_business import get_user_inventories
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_current_jackpot_id, get_steam_bot_status
 from betting.forms import TradeUrlForm
-from betting.models import Deposit, CoinFlipGame, Announcement, GiveAway, UserProfile, SendRecord, StoreRecord
-from betting.serializers import DepositSerializer, AnnouncementSerializer, GiveawaySerializer, StoreRecordSerializer, SteamerSerializer
+from betting.models import Deposit, CoinFlipGame, Announcement, UserProfile, SendRecord, StoreRecord
+from betting.serializers import DepositSerializer, AnnouncementSerializer, StoreRecordSerializer, SteamerSerializer
 from betting.utils import current_user, reformat_ret, get_maintenance, get_string_config_from_site_config
 
 from social_auth.models import SteamUser
@@ -38,17 +38,6 @@ def get_announcement(page_type):
     announ = announ_current or announ_all
     if announ:
         ret = AnnouncementSerializer(announ).data
-    return ret
-
-
-def get_giveaway(user):
-    ret = None
-    if user and getattr(user, 'post', None):
-        give = user.post.give
-    else:
-        give = GiveAway.objects.filter(g_type=0, enable=True).order_by('num').first()
-    if give:
-        ret = GiveawaySerializer(give).data
     return ret
 
 
@@ -107,7 +96,6 @@ class CoinFlipView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CoinFlipView, self).get_context_data(**kwargs)
         user = current_user(self.request)
-        context['give'] = get_giveaway(user)
         context['anno'] = get_announcement(page_type=0)
         return context
 
@@ -120,7 +108,6 @@ class JackpotView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(JackpotView, self).get_context_data(**kwargs)
         user = current_user(self.request)
-        context['give'] = get_giveaway(user)
         context['anno'] = get_announcement(page_type=1)
         return context
 
@@ -419,28 +406,6 @@ class TradeQueryView(views.APIView):
         return self.trade_query(request)
 
 trade_query_view = TradeQueryView.as_view()
-
-
-# class ConfirmInventoryView(views.APIView):
-#
-#     def confirm_inventory(self, request):
-#         try:
-#             uid = request.query_params.get('uid', None)
-#             if uid:
-#                 confirm_items(uid)
-#             return reformat_ret(0, {}, 'success')
-#         except Exception as e:
-#             _logger.exception(e)
-#             return reformat_ret(500, {}, 'exception')
-#
-#     def get(self, request, format=None):
-#         return self.confirm_inventory(request)
-#
-#     def post(self, request, format=None):
-#         return self.confirm_inventory(request)
-#
-#
-# confirm_inventory_view = ConfirmInventoryView.as_view()
 
 
 class DepositStatusQueryView(views.APIView):

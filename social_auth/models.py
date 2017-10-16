@@ -54,13 +54,13 @@ class SteamUser(AbstractBaseUser, PermissionsMixin):
 
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False, verbose_name=_('Is Staff'))
 
     objects = SteamUserManager()
-    tradeurl = models.CharField(max_length=300)
+    tradeurl = models.CharField(max_length=300, null=True, default=None, blank=True)
     level = models.IntegerField(default=1)
     is_cheating = models.BooleanField(default=False, verbose_name=_(u'Cheating'))
-    can_chat = models.BooleanField(default=True)
+    can_chat = models.BooleanField(default=True, verbose_name=_('Can Chat'))
 
     def __unicode__(self):
         return self.personaname

@@ -112,7 +112,7 @@ class DepositAdmin(ReadOnlyAdmin):
     ordering = ('-create_time',)
     search_fields = ('uid', 'steamer__personaname', 'game__uid')
     date_hierarchy = 'create_time'
-    list_filter = ('create_time',)
+    list_filter = ('create_time', 'steamer')
     inlines = [PropItemDepositInline, ]
     list_per_page = 50
 
