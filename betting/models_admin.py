@@ -211,3 +211,11 @@ class MarketItemAdmin(ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         # Nobody is allowed to delete
         return False
+
+
+class UserAmountRecordAdmin(ReadOnlyAdmin):
+    list_display = ('steamer', 'amount', 'total_amount', 'reason', 'create_time')
+    search_fields = ('steamer__personaname',)
+    list_filter = ('steamer',)
+    list_per_page = 50
+    ordering = ('-create_time',)

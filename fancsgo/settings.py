@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    # 'jet',
     'django_adminlte',
     'django_adminlte_theme',
     'django.contrib.admin',
@@ -48,8 +47,7 @@ INSTALLED_APPS = [
     'social_auth',
     'social_django',
     'rest_framework',
-    'bootstrap_pagination',
-    'DjangoUeditor',
+    'bootstrap_pagination'
 ]
 
 MIDDLEWARE = [

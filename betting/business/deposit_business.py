@@ -13,20 +13,18 @@ import random
 from threading import Thread
 from datetime import timedelta, datetime as _dt
 
-import requests
-import schedule
 from django.utils import timezone as dt
 from django.db import connection
 from django.conf import settings
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.utils.translation import ugettext as _l, ugettext_lazy as _
 from channels import Group
 from channels.sessions import channel_session
 from social_auth.models import SteamUser
 
-from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord
-from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, StoreRecordSerializer, SendRecordSerializer, PropItemSerializer
-from betting.business.cache_manager import update_coinflip_game_in_cache, get_online, get_steam_bot_status, get_current_coinflip_games
-from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id, read_inventory_from_cache
+from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, UserAmountRecord, BettingBot
+from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer
+from betting.business.cache_manager import update_coinflip_game_in_cache
+from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id
 from betting.business.redis_con import get_redis
 from betting.utils import aware_datetime_to_timestamp, get_maintenance, get_string_config_from_site_config
 from betting.knapsack import knapsack
@@ -276,39 +274,6 @@ def set_up_jackpot_countdown(gid, countdown=None):
     th.start()
 
 
-# def jackpot_countdown_checker():
-#     while True:
-#         try:
-#             if not is_connection_usable():
-#                 connection.close()
-#
-#             m = get_maintenance()
-#             if not m:
-#                 gid = get_current_jackpot_id()
-#                 game_data = CoinFlipGame.objects.filter(uid=gid).first()
-#                 if not game_data or len(game_data.deposits.all())!=1:
-#                     continue
-#
-#                 game = format_jackpot_game(game_data)
-#                 time_now = dt.now()
-#                 ts_now = aware_datetime_to_timestamp(time_now)
-#                 ts = game['update_ts']
-#                 expires = settings.JACKPOT_EXPIRE_TIMEOUT - (ts_now - ts)
-#                 if expires <= 0:
-#                     trade_items_back_to_joiners(game['uid'])
-#                     new_game = create_new_jackpot_game()
-#                     new_jd_data = format_jackpot_game(new_game, animate=False)
-#                     ws_send_jk_new(new_jd_data)
-#         except Exception as e:
-#             _logger.exception(e)
-#         finally:
-#             time.sleep(60)
-#
-# def setup_jackpot_countdown_checker():
-#     th = Thread(target=jackpot_countdown_checker, args=())
-#     th.start()
-
-
 def join_jackpot_game(data, steamer):
     deposit_data = dict(data)
     serializer = DepositSerializer(data=deposit_data)
@@ -443,12 +408,21 @@ def trade_items_to_game_winner(game):
     total_items = []
     winner = None
 
+    bots = BettingBot.objects.all()
+    bot_ids = [b.steamer.steamid for b in bots]
+
     pump_line = game.total_amount * settings.JACKPOT_PUMP_LINE
     for deposit in deposits:
         items = deposit.items.all()
         total_items.extend(items)
         if deposit.tickets_begin <= game.win_ticket <= deposit.tickets_end:
             winner = deposit
+            amount = game.total_amount - deposit.amount
+            if deposit.steamer.steamid in bot_ids:
+                create_user_amount_record(deposit.steamer, game, amount, _('Win'))
+        else:
+            if deposit.steamer.steamid in bot_ids:
+                create_user_amount_record(deposit.steamer, game, -deposit.amount, _('Lose'))
 
     items_map = {i.assetid: i for i in total_items}
     found_items = []
@@ -525,6 +499,13 @@ def ws_send_jk_current(data):
     Group('jackpot').send({'text': json.dumps(jk_msg)})
 
 
-
-
-
+def create_user_amount_record(steamer, game, amount, reason):
+    steamer.amount += amount
+    steamer.save()
+    UserAmountRecord.objects.create(
+        steamer=steamer,
+        game=game,
+        amount=amount,
+        total_amount=steamer.amount,
+        reason=reason
+    )

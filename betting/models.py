@@ -350,3 +350,18 @@ class SteamrobotApiItem(models.Model):
     item_sell_record_url = models.URLField(null=True, max_length=1024)
     steam_sale_price_dollar = models.FloatField(null=True)
     steam_normal_price_dollar = models.FloatField(null=True)
+
+
+class UserAmountRecord(ModelBase):
+    steamer = models.ForeignKey(SteamUser, related_name='amount_records', verbose_name=_('Steamer'))
+    game = models.ForeignKey(CoinFlipGame, related_name='amount_records', verbose_name=_('Game'))
+    amount = models.FloatField(default=0.0, verbose_name=_('Profit'))
+    total_amount = models.FloatField(default=0.0, verbose_name=_('Total Profit'))
+    reason = models.CharField(max_length=256, default=None, null=True, blank=True, verbose_name=_('Reason'))
+
+    def __unicode__(self):
+        return self.uid
+
+    class Meta:
+        verbose_name = _('UserAmountReocrds')
+        verbose_name_plural = _('UserAmountReocrds')

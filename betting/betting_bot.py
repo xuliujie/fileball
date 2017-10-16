@@ -72,9 +72,10 @@ def bot_join_coinflip():
             if bot and items:
                 data = {
                     'team': team,
-                    'items': items
+                    'items': items,
+                    'gid': gid
                 }
-                code, result = join_coinflip_game(data=data, gid=gid, steamer=bot.steamer)
+                code, result = join_coinflip_game(data=data, steamer=bot.steamer)
                 _logger.info(u'bot:{bot} join coinflip game:{gid}, code:{code}'.format(
                     bot=bot.steamer.steamid, gid=gid, code=code))
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-16 11:55+0800\n"
+"POT-Creation-Date: 2017-10-16 16:55+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: .\betting\business\deposit_business.py:422
+#: .\templates\common\history\history_template.html:209
+msgid "Win"
+msgstr "胜利"
+
+#: .\betting\business\deposit_business.py:425
+#: .\templates\common\history\history_template.html:210
+msgid "Lose"
+msgstr "失败"
 
 #: .\betting\models.py:40
 msgid "Create Time"
@@ -34,7 +44,7 @@ msgid "Label"
 msgstr "标签"
 
 #: .\betting\models.py:87 .\betting\models.py:161 .\betting\models.py:180
-#: .\betting\models.py:198
+#: .\betting\models.py:198 .\betting\models.py:356
 msgid "Steamer"
 msgstr "玩家"
 
@@ -156,11 +166,11 @@ msgstr ""
 msgid "Is Joined"
 msgstr ""
 
-#: .\betting\models.py:164
+#: .\betting\models.py:164 .\betting\models.py:357
 msgid "Game"
 msgstr "游戏"
 
-#: .\betting\models.py:166 .\betting\models.py:199
+#: .\betting\models.py:166 .\betting\models.py:199 .\social_auth\models.py:64
 #: .\templates\common\history\history_template.html:192
 msgid "Amount"
 msgstr "数量"
@@ -174,7 +184,7 @@ msgid "Ticket End"
 msgstr "结束票号"
 
 #: .\betting\models.py:172 .\betting\models.py:173 .\betting\models.py:228
-#: .\templates\common\nav\nav.html:26 .\templates\pages\profile.html:51
+#: .\templates\common\nav\nav.html:26
 msgid "Deposit"
 msgstr "下注记录"
 
@@ -384,6 +394,22 @@ msgstr "Jackpot最大金额"
 msgid "Betting Bots"
 msgstr "下注机器人"
 
+#: .\betting\models.py:358
+msgid "Profit"
+msgstr "收益"
+
+#: .\betting\models.py:359
+msgid "Total Profit"
+msgstr "总收益"
+
+#: .\betting\models.py:360
+msgid "Reason"
+msgstr ""
+
+#: .\betting\models.py:366 .\betting\models.py:367
+msgid "UserAmountReocrds"
+msgstr "机器人收益记录"
+
 #: .\betting\views.py:258 .\betting\views.py:281
 msgid "The site in on maintenance, please wait for a while."
 msgstr "网站正在维护中，请稍等。"
@@ -404,7 +430,7 @@ msgstr "作弊"
 msgid "Can Chat"
 msgstr "允许聊天"
 
-#: .\social_auth\models.py:75 .\social_auth\models.py:76
+#: .\social_auth\models.py:76 .\social_auth\models.py:77
 msgid "SteamUsers"
 msgstr "玩家帐号"
 
@@ -548,14 +574,6 @@ msgstr "胜利/失败"
 #: .\templates\pages\profile_detail\trade_record.html:30
 msgid "Time"
 msgstr "时间"
-
-#: .\templates\common\history\history_template.html:209
-msgid "Win"
-msgstr "胜利"
-
-#: .\templates\common\history\history_template.html:210
-msgid "Lose"
-msgstr "失败"
 
 #: .\templates\common\history\history_template.html:221
 msgid "Not found rounds"
@@ -1352,6 +1370,10 @@ msgstr ""
 #: .\templates\pages\play_fair.html:90
 msgid "Find Winning Ticket"
 msgstr ""
+
+#: .\templates\pages\profile.html:51
+msgid "Store"
+msgstr "存入"
 
 #: .\templates\pages\profile.html:52
 msgid "Inventory History"

@@ -16,4 +16,4 @@ admin.site.register(models.SendRecord, models_admin.SendRecordAdmin)
 admin.site.register(models.StoreRecord, models_admin.StoreRecordAdmin)
 admin.site.register(models.BettingBot, models_admin.BettingBotAdmin)
 admin.site.register(models.MarketItem, models_admin.MarketItemAdmin)
-
+admin.site.register(models.UserAmountRecord, models_admin.UserAmountRecordAdmin)

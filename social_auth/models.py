@@ -59,8 +59,9 @@ class SteamUser(AbstractBaseUser, PermissionsMixin):
     objects = SteamUserManager()
     tradeurl = models.CharField(max_length=300, null=True, default=None, blank=True)
     level = models.IntegerField(default=1)
-    is_cheating = models.BooleanField(default=False, verbose_name=_(u'Cheating'))
+    is_cheating = models.BooleanField(default=False, verbose_name=_('Cheating'))
     can_chat = models.BooleanField(default=True, verbose_name=_('Can Chat'))
+    amount = models.FloatField(default=0.0, verbose_name=_('Amount'))
 
     def __unicode__(self):
         return self.personaname

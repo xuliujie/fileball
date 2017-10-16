@@ -7,7 +7,7 @@ from settings import *
 
 DEBUG = True
 
-ON_TEST = False
+ON_TEST = True
 
 RANDOM_PRICE = True
 
@@ -46,4 +46,4 @@ LOGGING_CONFIG = 'logging.config.dictConfig'
 LOGGING = logging.basicConfig(level=logging.DEBUG)
 
 SHOP_BOT = ''
-JACKPOT_COUNTDOWN = 5
+JACKPOT_COUNTDOWN = 60
