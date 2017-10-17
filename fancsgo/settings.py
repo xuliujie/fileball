@@ -135,11 +135,12 @@ AUTHENTICATION_BACKENDS = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'zh-hant'
 
 LANGUAGES = (
     ('en', 'English'),
-    ('zh', 'Chinese'),
+    ('zh-hans', 'Simplified Chinese'),
+    ('zh-hant', 'Traditional Chinese')
 )
 
 TIME_ZONE = 'Asia/Shanghai'
