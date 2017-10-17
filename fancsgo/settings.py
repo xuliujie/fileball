@@ -139,7 +139,6 @@ LANGUAGE_CODE = 'zh-hant'
 
 LANGUAGES = (
     ('en', 'English'),
-    ('zh-hans', 'Simplified Chinese'),
     ('zh-hant', 'Traditional Chinese')
 )
 
