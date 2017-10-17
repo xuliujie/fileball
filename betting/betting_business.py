@@ -74,9 +74,11 @@ def format_jackpot_joiners(game, winner):
 
 
 def get_all_coinflip_history(page=1):
+    dt_now = dt.now()
+    dt_begin = dt_now - timedelta(days=6)
     page = page if page <= 10 else 10
     items = []
-    games = CoinFlipGame.objects.filter(game_type=0, end=1).all().order_by('-create_time')
+    games = CoinFlipGame.objects.filter(game_type=0, end=1, create_time__gte=dt_begin.date()).all().order_by('-create_time')
     paginator = Paginator(games, settings.DEFAULT_PAGINATION_PAGE)
     try:
         ret_games = paginator.page(page)
