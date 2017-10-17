@@ -145,8 +145,8 @@ class CoinFlipGame(ModelBase):
         return self.uid
 
 TEAM_TYPE = (
-    (0, _("Radiant")),
-    (1, _("Dire"))
+    (0, _("T")),
+    (1, _("CT"))
 )
 
 TRADE_STATUS = (

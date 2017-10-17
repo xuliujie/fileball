@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-17 11:38+0800\n"
+"POT-Creation-Date: 2017-10-17 11:26+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: .\betting\business\deposit_business.py:422
 #: .\templates\common\history\history_template.html:209
 msgid "Win"
-msgstr "勝利"
+msgstr "胜利"
 
 #: .\betting\business\deposit_business.py:425
 #: .\templates\common\history\history_template.html:210
 msgid "Lose"
-msgstr "失敗"
+msgstr "失败"
 
 #: .\betting\models.py:40
 msgid "Create Time"
-msgstr "創建時間"
+msgstr "创建时间"
 
 #: .\betting\models.py:41
 msgid "Update Time"
-msgstr "更新時間"
+msgstr "更新时间"
 
 #: .\betting\models.py:79 .\betting\models.py:217
 msgid "Name"
-msgstr "名稱"
+msgstr "名称"
 
 #: .\betting\models.py:80
 msgid "Label"
-msgstr "標簽"
+msgstr "标签"
 
 #: .\betting\models.py:87 .\betting\models.py:161 .\betting\models.py:180
 #: .\betting\models.py:198 .\betting\models.py:356
@@ -50,7 +50,7 @@ msgstr "玩家"
 
 #: .\betting\models.py:88
 msgid "Room"
-msgstr "房間"
+msgstr "房间"
 
 #: .\betting\models.py:89
 msgid "Message"
@@ -58,7 +58,7 @@ msgstr "消息"
 
 #: .\betting\models.py:90
 msgid "Timestamp"
-msgstr "時間戳"
+msgstr "时间戳"
 
 #: .\betting\models.py:110 .\betting\models.py:111
 msgid "Temp Game Hash"
@@ -67,20 +67,20 @@ msgstr "Temp Game Hash"
 #: .\betting\models.py:115 .\betting\models.py:244
 #: .\templates\common\nav\nav.html:21
 msgid "Coinflip"
-msgstr "翻硬幣"
+msgstr "翻硬币"
 
 #: .\betting\models.py:116 .\betting\models.py:245
 #: .\templates\common\nav\nav.html:23
 msgid "Jackpot"
-msgstr "輪盤"
+msgstr "轮盘"
 
 #: .\betting\models.py:120
 msgid "Not End"
-msgstr "未結束"
+msgstr "未结束"
 
 #: .\betting\models.py:121
 msgid "End"
-msgstr "已結束"
+msgstr "已结束"
 
 #: .\betting\models.py:126
 msgid "Hash"
@@ -96,43 +96,43 @@ msgstr "Percentage"
 
 #: .\betting\models.py:129 .\betting\models.py:165
 msgid "Game Type"
-msgstr "遊戲類型"
+msgstr "游戏类型"
 
 #: .\betting\models.py:130
 msgid "Run at"
-msgstr "遊戲開始時間"
+msgstr "游戏开始时间"
 
 #: .\betting\models.py:131
 msgid "Total Amount"
-msgstr "總金額"
+msgstr "总金额"
 
 #: .\betting\models.py:132
 msgid "Total Items"
-msgstr "總物品"
+msgstr "总物品"
 
 #: .\betting\models.py:133
 msgid "Total Tickets"
-msgstr "總物品"
+msgstr "总物品"
 
 #: .\betting\models.py:134
 msgid "Win Ticket"
-msgstr "獲勝票號"
+msgstr "获胜票号"
 
 #: .\betting\models.py:135
 msgid "Win at"
-msgstr "獲勝時間"
+msgstr "获胜时间"
 
 #: .\betting\models.py:136 .\betting\models.py:181 .\betting\models.py:200
 msgid "Status"
-msgstr "狀態"
+msgstr "状态"
 
 #: .\betting\models.py:137
 msgid "Is End"
-msgstr "是否已結束"
+msgstr "是否已结束"
 
 #: .\betting\models.py:141 .\betting\models.py:142
 msgid "Games"
-msgstr "遊戲"
+msgstr "游戏"
 
 #: .\betting\models.py:148
 msgid "T"
@@ -156,7 +156,7 @@ msgstr "已取消"
 
 #: .\betting\models.py:160
 msgid "Team"
-msgstr "隊伍"
+msgstr "队伍"
 
 #: .\betting\models.py:162
 msgid "Is Creator"
@@ -168,24 +168,25 @@ msgstr ""
 
 #: .\betting\models.py:164 .\betting\models.py:357
 msgid "Game"
-msgstr "遊戲"
+msgstr "游戏"
 
 #: .\betting\models.py:166 .\betting\models.py:199 .\social_auth\models.py:64
 #: .\templates\common\history\history_template.html:192
 msgid "Amount"
-msgstr "數量"
+msgstr "数量"
 
 #: .\betting\models.py:167
 msgid "Ticket Begin"
-msgstr "起始票號"
+msgstr "起始票号"
 
 #: .\betting\models.py:168
 msgid "Ticket End"
-msgstr "結束票號"
+msgstr "结束票号"
 
 #: .\betting\models.py:172 .\betting\models.py:173 .\betting\models.py:228
+#: .\templates\common\nav\nav.html:26
 msgid "Deposit"
-msgstr "下註"
+msgstr "下注记录"
 
 #: .\betting\models.py:183 .\betting\models.py:201
 #: .\templates\pages\profile_detail\package.html:83
@@ -193,31 +194,31 @@ msgstr "下註"
 #: .\templates\pages\profile_detail\store.html:81
 #: .\templates\pages\profile_detail\store.html:109
 msgid "Security Code"
-msgstr "安全碼"
+msgstr "安全码"
 
 #: .\betting\models.py:184 .\betting\models.py:202
 msgid "Trade No."
-msgstr "交易編號"
+msgstr "交易编号"
 
 #: .\betting\models.py:185 .\betting\models.py:203
 msgid "Bot Status"
-msgstr "機器人狀態"
+msgstr "机器人状态"
 
 #: .\betting\models.py:186 .\betting\models.py:204
 msgid "Bot Message"
-msgstr "機器人消息"
+msgstr "机器人消息"
 
 #: .\betting\models.py:187 .\betting\models.py:205
 msgid "Trade Time"
-msgstr "交易時間"
+msgstr "交易时间"
 
 #: .\betting\models.py:193 .\betting\models.py:194
 msgid "Send Records"
-msgstr "發貨記錄"
+msgstr "发货记录"
 
 #: .\betting\models.py:211 .\betting\models.py:212 .\betting\models.py:230
 msgid "Store Record"
-msgstr "存入記錄"
+msgstr "存入记录"
 
 #: .\betting\models.py:218
 msgid "Market Name"
@@ -231,7 +232,7 @@ msgstr "Hash Name"
 #: .\templates\pages\profile_detail\shop.html:22
 #: .\templates\pages\profile_detail\store.html:19
 msgid "Price"
-msgstr "價格"
+msgstr "价格"
 
 #: .\betting\models.py:221
 msgid "Rarity"
@@ -239,11 +240,11 @@ msgstr "稀有度"
 
 #: .\betting\models.py:222
 msgid "Rarity Color"
-msgstr "顏色"
+msgstr "颜色"
 
 #: .\betting\models.py:223
 msgid "Exterior"
-msgstr "外觀"
+msgstr "外观"
 
 #: .\betting\models.py:224
 msgid "AssetID(Negative numbers if item is virtual)"
@@ -263,11 +264,11 @@ msgstr ""
 
 #: .\betting\models.py:229
 msgid "Send Record"
-msgstr "發貨記錄"
+msgstr "发货记录"
 
 #: .\betting\models.py:232
 msgid "owner"
-msgstr "擁有者"
+msgstr "拥有者"
 
 #: .\betting\models.py:233
 msgid "Is Locked"
@@ -275,11 +276,11 @@ msgstr ""
 
 #: .\betting\models.py:239 .\betting\models.py:240
 msgid "Prop Items"
-msgstr "下註物品"
+msgstr "下注物品"
 
 #: .\betting\models.py:246
 msgid "News"
-msgstr "新聞"
+msgstr "新闻"
 
 #: .\betting\models.py:247
 msgid "Video"
@@ -291,7 +292,7 @@ msgstr ""
 
 #: .\betting\models.py:249
 msgid "All pages"
-msgstr "全部新聞"
+msgstr "全部新闻"
 
 #: .\betting\models.py:253
 msgid "Info"
@@ -303,31 +304,31 @@ msgstr "警告"
 
 #: .\betting\models.py:259
 msgid "Page Type"
-msgstr "頁面類型"
+msgstr "页面类型"
 
 #: .\betting\models.py:260
 msgid "Anno Type"
-msgstr "通知類型"
+msgstr "通知类型"
 
 #: .\betting\models.py:261
 msgid "Content(zh)"
-msgstr "內容（中文）"
+msgstr "内容（中文）"
 
 #: .\betting\models.py:262
 msgid "Content(en)"
-msgstr "內容（英文）"
+msgstr "内容（英文）"
 
 #: .\betting\models.py:263 .\betting\models.py:282
 msgid "Enable"
-msgstr "是否啟用"
+msgstr "是否启用"
 
 #: .\betting\models.py:264
 msgid "Num."
-msgstr "序號"
+msgstr "序号"
 
 #: .\betting\models.py:265 .\betting\models.py:283
 msgid "Remark"
-msgstr "備註"
+msgstr "备注"
 
 #: .\betting\models.py:271 .\betting\models.py:272
 msgid "Announcements"
@@ -335,63 +336,63 @@ msgstr "通知"
 
 #: .\betting\models.py:289 .\betting\models.py:290
 msgid "Site Configs"
-msgstr "站點配置"
+msgstr "站点配置"
 
 #: .\betting\models.py:294
 msgid "BotAccount"
-msgstr "機器人帳號"
+msgstr "机器人帐号"
 
 #: .\betting\models.py:295
 msgid "Enable Coinflip"
-msgstr "開啟Coinflip"
+msgstr "开启Coinflip"
 
 #: .\betting\models.py:296
 msgid "Coinflip Joinable"
-msgstr "允許加入Coinflip"
+msgstr "允许加入Coinflip"
 
 #: .\betting\models.py:297
 msgid "Coinflip Join Idle"
-msgstr "加入Coinflip前等待時間(秒)"
+msgstr "加入Coinflip前等待时间(秒)"
 
 #: .\betting\models.py:298
 msgid "Coinflip Creatable"
-msgstr "允許創建Coinflip"
+msgstr "允许创建Coinflip"
 
 #: .\betting\models.py:299
 msgid "Coinflip Create Idle"
-msgstr "創建Coinflip前等待時間(秒)"
+msgstr "创建Coinflip前等待时间(秒)"
 
 #: .\betting\models.py:300
 msgid "Coinflip Min Value"
-msgstr "Coinflip最小金額"
+msgstr "Coinflip最小金额"
 
 #: .\betting\models.py:301
 msgid "Coinflip Max Value"
-msgstr "Coinflip最大金額"
+msgstr "Coinflip最大金额"
 
 #: .\betting\models.py:302
 msgid "Max Coinflip Count"
-msgstr "同時最多創建的Coinflip房間"
+msgstr "同时最多创建的Coinflip房间"
 
 #: .\betting\models.py:303
 msgid "Enable Jackpot"
-msgstr "開啟Jackpot"
+msgstr "开启Jackpot"
 
 #: .\betting\models.py:304
 msgid "Jackpot Join Idle"
-msgstr "加入Jackpot前等待時間(秒)"
+msgstr "加入Jackpot前等待时间(秒)"
 
 #: .\betting\models.py:305
 msgid "Jackpot Min Value"
-msgstr "Jackpot最小金額"
+msgstr "Jackpot最小金额"
 
 #: .\betting\models.py:306
 msgid "Jackpot Max Value"
-msgstr "Jackpot最大金額"
+msgstr "Jackpot最大金额"
 
 #: .\betting\models.py:309 .\betting\models.py:310
 msgid "Betting Bots"
-msgstr "下註機器人"
+msgstr "下注机器人"
 
 #: .\betting\models.py:358
 msgid "Profit"
@@ -399,7 +400,7 @@ msgstr "收益"
 
 #: .\betting\models.py:359
 msgid "Total Profit"
-msgstr "總收益"
+msgstr "总收益"
 
 #: .\betting\models.py:360
 msgid "Reason"
@@ -407,15 +408,15 @@ msgstr ""
 
 #: .\betting\models.py:366 .\betting\models.py:367
 msgid "UserAmountReocrds"
-msgstr "機器人收益記錄"
+msgstr "机器人收益记录"
 
 #: .\betting\views.py:258 .\betting\views.py:281
 msgid "The site in on maintenance, please wait for a while."
-msgstr "網站正在維護中，請稍等。"
+msgstr "网站正在维护中，请稍等。"
 
 #: .\social_auth\models.py:55
 msgid "date joined"
-msgstr "加入時間"
+msgstr "加入时间"
 
 #: .\social_auth\models.py:57
 msgid "Is Staff"
@@ -427,11 +428,11 @@ msgstr "作弊"
 
 #: .\social_auth\models.py:63
 msgid "Can Chat"
-msgstr "允許聊天"
+msgstr "允许聊天"
 
 #: .\social_auth\models.py:76 .\social_auth\models.py:77
 msgid "SteamUsers"
-msgstr "玩家帳號"
+msgstr "玩家帐号"
 
 #: .\templates\404.html:5 .\templates\404.html:9
 msgid "Not Found"
@@ -439,7 +440,7 @@ msgstr "未找到"
 
 #: .\templates\500.html:5 .\templates\500.html:9
 msgid "Server Exception"
-msgstr "服務器異常"
+msgstr "服务器异常"
 
 #: .\templates\admin\submit_line.html:3
 msgid "Save"
@@ -467,7 +468,7 @@ msgstr ""
 
 #: .\templates\common\chat\chat_room.html:10
 msgid "chat rules"
-msgstr "聊天規則"
+msgstr "聊天规则"
 
 #: .\templates\common\chat\chat_template.html:5
 msgid ""
@@ -485,23 +486,23 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"        <p>每個用戶都擁有在遵守以下規則使用聊天室的資格:</p>\n"
+"        <p>每个用户都拥有在遵守以下规则使用聊天室的资格:</p>\n"
 "        <ul>\n"
-"            <li>禁止任何形式的廣告</li>\n"
+"            <li>禁止任何形式的广告</li>\n"
 "            <li>禁止刷屏</li>\n"
-"            <li>禁止向本網站用戶乞求飾品</li>\n"
-"            <li>禁止騷擾他人</li>\n"
-"            <li>禁止發送交易/買賣飾品相關信息</li>\n"
+"            <li>禁止向本网站用户乞求饰品</li>\n"
+"            <li>禁止骚扰他人</li>\n"
+"            <li>禁止发送交易/买卖饰品相关信息</li>\n"
 "        </ul>\n"
 "        "
 
 #: .\templates\common\footer\footer.html:12
 msgid "Provably Fair"
-msgstr "公平驗證"
+msgstr "公平验证"
 
 #: .\templates\common\footer\footer.html:14
 msgid "CSGO Steambot Status:"
-msgstr "交易機器人狀態:"
+msgstr "交易机器人状态:"
 
 #: .\templates\common\history\history_template.html:49
 msgid "Needs:"
@@ -515,7 +516,7 @@ msgstr "加入"
 
 #: .\templates\common\history\history_template.html:108
 msgid "View"
-msgstr "觀看"
+msgstr "观看"
 
 #: .\templates\common\history\history_template.html:118
 #: .\templates\pages\coinflip_template.html:91
@@ -557,22 +558,22 @@ msgstr "物品"
 #: .\templates\pages\coinflip.html:94
 #: .\templates\pages\profile_detail\trade_record.html:29
 msgid "Total"
-msgstr "總共"
+msgstr "总共"
 
 #: .\templates\common\history\history_template.html:155
 #: .\templates\pages\coinflip.html:106
 msgid "No games added right now"
-msgstr "暫無遊戲"
+msgstr "暂无游戏"
 
 #: .\templates\common\history\history_template.html:193
 msgid "Win/lose"
-msgstr "勝利/失敗"
+msgstr "胜利/失败"
 
 #: .\templates\common\history\history_template.html:194
 #: .\templates\pages\profile_detail\store.html:20
 #: .\templates\pages\profile_detail\trade_record.html:30
 msgid "Time"
-msgstr "時間"
+msgstr "时间"
 
 #: .\templates\common\history\history_template.html:221
 msgid "Not found rounds"
@@ -609,9 +610,9 @@ msgstr ""
 "                    </template>\n"
 "                    最高 <span id=\"cfMaxItems\">^{item.settings.maxitems}</"
 "span> items.\n"
-"                    <br>從您的庫存中選擇物品, 選擇一個隊伍, 然後 點擊來獲得"
-"Steam報價。\n"
-"                    <br>您會收到含有您選中 物品的報價。\n"
+"                    <br>从您的库存中选择物品, 选择一个队伍, 然后 点击来获得"
+"Steam报价。\n"
+"                    <br>您会收到含有您选中 物品的报价。\n"
 "                    "
 
 #: .\templates\common\inventory\inventory_template.html:54
@@ -630,9 +631,9 @@ msgstr ""
 "\n"
 "                            <div class=\"inventory-selected\" v-if="
 "\"selectedItems\">\n"
-"                               總共:<span class=\"highlight"
+"                               总共:<span class=\"highlight"
 "\">^{selectedItems.length} 物品</span>\n"
-"                                價值為 <span class=\"highlight\">"
+"                                价值为 <span class=\"highlight\">"
 "$^{selectedAmount}</span>\n"
 "                            </div>\n"
 "                            "
@@ -640,17 +641,17 @@ msgstr ""
 #: .\templates\common\inventory\inventory_template.html:63
 #: .\templates\pages\jackpot.html:78
 msgid "Bet"
-msgstr "下註"
+msgstr "下注"
 
 #: .\templates\common\inventory\inventory_template.html:71
 msgid "Your inventory"
-msgstr "庫存"
+msgstr "库存"
 
 #: .\templates\common\inventory\inventory_template.html:75
 #: .\templates\pages\profile_detail\package.html:35
 #: .\templates\pages\profile_detail\store.html:33
 msgid "Refresh inventory"
-msgstr "刷新庫存"
+msgstr "刷新库存"
 
 #: .\templates\common\inventory\inventory_template.html:78
 msgid ""
@@ -660,44 +661,40 @@ msgid ""
 "                        "
 msgstr ""
 "\n"
-"                        <span id=\"invTimer\">0</span>秒內可刷新 \n"
+"                        <span id=\"invTimer\">0</span>秒内可刷新 \n"
 "                        "
 
 #: .\templates\common\inventory\inventory_template.html:90
 #: .\templates\pages\profile_detail\package.html:60
 #: .\templates\pages\profile_detail\store.html:58
 msgid "Please go to this page to config your trade url first"
-msgstr "請先轉到此界面設置您的交易鏈接"
+msgstr "请先转到此界面设置您的交易链接"
 
 #: .\templates\common\inventory\inventory_template.html:100
 #: .\templates\pages\profile_detail\package.html:126
 msgid ""
 "There is no item in your inventory, Please deposit item from your steam "
 "inventory first."
-msgstr "您的庫存中沒有任何飾品，請從Steam背包存入飾品。"
+msgstr "您的库存中没有任何饰品，请从Steam背包存入饰品。"
 
 #: .\templates\common\inventory\inventory_template.html:103
 #: .\templates\pages\profile_detail\package.html:129
 msgid "Click here to deposit item."
-msgstr "點擊來存入物品。"
-
-#: .\templates\common\nav\nav.html:26 .\templates\pages\profile.html:51
-msgid "Store"
-msgstr "存入"
+msgstr "点击来存入物品。"
 
 #: .\templates\common\nav\nav.html:28 .\templates\pages\profile.html:50
 msgid "Inventory"
-msgstr "飾品背包"
+msgstr "饰品背包"
 
-#: .\templates\common\nav\nav.html:30
-msgid "QQ"
-msgstr ""
+#: .\templates\common\nav\nav.html:30 .\templates\common\site\qq.html:6
+msgid "QQ Group"
+msgstr "QQ群"
 
-#: .\templates\common\nav\nav.html:63
+#: .\templates\common\nav\nav.html:79
 msgid "Profile"
-msgstr "個人主頁"
+msgstr "个人主页"
 
-#: .\templates\common\nav\nav.html:65
+#: .\templates\common\nav\nav.html:85
 msgid "Logout"
 msgstr "退出"
 
@@ -765,10 +762,6 @@ msgid ""
 "            "
 msgstr ""
 
-#: .\templates\common\site\qq.html:6
-msgid "QQ Group"
-msgstr "QQ群"
-
 #: .\templates\common\site\qq.html:10
 msgid "QQ Custom Service"
 msgstr "客服QQ"
@@ -779,11 +772,11 @@ msgstr "Steam组"
 
 #: .\templates\common\site\support.html:6
 msgid "Support"
-msgstr "幫助"
+msgstr "帮助"
 
 #: .\templates\common\site\terms_of_service.html:6
 msgid "Terms of Service"
-msgstr "服務條款"
+msgstr "服务条款"
 
 #: .\templates\common\site\terms_of_service.html:12
 #, python-format
@@ -863,61 +856,61 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"                <h1>服務條款</h1>\n"
+"                <h1>服务条款</h1>\n"
 "\n"
 "                <h2>法律信息:</h2>\n"
 "\n"
-"                <p>以下 條款 (\"條款以及情況\") 適用於\n"
-"                    您 (\"您\", \"用戶\")管理和使用的任何服務 並由我們的商"
-"標\n"
-"                    \"dalaocsgo\" 提供 包含通過以下方式提供的任何服務 任何網"
-"站的域名結尾為\n"
-"                    \"dalaocsgo.com\" (\"網站\"), 以及於我們之間有此類服務的 "
-"任何電子郵件\n"
+"                <p>以下 条款 (\"条款以及情况\") 适用于\n"
+"                    您 (\"您\", \"用户\")管理和使用的任何服务 并由我们的商"
+"标\n"
+"                    \"dalaocsgo\" 提供 包含通过以下方式提供的任何服务 任何网"
+"站的域名结尾为\n"
+"                    \"dalaocsgo.com\" (\"网站\"), 以及于我们之间有此类服务的 "
+"任何电子邮件\n"
 "                    和其它信件。</p>\n"
 "\n"
-"                <h2>投註參與:</h2>\n"
+"                <h2>投注参与:</h2>\n"
 "\n"
-"                <p>通過 dalaocsgo.com下註您的年齡為18歲或以上，\n"
-"                    並有能力為您的行為負責。 dalaocsgo.com 不附帶任何對提供給"
-"您的服務的\n"
-"                   明示或暗示的保證。dalaocsgo.com不能對任何因使用網站網站造"
-"成的                    事件，直接，間接的因果負責。 dalaocsgo.com有權在任何"
-"時間取消\n"
-"                    或關閉任何賭註 當平臺維護/關閉時，任何進行中的賭註會被暫"
-"緩與dalaocsgo.com。                    同時dalaocsgo.com擁有在未通知的情況下"
-"在任何時間停止投註的權利。notice.</p>\n"
+"                <p>通过 dalaocsgo.com下注您的年龄为18岁或以上，\n"
+"                    并有能力为您的行为负责。 dalaocsgo.com 不附带任何对提供给"
+"您的服务的\n"
+"                   明示或暗示的保证。dalaocsgo.com不能对任何因使用网站网站造"
+"成的                    事件，直接，间接的因果负责。 dalaocsgo.com有权在任何"
+"时间取消\n"
+"                    或关闭任何赌注 当平台维护/关闭时，任何进行中的赌注会被暂"
+"缓与dalaocsgo.com。                    同时dalaocsgo.com拥有在未通知的情况下"
+"在任何时间停止投注的权利。notice.</p>\n"
 "\n"
-"                <h2>存入,取出,或丟失物品:</h2>\n"
+"                <h2>存入,取出,或丢失物品:</h2>\n"
 "\n"
-"                <p>如果投註因為網絡，程序產生任何問題,\n"
-"                    請在7天之內向我們發送郵件進行申訴<a href=\"http://"
+"                <p>如果投注因为网络，程序产生任何问题,\n"
+"                    请在7天之内向我们发送邮件进行申诉<a href=\"http://"
 "support.dalaocsgo.com\"\n"
 "                                                                          target="
 "\"_blank\">support.dalaocsgo.com</a>,\n"
-"                    7天後則視為放棄 我們強烈建議您盡快取出\n"
-"                    您的勝利品來避免任何問題。 請記住 您在當局遊戲獲得的勝利"
+"                    7天后则视为放弃 我们强烈建议您尽快取出\n"
+"                    您的胜利品来避免任何问题。 请记住 您在当局游戏获得的胜利"
 "品可能\n"
-"                    不是您所存入的相同飾品, 請謹慎存入特殊物品。\n"
-"                    但是，勝利的總金額將不會產生變化。 每一局 於dalaocsgo.com"
-"產生的遊戲中都將抽取0-5%%\n"
-"                    的傭金。傭金將於 下註總額計算並抽取,\n"
-"                    但不會從獲勝者存入的飾品中抽取。 Coinflip 的抽水系統等"
+"                    不是您所存入的相同饰品, 请谨慎存入特殊物品。\n"
+"                    但是，胜利的总金额将不会产生变化。 每一局 于dalaocsgo.com"
+"产生的游戏中都将抽取0-5%%\n"
+"                    的佣金。佣金将于 下注总额计算并抽取,\n"
+"                    但不会从获胜者存入的饰品中抽取。 Coinflip 的抽水系统等"
 "同,\n"
 "                    上述。\n"
-"                <h2>內容:</h2>\n"
+"                <h2>内容:</h2>\n"
 "\n"
-"                <p>本網頁的內容 僅供參考。\n"
-"                    可隨時在未進行任何同誌的情況下更改。 我們擁有 此網站上"
+"                <p>本网页的内容 仅供参考。\n"
+"                    可随时在未进行任何同志的情况下更改。 我们拥有 此网站上"
 "的\n"
-"                    所有材料。 該材料包括但不限於設計，布局，外觀，外觀\n"
-"                    和圖像。 復制以及抄襲是禁止的，除了版權申明，\n"
-"                    這也是條款的一部分。</p>\n"
+"                    所有材料。 该材料包括但不限于设计，布局，外观，外观\n"
+"                    和图像。 复制以及抄袭是禁止的，除了版权申明，\n"
+"                    这也是条款的一部分。</p>\n"
 "\n"
-"                <h2>關聯:</h2>\n"
+"                <h2>关联:</h2>\n"
 "\n"
-"                <p>dalaocsgo.com 不隸屬於 Valve Corporation, CSGO\n"
-"                    或任何Valve Corporation 的商標。</p>\n"
+"                <p>dalaocsgo.com 不隶属于 Valve Corporation, CSGO\n"
+"                    或任何Valve Corporation 的商标。</p>\n"
 "            "
 
 #: .\templates\page_base.html:27
@@ -930,27 +923,27 @@ msgstr "Coinflip概要"
 
 #: .\templates\pages\coinflip.html:34
 msgid "Total amount"
-msgstr "總金額"
+msgstr "总金额"
 
 #: .\templates\pages\coinflip.html:37 .\templates\pages\coinflip.html:55
 msgid "Total items"
-msgstr "總物品"
+msgstr "总物品"
 
 #: .\templates\pages\coinflip.html:40
 msgid "Joinable games"
-msgstr "可加入的遊戲"
+msgstr "可加入的游戏"
 
 #: .\templates\pages\coinflip.html:47
 msgid "Coinflip status"
-msgstr "Coinflip 狀態"
+msgstr "Coinflip 状态"
 
 #: .\templates\pages\coinflip.html:59
 msgid "Total value"
-msgstr "總金額"
+msgstr "总金额"
 
 #: .\templates\pages\coinflip.html:64 .\templates\pages\coinflip.html:66
 msgid "Create new"
-msgstr "創建遊戲"
+msgstr "创建游戏"
 
 #: .\templates\pages\coinflip.html:76
 msgid ""
@@ -959,7 +952,7 @@ msgid ""
 "                            "
 msgstr ""
 "\n"
-"                            <p>請先使用您的Steam帳號登錄.</p>\n"
+"                            <p>请先使用您的Steam帐号登录.</p>\n"
 "                            "
 
 #: .\templates\pages\coinflip.html:85
@@ -968,21 +961,21 @@ msgstr "教程"
 
 #: .\templates\pages\coinflip.html:86
 msgid "History"
-msgstr "歷史"
+msgstr "历史"
 
 #: .\templates\pages\coinflip.html:116 .\templates\pages\jackpot.html:142
 msgid "Connecting"
-msgstr "連接中"
+msgstr "连接中"
 
 #: .\templates\pages\coinflip_template.html:190
 msgid "User joining"
-msgstr "用戶加入中"
+msgstr "用户加入中"
 
 #: .\templates\pages\coinflip_template.html:193
 #: .\templates\pages\profile_detail\package.html:102
 #: .\templates\pages\profile_detail\store.html:100
 msgid "We are sending your offer"
-msgstr "正在發送報價"
+msgstr "正在发送报价"
 
 #: .\templates\pages\coinflip_template.html:199
 msgid ""
@@ -995,13 +988,13 @@ msgid ""
 "                                "
 msgstr ""
 "\n"
-"                                交易報價鏈接將在這裏出現<br>請使用dalaocsgo."
-"com為您提供的交易鏈接 或檢查您的交易安全碼以防被騙。</span>\n"
+"                                交易报价链接将在这里出现<br>请使用dalaocsgo."
+"com为您提供的交易链接 或检查您的交易安全码以防被骗。</span>\n"
 "                                "
 
 #: .\templates\pages\coinflip_template.html:210
 msgid "Expires at"
-msgstr "過期於:"
+msgstr "过期于:"
 
 #: .\templates\pages\coinflip_template.html:218
 #, python-format
@@ -1112,7 +1105,7 @@ msgstr ""
 
 #: .\templates\pages\coinflip_template.html:303
 msgid "Loading"
-msgstr "加載中"
+msgstr "加载中"
 
 #: .\templates\pages\coinflip_template.html:378
 #, python-format, python-brace-format
@@ -1123,7 +1116,7 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-"                    贏得 $^{item.winner.amount} 贏率為 ^{item.winner."
+"                    赢得 $^{item.winner.amount} 赢率为 ^{item.winner."
 "chance}%%\n"
 "                    "
 
@@ -1134,20 +1127,20 @@ msgid ""
 "                        "
 msgstr ""
 "\n"
-"                        <span id=\"invTimer\">0</span>秒內可刷新 \n"
+"                        <span id=\"invTimer\">0</span>秒内可刷新 \n"
 "                        "
 
 #: .\templates\pages\jackpot.html:84
 msgid "Max 12 items/trade - $1 minimum value"
-msgstr "最多12個道具/最低$1"
+msgstr "最多12个道具/最低$1"
 
 #: .\templates\pages\jackpot.html:95
 msgid "Total placed"
-msgstr "下註總數"
+msgstr "下注总数"
 
 #: .\templates\pages\jackpot.html:100
 msgid "Chances of winning"
-msgstr "獲勝幾率"
+msgstr "获胜几率"
 
 #: .\templates\pages\jackpot_template.html:44
 #, python-format, python-brace-format
@@ -1158,7 +1151,7 @@ msgid ""
 "                    "
 msgstr ""
 "\n"
-"                    贏得 $^{item.winner.amount} 贏率為 ^{item.winner."
+"                    赢得 $^{item.winner.amount} 赢率为 ^{item.winner."
 "chance}%%\n"
 "                    "
 
@@ -1166,7 +1159,7 @@ msgstr ""
 #: .\templates\pages\jackpot_template.html:82
 #, python-brace-format
 msgid "placed ^{de.item_count} items valued at $^{de.item_amount}"
-msgstr "存入了 ^{de.item_count} 件物品 總價值為 $^{de.item_amount}"
+msgstr "存入了 ^{de.item_count} 件物品 总价值为 $^{de.item_amount}"
 
 #: .\templates\pages\jackpot_template.html:117
 #, python-brace-format
@@ -1193,9 +1186,9 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"            <p>您贏得了$^{item.winner.amount}!</p>\n"
+"            <p>您赢得了$^{item.winner.amount}!</p>\n"
 "            <br>\n"
-"            <p>如果有任何問題，請給我們發送一個帶有當局遊戲hash數列的郵件:\n"
+"            <p>如果有任何问题，请给我们发送一个带有当局游戏hash数列的邮件:\n"
 "                <span class=\"win-hash\"><i class=\"fa fa-envelope\"></i> "
 "^{item.hash}</span>\n"
 "            </p>\n"
@@ -1203,7 +1196,7 @@ msgstr ""
 
 #: .\templates\pages\maintenance.html:12
 msgid "The site is on maintenance."
-msgstr "網站正在維護中"
+msgstr "网站正在维护中"
 
 #: .\templates\pages\play_fair.html:15
 msgid ""
@@ -1269,25 +1262,29 @@ msgstr ""
 msgid "Find Winning Ticket"
 msgstr ""
 
+#: .\templates\pages\profile.html:51
+msgid "Store"
+msgstr "存入"
+
 #: .\templates\pages\profile.html:52
 msgid "Inventory History"
-msgstr "庫存歷史"
+msgstr "库存历史"
 
 #: .\templates\pages\profile.html:53
 msgid "Bet History"
-msgstr "下註記錄"
+msgstr "下注记录"
 
 #: .\templates\pages\profile.html:54
 msgid "Trade URL"
-msgstr "交易鏈接"
+msgstr "交易链接"
 
 #: .\templates\pages\profile_detail\deposit_record.html:14
 msgid "Coinflip history"
-msgstr "Coinflip歷史"
+msgstr "Coinflip历史"
 
 #: .\templates\pages\profile_detail\deposit_record.html:15
 msgid "Jackpot history"
-msgstr "Jackpot歷史"
+msgstr "Jackpot历史"
 
 #: .\templates\pages\profile_detail\package.html:21
 #, python-brace-format
@@ -1309,15 +1306,15 @@ msgid ""
 msgstr ""
 "\n"
 "                        <div class=\"inventory-selected\">\n"
-"                            總共：<span class=\"highlight\">^{TotalCount} 物"
+"                            总共：<span class=\"highlight\">^{TotalCount} 物"
 "品</span>\n"
-"                            價值為：<span class=\"highlight\">$^{TotalAmount}"
+"                            价值为：<span class=\"highlight\">$^{TotalAmount}"
 "</span>\n"
 "                        </div>\n"
 "                        <div class=\"inventory-selected\">\n"
-"                            選中：<span class=\"highlight\">^{selectedCount} "
+"                            选中：<span class=\"highlight\">^{selectedCount} "
 "items</span>\n"
-"                            價值為：<span class=\"highlight\">"
+"                            价值为：<span class=\"highlight\">"
 "$^{selectedAmount}</span>\n"
 "                        </div>\n"
 "                    "
@@ -1331,13 +1328,13 @@ msgid ""
 "                            "
 msgstr ""
 "\n"
-"                        <span id=\"invTimer\">0</span>秒內可刷新 \n"
+"                        <span id=\"invTimer\">0</span>秒内可刷新 \n"
 "                        "
 
 #: .\templates\pages\profile_detail\package.html:44
 #: .\templates\pages\profile_detail\store.html:42
 msgid "Select All"
-msgstr "全選"
+msgstr "全选"
 
 #: .\templates\pages\profile_detail\package.html:48
 msgid "Withdraw"
@@ -1346,7 +1343,7 @@ msgstr "取出"
 #: .\templates\pages\profile_detail\package.html:51
 #: .\templates\pages\profile_detail\store.html:49
 msgid "The steam bot is down, please wait for a while."
-msgstr "Steam交易機器人已下線，請稍等。"
+msgstr "Steam交易机器人已下线，请稍等。"
 
 #: .\templates\pages\profile_detail\package.html:68
 #: .\templates\pages\profile_detail\store.html:66
@@ -1362,11 +1359,11 @@ msgid ""
 "                            "
 msgstr ""
 "\n"
-"                                <span class=\"offer-title\">您有尚未處理的兌"
-"換報價單，請先將其處理後再繼續兌換。</span>\n"
+"                                <span class=\"offer-title\">您有尚未处理的兑"
+"换报价单，请先将其处理后再继续兑换。</span>\n"
 "                                <br>\n"
-"                                <span>（如果您對應的報價單已處理，但仍然顯示"
-"此頁面，請聯系我們的客服，並提供提示這裏的安全碼。）</span>\n"
+"                                <span>（如果您对应的报价单已处理，但仍然显示"
+"此页面，请联系我们的客服，并提供提示这里的安全码。）</span>\n"
 "                                <br>\n"
 "                            "
 
@@ -1375,7 +1372,7 @@ msgstr ""
 #: .\templates\pages\profile_detail\store.html:78
 #: .\templates\pages\profile_detail\store.html:107
 msgid "Click here to accept the offer"
-msgstr "點擊來接受報價"
+msgstr "点击来接受报价"
 
 #: .\templates\pages\profile_detail\package.html:87
 #: .\templates\pages\profile_detail\store.html:85
@@ -1390,9 +1387,9 @@ msgid ""
 "                                "
 msgstr ""
 "\n"
-"                        您可以在這裏找到您的交易鏈接。\n"
+"                        您可以在这里找到您的交易链接。\n"
 "                        <br>\n"
-"                        請點擊鏈接或檢查交易安全碼來確認您的報價。\n"
+"                        请点击链接或检查交易安全码来确认您的报价。\n"
 "                        "
 
 #: .\templates\pages\profile_detail\package.html:114
@@ -1407,9 +1404,9 @@ msgid ""
 "                            "
 msgstr ""
 "\n"
-"                        您可以在這裏找到您的交易鏈接。\n"
+"                        您可以在这里找到您的交易链接。\n"
 "                        <br>\n"
-"                        請點擊鏈接或檢查交易安全碼來確認您的報價。\n"
+"                        请点击链接或检查交易安全码来确认您的报价。\n"
 "                        "
 
 #: .\templates\pages\profile_detail\shop.html:20
@@ -1418,11 +1415,11 @@ msgstr "商城"
 
 #: .\templates\pages\profile_detail\shop.html:36
 msgid "There is no available item in shop."
-msgstr "您的Steam庫存中沒有可用的飾品。"
+msgstr "您的Steam库存中没有可用的饰品。"
 
 #: .\templates\pages\profile_detail\shop.html:50
 msgid "F coins："
-msgstr "F幣："
+msgstr "F币："
 
 #: .\templates\pages\profile_detail\shop.html:53
 #, python-brace-format
@@ -1434,14 +1431,14 @@ msgid ""
 "                                    "
 msgstr ""
 "\n"
-"                                    選擇: ^{selectedCount} 物品\n"
-"                                    價值為：<span style=\"color: yellow;"
+"                                    选择: ^{selectedCount} 物品\n"
+"                                    价值为：<span style=\"color: yellow;"
 "\">^{selectedCoins}</span>\n"
 "                                    "
 
 #: .\templates\pages\profile_detail\shop.html:61
 msgid "Buy"
-msgstr "兌換"
+msgstr "兑换"
 
 #: .\templates\pages\profile_detail\store.html:23
 #, python-brace-format
@@ -1457,24 +1454,24 @@ msgid ""
 msgstr ""
 "\n"
 "                        <div class=\"inventory-selected\">\n"
-"                            總共：<span class=\"highlight\">^{selectedCount} "
+"                            总共：<span class=\"highlight\">^{selectedCount} "
 "物品</span>\n"
-"                            價值為：<span class=\"highlight\">"
+"                            价值为：<span class=\"highlight\">"
 "$^{selectedAmount}</span>\n"
 "                        </div>\n"
 "                    "
 
 #: .\templates\pages\profile_detail\store.html:123
 msgid "There is no available item in your steam inventory."
-msgstr "您的Steam庫存中沒有可用的飾品。"
+msgstr "您的Steam库存中没有可用的饰品。"
 
 #: .\templates\pages\profile_detail\tradeUrl.html:23
 msgid "Trade URL:"
-msgstr "交易鏈接"
+msgstr "交易链接"
 
 #: .\templates\pages\profile_detail\tradeUrl.html:32
 msgid "Find your Trade URL here"
-msgstr "點此獲取您的交易鏈接"
+msgstr "点此获取您的交易链接"
 
 #: .\templates\pages\profile_detail\tradeUrl.html:34
 msgid "Edit profile"
@@ -1482,12 +1479,12 @@ msgstr "保存"
 
 #: .\templates\pages\profile_detail\trade_record.html:14
 msgid "Store record"
-msgstr "存入記錄"
+msgstr "存入记录"
 
 #: .\templates\pages\profile_detail\trade_record.html:15
 msgid "Withdraw record"
-msgstr "取出記錄"
+msgstr "取出记录"
 
 #: .\templates\pages\profile_detail\trade_record.html:40
 msgid "No history"
-msgstr "沒有歷史記錄。"
+msgstr "没有历史记录。"

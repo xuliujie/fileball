@@ -139,7 +139,7 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
     ('en', 'English'),
-    ('zh-hans', 'Chinese'),
+    ('zh', 'Chinese'),
 )
 
 TIME_ZONE = 'Asia/Shanghai'
