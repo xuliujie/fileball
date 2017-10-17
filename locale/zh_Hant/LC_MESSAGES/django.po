@@ -419,7 +419,7 @@ msgstr "加入時間"
 
 #: .\social_auth\models.py:57
 msgid "Is Staff"
-msgstr ""
+msgstr "职员"
 
 #: .\social_auth\models.py:62
 msgid "Cheating"
