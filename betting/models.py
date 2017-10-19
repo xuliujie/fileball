@@ -40,8 +40,8 @@ GAME_STATUS = (
     (3, 'Joining'),
     (4, 'Full'),
     (5, 'Running'),
-    (6, 'End'),
-    (7, 'Cancelled')
+    (6, 'Cancelled'),
+    (11, 'End')
 )
 
 
