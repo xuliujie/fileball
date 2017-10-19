@@ -527,6 +527,7 @@ def run_schedule_task():
         schedule.run_pending()
         time.sleep(1)
 
+
 def setup_schedule_task():
     try:
         schedule.every(10).seconds.do(update_online)
@@ -538,6 +539,7 @@ def setup_schedule_task():
 
 
 def get_current_all_coinflip_games():
+    dt_now = dt.now()
     running_games = get_current_coinflip_games()
     running_count = len(running_games)
     if running_count >= 10:
@@ -546,7 +548,9 @@ def get_current_all_coinflip_games():
     all_games = []
     all_games.extend(running_games)
     least_count = 10 - running_count
-    last_games = CoinFlipGame.objects.filter(game_type=0, end=1).order_by('-update_time').all()[:least_count]
+    last_games = CoinFlipGame.objects.filter(
+        game_type=0, end=1, create_time__gte=dt_now.date()
+    ).order_by('-update_time').all()[:least_count]
     for gm in last_games:
         all_games.append(format_coinflip_game(gm))
     return all_games

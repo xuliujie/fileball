@@ -408,9 +408,6 @@ def trade_items_to_game_winner(game):
     total_items = []
     winner = None
 
-    bots = BettingBot.objects.all()
-    bot_ids = [b.steamer.steamid for b in bots]
-
     pump_line = game.total_amount * settings.JACKPOT_PUMP_LINE
     for deposit in deposits:
         items = deposit.items.all()
@@ -418,11 +415,9 @@ def trade_items_to_game_winner(game):
         if deposit.tickets_begin <= game.win_ticket <= deposit.tickets_end:
             winner = deposit
             amount = game.total_amount - deposit.amount
-            if deposit.steamer.steamid in bot_ids:
-                create_user_amount_record(deposit.steamer, game, amount, _('Win'))
+            create_user_amount_record(deposit.steamer, game, amount, _('Win'))
         else:
-            if deposit.steamer.steamid in bot_ids:
-                create_user_amount_record(deposit.steamer, game, -deposit.amount, _('Lose'))
+            create_user_amount_record(deposit.steamer, game, -deposit.amount, _('Lose'))
 
     items_map = {i.assetid: i for i in total_items}
     found_items = []
