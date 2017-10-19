@@ -34,7 +34,17 @@ Vue.component('cf-history', {
             histories: [],
             page: 1,
             totalCount: 0,
-            pages: 1
+            pages: 1,
+            total_summary: {
+                count: 0,
+                join: 0,
+                win: 0
+            },
+            today_summary: {
+                count: 0,
+                join: 0,
+                win: 0
+            }
         }
     },
     created: function () {
@@ -76,13 +86,13 @@ Vue.component('cf-history', {
                     page: that.page
                 }),
                 success: function (result) {
-
-
                     that.loading = false;
                     if(result.code === 0) {
                         for(var i=0; i<result.body.items.length; i++) {
                             that.histories.push(fillCoinflipData(result.body.items[i], true));
                         }
+                        that.total_summary = result.body.total_summary;
+                        that.today_summary = result.body.today_summary;
                         that.page = result.body.page;
                         that.totalCount = result.body.total_count;
                         that.pages = Math.ceil(that.totalCount / 10) ;

@@ -234,7 +234,7 @@ $(function () {
     var getHistoryModalData = {
         id: 'historyModal',
         isFull: true,
-        title: 'Coinflip history (last 100)',
+        title: 'Coinflip history (last 7 days)',
         content_com: 'cf-history',
         modal_icon: '',
         text_save: '',
@@ -379,7 +379,7 @@ $(function () {
         modalArea.contentData = null;
         modalArea.extraData = {
             gameType: 'coinflip',
-            queryType: 'all',
+            queryType: 'myself',
             page: 1
         };
         Vue.nextTick(function () {

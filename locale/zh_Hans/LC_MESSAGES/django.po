@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-17 14:31+0800\n"
+"POT-Creation-Date: 2017-10-19 15:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\betting\business\deposit_business.py:422
-#: .\templates\common\history\history_template.html:209
+#: .\betting\business\deposit_business.py:418
+#: .\templates\common\history\history_template.html:215
 msgid "Win"
 msgstr "胜利"
 
-#: .\betting\business\deposit_business.py:425
-#: .\templates\common\history\history_template.html:210
+#: .\betting\business\deposit_business.py:420
+#: .\templates\common\history\history_template.html:216
 msgid "Lose"
 msgstr "失败"
 
@@ -44,7 +44,7 @@ msgid "Label"
 msgstr "标签"
 
 #: .\betting\models.py:87 .\betting\models.py:161 .\betting\models.py:180
-#: .\betting\models.py:198 .\betting\models.py:356
+#: .\betting\models.py:198 .\betting\models.py:353
 msgid "Steamer"
 msgstr "玩家"
 
@@ -166,12 +166,12 @@ msgstr ""
 msgid "Is Joined"
 msgstr ""
 
-#: .\betting\models.py:164 .\betting\models.py:357
+#: .\betting\models.py:164 .\betting\models.py:354
 msgid "Game"
 msgstr "游戏"
 
 #: .\betting\models.py:166 .\betting\models.py:199 .\social_auth\models.py:64
-#: .\templates\common\history\history_template.html:192
+#: .\templates\common\history\history_template.html:197
 msgid "Amount"
 msgstr "数量"
 
@@ -278,134 +278,122 @@ msgid "Prop Items"
 msgstr "下注物品"
 
 #: .\betting\models.py:246
-msgid "News"
-msgstr "新闻"
-
-#: .\betting\models.py:247
-msgid "Video"
-msgstr "直播"
-
-#: .\betting\models.py:248
-msgid "Homepage"
-msgstr ""
-
-#: .\betting\models.py:249
 msgid "All pages"
 msgstr "全部新闻"
 
-#: .\betting\models.py:253
+#: .\betting\models.py:250
 msgid "Info"
 msgstr "通知"
 
-#: .\betting\models.py:254
+#: .\betting\models.py:251
 msgid "Warning"
 msgstr "警告"
 
-#: .\betting\models.py:259
+#: .\betting\models.py:256
 msgid "Page Type"
 msgstr "页面类型"
 
-#: .\betting\models.py:260
+#: .\betting\models.py:257
 msgid "Anno Type"
 msgstr "通知类型"
 
-#: .\betting\models.py:261
+#: .\betting\models.py:258
 msgid "Content(zh)"
 msgstr "内容（中文）"
 
-#: .\betting\models.py:262
+#: .\betting\models.py:259
 msgid "Content(en)"
 msgstr "内容（英文）"
 
-#: .\betting\models.py:263 .\betting\models.py:282
+#: .\betting\models.py:260 .\betting\models.py:279
 msgid "Enable"
 msgstr "是否启用"
 
-#: .\betting\models.py:264
+#: .\betting\models.py:261
 msgid "Num."
 msgstr "序号"
 
-#: .\betting\models.py:265 .\betting\models.py:283
+#: .\betting\models.py:262 .\betting\models.py:280
 msgid "Remark"
 msgstr "备注"
 
-#: .\betting\models.py:271 .\betting\models.py:272
+#: .\betting\models.py:268 .\betting\models.py:269
 msgid "Announcements"
 msgstr "通知"
 
-#: .\betting\models.py:289 .\betting\models.py:290
+#: .\betting\models.py:286 .\betting\models.py:287
 msgid "Site Configs"
 msgstr "站点配置"
 
-#: .\betting\models.py:294
+#: .\betting\models.py:291
 msgid "BotAccount"
 msgstr "机器人帐号"
 
-#: .\betting\models.py:295
+#: .\betting\models.py:292
 msgid "Enable Coinflip"
 msgstr "开启Coinflip"
 
-#: .\betting\models.py:296
+#: .\betting\models.py:293
 msgid "Coinflip Joinable"
 msgstr "允许加入Coinflip"
 
-#: .\betting\models.py:297
+#: .\betting\models.py:294
 msgid "Coinflip Join Idle"
 msgstr "加入Coinflip前等待时间(秒)"
 
-#: .\betting\models.py:298
+#: .\betting\models.py:295
 msgid "Coinflip Creatable"
 msgstr "允许创建Coinflip"
 
-#: .\betting\models.py:299
+#: .\betting\models.py:296
 msgid "Coinflip Create Idle"
 msgstr "创建Coinflip前等待时间(秒)"
 
-#: .\betting\models.py:300
+#: .\betting\models.py:297
 msgid "Coinflip Min Value"
 msgstr "Coinflip最小金额"
 
-#: .\betting\models.py:301
+#: .\betting\models.py:298
 msgid "Coinflip Max Value"
 msgstr "Coinflip最大金额"
 
-#: .\betting\models.py:302
+#: .\betting\models.py:299
 msgid "Max Coinflip Count"
 msgstr "同时最多创建的Coinflip房间"
 
-#: .\betting\models.py:303
+#: .\betting\models.py:300
 msgid "Enable Jackpot"
 msgstr "开启Jackpot"
 
-#: .\betting\models.py:304
+#: .\betting\models.py:301
 msgid "Jackpot Join Idle"
 msgstr "加入Jackpot前等待时间(秒)"
 
-#: .\betting\models.py:305
+#: .\betting\models.py:302
 msgid "Jackpot Min Value"
 msgstr "Jackpot最小金额"
 
-#: .\betting\models.py:306
+#: .\betting\models.py:303
 msgid "Jackpot Max Value"
 msgstr "Jackpot最大金额"
 
-#: .\betting\models.py:309 .\betting\models.py:310
+#: .\betting\models.py:306 .\betting\models.py:307
 msgid "Betting Bots"
 msgstr "下注机器人"
 
-#: .\betting\models.py:358
+#: .\betting\models.py:355
 msgid "Profit"
 msgstr "收益"
 
-#: .\betting\models.py:359
+#: .\betting\models.py:356 .\templates\common\history\history_template.html:152
 msgid "Total Profit"
 msgstr "总收益"
 
-#: .\betting\models.py:360
+#: .\betting\models.py:357
 msgid "Reason"
 msgstr ""
 
-#: .\betting\models.py:366 .\betting\models.py:367
+#: .\betting\models.py:363 .\betting\models.py:364
 msgid "UserAmountReocrds"
 msgstr "机器人收益记录"
 
@@ -503,78 +491,116 @@ msgstr "公平验证"
 msgid "CSGO Steambot Status:"
 msgstr "交易机器人状态:"
 
-#: .\templates\common\history\history_template.html:49
+#: .\templates\common\history\history_template.html:50
 msgid "Needs:"
 msgstr "需求:"
 
-#: .\templates\common\history\history_template.html:67
-#: .\templates\common\history\history_template.html:71
+#: .\templates\common\history\history_template.html:69
 #: .\templates\common\history\history_template.html:74
+#: .\templates\common\history\history_template.html:78
 msgid "Join"
 msgstr "加入"
 
-#: .\templates\common\history\history_template.html:108
+#: .\templates\common\history\history_template.html:113
 msgid "View"
 msgstr "观看"
 
-#: .\templates\common\history\history_template.html:118
+#: .\templates\common\history\history_template.html:123
 #: .\templates\pages\coinflip_template.html:91
-#: .\templates\pages\coinflip_template.html:339
+#: .\templates\pages\coinflip_template.html:340
 #: .\templates\pages\play_fair.html:55
 msgid "Hash:"
 msgstr "Hash"
 
-#: .\templates\common\history\history_template.html:119
+#: .\templates\common\history\history_template.html:124
 #: .\templates\pages\coinflip_template.html:93
-#: .\templates\pages\coinflip_template.html:340
-#: .\templates\pages\coinflip_template.html:382
+#: .\templates\pages\coinflip_template.html:341
+#: .\templates\pages\coinflip_template.html:383
 #: .\templates\pages\jackpot_template.html:48
 msgid "Percentage:"
 msgstr "Percentage:"
 
-#: .\templates\common\history\history_template.html:120
+#: .\templates\common\history\history_template.html:125
 #: .\templates\pages\coinflip_template.html:95
-#: .\templates\pages\coinflip_template.html:341
-#: .\templates\pages\coinflip_template.html:382
+#: .\templates\pages\coinflip_template.html:342
+#: .\templates\pages\coinflip_template.html:383
 #: .\templates\pages\jackpot_template.html:48
 #: .\templates\pages\play_fair.html:63
 msgid "Secret:"
 msgstr "Secret:"
 
-#: .\templates\common\history\history_template.html:141
+#: .\templates\common\history\history_template.html:146
+#, fuzzy
+#| msgid "Total Items"
+msgid "Total Games"
+msgstr "总物品"
+
+#: .\templates\common\history\history_template.html:147
+#, fuzzy
+#| msgid "Games"
+msgid "Today Games"
+msgstr "游戏"
+
+#: .\templates\common\history\history_template.html:148
+#, fuzzy
+#| msgid "Total Amount"
+msgid "Total Join"
+msgstr "总金额"
+
+#: .\templates\common\history\history_template.html:149
+msgid "Today Join"
+msgstr ""
+
+#: .\templates\common\history\history_template.html:153
+#, fuzzy
+#| msgid "Total Profit"
+msgid "Today Profit"
+msgstr "总收益"
+
+#: .\templates\common\history\history_template.html:154
+#, fuzzy
+#| msgid "Total"
+msgid "Total Win"
+msgstr "总共"
+
+#: .\templates\common\history\history_template.html:155
+msgid "Today Win"
+msgstr ""
+
+#: .\templates\common\history\history_template.html:162
 #: .\templates\pages\coinflip.html:92
 msgid "Players"
 msgstr "玩家"
 
-#: .\templates\common\history\history_template.html:142
-#: .\templates\common\history\history_template.html:191
+#: .\templates\common\history\history_template.html:163
+#: .\templates\common\history\history_template.html:196
 #: .\templates\pages\coinflip.html:93
 #: .\templates\pages\profile_detail\trade_record.html:28
 msgid "Items"
 msgstr "物品"
 
-#: .\templates\common\history\history_template.html:143
+#: .\templates\common\history\history_template.html:164
 #: .\templates\pages\coinflip.html:94
 #: .\templates\pages\profile_detail\trade_record.html:29
 msgid "Total"
 msgstr "总共"
 
-#: .\templates\common\history\history_template.html:155
+#: .\templates\common\history\history_template.html:176
 #: .\templates\pages\coinflip.html:106
 msgid "No games added right now"
 msgstr "暂无游戏"
 
-#: .\templates\common\history\history_template.html:193
+#: .\templates\common\history\history_template.html:198
 msgid "Win/lose"
 msgstr "胜利/失败"
 
-#: .\templates\common\history\history_template.html:194
+#: .\templates\common\history\history_template.html:199
 #: .\templates\pages\profile_detail\store.html:20
 #: .\templates\pages\profile_detail\trade_record.html:30
 msgid "Time"
 msgstr "时间"
 
-#: .\templates\common\history\history_template.html:221
+#: .\templates\common\history\history_template.html:227
 msgid "Not found rounds"
 msgstr "回合未找到"
 
@@ -638,7 +664,7 @@ msgstr ""
 "                            "
 
 #: .\templates\common\inventory\inventory_template.html:63
-#: .\templates\pages\jackpot.html:78
+#: .\templates\pages\jackpot.html:66
 msgid "Bet"
 msgstr "下注"
 
@@ -972,7 +998,7 @@ msgstr "教程"
 msgid "History"
 msgstr "历史"
 
-#: .\templates\pages\coinflip.html:116 .\templates\pages\jackpot.html:142
+#: .\templates\pages\coinflip.html:116 .\templates\pages\jackpot.html:130
 msgid "Connecting"
 msgstr "连接中"
 
@@ -1010,113 +1036,109 @@ msgstr "过期于:"
 msgid ""
 "\n"
 "                <h2>About the System</h2>\n"
-"                <p>You can create a new coinflip round or join to an "
-"existing one. You need to select the items from\n"
-"                    your\n"
-"                    Inventory on our page, and then click to Deposit button "
-"if it is valid.</p>\n"
-"                <p>After that we will send you an offer in no time contains "
-"the items you selected. You need to accept\n"
-"                    that\n"
-"                    offer and confirm it via mobile or email. After you "
-"confirm - and you are in time if joining - you\n"
-"                    will\n"
-"                    get into the round.</p>\n"
+"                <p>\n"
+"                    You can create a new coinflip round or join to an "
+"existing one. You need to select the items\n"
+"                    from your Inventory on our page, and then click to "
+"Deposit button if it is valid.\n"
+"                </p>\n"
+"                <h2>Before play</h2>\n"
+"                <p>\n"
+"                    we will send you an offer in no time contains the items "
+"you selected. You need to accept\n"
+"                    that offer and confirm it via mobile or email. After you "
+"confirm -\n"
+"                    and you are in time if joining - you will get into the "
+"round.\n"
+"                </p>\n"
 "                <h2>Winner items</h2>\n"
-"                <p>As of a round ends, the winner will be shown. The winner "
-"will get all of the items in the round. For\n"
-"                    every round played, a 0-5%% commission will be taken if "
-"it could. It is calculated on the total round\n"
-"                    value and is taken from the items pool.</p>\n"
-"                <h2>Provably fair</h2>\n"
-"                <p>When each round begins - someone creates a game - a "
-"random percetage will be generated for choosing\n"
-"                    the\n"
-"                    winner. It will be shown as a md5 encrypted hash with a "
-"secret in the following format:\n"
-"                    percentage:secret. When the round is over, both the "
-"secret and the winning percentage are revealed.\n"
-"                    You\n"
-"                    can verify that the hash matches with the secret and "
-"percentage. You can read more about this\n"
-"                    process\n"
-"                    under the Provably Fair menu at bottom of the page.</p>\n"
+"                <p>\n"
+"                    As of a round ends, the winner will be shown. The winner "
+"will get all of the items in the round.\n"
+"                    When each round begins - someone creates a game - a "
+"random percetage will be generated for\n"
+"                    choosing the winner. It will be shown as a md5 encrypted "
+"hash with a secret\n"
+"                    in the following format: percentage:secret. When the "
+"round is over, both the secret and the\n"
+"                    winning percentage are revealed. You can verify that the "
+"hash matches with the secret and percentage.\n"
+"                    You can read more about this process under the Provably "
+"Fair menu at bottom of the page.\n"
+"                </p>\n"
 "                <h2>Winner offers</h2>\n"
-"                <p>As of a round ends, we will send an offer to the winner "
-"contains the items he/she won. In normal it\n"
-"                    is in\n"
-"                    a minute, except the Steam systems have some delays or "
-"our bots are temporaly down. 99%% of the\n"
-"                    offers\n"
-"                    will be sent normally, in other cases please be patient. "
-"If there is any problem please open a\n"
-"                    ticket in\n"
-"                    our Support system.</p>\n"
+"                <p>\n"
+"                    As of a round ends, we will send an offer to the winner "
+"contains the items he/she won.\n"
+"                    In normal it is in a minute, except the Steam systems "
+"have some delays or our bots\n"
+"                    are temporaly down. 99%% of the offers will be sent "
+"normally, in other cases please be patient.\n"
+"                    If there is any problem please open a ticket in our "
+"Support system.\n"
+"                </p>\n"
 "            "
 msgstr ""
 
-#: .\templates\pages\coinflip_template.html:252
+#: .\templates\pages\coinflip_template.html:249
 msgid "Deposit information"
 msgstr ""
 
-#: .\templates\pages\coinflip_template.html:256
+#: .\templates\pages\coinflip_template.html:253
 msgid "Minimum amount per deposit:"
 msgstr ""
 
-#: .\templates\pages\coinflip_template.html:260
+#: .\templates\pages\coinflip_template.html:257
 msgid "Maximum items in a deposit:"
 msgstr ""
 
-#: .\templates\pages\coinflip_template.html:264
-msgid "Maximum active rounds:"
-msgstr ""
-
 #: .\templates\pages\coinflip_template.html:265
-msgid "not set"
-msgstr ""
-
-#: .\templates\pages\coinflip_template.html:268
 msgid "Coins:"
 msgstr ""
 
-#: .\templates\pages\coinflip_template.html:276
+#: .\templates\pages\coinflip_template.html:273
 msgid ""
 "\n"
 "                <h2>Create a game</h2>\n"
-"                <p>As a game was created, there are 30 minutes to someone "
-"join in. If the time is up (you can check it\n"
-"                    in\n"
-"                    bottom of the round View) we'll send back your items in "
-"an offer and remove your round.</p>\n"
+"                <p>\n"
+"                    As a game was created, there are 10 minutes to someone "
+"join in. If the time is up\n"
+"                    (you can check it in bottom of the round View) we'll "
+"send back your items in an offer and remove your round.\n"
+"                </p>\n"
 "                <h2>Join to a game</h2>\n"
-"                <p>You can join to a round by pressing the Join button in "
-"their row. Your joining will be active if you\n"
-"                    press the Deposit button, expect someone else clicked on "
-"it early. Then we will not send the offer\n"
-"                    for\n"
-"                    you, and you'll see someone else joined to the round or "
-"it's closed. If the round is still open, we\n"
-"                    send\n"
-"                    you an offer and you have 90 seconds to confirm it. Note "
-"that in this time there are a few Steam\n"
-"                    queries, so if Steam is down, you can go out of this "
-"time. If the time is up, we'll cancel the sent\n"
-"                    offer and the round opens again.</p><br>\n"
-"                <p><i class=\"fa fa-mobile\"></i> In order to deposit on our "
-"page, you need to have the Steam Mobile\n"
-"                    Authenticator enabled on your account for at least 7 "
-"days as well as the trade confirmations turned\n"
-"                    on.\n"
+"                <p>\n"
+"                    You can join to a round by pressing the Join button in "
+"their row. Your joining will be active\n"
+"                    if you press the Deposit button, expect someone else "
+"clicked on it early. Then we will not\n"
+"                    send the offer for you, and you'll see someone else "
+"joined to the round or it's closed.\n"
+"                    If the round is still open, we send you an offer and you "
+"have 90 seconds to confirm it.\n"
+"                    Note that in this time there are a few Steam queries, so "
+"if Steam is down, you can go out of this time.\n"
+"                    If the time is up, we'll cancel the sent offer and the "
+"round opens again.\n"
+"                </p>\n"
+"                <br>\n"
+"                <p>\n"
+"                    <i class=\"fa fa-mobile\"></i>\n"
+"                    In order to deposit on our page, you need to have the "
+"Steam Mobile Authenticator enabled on your\n"
+"                    account for at least 14 days as well as the trade "
+"confirmations turned on.\n"
 "                    If you don't have it, we won't send any offer for you, "
-"so you can't play on our page.</p>\n"
+"so you can't play on our page.\n"
+"                </p>\n"
 "            "
 msgstr ""
 
-#: .\templates\pages\coinflip_template.html:303
+#: .\templates\pages\coinflip_template.html:304
 msgid "Loading"
 msgstr "加载中"
 
-#: .\templates\pages\coinflip_template.html:378
+#: .\templates\pages\coinflip_template.html:379
 #, python-format, python-brace-format
 msgid ""
 "\n"
@@ -1129,7 +1151,7 @@ msgstr ""
 "chance}%%\n"
 "                    "
 
-#: .\templates\pages\jackpot.html:43
+#: .\templates\pages\jackpot.html:31
 msgid ""
 "\n"
 "                        <p>Please login first.</p>\n"
@@ -1139,15 +1161,15 @@ msgstr ""
 "                        <span id=\"invTimer\">0</span>秒内可刷新 \n"
 "                        "
 
-#: .\templates\pages\jackpot.html:84
+#: .\templates\pages\jackpot.html:72
 msgid "Max 12 items/trade - $1 minimum value"
 msgstr "最多12个道具/最低$1"
 
-#: .\templates\pages\jackpot.html:95
+#: .\templates\pages\jackpot.html:83
 msgid "Total placed"
 msgstr "下注总数"
 
-#: .\templates\pages\jackpot.html:100
+#: .\templates\pages\jackpot.html:88
 msgid "Chances of winning"
 msgstr "获胜几率"
 
@@ -1493,3 +1515,9 @@ msgstr "取出记录"
 #: .\templates\pages\profile_detail\trade_record.html:40
 msgid "No history"
 msgstr "没有历史记录。"
+
+#~ msgid "News"
+#~ msgstr "新闻"
+
+#~ msgid "Video"
+#~ msgstr "直播"

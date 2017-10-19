@@ -24,7 +24,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from channels import Group
 from channels.sessions import channel_session
 
-from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord, SteamrobotApiItem
+from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord, SteamrobotApiItem, UserAmountRecord
 from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, StoreRecordSerializer, SendRecordSerializer
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_online, get_steam_bot_status, get_current_coinflip_games
 from betting.business.deposit_business import is_connection_usable
@@ -98,6 +98,27 @@ def get_all_coinflip_history(page=1):
     return ret
 
 
+def get_game_summary(user, game_type, dt_begin):
+    amount_records = UserAmountRecord.objects.filter(
+        steamer__steamid=user.steamid,
+        game__game_type=game_type,
+        create_time__gte=dt_begin.date()
+    ).all()
+    amounts = [i.amount for i in amount_records]
+    amount = round(sum(amounts), 2)
+    count = len(amounts)
+    games = [i.game.total_amount for i in amount_records]
+    join = round(sum(games), 2)
+    wins = filter(lambda x: x > 0, amounts)
+    win = round(len(wins)*100.0/count if count > 0 else 0, 2)
+    return {
+        'count': count,
+        'amount': amount,
+        'join': join,
+        'win': win
+    }
+
+
 def get_my_game_history(user, game_type, format_func, page=1, **kwargs):
     dt_now = dt.now()
     dt_begin = dt_now - timedelta(days=6)
@@ -118,9 +139,13 @@ def get_my_game_history(user, game_type, format_func, page=1, **kwargs):
         data = format_func(g)
         if data:
             items.append(data)
+    total_summary = get_game_summary(user, game_type, dt_begin)
+    today_summary = get_game_summary(user, game_type, dt_now)
     ret = {
         'total_count': paginator.count,
         'items': items,
+        'total_summary': total_summary,
+        'today_summary': today_summary,
         'page': page
     }
     return ret

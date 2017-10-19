@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-19 10:32+0800\n"
+"POT-Creation-Date: 2017-10-19 15:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\betting\business\deposit_business.py:422
-#: .\templates\common\history\history_template.html:209
+#: .\betting\business\deposit_business.py:418
+#: .\templates\common\history\history_template.html:215
 msgid "Win"
 msgstr "勝利"
 
-#: .\betting\business\deposit_business.py:425
-#: .\templates\common\history\history_template.html:210
+#: .\betting\business\deposit_business.py:420
+#: .\templates\common\history\history_template.html:216
 msgid "Lose"
 msgstr "失敗"
 
@@ -171,7 +171,7 @@ msgid "Game"
 msgstr "遊戲"
 
 #: .\betting\models.py:166 .\betting\models.py:199 .\social_auth\models.py:64
-#: .\templates\common\history\history_template.html:192
+#: .\templates\common\history\history_template.html:197
 msgid "Amount"
 msgstr "數量"
 
@@ -385,7 +385,7 @@ msgstr "下註機器人"
 msgid "Profit"
 msgstr "收益"
 
-#: .\betting\models.py:356
+#: .\betting\models.py:356 .\templates\common\history\history_template.html:152
 msgid "Total Profit"
 msgstr "總收益"
 
@@ -491,28 +491,28 @@ msgstr "公平驗證"
 msgid "CSGO Steambot Status:"
 msgstr "交易機器人狀態:"
 
-#: .\templates\common\history\history_template.html:49
+#: .\templates\common\history\history_template.html:50
 msgid "Needs:"
 msgstr "需求:"
 
-#: .\templates\common\history\history_template.html:67
-#: .\templates\common\history\history_template.html:71
+#: .\templates\common\history\history_template.html:69
 #: .\templates\common\history\history_template.html:74
+#: .\templates\common\history\history_template.html:78
 msgid "Join"
 msgstr "加入"
 
-#: .\templates\common\history\history_template.html:108
+#: .\templates\common\history\history_template.html:113
 msgid "View"
 msgstr "觀看"
 
-#: .\templates\common\history\history_template.html:118
+#: .\templates\common\history\history_template.html:123
 #: .\templates\pages\coinflip_template.html:91
 #: .\templates\pages\coinflip_template.html:340
 #: .\templates\pages\play_fair.html:55
 msgid "Hash:"
 msgstr "Hash"
 
-#: .\templates\common\history\history_template.html:119
+#: .\templates\common\history\history_template.html:124
 #: .\templates\pages\coinflip_template.html:93
 #: .\templates\pages\coinflip_template.html:341
 #: .\templates\pages\coinflip_template.html:383
@@ -520,7 +520,7 @@ msgstr "Hash"
 msgid "Percentage:"
 msgstr "Percentage:"
 
-#: .\templates\common\history\history_template.html:120
+#: .\templates\common\history\history_template.html:125
 #: .\templates\pages\coinflip_template.html:95
 #: .\templates\pages\coinflip_template.html:342
 #: .\templates\pages\coinflip_template.html:383
@@ -529,40 +529,68 @@ msgstr "Percentage:"
 msgid "Secret:"
 msgstr "Secret:"
 
-#: .\templates\common\history\history_template.html:141
+#: .\templates\common\history\history_template.html:146
+msgid "Total Games"
+msgstr "總遊戲"
+
+#: .\templates\common\history\history_template.html:147
+msgid "Today Games"
+msgstr "今日遊戲"
+
+#: .\templates\common\history\history_template.html:148
+msgid "Total Join"
+msgstr "總參與"
+
+#: .\templates\common\history\history_template.html:149
+msgid "Today Join"
+msgstr "今日參與"
+
+#: .\templates\common\history\history_template.html:153
+msgid "Today Profit"
+msgstr "今日收益"
+
+#: .\templates\common\history\history_template.html:154
+msgid "Total Win"
+msgstr "總勝率"
+
+#: .\templates\common\history\history_template.html:155
+msgid "Today Win"
+msgstr "今日勝率"
+
+#: .\templates\common\history\history_template.html:162
 #: .\templates\pages\coinflip.html:92
 msgid "Players"
 msgstr "玩家"
 
-#: .\templates\common\history\history_template.html:142
-#: .\templates\common\history\history_template.html:191
+#: .\templates\common\history\history_template.html:163
+#: .\templates\common\history\history_template.html:196
 #: .\templates\pages\coinflip.html:93
 #: .\templates\pages\profile_detail\trade_record.html:28
 msgid "Items"
 msgstr "物品"
 
-#: .\templates\common\history\history_template.html:143
+#: .\templates\common\history\history_template.html:164
 #: .\templates\pages\coinflip.html:94
 #: .\templates\pages\profile_detail\trade_record.html:29
 msgid "Total"
 msgstr "總共"
 
-#: .\templates\common\history\history_template.html:155
+#: .\templates\common\history\history_template.html:176
 #: .\templates\pages\coinflip.html:106
 msgid "No games added right now"
 msgstr "暫無遊戲"
 
-#: .\templates\common\history\history_template.html:193
+#: .\templates\common\history\history_template.html:198
 msgid "Win/lose"
 msgstr "勝利/失敗"
 
-#: .\templates\common\history\history_template.html:194
+#: .\templates\common\history\history_template.html:199
 #: .\templates\pages\profile_detail\store.html:20
 #: .\templates\pages\profile_detail\trade_record.html:30
 msgid "Time"
 msgstr "時間"
 
-#: .\templates\common\history\history_template.html:221
+#: .\templates\common\history\history_template.html:227
 msgid "Not found rounds"
 msgstr "回合未找到"
 
@@ -626,7 +654,7 @@ msgstr ""
 "                            "
 
 #: .\templates\common\inventory\inventory_template.html:63
-#: .\templates\pages\jackpot.html:78
+#: .\templates\pages\jackpot.html:66
 msgid "Bet"
 msgstr "下註"
 
@@ -958,7 +986,7 @@ msgstr "教程"
 msgid "History"
 msgstr "歷史"
 
-#: .\templates\pages\coinflip.html:116 .\templates\pages\jackpot.html:142
+#: .\templates\pages\coinflip.html:116 .\templates\pages\jackpot.html:130
 msgid "Connecting"
 msgstr "連接中"
 
@@ -1146,7 +1174,7 @@ msgstr ""
 "chance}%%\n"
 "                    "
 
-#: .\templates\pages\jackpot.html:43
+#: .\templates\pages\jackpot.html:31
 msgid ""
 "\n"
 "                        <p>Please login first.</p>\n"
@@ -1156,15 +1184,15 @@ msgstr ""
 "                        <span id=\"invTimer\">0</span>秒內可刷新 \n"
 "                        "
 
-#: .\templates\pages\jackpot.html:84
+#: .\templates\pages\jackpot.html:72
 msgid "Max 12 items/trade - $1 minimum value"
 msgstr "最多12個道具/最低$1"
 
-#: .\templates\pages\jackpot.html:95
+#: .\templates\pages\jackpot.html:83
 msgid "Total placed"
 msgstr "下註總數"
 
-#: .\templates\pages\jackpot.html:100
+#: .\templates\pages\jackpot.html:88
 msgid "Chances of winning"
 msgstr "獲勝幾率"
 

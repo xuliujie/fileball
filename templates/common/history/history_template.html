@@ -2,7 +2,8 @@ s{% load staticfiles %}
 {% load i18n %}
 
 <script id="knob-template" type="text/x-template">
-    <input data-readonly="true" data-displayinput="true" class="cfRoundKnob" :value="seconds" :data-seconds="seconds" readonly>
+    <input data-readonly="true" data-displayinput="true" class="cfRoundKnob" :value="seconds" :data-seconds="seconds"
+           readonly>
 </script>
 
 
@@ -18,7 +19,7 @@ s{% load staticfiles %}
                 </template>
             </template>
             {% if ld %}<a :href="'http://steamcommunity.com/profiles/' + item.deposit[0].steamid"
-                                        target="_blank">
+                          target="_blank">
                 <img :src="item.deposit[0].icon" alt="Profile" :title="item.deposit[0].name"></a>
             {% else %}
                 <img :src="item.deposit[0].icon" alt="Profile" :title="item.deposit[0].name">
@@ -26,7 +27,7 @@ s{% load staticfiles %}
             <template v-if="item.full">
                 <span class="sep">vs</span>
                 {% if ld %}<a :href="'http://steamcommunity.com/profiles/' + item.deposit[1].steamid"
-                                            target="_blank">
+                              target="_blank">
                     <img :src="item.deposit[1].icon" alt="Profile" :title="item.deposit[1].name"></a>
                 {% else %}
                     <img :src="item.deposit[1].icon" alt="Profile" :title="item.deposit[1].name">
@@ -64,14 +65,17 @@ s{% load staticfiles %}
                 <template v-if="!item.joined.status">
                     {% if not request.user.is_anonymous %}
                         <template v-if="item.deposit[0].steamid == {{ request.user.steamid }}">
-                            <button class="btn btn-primary cfRoundJoin" disabled="disabled" style="display: none">{% trans 'Join' %}
+                            <button class="btn btn-primary cfRoundJoin" disabled="disabled"
+                                    style="display: none">{% trans 'Join' %}
                             </button>
                         </template>
                         <template v-else>
-                            <button class="btn btn-primary cfRoundJoin" v-on:click="joinGame">{% trans 'Join' %}</button>
+                            <button class="btn btn-primary cfRoundJoin"
+                                    v-on:click="joinGame">{% trans 'Join' %}</button>
                         </template>
                     {% else %}
-                        <a class="btn btn-primary cfRoundJoin" href="{% url 'social:begin' 'steam' %}">{% trans 'Join' %}</a>
+                        <a class="btn btn-primary cfRoundJoin"
+                           href="{% url 'social:begin' 'steam' %}">{% trans 'Join' %}</a>
                     {% endif %}
                 </template>
                 <template v-else>
@@ -97,8 +101,9 @@ s{% load staticfiles %}
                            class="dn">
                             <img :src="extraData.winnerData.icon" alt="Profile" :title="extraData.winnerData.name"></a>
                     {% else %}
-                            <span class="dn">
-                                <img :src="extraData.winnerData.icon" alt="Profile" :title="extraData.winnerData.name"></a>
+                        <span class="dn">
+                                <img :src="extraData.winnerData.icon" alt="Profile"
+                                     :title="extraData.winnerData.name"></a>
                             </span>
                     {% endif %}
                 </template>
@@ -135,6 +140,22 @@ s{% load staticfiles %}
             </div>
         </template>
         <template v-else>
+            <table class="coinflip-summary table">
+                <tbody>
+                <tr>
+                    <td>{% trans 'Total Games' %}：^{total_summary.count}</td>
+                    <td>{% trans 'Today Games' %}：^{today_summary.count}</td>
+                    <td>{% trans 'Total Join' %}：^{total_summary.join}</td>
+                    <td>{% trans 'Today Join' %}：^{today_summary.join}</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'Total Profit' %}：^{total_summary.amount}</td>
+                    <td>{% trans 'Today Profit'%}：^{today_summary.amount}</td>
+                    <td>{% trans 'Total Win' %}：^{total_summary.win}%</td>
+                    <td>{% trans 'Today Win' %}：^{today_summary.win}%</td>
+                </tr>
+                </tbody>
+            </table>
             <table class="coinflip-pots table">
                 <thead>
                 <tr>
@@ -169,22 +190,6 @@ s{% load staticfiles %}
             </div>
         </template>
         <template v-else>
-{#            <table class="jackpot-summary table">#}
-{#                <thead>#}
-{#                <tr>#}
-{#                    <th>Total bet</th>#}
-{#                    <th>Total won</th>#}
-{#                    <th>Profit</th>#}
-{#                </tr>#}
-{#                </thead>#}
-{#                <tbody>#}
-{#                <tr>#}
-{#                    <td><i class="fa fa-dollar"></i> ^{ price_lost }</td>#}
-{#                    <td><i class="fa fa-dollar"></i> ^{ price_win }</td>#}
-{#                    <td><i class="fa fa-dollar"></i> ^{ profit }</td>#}
-{#                </tr>#}
-{#                </tbody>#}
-{#            </table>#}
             <table class="coinflip-pots table">
                 <thead>
                 <tr>
@@ -198,7 +203,8 @@ s{% load staticfiles %}
                 <template v-for="history in histories">
                     <tr>
                         <td class="jk-history-items">
-                            <img v-for="it in history.itemsShow" :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/70fx50f'"
+                            <img v-for="it in history.itemsShow"
+                                 :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/70fx50f'"
                                  class="img-responsive" :title="it.name + ' - $' + it.amount" alt="">
                             <span v-if="history.itemsMore">+^{history.itemsMore} items</span>
                         </td>
@@ -230,7 +236,8 @@ s{% load staticfiles %}
 <script id="pagination-template" type="text/x-template">
     <ul class="pagination">
         <li :class="{disabled: page===1}"><span class="page-item" v-on:click="prePage">&laquo;</span></li>
-        <li v-for="p in pages" :key="this" :class="{active: p===page}" ><span class="page-item" v-on:click="gotoPage" :data-page="p" >^{p}</span></li>
+        <li v-for="p in pages" :key="this" :class="{active: p===page}"><span class="page-item" v-on:click="gotoPage"
+                                                                             :data-page="p">^{p}</span></li>
         <li :class="{disabled: page===pages}"><span class="page-item" v-on:click="nextPage">&raquo;</span></li>
     </ul>
 </script>
