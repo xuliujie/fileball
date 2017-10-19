@@ -217,35 +217,32 @@
         <div class="col-sm-6">
             {% blocktrans %}
                 <h2>About the System</h2>
-                <p>You can create a new coinflip round or join to an existing one. You need to select the items from
-                    your
-                    Inventory on our page, and then click to Deposit button if it is valid.</p>
-                <p>After that we will send you an offer in no time contains the items you selected. You need to accept
-                    that
-                    offer and confirm it via mobile or email. After you confirm - and you are in time if joining - you
-                    will
-                    get into the round.</p>
+                <p>
+                    You can create a new coinflip round or join to an existing one. You need to select the items
+                    from your Inventory on our page, and then click to Deposit button if it is valid.
+                </p>
+                <h2>Before play</h2>
+                <p>
+                    we will send you an offer in no time contains the items you selected. You need to accept
+                    that offer and confirm it via mobile or email. After you confirm -
+                    and you are in time if joining - you will get into the round.
+                </p>
                 <h2>Winner items</h2>
-                <p>As of a round ends, the winner will be shown. The winner will get all of the items in the round. For
-                    every round played, a 0-5% commission will be taken if it could. It is calculated on the total round
-                    value and is taken from the items pool.</p>
-                <h2>Provably fair</h2>
-                <p>When each round begins - someone creates a game - a random percetage will be generated for choosing
-                    the
-                    winner. It will be shown as a md5 encrypted hash with a secret in the following format:
-                    percentage:secret. When the round is over, both the secret and the winning percentage are revealed.
-                    You
-                    can verify that the hash matches with the secret and percentage. You can read more about this
-                    process
-                    under the Provably Fair menu at bottom of the page.</p>
+                <p>
+                    As of a round ends, the winner will be shown. The winner will get all of the items in the round.
+                    When each round begins - someone creates a game - a random percetage will be generated for
+                    choosing the winner. It will be shown as a md5 encrypted hash with a secret
+                    in the following format: percentage:secret. When the round is over, both the secret and the
+                    winning percentage are revealed. You can verify that the hash matches with the secret and percentage.
+                    You can read more about this process under the Provably Fair menu at bottom of the page.
+                </p>
                 <h2>Winner offers</h2>
-                <p>As of a round ends, we will send an offer to the winner contains the items he/she won. In normal it
-                    is in
-                    a minute, except the Steam systems have some delays or our bots are temporaly down. 99% of the
-                    offers
-                    will be sent normally, in other cases please be patient. If there is any problem please open a
-                    ticket in
-                    our Support system.</p>
+                <p>
+                    As of a round ends, we will send an offer to the winner contains the items he/she won.
+                    In normal it is in a minute, except the Steam systems have some delays or our bots
+                    are temporaly down. 99% of the offers will be sent normally, in other cases please be patient.
+                    If there is any problem please open a ticket in our Support system.
+                </p>
             {% endblocktrans %}
         </div>
         <div class="col-sm-6">
@@ -261,8 +258,8 @@
                     <td>^{ maxitems }</td>
                 </tr>
                 <tr>
-                    <td>{% trans 'Maximum active rounds:' %}</td>
-                    <td>{% trans 'not set' %}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>{% trans 'Coins:' %}</td>
@@ -275,22 +272,26 @@
             </table>
             {% blocktrans %}
                 <h2>Create a game</h2>
-                <p>As a game was created, there are 30 minutes to someone join in. If the time is up (you can check it
-                    in
-                    bottom of the round View) we'll send back your items in an offer and remove your round.</p>
+                <p>
+                    As a game was created, there are 10 minutes to someone join in. If the time is up
+                    (you can check it in bottom of the round View) we'll send back your items in an offer and remove your round.
+                </p>
                 <h2>Join to a game</h2>
-                <p>You can join to a round by pressing the Join button in their row. Your joining will be active if you
-                    press the Deposit button, expect someone else clicked on it early. Then we will not send the offer
-                    for
-                    you, and you'll see someone else joined to the round or it's closed. If the round is still open, we
-                    send
-                    you an offer and you have 90 seconds to confirm it. Note that in this time there are a few Steam
-                    queries, so if Steam is down, you can go out of this time. If the time is up, we'll cancel the sent
-                    offer and the round opens again.</p><br>
-                <p><i class="fa fa-mobile"></i> In order to deposit on our page, you need to have the Steam Mobile
-                    Authenticator enabled on your account for at least 7 days as well as the trade confirmations turned
-                    on.
-                    If you don't have it, we won't send any offer for you, so you can't play on our page.</p>
+                <p>
+                    You can join to a round by pressing the Join button in their row. Your joining will be active
+                    if you press the Deposit button, expect someone else clicked on it early. Then we will not
+                    send the offer for you, and you'll see someone else joined to the round or it's closed.
+                    If the round is still open, we send you an offer and you have 90 seconds to confirm it.
+                    Note that in this time there are a few Steam queries, so if Steam is down, you can go out of this time.
+                    If the time is up, we'll cancel the sent offer and the round opens again.
+                </p>
+                <br>
+                <p>
+                    <i class="fa fa-mobile"></i>
+                    In order to deposit on our page, you need to have the Steam Mobile Authenticator enabled on your
+                    account for at least 14 days as well as the trade confirmations turned on.
+                    If you don't have it, we won't send any offer for you, so you can't play on our page.
+                </p>
             {% endblocktrans %}
         </div>
     </div>

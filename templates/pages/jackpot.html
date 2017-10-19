@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/chat.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/jackpot.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+    <link rel="stylesheet" href="{% static 'css/announcement.css' %}"/>
     {# <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>#}
     {# <script type="text/javascript" src="{% static 'js/jk.js' %}"></script>#}
     {% if not request.user.is_anonymous %}
@@ -22,20 +23,7 @@
     <section id="page">
         <div id="jackpot-wrapper" class="row content-wrapper backgroundImg">
             <div class="col-xs-12" style="margin-bottom: 10px;">
-                <div id="admin-messages">
-                    <div class="primary-message_1v1">
-                        {% if anno %}
-                            <div style="color: #515151;">
-                                <img src="{% static 'img/speaker-20.png' %}" style="padding-bottom: 3px;">
-                                {% if LANGUAGE_CODE == 'zh-hans' %}
-                                    <b>{{ anno.content|safe }}</b>
-                                {% else %}
-                                    <b>{{ anno.content_en|safe }}</b>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+                {% include 'common/announcement.html' %}
             </div>
             {% if request.user.is_anonymous %}
                 <div class="col-xs-12">

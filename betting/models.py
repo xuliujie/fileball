@@ -243,9 +243,6 @@ class PropItem(ModelBase):
 PAGE_TYPE = (
     (0, _("Coinflip")),
     (1, _("Jackpot")),
-    (2, _("News")),
-    (3, _("Video")),
-    (4, _("Homepage")),
     (5, _("All pages"))
 )
 
