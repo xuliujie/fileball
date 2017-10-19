@@ -23,7 +23,16 @@ from social_auth.models import SteamUser
 
 _logger = logging.getLogger(__name__)
 
-GameStatus = Enum('GameStatus', 'Initial Joinable Joining Full Running End')
+
+class GameStatus(Enum):
+    Initial = 1
+    Joinable = 2
+    Joining = 3
+    Full = 4
+    Running = 5
+    Canceled = 6
+    End = 11
+
 
 GAME_STATUS = (
     (1, 'Initial'),
@@ -31,7 +40,8 @@ GAME_STATUS = (
     (3, 'Joining'),
     (4, 'Full'),
     (5, 'Running'),
-    (6, 'End')
+    (6, 'End'),
+    (7, 'Cancelled')
 )
 
 

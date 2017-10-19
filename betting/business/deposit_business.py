@@ -222,6 +222,8 @@ def setup_coinflip_countdown_checker():
 def trade_items_back_to_joiners(gid):
     game = CoinFlipGame.objects.filter(uid=gid).first()
     if game:
+        game.status = GameStatus.Canceled.value
+        game.save()
         deposits = game.deposits.all()
         for deposit in deposits:
             items = deposit.items.all()

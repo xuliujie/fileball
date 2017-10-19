@@ -99,8 +99,9 @@ def bot_create_coinflip():
         bot = bots[b_idx]
 
         created_games = CoinFlipGame.objects.filter(
-            game_type=0, end=0, create_time__gte=dt_now-timedelta(minutes=40),
-            deposits__steamer__steamid=bot.steamer.steamid, deposits__is_creator=True).all()
+            game_type=0, end=0, create_time__gte=dt_now-timedelta(minutes=60),
+            deposits__steamer__steamid=bot.steamer.steamid, deposits__is_creator=True
+        ).exclude(status=GameStatus.Canceled.value).all()
         if len(created_games) >= bot.coinflip_max_count:
             continue
 
