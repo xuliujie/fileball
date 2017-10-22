@@ -4,7 +4,7 @@
 from rest_framework import serializers
 
 from betting.common_data import TradeStatus
-from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, StoreRecord, SendRecord
+from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, StoreRecord, SendRecord, GiveAway
 from social_auth.models import SteamUser
 from betting.utils import id_generator
 
@@ -159,3 +159,10 @@ class SendRecordSerializer(serializers.ModelSerializer):
                 own_item.is_locked = True
                 own_item.save()
         return record
+
+
+class GiveawaySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = GiveAway
+        exclude = ('create_time', 'update_time')

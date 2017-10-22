@@ -372,3 +372,21 @@ class UserAmountRecord(ModelBase):
     class Meta:
         verbose_name = _('UserAmountReocrds')
         verbose_name_plural = _('UserAmountReocrds')
+
+
+class GiveAway(ModelBase):
+    title = models.CharField(max_length=128, verbose_name=_("Title"))
+    img = models.URLField(verbose_name=_("Img Url"))
+    href = models.URLField(verbose_name=_("Target Url"))
+    button = models.CharField(max_length=64, verbose_name=_("Button"))
+    num = models.IntegerField(default=1, verbose_name=_("Num."))
+    enable = models.BooleanField(default=True, verbose_name=_("Enable"))
+    remark = models.CharField(max_length=64, verbose_name=_("Remark"))
+
+    def __unicode__(self):
+        return self.remark
+
+    class Meta:
+        verbose_name = _("Give Away")
+        verbose_name_plural = _("Give Away")
+

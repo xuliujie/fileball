@@ -220,3 +220,8 @@ class UserAmountRecordAdmin(ReadOnlyAdmin):
     list_filter = ('steamer',)
     list_per_page = 50
     ordering = ('-create_time',)
+
+
+class GiveAwayAdmin(ModelAdmin):
+    list_display = ('remark', 'title', 'enable', 'num')
+    list_editable = ('enable', 'num')

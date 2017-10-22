@@ -20,8 +20,8 @@ from betting.business.trade_business import store_items_by_user, withdraw_items_
 from betting.business.steam_business import get_user_inventories
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_current_jackpot_id, get_steam_bot_status
 from betting.forms import TradeUrlForm
-from betting.models import Deposit, CoinFlipGame, Announcement, UserProfile, SendRecord, StoreRecord
-from betting.serializers import DepositSerializer, AnnouncementSerializer, StoreRecordSerializer, SteamerSerializer
+from betting.models import Deposit, CoinFlipGame, Announcement, UserProfile, SendRecord, StoreRecord, GiveAway
+from betting.serializers import DepositSerializer, AnnouncementSerializer, StoreRecordSerializer, SteamerSerializer, GiveawaySerializer
 from betting.utils import current_user, reformat_ret, get_maintenance, get_string_config_from_site_config
 
 from social_auth.models import SteamUser
@@ -38,6 +38,14 @@ def get_announcement(page_type):
     announ = announ_current or announ_all
     if announ:
         ret = AnnouncementSerializer(announ).data
+    return ret
+
+
+def get_giveaway():
+    ret = None
+    give = GiveAway.objects.filter(enable=True).order_by('num').first()
+    if give:
+        ret = GiveawaySerializer(give).data
     return ret
 
 
@@ -97,6 +105,7 @@ class CoinFlipView(TemplateView):
         context = super(CoinFlipView, self).get_context_data(**kwargs)
         user = current_user(self.request)
         context['anno'] = get_announcement(page_type=0)
+        context['give'] = get_giveaway()
         return context
 
 coinflip_view = CoinFlipView.as_view()
@@ -109,6 +118,7 @@ class JackpotView(TemplateView):
         context = super(JackpotView, self).get_context_data(**kwargs)
         user = current_user(self.request)
         context['anno'] = get_announcement(page_type=1)
+        context['give'] = get_giveaway()
         return context
 
 jackpot_view = JackpotView.as_view()

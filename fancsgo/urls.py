@@ -30,4 +30,4 @@ urlpatterns = [
     url(r'^', include('social_auth.urls', namespace='auth')),
 ]
 
-on_start_up()
+# on_start_up()
