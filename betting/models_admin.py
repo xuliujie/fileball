@@ -180,6 +180,7 @@ class StoreRecordAdmin(ModelAdmin):
 
 class SiteConfigAdmin(ModelAdmin):
     list_display = ('remark', 'key', 'enable', 'value', 'value_string')
+    list_editable = ('enable', 'value', 'value_string')
 
 
 class BettingBotAdmin(ModelAdmin):

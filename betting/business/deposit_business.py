@@ -26,7 +26,7 @@ from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHa
 from betting.business.cache_manager import update_coinflip_game_in_cache
 from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id
 from betting.business.redis_con import get_redis
-from betting.utils import aware_datetime_to_timestamp, get_maintenance, get_string_config_from_site_config
+from betting.utils import aware_datetime_to_timestamp, get_maintenance, get_string_config_from_site_config, get_int_config_from_site_config
 from betting.knapsack import knapsack
 
 _logger = logging.getLogger(__name__)
@@ -213,6 +213,7 @@ def coinflip_countdown_checker():
             _logger.exception(e)
         finally:
             time.sleep(60)
+
 
 def setup_coinflip_countdown_checker():
     th = Thread(target=coinflip_countdown_checker, args=())
@@ -403,6 +404,22 @@ def get_winner(game):
 
 
 _pump_bot = 'pump_bot'
+_pump_coinflip = 'pump_coinflip'
+_pump_jackpot = 'pump_jackpot'
+
+
+def get_coinflip_pump_level():
+    m = get_int_config_from_site_config(key=_pump_coinflip, default=0)
+    if m > 20 or m < 0:
+        m = 0
+    return float(m)/100
+
+
+def get_jackpot_pump_level():
+    m = get_int_config_from_site_config(key=_pump_jackpot, default=0)
+    if m > 20 or m < 0:
+        m = 0
+    return float(m)/100
 
 
 def trade_items_to_game_winner(game):
@@ -410,7 +427,13 @@ def trade_items_to_game_winner(game):
     total_items = []
     winner = None
 
-    pump_line = game.total_amount * settings.JACKPOT_PUMP_LINE
+    pump_level = 0
+    if game.game_type == 0:
+        pump_level = get_coinflip_pump_level()
+    elif game.game_type == 1:
+        pump_level = get_jackpot_pump_level()
+
+    pump_line = game.total_amount * pump_level
     for deposit in deposits:
         items = deposit.items.all()
         total_items.extend(items)
@@ -423,7 +446,7 @@ def trade_items_to_game_winner(game):
 
     items_map = {i.assetid: i for i in total_items}
     found_items = []
-    if settings.SITE_NAME_KEY not in winner.steamer.personaname.lower():
+    if settings.SITE_NAME_KEY not in winner.steamer.personaname.lower() and pump_line > 0:
         k_items = [(i.amount, i.amount, i) for i in total_items]
         best_value, reconstruction = knapsack(k_items, pump_line)
         if best_value > 0:
