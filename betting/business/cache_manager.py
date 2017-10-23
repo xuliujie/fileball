@@ -63,7 +63,7 @@ def get_online():
     r = get_redis()
     online = r.get(_online_key)
     online_config = get_int_config_from_site_config(_online_config, 0)
-    return online + online_config
+    return int(online) + online_config
 
 
 def get_steam_bot_status():
