@@ -5,11 +5,13 @@ import json
 import time
 
 from redis_con import get_redis
+from betting.utils import get_int_config_from_site_config
 
 _online_key = 'online_users'
 _jackpot_key = 'current_jackpot'
 
 _cf_game_set = 'cf_game_set'
+_online_config = 'online'
 
 
 def get_current_coinflip_games():
@@ -60,7 +62,8 @@ def decr_online():
 def get_online():
     r = get_redis()
     online = r.get(_online_key)
-    return online
+    online_config = get_int_config_from_site_config(_online_config, 0)
+    return online + online_config
 
 
 def get_steam_bot_status():
