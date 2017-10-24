@@ -159,7 +159,7 @@ def format_coinflip_game(game, **kwargs):
     if game.end:
         winner, jk = get_winner(game)
         ret['winner'] = winner
-        ret['percentage'] = game.percentage
+        ret['percentage'] = '{0:.13f}'.format(game.percentage)
         ret['secret'] = game.secret
         ret['totalTickets'] = game.total_tickets
     ret['status'] = status
