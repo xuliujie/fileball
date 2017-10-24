@@ -71,7 +71,7 @@ function completeCoinflipData(cfData) {
     for(var i=0; i<cfCompletedData.deposit.length; i++) {
         cfCompletedData.deposit[i].totalAmount = floatStrip(cfCompletedData.deposit[i].totalAmount, 2)
     }
-    var expireTime = moment.unix(cfData.ts_get + 30 * 60);
+    var expireTime = moment.unix(cfData.ts_get + 10 * 60);
     cfCompletedData['expires'] = expireTime.format('a hh:mm');
     return cfCompletedData;
 }
