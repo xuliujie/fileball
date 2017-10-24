@@ -337,7 +337,7 @@ def format_jackpot_game(game, animate=False, **kwargs):
         cf, jk = get_winner(game)
         ret['winner'] = jk
         ret['secret'] = game.secret
-        ret['percentage'] = game.percentage
+        ret['percentage'] = '{0:.13f}'.format(game.percentage)
         if animate:
             joiners, win_index = format_jackpot_joiners(game, jk)
             ret['deposit'] = {
