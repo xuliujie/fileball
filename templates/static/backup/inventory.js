@@ -75,7 +75,7 @@ Vue.component('inv-deposit', {
             var that = this;
             var teamId = e.currentTarget.dataset.team;
 
-            that.selectedTeam = teamId;
+            that.selectedTeam = parseInt(teamId);
             $('div[class*="row-team"] img').removeClass('selected');
             $('div[class*="row-team"] img[data-team="' + teamId + '"]').addClass('selected');
         },
