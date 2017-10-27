@@ -371,6 +371,12 @@ $(function () {
         return false;
     });
 
+    $("#chat_msg").keydown(function() {
+        if (event.keyCode == "13") {//keyCode=13是回车键
+            $("#pushChatMsg").click();
+        }
+    });
+
     $('#jackpot_deposit_button').click(function () {
         modalArea.modalData = joinJackpotModal;
         initJackpotData.settings.maxitems = 12 - curDepositItems;
