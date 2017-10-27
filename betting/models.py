@@ -226,7 +226,7 @@ class PropItem(ModelBase):
     sid = models.CharField(max_length=255)
     name = models.CharField(max_length=255, verbose_name=_("Name"))
     market_name = models.CharField(max_length=255, verbose_name=_("Market Name"))
-    market_hash_name = models.CharField(max_length=255, verbose_name=_("Market Hash Name"))
+    market_hash_name = models.CharField(max_length=255, blank=True, null=True, default=None, verbose_name=_("Market Hash Name"))
     amount = models.FloatField(default=0.0, verbose_name=_("Price"))
     rarity = models.CharField(max_length=128, null=True, verbose_name=_("Rarity"))
     rarity_color = models.CharField(max_length=128, null=True, verbose_name=_("Rarity Color"))
@@ -239,7 +239,7 @@ class PropItem(ModelBase):
     send_record = models.ManyToManyField(SendRecord, related_name='items', default=None, blank=True, verbose_name=_("Send Record"))
     store_record = models.ManyToManyField(StoreRecord, related_name='items', default=None, blank=True, verbose_name=_("Store Record"))
     instanceid = models.CharField(max_length=128, null=True, default=None, blank=True)
-    owner = models.ForeignKey(SteamUser, related_name='items', on_delete=models.CASCADE, null=True, default=None, verbose_name=_("owner"))
+    owner = models.ForeignKey(SteamUser, related_name='items', on_delete=models.CASCADE, blank=True, null=True, default=None, verbose_name=_("owner"))
     is_locked = models.BooleanField(default=False, verbose_name=_("Is Locked"))
 
     def __unicode__(self):
