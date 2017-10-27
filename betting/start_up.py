@@ -31,7 +31,6 @@ def format_price():
 
 
 def on_start_up():
-    format_price()
     init_conn()
     init_online()
     init_current_jackpot()
