@@ -25,6 +25,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^', include('betting.urls')),
+    url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^fanmin/', admin.site.urls),
     url(r'^', include('social_django.urls', namespace='social')),
     url(r'^', include('social_auth.urls', namespace='auth')),
