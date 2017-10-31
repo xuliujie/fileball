@@ -30,7 +30,7 @@ def create_room(label):
 def ws_connect(message):
     _logger.info('ws connect')
     if not message.user.is_authenticated():
-        _logger.info('anonymouse disconnect')
+        _logger.info('anonymouse connect')
         return
 
     label = 'chat_room'
@@ -113,6 +113,10 @@ def ws_receive(message):
 @channel_session_user
 def ws_disconnect(message):
     _logger.info('ws disconnect')
+    if not message.user.is_authenticated():
+        _logger.info('anonymouse disconnect')
+        return
+
     label = 'chat_room'
     try:
         page = message.channel_session['room']
