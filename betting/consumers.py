@@ -29,6 +29,10 @@ def create_room(label):
 @channel_session_user_from_http
 def ws_connect(message):
     _logger.info('ws connect')
+    if not message.user.is_authenticated():
+        _logger.info('anonymouse disconnect')
+        return
+
     label = 'chat_room'
     try:
         ws_path = message.content['path']
