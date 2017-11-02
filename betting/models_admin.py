@@ -99,6 +99,7 @@ class PropItemAdmin(ModelAdmin):
     ordering = ('-create_time',)
     date_hierarchy = 'create_time'
     list_filter = ('owner',)
+    list_editable = ('owner',)
     inlines = [PropItemDepositInline, PropItemStoreInline, PropItemSendInline]
     list_per_page = 50
 
