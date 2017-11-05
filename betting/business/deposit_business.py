@@ -21,7 +21,7 @@ from channels import Group
 from channels.sessions import channel_session
 from social_auth.models import SteamUser
 
-from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, UserAmountRecord, BettingBot
+from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, UserAmountRecord, BettingBot, PropItem
 from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer
 from betting.business.cache_manager import update_coinflip_game_in_cache
 from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id
@@ -70,13 +70,31 @@ def create_new_game_hash():
     return ret
 
 
+def get_valid_items(steamer, items):
+    assetids = [i['assetid'] for i in items]
+    valid_items = PropItem.objects.filter(owner=steamer, assetid__in=assetids, is_locked=False).all()
+    return valid_items
+
+
 # coinflip
 def join_coinflip_game(data, steamer):
     deposit_data = dict(data)
+    valid_items = get_valid_items(steamer, deposit_data['items'])
+    if len(valid_items) == 0 or len(valid_items) != len(deposit_data['items']):
+        return 102, u"无效道具"
+
+    deposit_items = []
+    valid_items_map = {vi.assetid: vi for vi in valid_items}
+    for di in data['items']:
+        if di['assetid'] in valid_items_map:
+            di['amount'] = valid_items_map[di['assetid']].amount
+            deposit_items.append(di)
+    deposit_data['items'] = deposit_items
+
     gid = deposit_data.pop('gid')
     serializer = DepositSerializer(data=deposit_data)
     if not serializer.is_valid():
-        return 101, serializer
+        return 101, serializer.error_messages
 
     sum_amount = sum([i['amount'] for i in deposit_data['items']])
     if gid:
@@ -279,9 +297,20 @@ def set_up_jackpot_countdown(gid, countdown=None):
 
 def join_jackpot_game(data, steamer):
     deposit_data = dict(data)
+    valid_items = get_valid_items(steamer, data['items'])
+    if len(valid_items) == 0:
+        return 102, u"无效道具"
+
+    deposit_items = []
+    valid_items_map = {vi.assetid: vi for vi in valid_items}
+    for di in data['items']:
+        if di['assetid'] in valid_items_map:
+            di['amount'] = valid_items_map[di['assetid']].amount
+            deposit_items.append(di)
+    deposit_data['items'] = deposit_items
     serializer = DepositSerializer(data=deposit_data)
     if not serializer.is_valid():
-        return 101, serializer
+        return 101, serializer.error_messages
 
     deposit = serializer.save(steamer=steamer, game_type=1, game=None)
     deposit.is_joined = True

@@ -273,7 +273,7 @@ class JoinJackpotView(mixins.CreateModelMixin, viewsets.GenericViewSet):
                 if code == 0:
                     return reformat_ret(0, {'uid': result.uid}, _l('join jackpot successfully'))
                 else:
-                    return reformat_ret(101, result.errors, result.error_messages)
+                    return reformat_ret(101, {}, result)
             return reformat_ret(0, {}, 'jackpot')
         except Exception as e:
             _logger.exception(e)
@@ -298,7 +298,7 @@ class JoinCoinflipViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
                 elif code == 201:
                     return reformat_ret(201, {}, _l("Someone has joined the game."))
                 else:
-                    return reformat_ret(101, {}, result.error_messages)
+                    return reformat_ret(101, {}, result)
             return reformat_ret(0, {}, 'coinflip')
         except CoinFlipGame.DoesNotExist as e:
             _logger.error(e)

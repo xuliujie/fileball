@@ -187,12 +187,30 @@ def cancel_store_items(uid, **kwargs):
         record.save()
 
 
+def get_valid_items(steamer, items):
+    assetids = [i['assetid'] for i in items]
+    valid_items = PropItem.objects.filter(owner=steamer, assetid__in=assetids, is_locked=False).all()
+    return valid_items
+
+
 # withdraw
 def withdraw_items_by_user(steamer, data):
     withdraw_data = dict(data)
+
     items = withdraw_data.get('items', None)
     if not items:
         return 800, u"请选择需要取回的物品。"
+
+    valid_items = get_valid_items(steamer, withdraw_data.get('items', []))
+    if len(valid_items) == 0 or len(valid_items) != len(withdraw_data.get('items', [])):
+        return 800, u"无效道具"
+
+    deposit_items = []
+    valid_items_map = {vi.assetid: vi for vi in valid_items}
+    for di in data['items']:
+        if di['assetid'] in valid_items_map:
+            deposit_items.append(di)
+    items = deposit_items
 
     for item in items:
         if item.get('assetid', '-1').startswith('-'):

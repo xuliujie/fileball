@@ -160,14 +160,15 @@ def temp_sender():
                     if deposit.get('status', 0) == 0:
                         deposit['trade_no'] = last_no
                         last_no += 1
+                        deposit['status'] = TradeStatus.Active.value
                         time.sleep(5)
                         r.set(key, json.dumps(deposit, encoding='utf-8'))
 
-                        deposit['status'] = 1
+                        deposit['status'] = TradeStatus.Accepted.value
                         d_items = deposit['myItems']
                         for i in d_items:
                             i['sended_assetid'] = '2' + i['assetid']
-                        time.sleep(10)
+                        time.sleep(60)
                         r.set(key, json.dumps(deposit, encoding='utf-8'))
                         _logger.info(u'temp thread send trade {0} items to {1} on {2}'.format(
                             len(deposit['myItems']), deposit['steamer']['steamid'], deposit['steamer']['tradeurl']))
