@@ -29,7 +29,10 @@ def get_user_inventories(steamid, appid, contextid, s_assetid=None, **kwargs):
         return []
 
 
-def check_lack(botid, appid, contextid, steamid=None):
+def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=False):
+    exclude_users = []
+    if exclude:
+        exclude_users = [int(i.strip()) for i in exclude.split(',')]
     bot_assets = get_user_inventories(botid, appid, contextid)
     if steamid:
         user_assets = PropItem.objects.filter(owner__steamid=steamid).all()
@@ -37,8 +40,31 @@ def check_lack(botid, appid, contextid, steamid=None):
         user_assets = PropItem.objects.exclude(owner__isnull=True).all()
     bot_ids = [a['assetid'] for a in bot_assets]
     not_include = filter(lambda x: x.assetid not in bot_ids, user_assets)
+    lacks = []
+    hackers = {}
+    for item in not_include:
+        send = item.send_record.filter(status=1).first()
+        if send:
+            lacks.append(item)
+            if send.steamer.steamid not in hackers:
+                hackers[send.steamer.steamid] = {
+                    'amount': item.amount,
+                    'count': 1
+                }
+            else:
+                hackers[send.steamer.steamid]['amount'] += item.amount
+                hackers[send.steamer.steamid]['count'] += 1
     amounts = [a.amount for a in not_include]
+    lack_amounts = [a.amount for a in lacks]
+
+    excluded_items = []
+    for la in lacks:
+        if la.owner.id not in exclude_users:
+            excluded_items.append(la)
+
+    excluded_amounts = [a.amount for a in excluded_items]
     not_include_data = [PropItemSerializer(d, fields=('uid', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid')).data for d in not_include]
+    excluded_data = [PropItemSerializer(d, fields=('uid', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid')).data for d in excluded_items]
     ret = {
         'bot': botid,
         'steamid': steamid,
@@ -48,7 +74,20 @@ def check_lack(botid, appid, contextid, steamid=None):
             'count': len(not_include),
             'amount': sum(amounts)
         },
-        'not_in': not_include_data
+        'lack': {
+            'count': len(lacks),
+            'amount': sum(lack_amounts)
+        },
+        'excluded': {
+            'ids': exclude_users,
+            'count': len(excluded_items),
+            'amount': sum(excluded_amounts)
+        },
+        'hackers': hackers,
     }
+
+    if details:
+        ret['not_in'] = not_include_data,
+        ret['excluded_items'] = excluded_data
     return ret
 

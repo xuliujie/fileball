@@ -576,8 +576,10 @@ class QueryUserLack(views.APIView):
             botid = params.get('botid')
             appid = params.get('appid')
             contextid = params.get('contextid')
+            exclude = params.get('exclude', None)
             steamid = params.get('steamid', None)
-            body = check_lack(botid=botid, appid=appid, contextid=contextid, steamid=steamid)
+            details = params.get('details', False)
+            body = check_lack(botid=botid, appid=appid, contextid=contextid, steamid=steamid, exclude=exclude, details=details)
             return reformat_ret(0, body, 'ok')
         except Exception as e:
             _logger.exception(e)
