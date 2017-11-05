@@ -23,6 +23,7 @@ from betting.forms import TradeUrlForm
 from betting.models import Deposit, CoinFlipGame, Announcement, UserProfile, SendRecord, StoreRecord, GiveAway
 from betting.serializers import DepositSerializer, AnnouncementSerializer, StoreRecordSerializer, SteamerSerializer, GiveawaySerializer
 from betting.utils import current_user, reformat_ret, get_maintenance, get_string_config_from_site_config
+from betting.business.check_lack import check_lack
 
 from social_auth.models import SteamUser
 from django.conf import settings
@@ -565,3 +566,22 @@ class UpdateThemeView(views.APIView):
 
 
 update_theme_view = UpdateThemeView.as_view()
+
+
+class QueryUserLack(views.APIView):
+
+    def get(self, request, format=None):
+        try:
+            params = request.query_params
+            botid = params.get('botid')
+            appid = params.get('appid')
+            contextid = params.get('contextid')
+            steamid = params.get('steamid', None)
+            body = check_lack(**params)
+            return reformat_ret(0, body, 'ok')
+        except Exception as e:
+            _logger.exception(e)
+            return reformat_ret(500, {}, 'query deposit status exception')
+
+
+query_user_lack_view = QueryUserLack.as_view()
