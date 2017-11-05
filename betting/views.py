@@ -577,7 +577,7 @@ class QueryUserLack(views.APIView):
             appid = params.get('appid')
             contextid = params.get('contextid')
             steamid = params.get('steamid', None)
-            body = check_lack(**params)
+            body = check_lack(botid=botid, appid=appid, contextid=contextid, steamid=steamid)
             return reformat_ret(0, body, 'ok')
         except Exception as e:
             _logger.exception(e)
