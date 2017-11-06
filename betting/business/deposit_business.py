@@ -99,6 +99,9 @@ def join_coinflip_game(data, steamer):
     sum_amount = sum([i['amount'] for i in deposit_data['items']])
     if gid:
         game = CoinFlipGame.objects.get(uid=gid)
+        if game.status in (GameStatus.Canceled.value, GameStatus.End.value):
+            return 102, u"无效游戏"
+
         join_range = [game.total_amount*0.9, game.total_amount*1.1]
         if sum_amount < join_range[0] or sum_amount > join_range[1]:
             return 102, u"下注金额不匹配"
