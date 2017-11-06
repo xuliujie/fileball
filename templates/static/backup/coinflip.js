@@ -344,6 +344,17 @@ $(function () {
                     $('.status-message').show();
                 }
             },
+            removeItemDirect: function (gid) {
+                var that = this;
+                for(var i=0; i<that.items.length; i++) {
+                    if(that.items[i].gid === gid) {
+                        that.items.splice(i, 1);
+                        break;
+                    }
+                }
+                updateJoinableGames(that.items);
+                updateCoinflipNumer();
+            },
             reformatSummary: function () {
                 var that = this;
                 var totalItems = 0;
@@ -423,7 +434,7 @@ $(function () {
                     games.addItem(fillCoinflipData(cfDatas[i], false));
                 }
             } else if(data[1] === 'remove') {
-                games.removeItem(data[2]);
+                games.removeItemDirect(data[2]);
             }
         } else if(data[0] === 'online') {
             var onlineCounter = $('.users-online-value');
