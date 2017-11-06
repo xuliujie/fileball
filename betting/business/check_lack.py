@@ -29,7 +29,7 @@ def get_user_inventories(steamid, appid, contextid, s_assetid=None, **kwargs):
         return []
 
 
-def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=False):
+def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=False, remove=False):
     exclude_users = []
     if exclude:
         exclude_users = [int(i.strip()) for i in exclude.split(',')]
@@ -120,5 +120,9 @@ def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=Fals
             'uid', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid')).data for d in excluded_items]
         ret['not_in'] = not_include_data,
         ret['excluded_items'] = excluded_data
+
+    if remove:
+        for m in not_include:
+            m.delete()
     return ret
 
