@@ -74,6 +74,22 @@ def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=Fals
 
     excluded_amounts = [a.amount for a in excluded_items]
 
+    excluded_item_ids = [i.uid for i in excluded_items]
+    trans_items = []
+    for n in not_include:
+        if n.uid not in excluded_item_ids:
+            trans_items.append(n)
+
+    trans_group = {}
+    for i in trans_items:
+        if i.owner.steamid not in trans_group:
+            trans_group[i.owner.steamid] = {
+                'steamer': SteamerSerializer(i.owner, fields=['steamid', 'name']).data,
+                'items': [PropItemSerializer(i).data]
+            }
+        else:
+            trans_group[i.owner.steamid]['items'].append(PropItemSerializer(i).data)
+
     ret = {
         'bot': botid,
         'steamid': steamid,
@@ -93,6 +109,7 @@ def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=Fals
             'amount': sum(excluded_amounts)
         },
         'group_items': group_items,
+        'trans_group': trans_group,
         'hackers': hackers,
     }
 
