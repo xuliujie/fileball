@@ -123,6 +123,7 @@ def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=Fals
 
     if remove:
         for m in not_include:
-            m.delete()
+            m.owner = None
+            m.save()
     return ret
 
