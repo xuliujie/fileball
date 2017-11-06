@@ -3,7 +3,7 @@ import json
 import requests
 import os
 
-from betting.serializers import PropItemSerializer
+from betting.serializers import PropItemSerializer, SteamerSerializer
 from betting.models import PropItem
 
 _inventory_url_base = 'http://steamcommunity.com/inventory/{steamid}/{appid}/{contextid}?l=english&count=2000&start_assetid={s_assetid}'
@@ -62,9 +62,18 @@ def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=Fals
         if la.owner.id not in exclude_users:
             excluded_items.append(la)
 
+    group_items = {}
+    for i in excluded_items:
+        if i.owner.steamid not in group_items:
+            group_items[i.owner.steamid] = {
+                'steamer': SteamerSerializer(i.owner, fields=['steamid', 'name']).data,
+                'items': [PropItemSerializer(i).data]
+            }
+        else:
+            group_items[i.owner.steamid]['items'].append(PropItemSerializer(i).data)
+
     excluded_amounts = [a.amount for a in excluded_items]
-    not_include_data = [PropItemSerializer(d, fields=('uid', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid')).data for d in not_include]
-    excluded_data = [PropItemSerializer(d, fields=('uid', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid')).data for d in excluded_items]
+
     ret = {
         'bot': botid,
         'steamid': steamid,
@@ -83,10 +92,15 @@ def check_lack(botid, appid, contextid, steamid=None, exclude=None, details=Fals
             'count': len(excluded_items),
             'amount': sum(excluded_amounts)
         },
+        'group_items': group_items,
         'hackers': hackers,
     }
 
     if details:
+        not_include_data = [PropItemSerializer(d, fields=(
+            'uid', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid')).data for d in not_include]
+        excluded_data = [PropItemSerializer(d, fields=(
+            'uid', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid')).data for d in excluded_items]
         ret['not_in'] = not_include_data,
         ret['excluded_items'] = excluded_data
     return ret
