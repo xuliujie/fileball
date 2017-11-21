@@ -279,7 +279,7 @@ def check_sending():
                                 len(trade['myItems']), trade['steamer']['steamid'], trade['steamer']['tradeurl'], result))
                         elif result == TradeStatus.Cancelled.value:
                             cancel_send_items(trade['uid'], data=trade)
-                            r.lrem(_trade_list_key, key, num=1)
+                            r.lrem(_send_list_key, key, num=1)
                             r.delete(key)
                             _logger.info(u'cancel send {0} items to {1} on {2}'.format(
                                 len(trade['myItems']), trade['steamer']['steamid'], trade['steamer']['tradeurl']))
