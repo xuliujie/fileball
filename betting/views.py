@@ -16,7 +16,6 @@ from betting.common_data import TradeStatus
 from betting.betting_business import get_all_coinflip_history
 from betting.betting_business import get_my_coinflip_history, get_my_jackpot_history
 from betting.business.deposit_business import join_coinflip_game, join_jackpot_game, ws_send_cf_news, create_random_hash, getWins
-from betting.business.trade_business import store_items_by_user, withdraw_items_by_user, get_user_package
 from betting.business.steam_business import get_user_inventories
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_current_jackpot_id, get_steam_bot_status
 from betting.forms import TradeUrlForm
@@ -312,31 +311,6 @@ class InventoryQueryView(views.APIView):
 inventory_query_view = InventoryQueryView.as_view()
 
 
-class PackageQueryView(views.APIView):
-
-    def get_inventories(self, request):
-        try:
-            steamer = current_user(request)
-            items = get_user_package(steamer)
-            if items is None:
-                return reformat_ret(311, {}, _l("We get issues when query package, try again later."))
-            resp_data = {
-                'inventory': items
-            }
-            return reformat_ret(0, resp_data, 'success')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, 'exception')
-
-    def get(self, request, format=None):
-        return self.get_inventories(request)
-
-    def post(self, request, format=None):
-        return self.get_inventories(request)
-
-package_query_view = PackageQueryView.as_view()
-
-
 class CoinflipHistoryQueryView(views.APIView):
     permission_classes = (AllowAny,)
 
@@ -392,28 +366,6 @@ class DepositStatusQueryView(views.APIView):
         return self.query_status(request)
 
 deposit_status_query_view = DepositStatusQueryView.as_view()
-
-
-class WithdrawItemView(views.APIView):
-
-    def withdraw_item(self, request):
-        try:
-            steamer = current_user(request)
-            if steamer and steamer.is_authenticated():
-                code, resp = withdraw_items_by_user(steamer, request.data)
-                if code == 0:
-                    return reformat_ret(0, resp, u"Success")
-                else:
-                    return reformat_ret(code, {}, resp)
-            return reformat_ret(101, {}, u'无效用户')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, u"取回异常，请稍后重试.")
-
-    def post(self, request, format=None):
-        return self.withdraw_item(request)
-
-withdraw_item_view = WithdrawItemView.as_view()
 
 
 class WithdrawStatusView(views.APIView):

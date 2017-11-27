@@ -11,13 +11,13 @@ from django.db import connection
 from django.conf import settings
 from django.utils import timezone as dt
 
-from betting.common_data import TradeStatus
+from betting.common_data import TradeStatus, JoinStatus, GameType
 from betting.models import PropItem, SendRecord, CoinFlipGame, Deposit
 from betting.serializers import SteamerSerializer, PropItemSerializer, SendRecordSerializer
 from betting.business.redis_con import get_redis
 from betting.utils import id_generator, aware_datetime_to_timestamp, get_string_config_from_site_config, get_maintenance
-from betting.business.cache_manager import cache_user_inventory, read_inventory_from_cache
-from betting.business.deposit_business import is_connection_usable
+from betting.business.serializers import format_coinflip_game, format_jackpot_game, ws_send_jk_current, ws_send_cf_news, ws_send_cf_remove, ws_send_jk_new
+from betting.business.cache_manager import update_coinflip_game_in_cache
 from betting.knapsack import knapsack
 
 
@@ -27,6 +27,17 @@ _logger = logging.getLogger(__name__)
 _price_pattern = r'^[^\d]*(\d+\.\d+)$'
 _trade_list_key = 'trade_list'
 _send_list_key = 'send_list'
+
+
+def is_connection_usable():
+    try:
+        if connection.connection is not None:
+            connection.connection.ping()
+    except Exception as e:
+        _logger.error(e)
+        return False
+    else:
+        return True
 
 
 def get_user_package(steamer):
@@ -125,23 +136,32 @@ def update_store_trade_no(uid, trade_no, **kwargs):
         record.save()
 
 
-def confirm_store_items(uid, **kwargs):
-    data = kwargs.get('data', {})
-    record = Deposit.objects.filter(uid=uid).first()
-    if record:
-        items_add_owner(data.get('theirItems', []), record.steamer)
-        record.status = TradeStatus.Accepted.value
-        record.save()
-
-
-def items_add_owner(items, steamer):
+def update_item_assetid(items):
     for i in items:
         if i['assetid']:
-            item = PropItem.objects.get(assetid=i['assetid'])
-            item.assetid = i['new_assetid']
-            item.owner = steamer
-            item.is_locked = False
-            item.save()
+            item = PropItem.objects.filter(uid=i['uid']).first()
+            if item:
+                item.assetid = i['new_assetid']
+                item.save()
+
+
+def confirm_store_items(uid, **kwargs):
+    data = kwargs.get('data', {})
+    dt_now = dt.now()
+    deposit = Deposit.objects.filter(uid=uid).first()
+    if deposit:
+        update_item_assetid(data.get('theirItems', []))
+        deposit.status = TradeStatus.Accepted.value
+        deposit.join_status = JoinStatus.Accepted.value
+        deposit.accept_time = dt_now
+        deposit.save()
+
+        game = deposit.game
+        if game and game.game_type == GameType.Coinflip.value:
+            cf_data = format_coinflip_game(game)
+            if cf_data:
+                update_coinflip_game_in_cache(cf_data)
+                ws_send_cf_news(cf_data)
 
 
 def cancel_store_items(uid, **kwargs):
@@ -149,45 +169,15 @@ def cancel_store_items(uid, **kwargs):
     if uid:
         record = Deposit.objects.get(uid=uid)
         record.status = data.get('status', TradeStatus.Cancelled.value)
+        record.join_status = JoinStatus.Canceled.value
         record.save()
 
-
-def get_valid_items(steamer, items):
-    assetids = [i['assetid'] for i in items]
-    valid_items = PropItem.objects.filter(owner=steamer, assetid__in=assetids, is_locked=False).all()
-    return valid_items
-
-
-# withdraw
-def withdraw_items_by_user(steamer, data):
-    withdraw_data = dict(data)
-
-    items = withdraw_data.get('items', None)
-    if not items:
-        return 800, u"请选择需要取回的物品。"
-
-    valid_items = get_valid_items(steamer, withdraw_data.get('items', []))
-    if len(valid_items) == 0 or len(valid_items) != len(withdraw_data.get('items', [])):
-        return 800, u"无效道具"
-
-    deposit_items = []
-    valid_items_map = {vi.assetid: vi for vi in valid_items}
-    for di in data['items']:
-        if di['assetid'] in valid_items_map:
-            deposit_items.append(di)
-    items = deposit_items
-
-    for item in items:
-        if item.get('assetid', '-1').startswith('-'):
-            return 880, u"提取失败，请稍后再试"
-
-    serializer = SendRecordSerializer(data=withdraw_data)
-    if not serializer.is_valid():
-        return 103, u"无效参数"
-
-    record = serializer.save(steamer=steamer, **withdraw_data)
-    request_send(record=record, steamer=steamer)
-    return 0, serializer.data
+        game = record.game
+        if game and game.game_type == GameType.Coinflip.value:
+            cf_data = format_coinflip_game(game)
+            if cf_data:
+                update_coinflip_game_in_cache(cf_data)
+                ws_send_cf_news(cf_data)
 
 
 def request_send(record, steamer, items):

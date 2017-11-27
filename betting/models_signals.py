@@ -13,8 +13,8 @@ from django.conf import settings
 from betting.common_data import GameStatus, GameType, TradeStatus
 from betting.models import Deposit, CoinFlipGame, SteamrobotApiItem, PropItem
 from betting.business.cache_manager import get_current_jackpot_id
-from betting.business.game_business import set_up_jackpot_countdown, format_jackpot_game, ws_send_jk_current
-from betting.business.steam_business import trade_items_to_game_winner, trade_items_back_to_joiner
+from betting.business.deposit_business import set_up_jackpot_countdown, format_jackpot_game, ws_send_jk_current
+from betting.business.trade_business import trade_items_to_game_winner, trade_items_back_to_joiner
 
 
 @receiver(post_save, sender=Deposit, dispatch_uid="update_deposit_ticket")
@@ -32,7 +32,7 @@ def update_deposit_tickets(sender, instance, **kwargs):
         if instance.game_type == GameType.Coinflip.value:
             game = instance.game
         elif instance.game_type == GameType.Jackpot.value:
-            gid = get_current_jackpot_id(instance.appid)
+            gid = get_current_jackpot_id()
             game = CoinFlipGame.objects.filter(uid=gid).first()
         if not game:
             return
@@ -70,7 +70,7 @@ def update_deposit_tickets(sender, instance, **kwargs):
         if game.game_type == GameType.Jackpot.value:
             animate = True if game.end else False
             jd_data = format_jackpot_game(game, animate)
-            ws_send_jk_current(game.appid, jd_data)
+            ws_send_jk_current(jd_data)
 
 
 @receiver(post_save, sender=CoinFlipGame, dispatch_uid="calc_game_winner_ticket")

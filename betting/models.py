@@ -141,7 +141,7 @@ class CoinFlipGame(ModelBase):
     total_amount = models.FloatField(default=0.0, verbose_name=_("Total Amount"))
     total_items = models.IntegerField(default=0, verbose_name=_("Total Items"))
     total_tickets = models.BigIntegerField(default=0, verbose_name=_("Total Tickets"))
-    win_ticket = models.BigIntegerField(default=0, verbose_name=_("Win Ticket"))
+    win_ticket = models.BigIntegerField(default=-1, verbose_name=_("Win Ticket"))
     win_ts = models.DateTimeField(default=dt.now, verbose_name=_("Win at"))
     status = models.SmallIntegerField(default=0, verbose_name=_("Status"), choices=GAME_STATUS)
     end = models.SmallIntegerField(default=0, verbose_name=_("Is End"), choices=GAME_END_STATUS)
@@ -179,8 +179,8 @@ class Deposit(ModelBase):
     security_code = models.CharField(max_length=32, null=True, default=None, blank=True, verbose_name=_("Security Code"))
     trade_no = models.CharField(max_length=64, null=True, default=None, blank=True, verbose_name=_("Trade No."))
     accept_time = models.DateTimeField(default=None, null=True, blank=True)
-    tickets_begin = models.BigIntegerField(default=0, verbose_name=_("Ticket Begin"))
-    tickets_end = models.BigIntegerField(default=0, verbose_name=_("Ticket End"))
+    tickets_begin = models.BigIntegerField(default=-1, verbose_name=_("Ticket Begin"))
+    tickets_end = models.BigIntegerField(default=-1, verbose_name=_("Ticket End"))
 
     class Meta:
         ordering = ('create_time',)
