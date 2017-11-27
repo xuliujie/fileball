@@ -23,9 +23,11 @@ from social_auth.models import SteamUser
 
 from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, UserAmountRecord, BettingBot, PropItem
 from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer
-from betting.business.cache_manager import update_coinflip_game_in_cache
+from betting.business.cache_manager import update_coinflip_game_in_cache, read_inventory_from_cache
 from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id
+from betting.business.trade_business import request_store
 from betting.business.redis_con import get_redis
+from betting.common_data import RespCode, TradeStatus, JoinStatus, GameStatus, GameType
 from betting.utils import aware_datetime_to_timestamp, get_maintenance, get_string_config_from_site_config, get_int_config_from_site_config
 from betting.knapsack import knapsack
 
@@ -56,6 +58,18 @@ def create_random_hash(count):
         TempGameHash.objects.create(**data)
 
 
+def get_coinflip_winner(game):
+    deposits = game.deposits.filter(status=TradeStatus.Accepted.value).all()
+    winner = None
+    team = None
+    for i, d in enumerate(deposits):
+        if d.tickets_begin <= game.win_ticket <= d.tickets_end:
+            winner = d.steamer
+            team = d.team
+            break
+    return winner, team
+
+
 def create_new_game_hash():
     percentage = random.uniform(0, 100)
     secret = secret_generator(size=10)
@@ -70,59 +84,63 @@ def create_new_game_hash():
     return ret
 
 
-def get_valid_items(steamer, items):
-    assetids = [i['assetid'] for i in items]
-    valid_items = PropItem.objects.filter(owner=steamer, assetid__in=assetids, is_locked=False).all()
-    return valid_items
-
-
 # coinflip
 def join_coinflip_game(data, steamer):
     deposit_data = dict(data)
-    valid_items = get_valid_items(steamer, deposit_data['items'])
-    if len(valid_items) == 0 or len(valid_items) != len(deposit_data['items']):
-        return 102, u"无效道具"
+    items = deposit_data['items']
+    if len(items) == 0:
+        return RespCode.InvalidParams, _('Invalid params')
 
-    deposit_items = []
-    valid_items_map = {vi.assetid: vi for vi in valid_items}
-    for di in data['items']:
-        if di['assetid'] in valid_items_map:
-            di['amount'] = valid_items_map[di['assetid']].amount
-            deposit_items.append(di)
-    deposit_data['items'] = deposit_items
+    if deposit_data['team'] not in (0, 1):
+        return RespCode.InvalidParams, _('Invalid params')
 
-    gid = deposit_data.pop('gid')
-    serializer = DepositSerializer(data=deposit_data)
-    if not serializer.is_valid():
-        return 101, serializer.error_messages
+    store_items = read_inventory_from_cache(steamer.steamid, items)
+    if len(store_items) != len(items):
+        return RespCode.InvalidParams, _('Invalid params')
 
-    sum_amount = sum([i['amount'] for i in deposit_data['items']])
+    deposit_data['items'] = store_items
+    gid = deposit_data.get('gid', None)
     if gid:
         game = CoinFlipGame.objects.get(uid=gid)
-        if game.status in (GameStatus.Canceled.value, GameStatus.End.value):
-            return 102, u"无效游戏"
+        if game.end == 1 or game.status == GameStatus.Canceled.value:
+            return RespCode.InvalidParams.value, _('Invalid params')
 
-        join_range = [game.total_amount*0.9, game.total_amount*1.1]
+        last_deposits = game.deposits.filter(status=TradeStatus.Accepted.value).all()
+        if len(last_deposits) >= 2:
+            return RespCode.GameFull.value, ''
+        teams = [d.team for d in last_deposits]
+        if deposit_data['team'] in teams:
+            return RespCode.InvalidParams.value, _('Invalid params')
+
+        sum_amount = sum([i['price'] for i in store_items])
+        join_range = [game.total_amount * 0.9, game.total_amount * 1.1]
         if sum_amount < join_range[0] or sum_amount > join_range[1]:
-            return 102, u"下注金额不匹配"
-
-        deposits = game.deposits.all()
-        if len(deposits) >= 2:
-            return 201, None
-
+            return RespCode.AmountNotMatched.value, _("Amount not matched")
     else:
-        game = create_new_coinflip_game(game_type=0, gamer=steamer, team=deposit_data['team'])
+        game = create_new_coinflip_game(game_type=GameType.Coinflip.value, gamer=steamer, team=deposit_data['team'])
 
-    is_creator = False if gid else True
-    deposit = serializer.save(steamer=steamer, game=game, game_type=0, is_creator=is_creator, **deposit_data)
-    deposit.is_joined = True
-    deposit.save()
+    serializer = DepositSerializer(data=deposit_data)
+    if not serializer.is_valid():
+        return RespCode.BusinessError, serializer.error_messages
+
+    deposits = game.deposits.filter(
+        status__in=(TradeStatus.Initialed.value, TradeStatus.Accepted.value, TradeStatus.Submitted.value)).all()
+    if len(deposits) >= 2:
+        return RespCode.GameFull.value, ''
+
+    join_status = JoinStatus.Joining.value if gid else JoinStatus.Initialed.value
+    deposit = serializer.save(steamer=steamer, game=game, status=TradeStatus.Initialed.value, join_status=join_status,
+                              game_type=GameType.Coinflip.value, items=store_items)
 
     cf_data = format_coinflip_game(game)
     if cf_data:
-        update_coinflip_game_in_cache(cf_data)
         ws_send_cf_news(cf_data)
-    return 0, deposit
+
+    request_store(deposit, steamer)
+    resp = {
+        'uid': deposit.uid
+    }
+    return RespCode.Succeed.value, resp
 
 
 def create_new_coinflip_game(game_type=0, **kwargs):
@@ -144,46 +162,60 @@ def create_new_coinflip_game(game_type=0, **kwargs):
 
 
 def format_coinflip_game(game, **kwargs):
+    user = kwargs.get('user', None)
+    end_only = kwargs.get('end_only', False)
     dt_now = dt.now()
     ts = aware_datetime_to_timestamp(dt_now)
     ts_create = aware_datetime_to_timestamp(game.create_time)
+    expires_at = game.create_time + timedelta(minutes=settings.COINFLIP_EXPIRE_TIMEOUT)
+    expires_ts = aware_datetime_to_timestamp(expires_at)
     ret = {
-        'hash': game.hash,
-        'closed': False,
-        'create_time': game.create_time.strftime('%Y-%m-%d %H:%M:%S'),
-        'ts_create': ts_create,
+        'no': game.id,
         'gid': game.uid,
+        'hash': game.hash,
+        'ts_create': ts_create,
         'ts_get': ts,
         'winner': None,
+        'deposits': [],
         'joined': None,
-        'deposit': [],
-        'totalAmount': game.total_amount,
-        'totalItems': game.total_items
+        'total_amount': game.total_amount,
+        'expires_at': expires_ts
     }
-    deposits = game.deposits.all()
+    deposits = game.deposits.filter(join_status__gt=10).all()
     if len(deposits) == 0:
+        return None
+
+    if end_only and len(deposits) < 2:
         return None
 
     status = game.status
     joiner = None
-    for i, deposit in enumerate(deposits):
-        deposit_s = DepositSerializer(deposit)
+    user_deposit = None
+    game_full = False
+    for deposit in deposits:
+        deposit_s = DepositSerializer(deposit, fields=['uid', 'team', 'steamer', 'amount', 'items', 'gid'])
         deposit_data = deposit_s.data
-        steamer_s = SteamerSerializer(deposit.steamer)
-        deposit_data.update(steamer_s.data)
-        if i > 0:
-            joiner = steamer_s.data
+        if deposit.status == TradeStatus.Accepted.value:
+            ret['deposits'].append(deposit_data)
 
-        deposit_data['totalItems'] = deposit_data['item_count']
-        deposit_data['totalAmount'] = deposit_data['item_amount']
-        ret['deposit'].append(deposit_data)
+        if deposit.status != TradeStatus.Accepted.value:
+            joiner = deposit
+        if user and user.steamid == deposit.steamer.steamid:
+            user_deposit = deposit_data
+    ret['user_deposit'] = user_deposit
+
     if game.end:
-        winner, jk = get_winner(game)
-        ret['winner'] = winner
+        game_full = True
+        winner, team = get_coinflip_winner(game)
+        ret['winner'] = SteamerSerializer(winner).data
+        ret['winner'].update({'team': team})
+        ret['win_ts'] = aware_datetime_to_timestamp(game.win_ts)
         ret['percentage'] = '{0:.13f}'.format(game.percentage)
         ret['secret'] = game.secret
-        ret['totalTickets'] = game.total_tickets
+        ret['total_tickets'] = game.total_tickets
     ret['status'] = status
+    ret['full'] = game_full
+
     joined = {
         'status': 0,
     }
@@ -191,9 +223,9 @@ def format_coinflip_game(game, **kwargs):
         joined.update({
             'status': 1,
             'expired': False,
-            "ts": ts
+            "ts": ts,
+            'steamer': SteamerSerializer(joiner.steamer).data
         })
-        joined.update(joiner)
     ret['joined'] = joined
     return ret
 
@@ -293,6 +325,7 @@ def jackpot_counter(gid, countdown=None):
     except Exception as e:
         _logger.exception(e)
 
+
 def set_up_jackpot_countdown(gid, countdown=None):
     th = Thread(target=jackpot_counter, args=(gid, countdown))
     th.start()
@@ -300,35 +333,31 @@ def set_up_jackpot_countdown(gid, countdown=None):
 
 def join_jackpot_game(data, steamer):
     deposit_data = dict(data)
-    valid_items = get_valid_items(steamer, data['items'])
-    if len(valid_items) == 0:
-        return 102, u"无效道具"
+    items = deposit_data['items']
+    if len(items) == 0:
+        return RespCode.InvalidParams.value, 'Invalid params'
 
-    deposit_items = []
-    valid_items_map = {vi.assetid: vi for vi in valid_items}
-    for di in data['items']:
-        if di['assetid'] in valid_items_map:
-            di['amount'] = valid_items_map[di['assetid']].amount
-            deposit_items.append(di)
-    deposit_data['items'] = deposit_items
+    if deposit_data['team'] not in (0, 1):
+        return RespCode.InvalidParams.value, 'Invalid params'
+
+    store_items = read_inventory_from_cache(steamer.steamid, items)
+    if len(store_items) != len(items):
+        return RespCode.InvalidParams.value, 'Invalid params'
+
+    deposit_data['items'] = store_items
+
     serializer = DepositSerializer(data=deposit_data)
     if not serializer.is_valid():
-        return 101, serializer.error_messages
+        return RespCode.InvalidParams.value, serializer.error_messages
 
-    deposit = serializer.save(steamer=steamer, game_type=1, game=None)
-    deposit.is_joined = True
+    deposit = serializer.save(
+        steamer=steamer, game=None, status=TradeStatus.Initialed.value,
+        join_status=JoinStatus.Joining.value,
+        game_type=GameType.Jackpot.value, items=store_items)
     deposit.save()
 
-    game = CoinFlipGame.objects.filter(deposits=deposit).first()
-    animate = True if game.end else False
-    jd_data = format_jackpot_game(game, animate)
-    update_current_jackpot_id(game.uid)
-    ws_send_jk_current(jd_data)
-    if game.end:
-        new_game = create_new_jackpot_game()
-        new_jd_data = format_jackpot_game(new_game, animate=False)
-        ws_send_jk_new(new_jd_data)
-    return 0, deposit
+    request_store(deposit, steamer)
+    return RespCode.Succeed.value, deposit
 
 
 def create_new_jackpot_game():

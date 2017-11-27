@@ -14,14 +14,14 @@ from rest_framework.permissions import AllowAny
 
 from betting.common_data import TradeStatus
 from betting.betting_business import get_all_coinflip_history
-from betting.betting_business import get_my_coinflip_history, get_my_jackpot_history, get_my_trade_record
+from betting.betting_business import get_my_coinflip_history, get_my_jackpot_history
 from betting.business.deposit_business import join_coinflip_game, join_jackpot_game, ws_send_cf_news, create_random_hash, getWins
 from betting.business.trade_business import store_items_by_user, withdraw_items_by_user, get_user_package
 from betting.business.steam_business import get_user_inventories
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_current_jackpot_id, get_steam_bot_status
 from betting.forms import TradeUrlForm
-from betting.models import Deposit, CoinFlipGame, Announcement, UserProfile, SendRecord, StoreRecord, GiveAway
-from betting.serializers import DepositSerializer, AnnouncementSerializer, StoreRecordSerializer, SteamerSerializer, GiveawaySerializer
+from betting.models import Deposit, CoinFlipGame, Announcement, UserProfile, SendRecord, GiveAway
+from betting.serializers import DepositSerializer, AnnouncementSerializer, SteamerSerializer, GiveawaySerializer
 from betting.utils import current_user, reformat_ret, get_maintenance, get_string_config_from_site_config
 from betting.business.check_lack import check_lack
 
@@ -212,29 +212,6 @@ class PackageView(ProfileView):
 package_view = PackageView.as_view()
 
 
-class StoreView(ProfileView):
-    template_name = 'pages/profile_detail/store.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(StoreView, self).get_context_data(**kwargs)
-        last_order = ''
-        security_code = ''
-        user = current_user(self.request)
-        if user and user.is_authenticated():
-            record = StoreRecord.objects.filter(
-                steamer__steamid=user.steamid,
-                status=TradeStatus.Initialed.value
-            ).first()
-            if record:
-                last_order = record.trade_no or ''
-                security_code = record.security_code
-        context['last_order'] = last_order
-        context['security_code'] = security_code
-        return context
-    
-store_view = StoreView.as_view()
-
-
 class TradeRecordView(ProfileView):
     template_name = 'pages/profile_detail/trade_record.html'
 
@@ -393,32 +370,6 @@ class CoinflipHistoryQueryView(views.APIView):
 cf_history_view = CoinflipHistoryQueryView.as_view()
 
 
-class TradeQueryView(views.APIView):
-
-    def trade_query(self, request):
-        try:
-            ret = []
-            user = current_user(request)
-            type = request.data.get('Type', 'store')
-            page = request.data.get('page', 1)
-            page = 1 if page < 1 else page
-
-            ret = get_my_trade_record(user, page=page, type=type)
-
-            return reformat_ret(0, ret, 'query trade successfully')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, 'exception')
-
-    def get(self, request, format=None):
-        return self.trade_query(request)
-
-    def post(self, request, format=None):
-        return self.trade_query(request)
-
-trade_query_view = TradeQueryView.as_view()
-
-
 class DepositStatusQueryView(views.APIView):
 
     def query_status(self, request):
@@ -441,48 +392,6 @@ class DepositStatusQueryView(views.APIView):
         return self.query_status(request)
 
 deposit_status_query_view = DepositStatusQueryView.as_view()
-
-
-class StoreItemView(views.APIView):
-
-    def store_items(self, request):
-        try:
-            user = current_user(request)
-            if user and user.is_authenticated():
-                code, resp = store_items_by_user(user, request.data)
-                if code == 0:
-                    return reformat_ret(0, resp, u'Success')
-                else:
-                    return reformat_ret(code, {}, resp)
-            return reformat_ret(101, {}, u'无效用户')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, u'存入异常，请稍后重试')
-
-    def post(self, request, format=None):
-        return self.store_items(request)
-
-store_item_view = StoreItemView.as_view()
-
-
-class StoreStatusQueryView(views.APIView):
-
-    def query_status(self, request):
-        try:
-            uid = request.query_params.get('uid', None)
-            if uid:
-                record = StoreRecord.objects.get(uid=uid)
-                resp_data = StoreRecordSerializer(record).data
-                return reformat_ret(0, resp_data, 'Success')
-        except Exception as e:
-            _logger.exception(e)
-            return reformat_ret(500, {}, u'查询存入状态异常')
-        return reformat_ret(403, {}, u"无效参数")
-
-    def get(self, request, format=None):
-        return self.query_status(request)
-
-store_status_query_view = StoreStatusQueryView.as_view()
 
 
 class WithdrawItemView(views.APIView):

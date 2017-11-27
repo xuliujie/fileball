@@ -24,8 +24,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from channels import Group
 from channels.sessions import channel_session
 
-from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, StoreRecord, SendRecord, SteamrobotApiItem, UserAmountRecord
-from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, StoreRecordSerializer, SendRecordSerializer
+from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, SendRecord, SteamrobotApiItem, UserAmountRecord
+from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, SendRecordSerializer
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_online, get_steam_bot_status, get_current_coinflip_games
 from betting.business.deposit_business import is_connection_usable
 from betting.business.cache_manager import get_current_jackpot_id, update_current_jackpot_id, read_inventory_from_cache
@@ -159,148 +159,6 @@ def get_my_jackpot_history(user, **kwargs):
     return get_my_game_history(user, game_type=1, format_func=format_jackpot_game, **kwargs)
 
 
-def get_my_trade_record(user, type, page=1, **kwargs):
-    dt_now = dt.now()
-    dt_begin = dt_now - timedelta(days=6)
-    dt_end = dt_now + timedelta(days=1)
-    rd = []
-    records = []
-    if type == "store":
-        records = StoreRecord.objects.filter(
-            create_time__gte=dt_begin.date(),
-            create_time__lte=dt_now,
-            steamer__steamid=user.steamid,
-            status=1
-        ).all().order_by('-create_time')
-        format_func = StoreRecordSerializer
-    elif type == "withdraw":
-        records = SendRecord.objects.filter(
-            create_time__gte=dt_begin.date(),
-            create_time__lte=dt_now,
-            steamer__steamid=user.steamid,
-            status=1
-        ).all().order_by('-create_time')
-        format_func = SendRecordSerializer
-    paginator = Paginator(records, settings.DEFAULT_PAGINATION_PAGE)
-    try:
-        ret_records = paginator.page(page)
-    except EmptyPage:
-        ret_records = paginator.page(paginator.num_pages)
-
-    for record in ret_records:
-        r = format_func(record).data
-        r['totalItems'] = len(r['items'])
-        r['tradeTime'] = aware_datetime_to_timestamp(record.trade_ts)
-        rd.append(r)
-
-    ret = {
-        'total_count': paginator.count,
-        'records': rd,
-        'page': page
-    }
-    return ret
-
-
-
-
-
-# def format_jackpot_game(game, animate=False, **kwargs):
-#     run_ts = None
-#     if game.run_ts:
-#         run_ts = aware_datetime_to_timestamp(game.run_ts)
-#     ret = {
-#         'uid': game.uid,
-#         'hash': game.hash,
-#         'secret': None,
-#         'percentage': None,
-#         'winner': None,
-#         'deposit': None,
-#         'deposits': [],
-#         'total_amount': game.total_amount,
-#         'total_items': game.total_items,
-#         'run_ts': run_ts,
-#         'totalTickets': game.total_tickets,
-#         'countdown': settings.JACKPOT_COUNTDOWN
-#     }
-#
-#     deposit_data = []
-#     deposits = game.deposits.all().order_by('-accept_time')
-#     for d in deposits:
-#         dep_serializer = DepositSerializer(d)
-#         dep_data = dep_serializer.data
-#         deposit_data.append(dep_data)
-#     ret['deposits'] = deposit_data
-#     if game.end:
-#         cf, jk = get_winner(game)
-#         ret['winner'] = jk
-#         ret['secret'] = game.secret
-#         ret['percentage'] = game.percentage
-#         if animate:
-#             joiners, win_index = format_jackpot_joiners(game, jk)
-#             ret['deposit'] = {
-#                 'uid': game.uid,
-#                 'joiners': joiners,
-#                 'win_index': win_index
-#             }
-#     return ret
-#
-#
-# def format_coinflip_game(game, **kwargs):
-#     dt_now = dt.now()
-#     ts = aware_datetime_to_timestamp(dt_now)
-#     ts_create = aware_datetime_to_timestamp(game.create_time)
-#     ret = {
-#         'hash': game.hash,
-#         'closed': False,
-#         'create_time': game.create_time.strftime('%Y-%m-%d %H:%M:%S'),
-#         'ts_create': ts_create,
-#         'gid': game.uid,
-#         'ts_get': ts,
-#         'winner': None,
-#         'joined': None,
-#         'deposit': [],
-#         'totalAmount': game.total_amount,
-#         'totalItems': game.total_items
-#     }
-#     deposits = game.deposits.filter(join_status__gt=10).all()
-#     if len(deposits) == 0:
-#         return None
-#
-#     status = game.status
-#     joiner = None
-#     for i, deposit in enumerate(deposits):
-#         deposit_s = DepositSerializer(deposit)
-#         deposit_data = deposit_s.data
-#         steamer_s = SteamerSerializer(deposit.steamer)
-#         deposit_data.update(steamer_s.data)
-#         if i > 0:
-#             joiner = steamer_s.data
-#
-#         if deposit.accept:
-#             deposit_data['totalItems'] = deposit_data['item_count']
-#             deposit_data['totalAmount'] = deposit_data['item_amount']
-#             ret['deposit'].append(deposit_data)
-#     if game.end:
-#         winner, jk = get_winner(game)
-#         ret['winner'] = winner
-#         ret['percentage'] = game.percentage
-#         ret['secret'] = game.secret
-#         ret['totalTickets'] = game.total_tickets
-#     ret['status'] = status
-#     joined = {
-#         'status': 0,
-#     }
-#     if joiner:
-#         joined.update({
-#             'status': 1,
-#             'expired': False,
-#             "ts": ts
-#         })
-#         joined.update(joiner)
-#     ret['joined'] = joined
-#     return ret
-
-
 def format_coinflip_game_all(game, end=False, **kwargs):
     dt_now = dt.now()
     ts = aware_datetime_to_timestamp(dt_now)
@@ -386,10 +244,6 @@ def get_jackpot_game(gid):
     return ret
 
 
-
-
-
-
 def ws_send_jk_current(data):
     jk_msg = ['jk', 'update', data]
     Group('jackpot').send({'text': json.dumps(jk_msg)})
@@ -408,74 +262,6 @@ def ws_send_online(data):
 def ws_send_bot_status(status):
     bot_msg = ['bot', {'status': status}]
     Group('chat_room').send({'text': json.dumps(bot_msg)})
-
-
-# def confirm_items(deposit_id, **kwargs):
-#     data = kwargs.get('data', {})
-#     if deposit_id:
-#         deposit = Deposit.objects.get(uid=deposit_id)
-#         deposit.join_status = 20
-#         deposit.accept = 1
-#         deposit.trade_status = data.get('status', 1)
-#         deposit.accept_time = dt.now()
-#         deposit.save()
-#         game = deposit.game
-#         if game and game.game_type == 0:
-#             cf_data = format_coinflip_game(game)
-#             if cf_data:
-#                 update_coinflip_game_in_cache(cf_data)
-#                 ws_send_cf_news(cf_data)
-#         if game and game.game_type == 1:
-#             animate = True if game.end else False
-#             jd_data = format_jackpot_game(game, animate)
-#             update_current_jackpot_id(game.uid)
-#             ws_send_jk_current(jd_data)
-#             if game.end:
-#                 new_game = create_new_jackpot_game()
-#                 new_jd_data = format_jackpot_game(new_game, animate=False)
-#                 ws_send_jk_new(new_jd_data)
-
-
-# def cancel_items(deposit_id, **kwargs):
-#     data = kwargs.get('data', {})
-#     deposit = Deposit.objects.filter(uid=deposit_id).first()
-#     if deposit:
-#         deposit.join_status = 0
-#         deposit.trade_status = data.get('status', 2)
-#         deposit.bot_status = data.get('bot_status', 0)
-#         deposit.bot_msg = data.get('bot_msg', '')
-#         deposit.save()
-#         game = deposit.game
-#         if game and game.game_type == 0:
-#             game.status = GameStatus.Joinable.value
-#             game.save()
-#             cf_data = format_coinflip_game(game)
-#             if cf_data:
-#                 update_coinflip_game_in_cache(cf_data)
-#                 ws_send_cf_news(cf_data)
-
-
-# def update_send_result_old(data):
-#     try:
-#         uid = data['uid']
-#         game = CoinFlipGame.objects.get(uid=uid)
-#         steamer_id = data['steamer']['steamID']
-#         record = game.send_records.filter(steamer__steamid=steamer_id).first()
-#         if record and record.status != 1:
-#             items = data['items']
-#             items_map = {i['uid']: i for i in items}
-#             items_in_db = record.items.all()
-#             for item in items_in_db:
-#                 if item.uid in items_map:
-#                     item.sended_assetid = items_map[item.uid].get('sended_assetid', '')
-#                     item.save()
-#             record.trade_no = data.get('trade_no', None)
-#             record.status = data.get('status', 0)
-#             record.bot_status = data.get('bot_status', 0)
-#             record.bot_msg = data.get('bot_msg', '')
-#             record.save()
-#     except Exception as e:
-#         _logger.exception(e)
 
 
 def update_online():

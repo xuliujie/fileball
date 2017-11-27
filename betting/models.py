@@ -9,7 +9,7 @@ import logging
 from uuid import uuid1, UUID
 
 from aenum import Enum
-from betting.common_data import TradeStatus
+from betting.common_data import TradeStatus, JoinStatus
 
 from django.utils import timezone as dt
 from django.utils.translation import ugettext as _l, ugettext_lazy as _
@@ -174,6 +174,11 @@ class Deposit(ModelBase):
     game = models.ForeignKey(CoinFlipGame, related_name='deposits', on_delete=models.CASCADE, null=True, verbose_name=_("Game"))
     game_type = models.SmallIntegerField(default=0, verbose_name=_("Game Type"), choices=GAME_TYPE)
     amount = models.FloatField(default=0.0, verbose_name=_("Amount"))
+    status = models.IntegerField(default=0, choices=TRADE_STATUS, verbose_name=_("Status"))
+    join_status = models.SmallIntegerField(default=JoinStatus.Initialed.value)
+    security_code = models.CharField(max_length=32, null=True, default=None, blank=True, verbose_name=_("Security Code"))
+    trade_no = models.CharField(max_length=64, null=True, default=None, blank=True, verbose_name=_("Trade No."))
+    accept_time = models.DateTimeField(default=None, null=True, blank=True)
     tickets_begin = models.BigIntegerField(default=0, verbose_name=_("Ticket Begin"))
     tickets_end = models.BigIntegerField(default=0, verbose_name=_("Ticket End"))
 
@@ -204,24 +209,6 @@ class SendRecord(ModelBase):
         verbose_name_plural = _('Send Records')
 
 
-class StoreRecord(ModelBase):
-    steamer = models.ForeignKey(SteamUser, related_name='store_records', verbose_name=_("Steamer"))
-    amount = models.FloatField(default=0, verbose_name=_("Amount"))
-    status = models.IntegerField(default=0, choices=TRADE_STATUS, verbose_name=_("Status"))
-    security_code = models.CharField(max_length=32, null=True, default=None, blank=True, verbose_name=_("Security Code"))
-    trade_no = models.CharField(max_length=64, null=True, default=None, blank=True, verbose_name=_("Trade No."))
-    bot_status = models.IntegerField(default=0, verbose_name=_("Bot Status"))
-    bot_msg = models.TextField(null=True, default=None, blank=True, verbose_name=_("Bot Message"))
-    trade_ts = models.DateTimeField(default=dt.now, verbose_name=_("Trade Time"))
-
-    def __unicode__(self):
-        return self.uid
-
-    class Meta:
-        verbose_name = _('Store Record')
-        verbose_name_plural = _('Store Record')
-
-
 class PropItem(ModelBase):
     sid = models.CharField(max_length=255)
     name = models.CharField(max_length=255, verbose_name=_("Name"))
@@ -235,12 +222,9 @@ class PropItem(ModelBase):
     appid = models.CharField(max_length=128, default=570, verbose_name=_("AppID"))
     classid = models.CharField(max_length=128, verbose_name=_("ClassID"))
     contextid = models.IntegerField(default=2, verbose_name=_("ContextID"))
-    deposit = models.ManyToManyField(Deposit, related_name='items', default=None, blank=True, verbose_name=_("Deposit"))
-    send_record = models.ManyToManyField(SendRecord, related_name='items', default=None, blank=True, verbose_name=_("Send Record"))
-    store_record = models.ManyToManyField(StoreRecord, related_name='items', default=None, blank=True, verbose_name=_("Store Record"))
+    deposit = models.ForeignKey(Deposit, related_name='items', default=None, blank=True, verbose_name=_("Deposit"))
+    send_record = models.ForeignKey(SendRecord, related_name='items', default=None, blank=True, verbose_name=_("Send Record"))
     instanceid = models.CharField(max_length=128, null=True, default=None, blank=True)
-    owner = models.ForeignKey(SteamUser, related_name='items', on_delete=models.CASCADE, blank=True, null=True, default=None, verbose_name=_("owner"))
-    is_locked = models.BooleanField(default=False, verbose_name=_("Is Locked"))
 
     def __unicode__(self):
         return self.name

@@ -4,7 +4,7 @@
 from rest_framework import serializers
 
 from betting.common_data import TradeStatus
-from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, StoreRecord, SendRecord, GiveAway
+from betting.models import Deposit, PropItem, CoinFlipGame, Message, TempGameHash, Announcement, SendRecord, GiveAway
 from social_auth.models import SteamUser
 from betting.utils import id_generator
 
@@ -72,32 +72,29 @@ class PropItemSerializer(serializers.ModelSerializer):
 
 
 class DepositSerializer(serializers.ModelSerializer):
-    items = PropItemSerializer(many=True)
     steamer = SteamerSerializer(many=False, read_only=True)
-    item_count = serializers.SerializerMethodField()
-    item_amount = serializers.SerializerMethodField()
+    items = PropItemSerializer(many=True, read_only=True)
+    gid = serializers.SerializerMethodField()
 
     class Meta:
         model = Deposit
-        fields = ('team', 'items', 'steamer', 'amount', 'item_count', 'item_amount')
+        fields = ('uid', 'team', 'steamer', 'amount', 'status', 'trade_no', 'security_code', 'game_type', 'items', 'gid')
+
+    def get_gid(self, obj):
+        gid = None
+        if obj.game:
+            gid = obj.game.uid
+        return gid
 
     def create(self, validated_data):
         items = validated_data.pop('items')
-        amount = sum([i['amount'] for i in items])
-        deposit = Deposit.objects.create(amount=amount, **validated_data)
+        security_code = id_generator(8)
+        amount = sum([i['price'] for i in items])
+        record = Deposit.objects.create(security_code=security_code, amount=amount, **validated_data)
         for item_data in items:
-            own_item = PropItem.objects.filter(assetid=item_data['assetid'], owner=validated_data['steamer']).last()
-            if own_item:
-                own_item.deposit.add(deposit)
-                own_item.is_locked = True
-                own_item.save()
-        return deposit
-
-    def get_item_count(self, obj):
-        return len(obj.items.all())
-
-    def get_item_amount(self, obj):
-        return obj.amount
+            prop_item = PropItem.objects.create(deposit=record, **item_data)
+            prop_item.save()
+        return record
 
 
 class MessageSerializer(serializers.ModelSerializer):
@@ -113,30 +110,6 @@ class AnnouncementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
         exclude = ('create_time', 'update_time')
-
-
-class StoreRecordSerializer(serializers.ModelSerializer):
-    items = PropItemSerializer(many=True)
-    steamer = SteamerSerializer(many=False, required=False)
-
-    class Meta:
-        model = StoreRecord
-        fields = ('uid', 'steamer', 'items', 'amount', 'status', 'security_code', 'trade_no')
-
-    def create(self, validated_data):
-        items = validated_data.pop('items')
-        security_code = id_generator(8)
-        amount = sum([i['amount'] for i in items])
-        record = StoreRecord.objects.create(security_code=security_code, amount=amount, **validated_data)
-        for item_data in items:
-            item_exist = PropItem.objects.filter(assetid=item_data['assetid']).first()
-            if not item_exist:
-                item_serializer = PropItemSerializer(data=item_data)
-                if item_serializer.is_valid():
-                    item_exist = item_serializer.save(is_locked=True)
-            if item_exist:
-                item_exist.store_record.add(record)
-        return record
 
 
 class SendRecordSerializer(serializers.ModelSerializer):

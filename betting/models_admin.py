@@ -67,40 +67,13 @@ class GameAdmin(ReadOnlyAdmin):
         return True
 
 
-class PropItemDepositInline(TabularInline):
-    model = PropItem.deposit.through
-    can_delete = False
-
-    def has_add_permission(self, request):
-        return False
-
-
-class PropItemStoreInline(TabularInline):
-    model = PropItem.store_record.through
-    can_delete = False
-
-    def has_add_permission(self, request):
-        return False
-
-
-class PropItemSendInline(TabularInline):
-    model = PropItem.send_record.through
-    can_delete = False
-
-    def has_add_permission(self, request):
-        return False
-
-
 class PropItemAdmin(ModelAdmin):
-    list_display = ('uid', 'name', 'assetid', 'owner', 'is_locked')
+    list_display = ('uid', 'name', 'assetid')
     readonly_fields = ('appid', 'contextid')
-    exclude = ('deposit', 'store_record', 'send_record', 'instanceid')
-    search_fields = ('name', 'deposit__uid', 'store_record__uid', 'send_record__uid', 'owner__personaname')
+    exclude = ('deposit', 'send_record', 'instanceid')
+    search_fields = ('name', 'deposit__uid', 'send_record__uid')
     ordering = ('-create_time',)
     date_hierarchy = 'create_time'
-    list_filter = ('owner',)
-    list_editable = ('owner',)
-    inlines = [PropItemDepositInline, PropItemStoreInline, PropItemSendInline]
     list_per_page = 50
 
     def has_delete_permission(self, request, obj=None):
@@ -114,7 +87,7 @@ class DepositAdmin(ReadOnlyAdmin):
     search_fields = ('uid', 'steamer__personaname', 'game__uid')
     date_hierarchy = 'create_time'
     list_filter = ('create_time', 'steamer')
-    inlines = [PropItemDepositInline, ]
+    inlines = []
     list_per_page = 50
 
     def game(self, obj):
@@ -129,35 +102,7 @@ class SendRecordAdmin(ModelAdmin):
     ordering = ('-create_time',)
     list_filter = ('create_time', 'status')
     date_hierarchy = 'create_time'
-    inlines = [PropItemSendInline,]
-    list_per_page = 50
-
-    def get_readonly_fields(self, request, obj=None):
-        # make all fields readonly
-        readonly_fields = list(set(
-            [field.name for field in self.opts.local_fields] +
-            [field.name for field in self.opts.local_many_to_many]
-        ))
-        if 'status' in readonly_fields:
-            readonly_fields.remove('status')
-        return readonly_fields
-
-    def has_add_permission(self, request):
-        # Nobody is allowed to add
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        # Nobody is allowed to delete
-        return False
-
-
-class StoreRecordAdmin(ModelAdmin):
-    list_display = ('uid', 'trade_no', 'status', 'security_code', 'steamer', 'create_time')
-    search_fields = ('trade_no', 'security_code', 'steamer__personaname')
-    ordering = ('-create_time',)
-    list_filter = ('create_time', 'status')
-    date_hierarchy = 'create_time'
-    inlines = [PropItemStoreInline, ]
+    inlines = []
     list_per_page = 50
 
     def get_readonly_fields(self, request, obj=None):
