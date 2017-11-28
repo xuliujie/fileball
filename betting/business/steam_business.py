@@ -70,7 +70,7 @@ def get_user_inventories(steam_id, s_assetid=None, lang='en'):
                     prop_item = dict(asset)
                     prop_item[u'index'] = index
                     prop_item[u'sid'] = asset['assetid']
-                    prop_item[u'amount'] = price * settings.ITEM_PRICE_SCALE
+                    prop_item[u'price'] = price * settings.ITEM_PRICE_SCALE
                     prop_item[u'name'] = item['name']
                     prop_item[u'market_name'] = item['market_name']
                     prop_item[u'market_hash_name'] = item['market_hash_name']

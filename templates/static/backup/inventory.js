@@ -138,12 +138,12 @@ Vue.component('inv-deposit', {
             that.inventoryLoaded = false;
             $('#invRefresh').prop('disabled', true);
 
-            var t_url = '/package-query/';
+            var t_url = '/inventory-query/';
             $.ajax({
                 url: t_url,
                 type: 'GET',
                 success: function (result) {
-                    if (result.code == 0) {
+                    if (result.code === 0) {
                         var inventoryItems = result.body.inventory;
                         that.inventories = inventoryItems.items;
                         that.formatInventoryShow(that.curPage);
@@ -199,7 +199,7 @@ Vue.component('inv-deposit', {
 
             var start = page * 24;
             var end = start + 24;
-            if (start >= that.inventories.length && that.inventories.length != 0) {
+            if (start >= that.inventories.length && that.inventories.length !== 0) {
                 return false;
             }
 

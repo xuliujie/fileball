@@ -97,11 +97,7 @@
                 </div>
                 <inventory :inventories="inventoriesShow" v-on:itemSelected="clickItem" @show-name="showName" @hide-name="hideName" v-show="inventoryLoaded"></inventory>
                 <div v-if="!inventoriesShow.length" style="text-align: center;">
-                    <p class="offer-title">{% trans 'There is no item in your inventory, Please deposit item from your steam inventory first.' %}</p>
-                    <a class="trade-url"
-                           href="{%  url 'store' %}">
-                        <span>{% trans 'Click here to deposit item.' %}</span>
-                    </a>
+                    <p class="offer-title">{% trans 'There is no item in your inventory.' %}</p>
                 </div>
                 <div class="pagination" v-show="inventoryLoaded && inventoriesShow.length">
                     <ul class="pager">
@@ -113,22 +109,3 @@
         </div>
     </div>
 </script>
-
-
-{#<script id="inventory-template" type="text/x-template">#}
-{#    <div class="row item-holder noselect">#}
-{#        <div v-for="item in inventories" :key="item.sid" class="col-xs-4 col-sm-2 col-item" :class="{selected: item.selected}" :data-itemid="item.sid"#}
-{#             :data-amount="item.amount" v-on:click="clickItem">#}
-{#            <div class="item">#}
-{#                <img v-if="item.classid"#}
-{#                     :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + item.appid + '/' + item.classid + '/120fx100f'"#}
-{#                     alt="" class="img-responsive" rel="nofollow">#}
-{#                <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive" rel="nofollow">#}
-{#                <div class="bottom-info">#}
-{#                    <div class="price"><span>$^{item.amount}</span></div>#}
-{#                    <div class="name">^{item.name}</div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</script>#}

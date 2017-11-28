@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
     <link rel="stylesheet" href="{% static 'css/announcement.css' %}"/>
     {% if not request.user.is_anonymous %}
-         <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>
-         <script type="text/javascript" src="{% static 'js/jk.js' %}"></script>
-{#        <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>#}
-{#        <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>#}
-{#        <script type="text/javascript" src="{% static 'backup/jackpot.js' %}"></script>#}
+{#         <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>#}
+{#         <script type="text/javascript" src="{% static 'js/jk.js' %}"></script>#}
+        <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>
+        <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>
+        <script type="text/javascript" src="{% static 'backup/jackpot.js' %}"></script>
     {% endif %}
     {#    <title>dalaocsgo-Jackpot</title>#}
 {% endblock %}

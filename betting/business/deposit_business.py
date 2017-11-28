@@ -83,7 +83,8 @@ def join_coinflip_game(data, steamer):
     if deposit_data['team'] not in (0, 1):
         return RespCode.InvalidParams, _('Invalid params')
 
-    store_items = read_inventory_from_cache(steamer.steamid, items)
+    assetids = [i['assetid'] for i in items]
+    store_items = read_inventory_from_cache(steamer.steamid, assetids)
     if len(store_items) != len(items):
         return RespCode.InvalidParams, _('Invalid params')
 
