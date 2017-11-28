@@ -6,85 +6,66 @@ var MAX_SHOW_ITEM = 6;
 var csrftoken = Cookies.get('csrftoken');
 var themeStyle = 'normal';
 
-Vue.directive('tooltip', function(el, binding){
-    $(el).tooltip({
-             title: binding.value,
-             placement: binding.arg,
-             trigger: 'hover'
-         })
-});
-
-
-function rarityTrans(rarity) {
-    if (rarity === 'Common')
-        return '普通';
-    if (rarity === 'Uncommon')
-        return '罕见';
-    if (rarity === 'Rare')
-        return '稀有';
-    if (rarity === 'Mythical')
-        return '神话';
-    if (rarity === 'Legendary')
-        return '传说';
-    if (rarity === 'Ancient')
-        return '远古';
-    if (rarity === 'Immortal')
-        return '不朽';
-    if (rarity === 'Arcana')
-        return '至宝'
-}
-
 function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  // these HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
 $.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
+  beforeSend: function (xhr, settings) {
+    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+      xhr.setRequestHeader("X-CSRFToken", csrftoken);
     }
+  }
 });
 
 
+function csrfSafeMethod(method) {
+  // these HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
+
 function showError(t, m) {
-    $.growl.error(
-        {
-            title: t,
-            message: m
-        }
-    );
+  $.growl.error(
+    {
+      title: t,
+      message: m
+    }
+  );
 }
 
 function showNotice(t, m) {
-    $.growl.notice(
-        {
-            title: t,
-            message: m
-        }
-    );
+  $.growl.notice(
+    {
+      title: t,
+      message: m
+    }
+  );
 }
 
 function showCongratulation(t, m) {
-    $.growl.notice(
-        {
-            duration: 5000,
-            fixed: false,
-            location: 'tc',
-            title: t,
-            message: m
-        }
-    );
+  $.growl.notice(
+    {
+      duration: 5000,
+      fixed: false,
+      location: 'tc',
+      title: t,
+      message: m
+    }
+  );
 }
 
 function showWarning(t, m) {
-    $.growl.warning(
-        {
-            title: t,
-            message: m
-        }
-    );
+  $.growl.warning(
+    {
+      title: t,
+      message: m
+    }
+  );
 }
 
 function compareItem(a, b) {
@@ -99,210 +80,193 @@ function compareItem(a, b) {
 var decimal_places = 2;
 
 function floatNumberStep(now, tween) {
-    var floored_number = now;
-    var target = $(tween.elem);
+  var floored_number = now;
+  var target = $(tween.elem);
 
-    if (decimal_places > 0) {
-        floored_number = floored_number.toFixed(decimal_places);
-        target.text(floored_number);
-    }
+  if (decimal_places > 0) {
+    floored_number = floored_number.toFixed(decimal_places);
+    target.text(floored_number);
+  }
 }
 
 
 function animateNumber(el, num, isFloat) {
-    var target = $(el);
-    if(target) {
-        var lastValue = target.text();
-        if(isFloat) {
-            target.prop('number', lastValue).animateNumber({number: num, numberStep: floatNumberStep});
-        } else {
-            target.prop('number', lastValue).animateNumber({number: num});
-        }
+  var target = $(el);
+  if (target) {
+    var lastValue = target.text();
+    if (isFloat) {
+      target.prop('number', lastValue).animateNumber({number: num, numberStep: floatNumberStep});
+    } else {
+      target.prop('number', lastValue).animateNumber({number: num});
     }
-}
-
-function fillTradeRecordData(cfData, isModal) {
-    var cfFilledData = cfData;
-    var items = [];
-    var totalItems = 0;
-
-    items = items.concat(cfData.items);
-    // cfData.totalAmount = parseFloat(cfData.totalAmount.toFixed(2));
-    cfFilledData['status'] = 6;
-    cfFilledData['full'] = true;
-    var itemShows = items.slice();
-    itemShows = itemShows.sort(compareItem);
-    var maxCount = items.length < MAX_SHOW_ITEM ? items.length : MAX_SHOW_ITEM;
-    cfFilledData['itemsShow'] = itemShows.slice(0, maxCount);
-    cfFilledData['itemsMore'] = items.length - cfFilledData['itemsShow'].length;
-    cfFilledData['isModal'] = isModal;
-    var time = moment.unix(cfData.tradeTime);
-    cfFilledData['time'] = time.format('Y-M-D hh:mm');
-
-    return cfFilledData;
+  }
 }
 
 function fillCoinflipData(cfData, isModal) {
-    var cfFilledData = cfData;
-    var items = [];
-    var totalItems = 0;
-    for(var i=0; i<cfData.deposit.length; i++) {
-        items = items.concat(cfData.deposit[i].items);
-        cfData.deposit[i].totalAmount = floatStrip(cfData.deposit[i].totalAmount, 2);
-        cfData.deposit[i].chance = floatStrip(cfData.deposit[i].totalAmount/cfData.totalAmount*100)
-    }
-    cfData.totalAmount = parseFloat(cfData.totalAmount.toFixed(2));
-    cfFilledData['amount_o'] = {
-        min: parseFloat((cfData.totalAmount * 0.9).toFixed(2)),
-        max: parseFloat((cfData.totalAmount * 1.1).toFixed(2))
-    };
-    cfFilledData['status'] = cfData.status;
-    cfFilledData['full'] = cfData.status >= 4;
-    var itemShows = items.slice();
-    itemShows = itemShows.sort(compareItem);
-    var maxCount = items.length < MAX_SHOW_ITEM ? items.length : MAX_SHOW_ITEM;
-    cfFilledData['itemsShow'] = itemShows.slice(0, maxCount);
-    cfFilledData['itemsMore'] = items.length - cfFilledData['itemsShow'].length;
-    cfFilledData['lastSeconds'] = 90;
-    var expireTime = moment.unix(cfData.ts_get + 30 * 60);
-    cfFilledData['expires'] = expireTime.format('a hh:mm');
-    cfFilledData['isModal'] = isModal;
-
-
-
-    return cfFilledData;
+  var cfFilledData = cfData;
+  var items = [];
+  for (var i = 0; i < cfData.deposits.length; i++) {
+    items = items.concat(cfData.deposits[i].items);
+  }
+  cfFilledData['amount_o'] = {
+    min: parseFloat((cfData.total_amount * 0.9).toFixed(2)),
+    max: parseFloat((cfData.total_amount * 1.1).toFixed(2))
+  };
+  var itemShows = items.slice();
+  itemShows = itemShows.sort(compareItem);
+  var maxCount = items.length < MAX_SHOW_ITEM ? items.length : MAX_SHOW_ITEM;
+  cfFilledData['totalItems'] = items.length;
+  cfFilledData['itemsShow'] = itemShows.slice(0, maxCount);
+  cfFilledData['itemsMore'] = items.length - cfFilledData['itemsShow'].length;
+  cfFilledData['lastSeconds'] = 90;
+  var expireTime = moment.unix(cfData.ts_get + 30 * 60);
+  cfFilledData['expires'] = expireTime.format('a hh:mm');
+  cfFilledData['isModal'] = isModal;
+  return cfFilledData;
 }
 
 function floatStrip(number, fixed) {
-    return (parseFloat(number).toFixed(fixed));
+  return (parseFloat(number).toFixed(fixed));
+}
+
+function init_cf_knob_el(el, min, max, width, height, fgColor, bgColor) {
+  el.knob({
+    'min': min,
+    'max': max,
+    'width': width,
+    'height': height,
+    'fgColor': fgColor,
+    'bgColor': bgColor,
+    'readOnly': true
+  });
 }
 
 function init_cf_knob(el, min, max, width, height, fgColor, bgColor) {
-    $(el).knob({
-        'min': min,
-        'max': max,
-        'width': width,
-        'height': height,
-        'fgColor': fgColor,
-        'bgColor': bgColor,
-        'readOnly': true
-    });
+  $(el).knob({
+    'min': min,
+    'max': max,
+    'width': width,
+    'height': height,
+    'fgColor': fgColor,
+    'bgColor': bgColor,
+    'readOnly': true
+  });
 }
 
 function reset_cf_knob(el, min, max, width, height, fgColor, bgColor) {
 
-    init_cf_knob(el, min, max, width, height, fgColor, bgColor);
-    $(el).trigger(
-        'configure',
-        {
-            'min': min,
-            'max': max,
-            'width': width,
-            'height': height,
-            'fgColor': fgColor,
-            'bgColor': bgColor,
-            'readOnly': true
-        }
-    );
+  init_cf_knob(el, min, max, width, height, fgColor, bgColor);
+  $(el).trigger(
+    'configure',
+    {
+      'min': min,
+      'max': max,
+      'width': width,
+      'height': height,
+      'fgColor': fgColor,
+      'bgColor': bgColor,
+      'readOnly': true
+    }
+  );
 
 }
 
 
 function chooseTheme(theme) {
-    Cookies.set('theme2', theme, {path: '/'});
+  Cookies.set('theme2', theme, {path: '/'});
 }
 
 function animateKnob(el, duration) {
-    var knobEl = $(el);
-    var lastVal = knobEl.val();
-    var nextVal = knobEl.attr("rel");
+  var knobEl = $(el);
+  var lastVal = knobEl.val();
+  var nextVal = knobEl.attr("rel");
 
 
-
-    knobEl.animate({
-        value: nextVal
-    }, {
-        duration: duration,
-        easing: 'swing',
-        step: function () {
-           knobEl.val(Math.ceil(this.value)).trigger('change');
-        }
-    })
+  knobEl.animate({
+    value: nextVal
+  }, {
+    duration: duration,
+    easing: 'swing',
+    step: function () {
+      knobEl.val(Math.ceil(this.value)).trigger('change');
+    }
+  })
 }
 
 function updateBotStatus(status) {
-    var botStatus = $('#steambotStatus');
-    var toClearClass = status ? 'steambotOff' : 'steambotOn';
-    var toAddClass = !status ? 'steambotOff' : 'steambotOn';
-    var botMsg = status ? 'on' : 'off';
-    if(botStatus.hasClass(toClearClass)) {
-        botStatus.removeClass(toClearClass);
-    }
-    if(!botStatus.hasClass(toAddClass)) {
-        botStatus.addClass(toAddClass);
-    }
-    if(botStatus.text() != botMsg) {
-        botStatus.text(botMsg);
-    }
+  var botStatus = $('#steambotStatus');
+  var toClearClass = status ? 'steambotOff' : 'steambotOn';
+  var toAddClass = !status ? 'steambotOff' : 'steambotOn';
+  var botMsg = status ? 'on' : 'off';
+  if (botStatus.hasClass(toClearClass)) {
+    botStatus.removeClass(toClearClass);
+  }
+  if (!botStatus.hasClass(toAddClass)) {
+    botStatus.addClass(toAddClass);
+  }
+  if (botStatus.text() !== botMsg) {
+    botStatus.text(botMsg);
+  }
+}
+
+function initPipeChart(el, data, options) {
+  var ctx  = $(el).get(0).getContext('2d');
+  var chart = new Chart(ctx).Doughnut(data, options);
+  return chart;
 }
 
 function resizeKnob() {
-    // var curTheme = Cookies.get('theme2');
-    var curTheme = 'dark'
-    var wrapper = $("#knob_wrapper");
-    var maxWidth = $(window).width();
-    var resizeFactor = maxWidth >= 640 ? 6.5 : 7.5;
-    var targetSize = Math.round(wrapper.width() / 8 * resizeFactor);
-    $('#jackpot_knob').css({"width": targetSize, "height": targetSize});
-    if(curTheme === 'dark') {
-        reset_cf_knob('#jackpot_knob_item', 0, 50, targetSize, targetSize, '#c7413b', '#181818');
-    } else {
-        reset_cf_knob('#jackpot_knob_item', 0, 50, targetSize, targetSize, '#c7413b', '#eeeeee');
-    }
-    $('.deposit-count-wrapper').css({"width": targetSize, "height": targetSize, "line-height": targetSize+'px'});
-    $('.deposit-timer-wrapper').css({"width": targetSize, "height": targetSize, "line-height": targetSize+'px'});
+  var curTheme = Cookies.get('theme2');
+  var wrapper = $("#knob_wrapper");
+  var maxWidth = $(window).width();
+  var resizeFactor = maxWidth >= 640 ? 6.5 : 7.5;
+  var targetSize = Math.round(wrapper.width() / 8 * resizeFactor);
+  $('#jackpot_chart').css({"width": targetSize, "height": targetSize});
+  if (curTheme === 'dark') {
+  } else {
+  }
+  $('.deposit-count-wrapper').css({"width": targetSize, "height": targetSize, "line-height": targetSize + 'px'});
+  $('.deposit-timer-wrapper').css({"width": targetSize, "height": targetSize, "line-height": targetSize + 'px'});
 }
 
 
 $(function () {
-    var switchTheme = $('#switch-theme');
-    var theme = $('#theme');
-    var contentBody = $('body');
-    switchTheme.click(function () {
-        switchTheme.toggleClass('fa-sun-o');
-        switchTheme.toggleClass('fa-moon-o');
-        contentBody.toggleClass('dark');
-        if(contentBody.hasClass('dark')) {
-            chooseTheme('dark');
-        } else {
-            chooseTheme('light');
-        }
-        resizeKnob();
-    });
+  var switchTheme = $('#switch-theme');
+  var theme = $('#theme');
+  var contentBody = $('body');
+  switchTheme.click(function () {
+    switchTheme.toggleClass('fa-sun-o');
+    switchTheme.toggleClass('fa-moon-o');
+    contentBody.toggleClass('dark');
+    if (contentBody.hasClass('dark')) {
+      chooseTheme('dark');
+    } else {
+      chooseTheme('light');
+    }
+    resizeKnob();
+  });
 
-    // var curTheme = Cookies.get('theme2');
-    // if(curTheme === 'dark') {
-    //     contentBody.addClass('dark');
-    //     switchTheme.toggleClass('fa-moon-o');
-    //     switchTheme.toggleClass('fa-sun-o');
-    // } else {
-    //     contentBody.removeClass('dark');
-    // }
+  var curTheme = Cookies.get('theme2');
+  if (curTheme === 'dark') {
+    contentBody.addClass('dark');
+    switchTheme.toggleClass('fa-moon-o');
+    switchTheme.toggleClass('fa-sun-o');
+  } else {
+    contentBody.removeClass('dark');
+  }
 
-    $('.lang-sel').click(function () {
-        var lang = $(this).data('lang');
-        var flag = $(this).data('flag');
-        Cookies.set('django_language', lang);
-        location.reload();
-    });
+  $('.lang-sel').click(function () {
+    var lang = $(this).data('lang');
+    var flag = $(this).data('flag');
+    Cookies.set('django_language', lang);
+    location.reload();
+  });
 
-    $(window).on('resize', function(){
-        resizeKnob();
-    });
+  $(window).on('resize', function () {
+    resizeKnob();
+  });
 
-    $("[data-toggle='tooltip']").tooltip();
-
-    console.log('%c STOP!!!','font-weight:bold;font-size:30px;color:red');
-    console.log('%c If anyone told you to paste code here it will mostly be a scam!', 'font-weight:bold;font-size:18px;color:red');
+  console.log('%c STOP!!!', 'font-weight:bold;font-size:30px;color:red');
+  console.log('%c If anyone told you to paste code here it will mostly be a scam!', 'font-weight:bold;font-size:18px;color:red');
 
 });

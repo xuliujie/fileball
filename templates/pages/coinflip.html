@@ -8,110 +8,124 @@
     <link rel="stylesheet" href="{% static 'css/coin.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/chat.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
-    <link rel="stylesheet" href="{% static 'css/announcement.css' %}"/>
-    {% if not request.user.is_anonymous %}
 {#        <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>#}
 {#        <script type="text/javascript" src="{% static 'js/cf.js' %}"></script>#}
     <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>
     <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>
     <script type="text/javascript" src="{% static 'backup/coinflip.js' %}"></script>
-    {% endif %}
-{#    <title>dalaocsgo-{% trans 'Coinflip' %}</title>#}
+    <title>DalaoCSGO-Coinflip</title>
 {% endblock %}
 
 {% block page_content %}
-    {% get_current_language as LANGUAGE_CODE %}
     <section id="page">
-        <div id="coinflip-wrapper" class="row content-wrapper backgroundImg">
+        <div id="coinflip-wrapper" class="row content-wrapper">
             <div class="col-xs-12 col-sm-8 col-md-10">
-                {% include 'common/announcement.html' %}
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="status-row">
-							<h1>- {% trans 'Coinflip summary' %} -</h1>
-							<div class="row">
-								<div class="col-xs-4">$ <span id="cfTotalAmount" class="number">0.00</span>
-									<p>{% trans 'Total amount' %}</p>
-								</div>
-								<div class="col-xs-4"><span id="cfTotalItems" class="number">0</span>
-									<p>{% trans 'Total items' %}</p>
-								</div>
-								<div class="col-xs-4"><span id="cfTotalGames" class="number">0</span>
-									<p>{% trans 'Joinable games' %}</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div  class="status-row" id="deposit_box">
-							<h1>- {% trans 'Coinflip status' %} -</h1>
-							<div class="row">
-                                <div id="cfInqueue" class="col-xs-4 col-md-3">
-                                    <i class="fa fa-user"></i>
-                                    <p>Not in</p>
-                                </div>
-                                <div class="col-xs-4 col-md-3">
-                                    <span id="cfUserTotalItems" class="number">0</span>
-                                    <p>{% trans 'Total items' %}</p>
-                                </div>
-                                <div class="col-xs-4 col-md-3">
-                                    $ <span id="cfUserTotalAmount" class="number">0.00</span>
-                                    <p>{% trans 'Total value' %}</p>
-                                </div>
-                                <div class="col-xs-12 col-md-3">
-                                    <div class="depositButton">
-                                        {% if request.user.is_anonymous %}
-                                            <a class="btn btn-primary" href="{% url 'social:begin' 'steam' %}">{% trans 'Create new' %}</a>
-                                        {% else %}
-                                            <button class="btn btn-primary coinflipCreate">{% trans 'Create new' %}</button>
-                                        {% endif %}
-                                    </div>
-                                </div>
-							</div>
-						</div>
-					</div>
-                    {% if request.user.is_anonymous %}
+                <div class="row">
                     <div class="col-xs-12">
-                        <div class="steam-auth" style="text-align: center; margin: 150px auto 200px">
-                            {% blocktrans %}
-                            <p>Please login first.</p>
-                            {% endblocktrans %}
-                            <a href="{% url 'social:begin' 'steam' %}"><img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png" alt="Login with Steam"></a>
+                        <div id="admin-messages">
+                            <div class="primary-message_1v1">
+                                {% if anno %}
+                                    {% if anno.anno_type == 1 %}
+                                        <div class="alert alert-danger" role="alert">
+                                    {% else %}
+                                        <div class="alert alert-info" role="alert">
+                                    {% endif %}
+                                        <b>{{ anno.content|safe }}</b>
+                                        <br>
+                                        </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                    {% else %}
-					<div class="col-xs-12">
-						<ul id="coinflip-links">
-							<li id="coinflipGetStarted">{% trans 'Get started' %}</li>
-							<li id="coinflipHistory" class="big"><i class="fa fa-history"></i> {% trans 'History' %}
-							</li>
-						</ul>
-						<table id="cf_games" class="coinflip-pots table">
-							<thead>
-							<tr>
-								<th>{% trans 'Players' %}</th>
-								<th>{% trans 'Items' %}</th>
-								<th>{% trans 'Total' %}</th>
-								<th>&nbsp;</th>
-								<th>&nbsp;</th>
-							</tr>
-							</thead>
-							<tbody is="transition-group" name="flip-list" enter-active-class="animated bounceIn"
-								   leave-active-class="animated bounceOut">
-							<tr is="cf-item" v-for="(item, index) in items" :key="item.gid" :item="item"
-								:index="index" class="flip-list-item"></tr>
-							</tbody>
-						</table>
-						<div class="status-message">
-							<h2 class="text-center">{% trans 'No games added right now' %}</h2>
-						</div>
-					</div>
-                    {% endif %}
-				</div>
+                </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="status-row">
+                                <h1>- {% trans 'Coinflip summary' %} -</h1>
+                                <div class="row">
+                                    <div class="col-xs-4 col-md-4">$ <span id="cfTotalAmount" class="number">0.00</span>
+                                        <p>{% trans 'Total amount' %}</p>
+                                    </div>
+                                    <div class="col-xs-4 col-md-4"><span id="cfTotalItems" class="number">0</span>
+                                        <p>{% trans 'Total items' %}</p>
+                                    </div>
+                                    <div class="col-xs-4 col-md-4"><span id="cfTotalGames" class="number">0</span>
+                                        <p>{% trans 'Joinable games' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="status-row" id="deposit_box">
+                                <h1>- {% trans 'Coinflip status' %} -</h1>
+                                <div class="row">
+                                    {% if steam_bot %}
+                                        <div id="cfInqueue" class="col-xs-4 col-md-3" v-show="steam_bot"><i
+                                                class="fa fa-user"></i>
+                                            <p>Not in</p>
+                                        </div>
+                                        <div class="col-xs-4 col-md-3" v-show="steam_bot"><span id="cfUserTotalItems"
+                                                                                                class="number">0</span>
+                                            <p>{% trans 'Total items' %}</p>
+                                        </div>
+                                        <div class="col-xs-4 col-md-3" v-show="steam_bot">$ <span id="cfUserTotalAmount"
+                                                                                                  class="number">0.00</span>
+                                            <p>{% trans 'Total value' %}</p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3" v-show="steam_bot">
+                                            <div class="depositButton">
+                                                {% if request.user.is_anonymous %}
+                                                    <a class="btn btn-primary"
+                                                       href="{% url 'social:begin' 'steam' %}">{% trans 'Create new' %}</a>
+                                                {% else %}
+                                                    <button class="btn btn-primary coinflipCreate">{% trans 'Create new' %}</button>
+                                                {% endif %}
+                                            </div>
+                                            <div class="depositSoon hidden">
+                                                {% trans 'Steambot is Down' %}
+                                            </div>
+                                        </div>
+                                        <div v-show="!steam_bot">
+                                            <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
+                                        </div>
+                                    {% else %}
+                                        <div>
+                                            <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <ul id="coinflip-links">
+                                <li id="coinflipGetStarted">{% trans 'Get started' %}</li>
+                                <li id="coinflipHistory" class="big"><i class="fa fa-history"></i> {% trans 'History' %}
+                                </li>
+                            </ul>
+                            <table id="cf_games" class="coinflip-pots table">
+                                <thead>
+                                <tr>
+                                    <th>{% trans 'Players' %}</th>
+                                    <th>{% trans 'Items' %}</th>
+                                    <th>{% trans 'Total' %}</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                                </thead>
+                                <tbody is="transition-group" name="flip-list" enter-active-class="animated bounceIn"
+                                       leave-active-class="animated bounceOut">
+                                <tr is="cf-item" v-for="(item, index) in games" :key="item.gid" :item="item"
+                                    :index="index" class="flip-list-item"></tr>
+                                </tbody>
+                            </table>
+                            <div class="status-message">
+                                <h2 class="text-center">{% trans 'No games added right now' %}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include 'common/chat/chat_room.html' %}
             </div>
-        {% if not request.user.is_anonymous %}
-            {% include 'common/chat/chat_room.html' %}
-        {% endif %}
         </div>
         <div id="noSocket">{% trans 'Connecting' %}...</div>
     </section>

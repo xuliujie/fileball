@@ -21,16 +21,11 @@ class CoinFlipGameSerializer(serializers.ModelSerializer):
         model = CoinFlipGame
 
 
-class SteamerSerializer(serializers.ModelSerializer):
-    # steamid = serializers.SerializerMethodField()
-    name = serializers.SerializerMethodField()
-    icon = serializers.SerializerMethodField()
-    icon_medium = serializers.SerializerMethodField()
-    icon_full = serializers.SerializerMethodField()
+class CustomFieldsSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)
-        super(SteamerSerializer, self).__init__(*args, **kwargs)
+        super(CustomFieldsSerializer, self).__init__(*args, **kwargs)
 
         if fields is not None:
             allowed = set(fields)
@@ -38,40 +33,21 @@ class SteamerSerializer(serializers.ModelSerializer):
             for field_name in existing - allowed:
                 self.fields.pop(field_name)
 
+
+class SteamerSerializer(CustomFieldsSerializer):
+
     class Meta:
         model = SteamUser
-        fields = ('steamid', 'name', 'icon', 'icon_medium', 'icon_full', 'tradeurl')
-
-    def get_name(self, obj):
-        return obj.personaname
-
-    def get_icon(self, obj):
-        return obj.avatar
-
-    def get_icon_medium(self, obj):
-        return obj.avatarmedium
-
-    def get_icon_full(self, obj):
-        return obj.avatarfull
+        fields = ('steamid', 'tradeurl', 'personaname', 'avatar', 'avatarmedium', 'avatarfull')
 
 
-class PropItemSerializer(serializers.ModelSerializer):
+class PropItemSerializer(CustomFieldsSerializer):
     class Meta:
         model = PropItem
         fields = ('uid', 'sid', 'name', 'market_name', 'amount', 'classid', 'appid', 'contextid', 'assetid', 'rarity', 'rarity_color', 'exterior')
 
-    def __init__(self, *args, **kwargs):
-        fields = kwargs.pop('fields', None)
-        super(PropItemSerializer, self).__init__(*args, **kwargs)
 
-        if fields is not None:
-            allowed = set(fields)
-            existing = set(self.fields.keys())
-            for field_name in existing - allowed:
-                self.fields.pop(field_name)
-
-
-class DepositSerializer(serializers.ModelSerializer):
+class DepositSerializer(CustomFieldsSerializer):
     steamer = SteamerSerializer(many=False, read_only=True)
     items = PropItemSerializer(many=True, read_only=True)
     gid = serializers.SerializerMethodField()
@@ -89,7 +65,7 @@ class DepositSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         items = validated_data.pop('items')
         security_code = id_generator(8)
-        amount = sum([i['price'] for i in items])
+        amount = sum([i['amount'] for i in items])
         record = Deposit.objects.create(security_code=security_code, amount=amount, **validated_data)
         for item_data in items:
             prop_item = PropItem.objects.create(deposit=record, **item_data)

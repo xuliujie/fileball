@@ -67,7 +67,7 @@ def request_store(record, steamer):
     ts = aware_datetime_to_timestamp(dt_now)
     user = SteamerSerializer(steamer, fields=('steamid','tradeurl',)).data
     items = record.items.all()
-    items_data = [PropItemSerializer(i, fields=('name', 'classid', 'appid', 'contextid', 'assetid')).data for i in items]
+    items_data = [PropItemSerializer(i, fields=('uid', 'name', 'classid', 'appid', 'contextid', 'assetid')).data for i in items]
     trade_request = {
         'status': TradeStatus.Initialed.value,
         'trade_no': None,
@@ -184,7 +184,7 @@ def request_send(record, steamer, items):
     dt_now = dt.now()
     ts = aware_datetime_to_timestamp(dt_now)
     user = SteamerSerializer(steamer, fields=('steamid', 'tradeurl')).data
-    items_data = [PropItemSerializer(i, fields=('name', 'classid', 'appid', 'contextid', 'assetid')).data for i in items]
+    items_data = [PropItemSerializer(i, fields=('uid', 'name', 'classid', 'appid', 'contextid', 'assetid')).data for i in items]
     trade_request = {
         'status': TradeStatus.Initialed.value,
         'trade_no': None,

@@ -1,6 +1,5 @@
 {% load staticfiles %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
 
 <script id="steamer_template" type="text/x-template">
     <div class="steamer-text">
@@ -8,16 +7,16 @@
             <a :href="'http://steamcommunity.com/profiles/' + item.steamid"
                target="_blank"
                title="Steam profile">
-                <img :src="item.icon" alt="" rel="nofollow">
+                <img :src="item.avatar" alt="" rel="nofollow">
             </a>
             <a class="name"
                :href="'http://steamcommunity.com/profiles/' + item.steamid"
                target="_blank"
                title="Steam profile">
-                ^{item.name}
+                ^{item.avatar}
             </a>
         {% else %}
-            <img :src="item.icon" alt="" rel="nofollow">^{item.name}
+            <img :src="item.avatar" alt="" rel="nofollow"><span> ^{item.personaname} </span>
         {% endif %}
         <slot></slot>
     </div>
@@ -27,7 +26,7 @@
     <div :id="deposit.uid" class="frame">
         <ul class="slidee">
             <li v-for="(it, index) in deposit.joiners">
-                <img :src="it.steamer.icon_full" alt="" rel="nofollow" class="img-responsive"/>
+                <img :src="it.steamer.avatarfull" alt="" rel="nofollow" class="img-responsive"/>
             </li>
         </ul>
         <i class="winner-line"></i>
@@ -60,13 +59,12 @@
                     <table class="table-bet">
                         <tbody>
                         <tr>
-
                             {% if ld %}
                                 <td class="icon">
                                     <a :href="'http://steamcommunity.com/profiles/' + de.steamer.steamid"
                                        target="_blank"
                                        title="Steam profile">
-                                        <img :src="de.steamer.icon" alt="" rel="nofollow">
+                                        <img :src="de.steamer.avatar" alt="" rel="nofollow" :style="'border-bottom:3px solid' + de.color +';'">
                                     </a>
                                 </td>
                                 <td>
@@ -74,12 +72,12 @@
                                        :href="'http://steamcommunity.com/profiles/' + de.steamer.steamid"
                                        target="_blank"
                                        title="Steam profile">
-                                        ^{de.steamer.name}
-                                    </a> {% blocktrans %}placed ^{de.item_count} items valued at $^{de.item_amount}{% endblocktrans %}
+                                        ^{de.steamer.personaname}
+                                    </a> {% blocktrans %}placed ^{de.items.length} items valued at $^{de.amount}{% endblocktrans %}
                                 </td>
                             {% else %}
-                                <td class="icon"><img :src="item.icon" alt="" rel="nofollow"></td>
-                                <td>^{de.steamer.name}</td> {% blocktrans %}placed ^{de.item_count} items valued at $^{de.item_amount}{% endblocktrans %}
+                                <td class="icon"><img :src="de.steamer.avatar" alt="" rel="nofollow" :style="'border-bottom:3px solid' + de.color +';'"></td>
+                                <td>^{de.steamer.personaname} {% blocktrans %}placed ^{de.items.length} items valued at $^{de.amount}{% endblocktrans %}</td>
                             {% endif %}
                             <td class="more-td">
                                 <i class="glyphicon glyphicon-arrow-down joiner-more" onclick="toggleItems(this)"></i>
@@ -88,25 +86,14 @@
                         </tbody>
                     </table>
                     <div class="joiner-items row items" style="display: none">
-                        <div v-for="it in de.items" class="item" v-tooltip:right="it.name">
+                        <div v-for="it in de.items" class="item">
                             <img v-if="it.classid"
                                  :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/120fx100f'"
-                                 alt="" class="img-responsive" rel="nofollow">
+                                 alt="it.name" class="img-responsive" rel="nofollow">
                             <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive"
                                  rel="nofollow">
-                            <div class="top-info">
-                                <div class="price"><span>$^{it.amount}</span></div>
-                            </div>
                             <div class="info">
-                                <div class="col-xs-12 rarity">
-                                    <span :class="it.rarity">
-                                        {% if LANGUAGE_CODE == 'zh-hans' %}
-                                            ^{it.rarity_zh}
-                                        {% else %}
-                                            ^{it.rarity}
-                                        {% endif %}
-                                    </span>
-                                </div>
+                                <div class="price"><span>$^{it.amount}</span></div>
                             </div>
                         </div>
                     </div>
@@ -129,6 +116,9 @@
     <div id="jackpot_winner_tips">
         {% blocktrans %}
             <p>You won $^{item.winner.amount}!</p>
+            <br>
+            <p>In 2-3 minutes we will send you a trade offer contains the items you won.
+                (this time can be more, if we have steam issues)</p>
             <br>
             <p>At any problems, send us an email contains the problems and the round hash:
                 <span class="win-hash"><i class="fa fa-envelope"></i>^{item.hash}</span>

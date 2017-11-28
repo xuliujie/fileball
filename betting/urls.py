@@ -9,19 +9,15 @@ from betting import views
 
 from django.views.generic.base import RedirectView
 
-v1_router = routers.DefaultRouter()
-v1_router.register('coinflip', views.JoinCoinflipViewSet, base_name='coinflip')
-v1_router.register('jackpot', views.JoinJackpotView, base_name='jackpot')
-
-
 urlpatterns = [
     url(r'^$', views.coinflip_view, name='home'),
     url(r'^index/', views.coinflip_view, name='index'),
     url(r'^jackpot/', views.jackpot_view, name='jackpot'),
     url(r'^coinflip/', views.coinflip_view, name='coinflip'),
-    url(r'^betting/', include(v1_router.urls)),
-    url(r'^inventory-query/', views.inventory_query_view, name='inventory_query'),
-    url(r'^deposit-status/', views.deposit_status_query_view, name='deposit_status'),
+    url(r'^api/coinflip/join/', views.join_coinflip_view),
+    url(r'^api/jackpot/join/', views.join_jackpot_view),
+    url(r'^api/user/inventory/', views.inventory_query_view, name='inventory_query'),
+    url(r'^api/store/status/', views.deposit_status_query_view, name='deposit_status'),
     url(r'^history/', views.cf_history_view, name='history'),
     url(r'^new-hash/', views.create_random_hash_view, name='new_hash'),
     url(r'^profile/package', views.package_view, name='package'),

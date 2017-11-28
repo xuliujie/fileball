@@ -192,6 +192,7 @@ class Deposit(ModelBase):
 
 
 class SendRecord(ModelBase):
+    game = models.ForeignKey(CoinFlipGame, null=True, default=None, blank=True, verbose_name=_('Game'))
     steamer = models.ForeignKey(SteamUser, related_name='send_records', verbose_name=_("Steamer"))
     status = models.SmallIntegerField(default=0, verbose_name=_("Status"), choices=TRADE_STATUS)
     amount = models.FloatField(default=0, verbose_name=u"Amount")
@@ -223,7 +224,7 @@ class PropItem(ModelBase):
     classid = models.CharField(max_length=128, verbose_name=_("ClassID"))
     contextid = models.IntegerField(default=2, verbose_name=_("ContextID"))
     deposit = models.ForeignKey(Deposit, related_name='items', default=None, blank=True, verbose_name=_("Deposit"))
-    send_record = models.ForeignKey(SendRecord, related_name='items', default=None, blank=True, verbose_name=_("Send Record"))
+    send_record = models.ForeignKey(SendRecord, related_name='items', null=True, default=None, blank=True, verbose_name=_("Send Record"))
     instanceid = models.CharField(max_length=128, null=True, default=None, blank=True)
 
     def __unicode__(self):

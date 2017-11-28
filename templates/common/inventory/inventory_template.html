@@ -27,24 +27,24 @@
                                 <div class="col-xs-6">
                                     <template v-if="item.user.join_isteam">
                                         <template v-if="!item.user.join_team">
-                                            <img src="{% static 'img/radiant.png' %}"
+                                            <img src="{% static 'img/coin_ct.png' %}"
                                                  class="img-responsive selected" data-team="0" v-on:click="selectTeam">
                                         </template>
                                     </template>
                                     <template v-else>
-                                        <img src="{% static 'img/radiant.png' %}" class="img-responsive selected"
+                                        <img src="{% static 'img/coin_ct.png' %}" class="img-responsive selected"
                                              data-team="0" v-on:click="selectTeam">
                                     </template>
                                 </div>
                                 <div class="col-xs-6">
                                     <template v-if="item.user.join_isteam">
                                         <template v-if="item.user.join_team">
-                                            <img src="{% static 'img/dire.png' %}"
+                                            <img src="{% static 'img/coin_t.png' %}"
                                                  class="img-responsive selected" data-team="1" v-on:click="selectTeam">
                                         </template>
                                     </template>
                                     <template v-else>
-                                        <img src="{% static 'img/dire.png' %}" class="img-responsive"
+                                        <img src="{% static 'img/coin_t.png' %}" class="img-responsive"
                                              data-team="1" v-on:click="selectTeam">
                                     </template>
                                 </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-sm-4 col-button" v-show="!depositLoading">
                             <button id="coinflipDeposit" class="btn btn-primary" v-on:click="deposit">
-                                <i class="fa fa-codepen fa-lg"></i>{% trans 'Bet' %}
+                                <i class="fa fa-codepen fa-lg"></i>{% trans 'Deposit' %}
                             </button>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
             {% if request.user.is_anonymous or not request.user.tradeurl %}
                 <div class="trade-url-config">
                     <p class="tips">
-                        <a href="{% url 'tradeUrl' %}">
+                        <a href="{% url 'profile' %}">
                             {% trans 'Please go to this page to config your trade url first' %}
                         </a>
                     </p>
@@ -95,10 +95,30 @@
                 <div class="modal-loading" v-show="inventoryLoading">
                     <img src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
                 </div>
-                <inventory :inventories="inventoriesShow" v-on:itemSelected="clickItem" @show-name="showName" @hide-name="hideName" v-show="inventoryLoaded"></inventory>
-                <div v-if="!inventoriesShow.length" style="text-align: center;">
-                    <p class="offer-title">{% trans 'There is no item in your inventory.' %}</p>
+                <div class="deposit-loading" v-show="depositLoading">
+                    <p class="cfCreateOffer message" data-offer="">
+                        <span class="offer-title">{% trans 'We are sending your offer' %}</span>
+                        <br>
+                        <span class="cfCreateOfferLink">
+                            <img v-show="!tradeNo" src="{% static 'img/loading.gif' %}" alt="Loading" class="icon-loading">
+                            <a v-show="tradeNo" class="trade-url" :href="'https://steamcommunity.com/tradeoffer/' + tradeNo"
+                               target="_blank">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                <span>{% trans 'Click here to accept the offer' %} #^{tradeNo}</span>
+                            </a>
+                            <span v-show="securityCode" class="security-code">{% trans 'Security Code' %}: <span id="security_code">^{securityCode}</span></span>
+                        </span>
+                        <span class="small">
+                        {% blocktrans %}
+                            You will receive your offer's link here.
+                            <br>
+                            Always use the links we provide to you or check the security code of your trade offer to
+                            defense against fake bots or scammers.
+                        {% endblocktrans %}
+                    </span>
+                    </p>
                 </div>
+                <inventory :inventories="inventoriesShow" v-on:selected="selectItem" v-show="inventoryLoaded"></inventory>
                 <div class="pagination" v-show="inventoryLoaded && inventoriesShow.length">
                     <ul class="pager">
                         <li class="previous" :class="{disabled: noPrePage}"><a v-on:click="prePage">&larr;</a></li>
@@ -106,6 +126,25 @@
                     </ul>
                 </div>
             {% endif %}
+        </div>
+    </div>
+</script>
+
+
+<script id="inventory-template" type="text/x-template">
+    <div class="row item-holder noselect">
+        <div v-for="item in inventories" :key="item.assetid" class="col-xs-4 col-sm-2 col-item" :class="{selected: item.selected}"
+             :data-amount="item.amount" v-on:click="selectItem(item)">
+            <div class="item">
+                <img v-if="item.classid"
+                     :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + item.appid + '/' + item.classid + '/120fx100f'"
+                     alt="" class="img-responsive" rel="nofollow">
+                <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive" rel="nofollow">
+                <div class="info">
+                    <div class="price"><span>$^{item.amount}</span></div>
+                    <div class="name">^{item.name}</div>
+                </div>
+            </div>
         </div>
     </div>
 </script>

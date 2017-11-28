@@ -39,7 +39,7 @@ def update_deposit_tickets(sender, instance, **kwargs):
 
         last_total_tickets = game.total_tickets
         items = instance.items.all()
-        deposit_amount = sum(i.price for i in items)
+        deposit_amount = sum(i.amount for i in items)
         game.total_amount += deposit_amount
         game.total_items += len(items)
         deposit_tickets = math.floor(deposit_amount * 100)

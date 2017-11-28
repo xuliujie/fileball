@@ -233,11 +233,9 @@ class ShopView(TemplateView):
 shop_view = ShopView.as_view()
 
 
-class JoinJackpotView(mixins.CreateModelMixin, viewsets.GenericViewSet):
-    queryset = Deposit.objects.all()
-    serializer_class = DepositSerializer
+class JoinJackpotView(views.APIView):
 
-    def create(self, request, *args, **kwargs):
+    def create(self, request):
         # _logger.debug('create deposit')
         try:
             m = get_maintenance()
@@ -256,12 +254,15 @@ class JoinJackpotView(mixins.CreateModelMixin, viewsets.GenericViewSet):
             _logger.exception(e)
             return reformat_ret(500, {}, 'jackpot exception')
 
+    def post(self, request, format=None):
+        return self.create(request)
 
-class JoinCoinflipViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
-    queryset = Deposit.objects.all()
-    serializer_class = DepositSerializer
+join_jackpot_view = JoinJackpotView.as_view()
 
-    def create(self, request, *args, **kwargs):
+
+class JoinCoinflipView(views.APIView):
+
+    def create(self, request):
         try:
             m = get_maintenance()
             if m:
@@ -271,7 +272,7 @@ class JoinCoinflipViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
             if steamer:
                 code, result = join_coinflip_game(request.data, steamer)
                 if code == 0:
-                    return reformat_ret(0, {'uid': result.uid}, 'create coinflip successfully')
+                    return reformat_ret(0, result, 'create coinflip successfully')
                 elif code == 201:
                     return reformat_ret(201, {}, _l("Someone has joined the game."))
                 else:
@@ -283,6 +284,11 @@ class JoinCoinflipViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         except Exception as e:
             _logger.exception(e)
             return reformat_ret(500, {}, 'coinflip exception')
+
+    def post(self, request, format=None):
+        return self.create(request)
+
+join_coinflip_view = JoinCoinflipView.as_view()
 
 
 class InventoryQueryView(views.APIView):
@@ -351,10 +357,11 @@ class DepositStatusQueryView(views.APIView):
             uid = request.query_params.get('uid', None)
             if uid:
                 deposit = Deposit.objects.get(uid=uid)
-                gid = deposit.game.uid if deposit.game else None
                 resp_data = {
-                    'gid': gid,
                     'uid': deposit.uid,
+                    'tradeNo': deposit.trade_no,
+                    'securityCode': deposit.security_code,
+                    'status': deposit.status
                 }
                 return reformat_ret(0, resp_data, 'success')
         except Exception as e:
