@@ -324,11 +324,12 @@ $(function () {
           hoverBackgroundColor: []
         }];
         var labels = [];
-        var totalCnt = 0;
+        var totalCnt = that.currentGame.total_items;
+        var totalAmount = that.currentGame.total_amount;
         for (var i=0; i<that.currentGame.deposits.length; i++) {
           var de = that.currentGame.deposits[i];
           totalCnt += de.items.length;
-          datasets[0].data.push(de.items.length);
+          datasets[0].data.push(de.amount/totalAmount*totalCnt);
           datasets[0].backgroundColor.push(de.color);
           labels.push(de.steamer.personaname);
         }

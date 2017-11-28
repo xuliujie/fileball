@@ -16,6 +16,18 @@ from betting.serializers import SteamerSerializer, DepositSerializer
 from betting.utils import id_generator, aware_datetime_to_timestamp, get_string_config_from_site_config, get_maintenance
 
 
+_team_colors = ['#dc8a2e', '#00aacd', '#8a3327', '#dc0322', '#4c3470', '#b0813c', '#04517d', '#f46e25', '#305b2d', '#573517',
+                '#365b2f', '#6395cb', '#583517', '#929593', '#3a1c64', '#440206', '#0d431f', '#21bcce', '#5494d4', '#172878',
+                '#d7a11a', '#f8591f', '#a00f14', '#99a69c', '#fcb6f4', '#77384d', '#4a6866', '#efc593', '#cd2350', '#232323',
+                '#715588', '#93a9b6', '#684532', '#3e7146', '#1c2d3d', '#bf3356', '#1a3260', '#bd782d', '#e93707', '#661e1f',
+                '#3a9077', '#543f82', '#631a23', '#af1223', '#bb2a6d', '#2d4b4d', '#2594dc', '#e986bc', '#8b8555', '#4c5596']
+
+
+def get_team_color(i):
+    idx = i % len(_team_colors)
+    return _team_colors[idx]
+
+
 def get_coinflip_winner(game):
     deposits = game.deposits.filter(status=TradeStatus.Accepted.value).all()
     winner = None
@@ -155,7 +167,6 @@ def format_jackpot_game(game, animate=False, **kwargs):
     run_ts = None
     if game.run_ts:
         run_ts = aware_datetime_to_timestamp(game.run_ts)
-    update_ts = aware_datetime_to_timestamp(game.update_time)
     ret = {
         'uid': game.uid,
         'hash': game.hash,
@@ -167,16 +178,16 @@ def format_jackpot_game(game, animate=False, **kwargs):
         'total_amount': game.total_amount,
         'total_items': game.total_items,
         'run_ts': run_ts,
-        'update_ts': update_ts,
         'totalTickets': game.total_tickets,
         'countdown': settings.JACKPOT_COUNTDOWN
     }
 
     deposit_data = []
-    deposits = game.deposits.all().order_by('-create_time')
-    for d in deposits:
-        dep_serializer = DepositSerializer(d)
+    deposits = game.deposits.all().order_by('accept_time')
+    for i, d in enumerate(deposits):
+        dep_serializer = DepositSerializer(d, fields=['uid', 'team', 'steamer', 'amount', 'items', 'gid'])
         dep_data = dep_serializer.data
+        dep_data['color'] = get_team_color(i)
         deposit_data.append(dep_data)
     ret['deposits'] = deposit_data
     if game.end:
