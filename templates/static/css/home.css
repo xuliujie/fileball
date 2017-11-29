@@ -3,7 +3,7 @@
 
 .home-page .top-body {
     margin: 0 auto;
-    padding: 200px 0;
+    padding: 10rem 0;
     text-align: center;
 }
 
@@ -27,4 +27,34 @@
 
 .home-page .bottom-body {
     height: 400px;
+    color: #f5f5f5;
+}
+
+.home-page .card-item {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.home-page .card-item .card-header {
+    width: 100%;
+    font-size: 3rem;
+    text-align: center;
+    background: #3a3a3a;
+    border-top: 4px solid;
+}
+
+.card-item .card-coinflip .card-header {
+    border-color: #c75a55;
+}
+
+.card-item .card-jackpot .card-header {
+    border-color: #376ec5;
+}
+
+.home-page .card-item .card-body {
+    width: 100%;
+}
+
+.home-page .card-item .card-body img {
+    width: 100%;
 }

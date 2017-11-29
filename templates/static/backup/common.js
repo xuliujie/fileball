@@ -225,6 +225,7 @@ function resizeKnob() {
   if (curTheme === 'dark') {
   } else {
   }
+  $('#jackpot_knob').css({"width": targetSize, "height": targetSize});
   $('.deposit-count-wrapper').css({"width": targetSize, "height": targetSize, "line-height": targetSize + 'px'});
   $('.deposit-timer-wrapper').css({"width": targetSize, "height": targetSize, "line-height": targetSize + 'px'});
 }
