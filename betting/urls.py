@@ -10,8 +10,8 @@ from betting import views
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    url(r'^$', views.coinflip_view, name='home'),
-    url(r'^index/', views.coinflip_view, name='index'),
+    url(r'^$', views.home_page_view, name='home'),
+    url(r'^index/', views.home_page_view, name='index'),
     url(r'^jackpot/', views.jackpot_view, name='jackpot'),
     url(r'^coinflip/', views.coinflip_view, name='coinflip'),
     url(r'^api/coinflip/join/', views.join_coinflip_view),

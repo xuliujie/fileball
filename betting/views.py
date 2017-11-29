@@ -86,6 +86,13 @@ def format_ranking_list(type='win', days=0):
     return ranking_list
 
 
+class HomePageView(TemplateView):
+    template_name = 'pages/home.html'
+
+
+home_page_view = HomePageView.as_view()
+
+
 class SupportView(TemplateView):
     template_name = 'common/site/support.html'
 

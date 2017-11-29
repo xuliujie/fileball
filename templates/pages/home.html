@@ -1,0 +1,39 @@
+{% extends 'page_base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>DalaoCSGO-Home</title>
+{% endblock %}
+
+{% block page_content %}
+    <section id="page" class="home-page">
+        <div class="container">
+            <div class="top-body">
+                <div class="logo-large">
+                    <img src="{% static 'img/logo_light.png' %}">
+                </div>
+                <div class="slogan">
+                    <span class="lang-cn">口碑最好的CSGO周边娱乐网站</span>
+                    <br>
+                    <span class="lang-en">The best word-of-mouth CSGO peripheral entertainment site</span>
+                </div>
+            </div>
+            <div class="bottom-body">
+                <div class="cards">
+                    <div class="card-item card-coinflip">
+                        <div class="card-header">
+                            <span class="title">翻硬币</span>
+                            <br>
+                            <span class="title-en">Coinflip</span>
+                        </div>
+                        <div class="card-body">
+                            <img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
