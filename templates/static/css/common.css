@@ -1,10 +1,12 @@
 body {
     background: #101010;
+
 }
 
 section#page {
     padding: 0;
     position: relative;
+    background-image: url('/static/img/home_bg.png');
 }
 
 @media (min-width: 768px) {
@@ -41,10 +43,7 @@ h2, h3 {
     background-image: url('/static/img/csgo_01.jpg');
 }
 
-
-
 .content-wrapper {
-    background-color: #eeeeee;
     padding-top: 20px;
     padding-bottom: 20px;
     min-height: 1000px;

@@ -160,3 +160,8 @@ nav #logo {
 .lang .flag.flag-en-us {
     background-position: -64px -64px;
 }
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: white;
+    background-color: transparent;
+}

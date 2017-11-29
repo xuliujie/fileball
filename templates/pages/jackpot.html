@@ -17,110 +17,103 @@
 
 {% block page_content %}
     <section id="page">
-        <div id="jackpot_wrapper" class="row content-wrapper">
-            <div id="deposit_wrapper" class="col-xs-12 col-sm-8 col-md-4">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div id="admin-messages">
-                            <div class="primary-message_jackpot">
-                                {% if anno %}
-                                    {% if anno.anno_type == 1 %}
-                                        <div class="alert alert-danger" role="alert">
-                                    {% else %}
-                                        <div class="alert alert-info" role="alert">
-                                    {% endif %}
-                                <b>{{ anno.content }}</b>
-                                <br>
+        <div id="jackpot_wrapper" class="content-wrapper">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-9">
+                    <div id="deposit_wrapper" class="col-xs-12 col-sm-8 col-md-7">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div id="admin-messages">
+                                    <div class="primary-message_jackpot">
+                                    </div>
                                 </div>
-                                {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 p-body">
-                            <div id="jackpot_summary" class="row">
-                                {% if steam_bot %}
-                                    <div id="knob_wrapper" class="col-xs-12" v-show="steam_bot">
-                                        <div id="jackpot_knob">
-                                            <div class="deposit-count-wrapper">
-                                                <span id="deposit_item_count">0</span>/50
-                                            </div>
-                                            <div class="deposit-timer-wrapper">
+                                <div class="col-xs-12 p-body">
+                                    <div id="jackpot_summary" class="row">
+                                        {% if steam_bot %}
+                                            <div id="knob_wrapper" class="col-xs-12" v-show="steam_bot">
+                                                <div id="jackpot_knob">
+                                                    <div class="deposit-count-wrapper">
+                                                        <span id="deposit_item_count">0</span>/50
+                                                    </div>
+                                                    <div class="deposit-timer-wrapper">
                                                 <span class="timer-content">
                                                     <i class="fa fa-clock-o"></i>
                                                     <span id="least_minutes">0</span>:<span id="least_seconds">00</span>
                                                 </span>
+                                                    </div>
+                                                    <div class="deposit-chart">
+                                                        <canvas id="jackpot_chart" width="466" height="466"></canvas>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="deposit-chart">
-                                                <canvas id="jackpot_chart" width="466" height="466"></canvas>
+                                            <div class="col-xs-12" v-show="steam_bot">
+                                                <div class="jackpot-more"><span class="jackpot-amount">Jackpot: $<span
+                                                        id="jackpotTotalAmount">0.0</span></span></div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12" v-show="steam_bot">
-                                        <div class="jackpot-more"><span class="jackpot-amount">Jackpot: $<span
-                                                id="jackpotTotalAmount">0.0</span></span></div>
-                                    </div>
-                                    <div class="col-xs-12" v-show="steam_bot">
-                                        <div class="jackpot-more">
-                                            <button id="jackpot_deposit_button" class="btn btn-primary">
-                                                <i class="fa fa-codepen fa-lg"></i>{% trans 'Deposit' %}
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12" v-show="steam_bot">
-                                        <div class="jackpot-more">
-                                            <p>{% trans 'Max 12 items/trade - $1 minimum value' %}</p>
-                                        </div>
-                                    </div>
-                                    <div id="my_jackpot" class="col-xs-12" v-show="steam_bot">
-                                        <div class="row">
-                                            <div class="col-xs-4 col-md-4 status-row">
-                                                <i class="fa fa-user"></i>
-                                                <p>^{depositStatus}</p>
+                                            <div class="col-xs-12" v-show="steam_bot">
+                                                <div class="jackpot-more">
+                                                    <button id="jackpot_deposit_button" class="btn btn-primary">
+                                                        <i class="fa fa-codepen fa-lg"></i>{% trans 'Deposit' %}
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-4 col-md-4 status-row">
-                                                <span class="number" id="my_jackpot_amount">0</span>
-                                                <p>{% trans 'Total placed' %}</p>
+                                            <div class="col-xs-12" v-show="steam_bot">
+                                                <div class="jackpot-more">
+                                                    <p>{% trans 'Max 12 items/trade - $1 minimum value' %}</p>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-4 col-md-4 status-row">
+                                            <div id="my_jackpot" class="col-xs-12" v-show="steam_bot">
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-6 status-row">
+                                                        <span class="number" id="my_jackpot_amount">0</span>
+                                                        <p>{% trans 'Total placed' %}</p>
+                                                    </div>
+                                                    <div class="col-xs-6 col-md-6 status-row">
                                                     <span class="number"><span
                                                             id="my_jackpot_percent">0.0</span>%</span>
-                                                <p>{% trans 'Chances of winning' %}</p>
+                                                        <p>{% trans 'Chances of winning' %}</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div id="item_wrapper" class="col-xs-12 item-wrapper">
+                                                <div class="row">
+                                                    <template v-for="item in items">
+                                                        <div class="item col-xs-2 col-md-2">
+                                                            <img v-if="item.classid"
+                                                                 :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + item.appid + '/' + item.classid"
+                                                                 alt="item.name" class="img-responsive" rel="nofollow">
+                                                            <img v-else src="{% static 'img/item-default.png' %}" alt=""
+                                                                 class="img-responsive"
+                                                                 rel="nofollow">
+                                                            <div class="info">
+                                                                <div class="price"><span>$^{item.amount}</span></div>
+                                                                <div class="name">^{item.name}</div>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                            <div id="bot_tips" class="col-xs-12" v-show="!steam_bot">
+                                                <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
+                                            </div>
+                                        {% else %}
+                                            <div id="bot_tips" class="col-xs-12">
+                                                <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
+                                            </div>
+                                        {% endif %}
                                     </div>
-                                    <div id="bot_tips" class="col-xs-12" v-show="!steam_bot">
-                                        <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
-                                    </div>
-                                {% else %}
-                                    <div id="bot_tips" class="col-xs-12">
-                                        <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
-                                    </div>
-                                {% endif %}
+                                </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div id="winner_wrapper" class="col-xs-10 col-sm-8 col-md-5">
+                        <component is="jackpot_detail" v-for="(item, index) in histories" :key="item.uid" :item="item"
+                                   :index="index">
+                        </component>
                     </div>
                 </div>
-                <div id="item_wrapper" class="col-xs-4 col-sm-4 col-md-2 item-wrapper">
-                    <template v-for="item in items">
-                        <div class="item row">
-                            <img v-if="item.classid"
-                                 :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + item.appid + '/' + item.classid"
-                                 alt="item.name" class="img-responsive" rel="nofollow">
-                            <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive"
-                                 rel="nofollow">
-                            <div class="info">
-                                <div class="price"><span>$^{item.amount}</span></div>
-                                <div class="name">^{item.name}</div>
-                            </div>
-                        </div>
-                    </template>
-                </div>
 
-                <div id="winner_wrapper" class="col-xs-8 col-sm-8 col-md-4">
-                    <component is="jackpot_detail" v-for="(item, index) in histories" :key="item.uid" :item="item"
-                               :index="index">
-                    </component>
-                </div>
                 {% include 'common/chat/chat_room.html' %}
             </div>
         </div>

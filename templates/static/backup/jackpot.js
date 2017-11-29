@@ -6,8 +6,8 @@ var colorRange = ["#c7413b"];
 var curDepositItems = 0;
 
 var vars = {
-  freeChartColor: "#181818",
-  chartBorder: "#181818",
+  freeChartColor: "#2d3538",
+  chartBorder: "#2d3538",
   chartTooltipBg: "rgba(0,0,0,0.8)",
   maxCount: 50
 };
@@ -222,14 +222,6 @@ $(function () {
     text_close: 'Okay'
   };
 
-  var itemWrapper = new Vue({
-    el: '#item_wrapper',
-    delimiters: ['^{', '}'],
-    data: {
-      items: []
-    }
-  });
-
   var jackpotSummary = new Vue({
     el: '#jackpot_summary',
     delimiters: ['^{', '}'],
@@ -238,7 +230,8 @@ $(function () {
       steam_bot: true,
       chart: null,
       depositStatus: "Not In",
-      joiners: []
+      joiners: [],
+      items: []
     },
     created: function () {
       var that = this;
@@ -373,10 +366,10 @@ $(function () {
       for (var ii = 0; ii < data[1].length; ii++) {
         var msg = {
           id: data[1][ii].id,
-          icon: data[1][ii].steamer.icon,
+          icon: data[1][ii].steamer.avatar,
           steamid: data[1][ii].steamer.steamid,
           msg: data[1][ii].message,
-          name: data[1][ii].steamer.name
+          name: data[1][ii].steamer.personaname
         };
         messageWrapper.addMessage(msg);
       }
@@ -399,7 +392,7 @@ $(function () {
         historyWrapper.histories = data[2];
       }
       if (curGame) {
-        itemWrapper.items = formatShowItems(curGame);
+        jackpotSummary.items = formatShowItems(curGame);
         animateNumber('#deposit_item_count', curGame.total_items, false);
         animateNumber('#jackpotTotalAmount', curGame.total_amount, true);
         jackpotSummary.updateJackpotKnobs(curGame);
