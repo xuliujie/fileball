@@ -4,7 +4,6 @@
 
 {% block extra_header %}
     <link rel="stylesheet" href="{% static 'css/profile.css' %}"/>
-{#    <title>dalaocsgo-{% trans 'Profile' %}</title>#}
 	{% block profile_extra_header %}
 	{% endblock %}
 {% endblock %}
@@ -14,8 +13,8 @@
 {% with user=request.user %}
 	<div class="row">
 		<div class="col-xs-1 col-sm-2"></div>
-		<div class="col-xs-10 col-sm-8" style="">
-			<div class="row" style="background-color: rgba(25, 25, 25, 1); padding-top: 1em; padding-bottom: 1em;">
+		<div class="col-xs-10 col-sm-8 profile-body">
+			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-2">
                     <div class="col-xs-12">
                         <img src="{{ user.avatarfull }}" alt="Avatar" class="img-responsive" style="border-radius: 92px;">
@@ -29,23 +28,11 @@
                         <p class="col-sm-2" style="padding-top: 10px;">
                         </p>
                         <div class="col-sm-9">
-{#                            <p>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">总游戏次数：{{ times }}</span>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">总流水：{{ cost }}$</span>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">总收益：{% if income >= 0 %}+{% endif %}{{ income|floatformat:"2" }}$</span>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">总胜率：{{ wpct|floatformat:"2" }}%</span>#}
-{#                            </p>#}
-{#                            <p>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">周游戏次数：{{ times_week }}</span>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">周流水：{{ cost_week }}$</span>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">周收益：{% if income >= 0 %}+{% endif %}{{ income_week|floatformat:"2" }}$</span>#}
-{#                            <span style="white-space:nowrap; margin-right: 20px;">周胜率：{{ wpct_week|floatformat:"2" }}%</span>#}
-{#                            </p>#}
                         </div>
                     </div>
 				</div>
 			</div>
-			<div class="row" id="profile-nav" style="background-color: rgba(25, 25, 25, 1);">
+			<div class="row" id="profile-nav">
                 <ul class="nav nav-tabs">
                   <li role="presentation" id="depositRecord" class=""><a href="{% url 'deposit_record' %}">{% trans 'Bet History' %}</a></li>
                   <li role="presentation" id="tradeUrl" class=""><a href="{% url 'tradeUrl' %}">{% trans 'Trade URL' %}</a></li>

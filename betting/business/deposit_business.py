@@ -101,7 +101,7 @@ def join_coinflip_game(data, steamer):
         if deposit_data['team'] in teams:
             return RespCode.InvalidParams.value, _('Invalid params')
 
-        sum_amount = sum([i['price'] for i in store_items])
+        sum_amount = sum([i['amount'] for i in store_items])
         join_range = [game.total_amount * 0.9, game.total_amount * 1.1]
         if sum_amount < join_range[0] or sum_amount > join_range[1]:
             return RespCode.AmountNotMatched.value, _("Amount not matched")
@@ -170,7 +170,7 @@ def coinflip_countdown_checker():
                     ts_now = aware_datetime_to_timestamp(time_now)
                     canceled = False
                     if winner:
-                        ts = winner['ts']
+                        ts = game['win_ts']
                         expires = settings.COINFLIP_END_EXPIRE - (ts_now - ts)
                     else:
                         ts = game['ts_get']
@@ -391,3 +391,31 @@ def create_user_amount_record(steamer, game, amount, reason):
         total_amount=steamer.amount,
         reason=reason
     )
+
+
+def get_game_winner(game):
+    deposits = game.deposits.all()
+    winner = None
+    if game.win_ticket == 0:
+        win_ticket = math.floor((game.total_tickets - 0.0000000001) * (game.percentage / 100))
+        game.win_ticket = win_ticket if win_ticket >= 1 else 1
+        game.save()
+    for i, d in enumerate(deposits):
+        if d.tickets_begin <= game.win_ticket <= d.tickets_end:
+            winner = d.steamer
+            break
+
+    ret = {
+        'steamer': SteamerSerializer(winner).data,
+        'amount': game.total_amount
+    }
+    return ret
+
+
+def get_ranks(game_type):
+    games = CoinFlipGame.objects.filter(game_type=game_type, end=1, win_ticket__gt=0).order_by('-total_amount').all()[:5]
+    ranks = []
+    for game in games:
+        winner = get_game_winner(game)
+        ranks.append(winner)
+    return ranks

@@ -309,11 +309,12 @@
 #item_wrapper {
     border-top: 2px solid #598db2;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #item_wrapper .item, .bet .items .item {
     border: 1px solid #eee;
-    background-color: #fff;
+    background-color: #404040;
     padding: 3px;
     margin: 2px;
     border-radius: 10px;

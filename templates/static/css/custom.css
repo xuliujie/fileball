@@ -10,3 +10,31 @@ header, .navbar-default {
 #jackpot_summary {
     background: #282828;
 }
+
+.modal-content {
+    color: white;
+    background: rgba(64, 64, 64, 0.8);
+}
+
+.coinflip-pots tbody tr:nth-child(odd) {
+    background: #1b1b1b;
+}
+
+.dropdown-menu {
+    color: white;
+    background: rgba(64, 64, 64, 0.8);
+}
+
+.dropdown-menu>li>a {
+    color: white;
+}
+
+#noSocket {
+    background: rgba(40, 40, 40, 0.8);
+}
+
+.panel-info>.panel-heading {
+    color: white;
+    background-color: #5a8db2;
+    border-color: #5a8db2;
+}

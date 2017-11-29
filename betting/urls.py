@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^api/jackpot/join/', views.join_jackpot_view),
     url(r'^api/user/inventory/', views.inventory_query_view, name='inventory_query'),
     url(r'^api/store/status/', views.deposit_status_query_view, name='deposit_status'),
-    url(r'^history/', views.cf_history_view, name='history'),
+    url(r'^api/history/', views.cf_history_view, name='history'),
     url(r'^new-hash/', views.create_random_hash_view, name='new_hash'),
     url(r'^profile/package', views.package_view, name='package'),
     url(r'^profile/record/trade', views.trade_record_view, name='trade_record'),

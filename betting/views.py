@@ -12,10 +12,10 @@ from rest_framework import views
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 
-from betting.common_data import TradeStatus
+from betting.common_data import TradeStatus, GameType
 from betting.betting_business import get_all_coinflip_history
 from betting.betting_business import get_my_coinflip_history, get_my_jackpot_history
-from betting.business.deposit_business import join_coinflip_game, join_jackpot_game, ws_send_cf_news, create_random_hash, getWins
+from betting.business.deposit_business import join_coinflip_game, join_jackpot_game, ws_send_cf_news, create_random_hash, getWins, get_ranks
 from betting.business.steam_business import get_user_inventories
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_current_jackpot_id, get_steam_bot_status
 from betting.forms import TradeUrlForm
@@ -112,7 +112,8 @@ class CoinFlipView(TemplateView):
         context = super(CoinFlipView, self).get_context_data(**kwargs)
         user = current_user(self.request)
         context['anno'] = get_announcement(page_type=0)
-        context['give'] = get_giveaway()
+        context['nbar'] = 'coinflip'
+        context['ranks'] = get_ranks(GameType.Coinflip.value)
         return context
 
 coinflip_view = CoinFlipView.as_view()
@@ -125,7 +126,8 @@ class JackpotView(TemplateView):
         context = super(JackpotView, self).get_context_data(**kwargs)
         user = current_user(self.request)
         context['anno'] = get_announcement(page_type=1)
-        context['give'] = get_giveaway()
+        context['nbar'] = 'jackpot'
+        context['ranks'] = get_ranks(GameType.Jackpot.value)
         return context
 
 jackpot_view = JackpotView.as_view()

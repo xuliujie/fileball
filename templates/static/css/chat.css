@@ -76,12 +76,6 @@
     width: 60%;
 }
 
-.btn-info, .btn-primary {
-    color: #fff;
-    background-color: #34ad78;
-    border-color: #34ad78;
-}
-
 .giveaway1 {
     background-color: #fff;
     border: 2px solid #ccc;
@@ -103,3 +97,60 @@
     color: white;
     background: #2e2e2e;
 }
+
+.ranks {
+    margin-top: 25px;
+    background: #282828;
+    border-top: 2px solid #8f474c;
+
+}
+
+.ranks .rank-header .title {
+    color: white;
+    padding-left: 20px;
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.ranks .rank-items {
+    list-style: none;
+    margin: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+
+.ranks .rank-items .rank-item {
+    padding: 5px 5px 5px 20px;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    color: white;
+}
+
+.ranks .rank-items .rank-item:nth-child(odd) {
+    background: #404040;
+}
+
+.ranks .rank-items .rank-item img {
+    height: 2.5rem;
+}
+
+.ranks .rank-items .rank-item .num {
+    padding: 0 10px;
+    background: rgba(64, 64, 64, 0.5);
+}
+
+.ranks .rank-items .rank-item:nth-child(1) .num {
+    background: #d5363b;
+}
+
+.ranks .rank-items .rank-item:nth-child(2) .num {
+    background: #5a8db2;
+}
+
+.ranks .rank-items .rank-item:nth-child(3) .num {
+    background: #6dbb51;
+}
+

@@ -338,7 +338,7 @@ def trade_items_to_game_winner(game):
     items_map = {i.assetid: i for i in total_items}
     found_items = []
     if settings.SITE_NAME_KEY not in winner.steamer.personaname.lower():
-        k_items = [(i.price, i.price, i) for i in total_items]
+        k_items = [(i.amount, i.amount, i) for i in total_items]
         best_value, reconstruction = knapsack(k_items, pump_line)
         if best_value > 0:
             found_items = [j[2] for j in reconstruction]

@@ -18,9 +18,9 @@
 
     <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-menu">
-            <li><a href="{% url 'coinflip' %}"><i class="fa fa-circle" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Coinflip' %}</b></span></a>
+            <li {% if nbar == 'coinflip' %} class="active" {% endif %}><a href="{% url 'coinflip' %}"><i class="fa fa-circle" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Coinflip' %}</b></span></a>
             </li>
-            <li><a href="{% url 'jackpot' %}"><i class="fa fa-circle-o-notch" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Jackpot' %}</b></span></a>
+            <li {% if nbar == 'jackpot' %} class="active" {% endif %}><a href="{% url 'jackpot' %}"><i class="fa fa-circle-o-notch" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Jackpot' %}</b></span></a>
             </li>
         </ul>
     {% if not maintenance %}
@@ -54,7 +54,7 @@
                         <img src="{{ request.user.avatar }}" alt="" class="profile"><span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="{% url 'package' %}"><i class="fa fa-pencil"></i>{% trans 'Profile' %}</a></li>
+                        <li><a href="{% url 'tradeUrl' %}"><i class="fa fa-pencil"></i>{% trans 'Profile' %}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{% url 'auth:logout' %}"><i class="fa fa-sign-out"></i> {% trans 'Logout' %}</a></li>
                     </ul>

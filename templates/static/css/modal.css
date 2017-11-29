@@ -38,7 +38,7 @@ p {
 .modal-loading {
     text-align: center;
     padding: 50px 0;
-    background-color: #cfcfcf;
+    background-color: rgba(64, 64, 64, 0.8);
 }
 
 .icon-loading {

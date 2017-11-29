@@ -2,7 +2,6 @@
 {% load i18n %}
 
 <div id="chat" class="col-xs-12 col-sm-4 col-md-3">
-    <div class="hide-chat"><i class="fa fa-chevron-right fa-lg"></i></div>
     <div id="chat-wrapper">
         <div class="users-online">
             <span class="users-online-value">0</span> online
@@ -33,15 +32,24 @@
                 </ul>
             </div>
         </div>
-        <div class="giveaway1">
-            {% if give %}
-                <p class="title">{{ give.title }}</p>
-                <img src="{{ give.img }}" width="110"
-                     height="88">
-                <br><a href="{{ give.href }}" target="_blank">
-                <button class="btn btn-primary">{{ give.button }}</button>
-            </a><br><br>
-            {% endif %}
+        <div class="ranks">
+            <div class="rank-header">
+                <span class="title">{% trans 'Ranks' %}</span>
+            </div>
+            <div class="rank-body">
+                <ul class="rank-items">
+                    {% for rank in ranks %}
+                        <li class="rank-item">
+                            <div class="rank-data">
+                                <span class="num">{{ forloop.counter }}</span>
+                                <img src="{{ rank.steamer.avatar }}" alt="" rel="nofollow">
+                                <span class="name">{{ rank.steamer.personaname }}</span>
+                                <span class="amount"><i class="fa fa-usd"></i> {{ rank.amount }}</span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>

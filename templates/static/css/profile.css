@@ -23,3 +23,31 @@
     background-color: rgba(25, 25, 25, 1);
     color: white;
 }
+
+#profile_wrapper .profile-body {
+    background: #282828;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: white;
+    background-color: #5a8db2;
+    border: 0;
+}
+
+.nav-tabs li:not(.active) a:hover {
+    color: white;
+    background-color: #5a8db2;
+}
+
+.nav-tabs>li>a:hover {
+}
+
+#tradeUrl-body .panel {
+    color: white;
+    background: #404040;
+}
+
+#id_tradeUrl {
+    color: white;
+    background: #2e2e2e;
+}
