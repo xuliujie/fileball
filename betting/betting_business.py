@@ -282,26 +282,6 @@ _steamrobot_api_url = "http://api.steamrobot.me/api/get_item_price/?hash_name={h
 _steamrobot_api_base = "http://api.steamrobot.me/api/get_item_price/"
 
 
-def market_item_update():
-    try:
-        if not is_connection_usable():
-            connection.close()
-
-        m = get_maintenance()
-        if m:
-            return
-
-        resp = requests.get(_steam_analyst_url)
-        body = json.loads(resp.content, encoding='utf-8')
-        results = body['results']
-        for item in results:
-            md5_data = hashlib.md5(item['market_name'].encode('utf-8'))
-            hash_key = md5_data.hexdigest()
-            MarketItem.objects.update_or_create(md5=hash_key, defaults=item)
-    except Exception as e:
-        _logger.exception(e)
-
-
 def get_item_price_from_steamrobot(hash_name):
     try:
         _logger.warning(hash_name)
@@ -313,11 +293,10 @@ def get_item_price_from_steamrobot(hash_name):
         item = None
         if item_data:
             item = {
-                u'hash_name': item_data[u'hash_name'],
-                u'item_recent_7_avg_price': item_data.get(u'item_recent_7_avg_price', None),
-                u'item_refer_price_dollar': item_data.get(u'item_refer_price_dollar', None),
+                u'hash_name': item_data.get(u'hash_name', None),
+                u'item_refer_igxe_steam_price': item_data.get(u'item_refer_igxe_steam_price', None),
+                u'item_refer_igxe_price': item_data.get(u'item_refer_igxe_price', None),
                 u'steam_sale_price_dollar': item_data.get(u'steam_sale_price_dollar', None),
-                u'steam_normal_price_dollar': item_data.get(u'steam_normal_price_dollar', None)
             }
         if item:
             md5_data = hashlib.md5(item[u'hash_name'].encode('utf-8'))

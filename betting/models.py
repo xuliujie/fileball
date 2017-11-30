@@ -341,6 +341,8 @@ class SteamrobotApiItem(models.Model):
     item_sell_record_url = models.URLField(null=True, max_length=1024)
     steam_sale_price_dollar = models.FloatField(null=True)
     steam_normal_price_dollar = models.FloatField(null=True)
+    item_refer_igxe_steam_price = models.FloatField(null=True)
+    item_refer_igxe_price = models.FloatField(null=True)
 
 
 class UserAmountRecord(ModelBase):

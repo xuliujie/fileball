@@ -95,13 +95,10 @@ def get_item_price_ln_db(appid, hash_name):
     try:
         item = SteamrobotApiItem.objects.filter(hash_name=hash_name).first()
         if item:
-            price = item.item_recent_7_avg_price*0.1519 if item.item_recent_7_avg_price else item.item_refer_price_dollar
-            if not price:
-                price = item.steam_sale_price_dollar
-        else:
-            item = MarketItem.objects.get(market_name=hash_name)
-            price = item.avg_price_7_days
-
+            price = (
+                item.item_refer_igxe_steam_price * settings.EXCHANGE_RATE
+                if item.item_refer_igxe_steam_price else None or item.item_refer_igxe_price * settings.EXCHANGE_RATE
+                if item.item_refer_igxe_price else None or item.steam_sale_price_dollar)
     except Exception as e:
         _logger.warning('{0}--{1}'.format(e, hash_name))
     if price:
