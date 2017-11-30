@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-30 12:00+0800\n"
+"POT-Creation-Date: 2017-11-30 14:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,7 +210,7 @@ msgstr "結束票號"
 
 #: .\betting\models.py:187 .\betting\models.py:188 .\betting\models.py:226
 #: .\templates\common\inventory\inventory_template.html:63
-#: .\templates\pages\jackpot.html:85
+#: .\templates\pages\jackpot.html:89
 msgid "Deposit"
 msgstr "下註"
 
@@ -478,7 +478,7 @@ msgstr "聊天規則"
 
 #: .\templates\common\chat\chat_room.html:37
 msgid "Ranks"
-msgstr ""
+msgstr "歐洲榜"
 
 #: .\templates\common\chat\chat_template.html:5
 msgid ""
@@ -549,25 +549,25 @@ msgid "Secret:"
 msgstr "Secret:"
 
 #: .\templates\common\history\history_template.html:141
-#: .\templates\pages\coinflip.html:112
+#: .\templates\pages\coinflip.html:116
 msgid "Players"
 msgstr "玩家"
 
 #: .\templates\common\history\history_template.html:142
 #: .\templates\common\history\history_template.html:191
-#: .\templates\pages\coinflip.html:113
+#: .\templates\pages\coinflip.html:117
 #: .\templates\pages\profile_detail\trade_record.html:28
 msgid "Items"
 msgstr "物品"
 
 #: .\templates\common\history\history_template.html:143
-#: .\templates\pages\coinflip.html:114
+#: .\templates\pages\coinflip.html:118
 #: .\templates\pages\profile_detail\trade_record.html:29
 msgid "Total"
 msgstr "總共"
 
 #: .\templates\common\history\history_template.html:155
-#: .\templates\pages\coinflip.html:126
+#: .\templates\pages\coinflip.html:130
 msgid "No games added right now"
 msgstr "暫無遊戲"
 
@@ -933,44 +933,54 @@ msgstr ""
 msgid "DaLaoCSGO"
 msgstr ""
 
-#: .\templates\pages\coinflip.html:43
+#: .\templates\pages\coinflip.html:47
 msgid "Total amount"
 msgstr "總金額"
 
-#: .\templates\pages\coinflip.html:46
+#: .\templates\pages\coinflip.html:50
 msgid "Total items"
 msgstr "總物品"
 
-#: .\templates\pages\coinflip.html:49
+#: .\templates\pages\coinflip.html:53
 msgid "Joinable games"
 msgstr "可加入的遊戲"
 
-#: .\templates\pages\coinflip.html:63 .\templates\pages\coinflip.html:67
+#: .\templates\pages\coinflip.html:67 .\templates\pages\coinflip.html:71
 msgid "Create new"
 msgstr "創建遊戲"
 
-#: .\templates\pages\coinflip.html:71
+#: .\templates\pages\coinflip.html:75
 msgid "History"
 msgstr "歷史"
 
-#: .\templates\pages\coinflip.html:73
+#: .\templates\pages\coinflip.html:77
 msgid "Steambot is Down"
 msgstr ""
 
-#: .\templates\pages\coinflip.html:77 .\templates\pages\coinflip.html:81
-#: .\templates\pages\jackpot.html:126 .\templates\pages\jackpot.html:130
+#: .\templates\pages\coinflip.html:81 .\templates\pages\coinflip.html:85
+#: .\templates\pages\jackpot.html:130 .\templates\pages\jackpot.html:134
 #: .\templates\pages\profile_detail\package.html:51
 #: .\templates\pages\profile_detail\store.html:49
 msgid "The steam bot is down, please wait for a while."
 msgstr "Steam交易機器人已下線，請稍等。"
 
-#: .\templates\pages\coinflip.html:134 .\templates\pages\jackpot.html:147
+#: .\templates\pages\coinflip.html:137 .\templates\pages\jackpot.html:152
 msgid "Connecting"
 msgstr "連接中"
 
+#: .\templates\pages\coinflip.html:141 .\templates\pages\jackpot.html:156
+msgid ""
+"\n"
+"                        <p>Please login first.</p>\n"
+"                    "
+msgstr ""
+"\n"
+"                        <p>請先登錄</p>\n"
+"                    "
+
 #: .\templates\pages\coinflip_template.html:177
 msgid "User joining"
-msgstr "用戶加入中"
+msgstr "玩家加入中"
 
 #: .\templates\pages\coinflip_template.html:186
 msgid ""
@@ -1150,15 +1160,15 @@ msgstr ""
 "chance}%%\n"
 "                    "
 
-#: .\templates\pages\jackpot.html:91
+#: .\templates\pages\jackpot.html:95
 msgid "Max 12 items/trade - $1 minimum value"
 msgstr "最多12個道具/最低$1"
 
-#: .\templates\pages\jackpot.html:98
+#: .\templates\pages\jackpot.html:102
 msgid "Total placed"
 msgstr "下註總數"
 
-#: .\templates\pages\jackpot.html:103
+#: .\templates\pages\jackpot.html:107
 msgid "Chances of winning"
 msgstr "獲勝幾率"
 

@@ -65,6 +65,11 @@ $(function() {
         },
         methods: {
             addMessage: function (msg) {
+                for (var i=0; i<this.items.length; i++) {
+                    if (this.items[i].id === msg.id) {
+                        return;
+                    }
+                }
                 if(this.items.length >= 12) {
                     this.items.shift();
                 }

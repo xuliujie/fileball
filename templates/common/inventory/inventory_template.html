@@ -86,7 +86,7 @@
             {% if request.user.is_anonymous or not request.user.tradeurl %}
                 <div class="trade-url-config">
                     <p class="tips">
-                        <a href="{% url 'profile' %}">
+                        <a href="{% url 'tradeUrl' %}">
                             {% trans 'Please go to this page to config your trade url first' %}
                         </a>
                     </p>

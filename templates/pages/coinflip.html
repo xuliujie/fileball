@@ -10,128 +10,143 @@
     <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
     {#        <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>#}
     {#        <script type="text/javascript" src="{% static 'js/cf.js' %}"></script>#}
+    {% if not request.user.is_anonymous %}
     <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>
     <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>
     <script type="text/javascript" src="{% static 'backup/coinflip.js' %}"></script>
+    {% endif %}
     <title>DalaoCSGO-Coinflip</title>
 {% endblock %}
 
 {% block page_content %}
     {% get_current_language as LANGUAGE_CODE %}
     <section id="page">
-        <div id="coinflip-wrapper" class="row content-wrapper">
-            <div class="col-xs-12 col-sm-8 col-md-9">
-                <div class="row">
-                    <div class="col-xs-12">
-                        {% if banner %}
-                            <div class="admin-messages">
-                                {% if LANGUAGE_CODE == 'en' %}
-                                    <span class="message">
+        {% if not request.user.is_anonymous %}
+            <div id="coinflip-wrapper" class="row content-wrapper">
+                <div class="col-xs-12 col-sm-8 col-md-9">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {% if banner %}
+                                <div class="admin-messages">
+                                    {% if LANGUAGE_CODE == 'en' %}
+                                        <span class="message">
                                         <i class="fa fa-volume-up "></i> {{ banner.content_en }}</span>
-                                {% else %}
-                                    <span class="message"><i class="fa fa-volume-up "></i> {{ banner.content }}</span>
-                                {% endif %}
-                            </div>
-                        {% endif %}
+                                    {% else %}
+                                        <span class="message"><i
+                                                class="fa fa-volume-up "></i> {{ banner.content }}</span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-9 col-md-9 status-item">
-                        <div class="status-row">
-                            <div class="row">
-                                <div class="col-xs-4 col-md-4">$ <span id="cfTotalAmount" class="number">0.00</span>
-                                    <p>{% trans 'Total amount' %}</p>
-                                </div>
-                                <div class="col-xs-4 col-md-4"><span id="cfTotalItems" class="number">0</span>
-                                    <p>{% trans 'Total items' %}</p>
-                                </div>
-                                <div class="col-xs-4 col-md-4"><span id="cfTotalGames" class="number">0</span>
-                                    <p>{% trans 'Joinable games' %}</p>
+                    <div class="row">
+                        <div class="col-xs-9 col-md-9 status-item">
+                            <div class="status-row">
+                                <div class="row">
+                                    <div class="col-xs-4 col-md-4">$ <span id="cfTotalAmount" class="number">0.00</span>
+                                        <p>{% trans 'Total amount' %}</p>
+                                    </div>
+                                    <div class="col-xs-4 col-md-4"><span id="cfTotalItems" class="number">0</span>
+                                        <p>{% trans 'Total items' %}</p>
+                                    </div>
+                                    <div class="col-xs-4 col-md-4"><span id="cfTotalGames" class="number">0</span>
+                                        <p>{% trans 'Joinable games' %}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs-3 col-md-3 status-item">
-                        <div class="deposit-box" id="deposit_box">
-                            <div class="row">
-                                {% if steam_bot %}
-                                    <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6 deposit-actions"
-                                         v-show="steam_bot">
-                                        <div class="depositButton">
-                                            {% if request.user.is_anonymous %}
-                                                <a class="btn btn-primary"
-                                                   href="{% url 'social:begin' 'steam' %}">{% trans 'Create new' %}</a>
+                        <div class="col-xs-3 col-md-3 status-item">
+                            <div class="deposit-box" id="deposit_box">
+                                <div class="row">
+                                    {% if steam_bot %}
+                                        <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6 deposit-actions"
+                                             v-show="steam_bot">
+                                            <div class="depositButton">
+                                                {% if request.user.is_anonymous %}
+                                                    <a class="btn btn-primary"
+                                                       href="{% url 'social:begin' 'steam' %}">{% trans 'Create new' %}</a>
+                                                {% else %}
+                                                    <button class="btn btn-primary coinflipCreate"><i
+                                                            class="fa fa-plus-square" aria-hidden="true"></i><span
+                                                            class="hidden-xs">{% trans 'Create new' %}</span></button>
+                                                {% endif %}
+                                            </div>
+                                            <div id="coinflipHistory" class="big"><i
+                                                    class="fa fa-history"></i> {% trans 'History' %}</div>
+                                            <div class="depositSoon hidden">
+                                                {% trans 'Steambot is Down' %}
+                                            </div>
+                                        </div>
+                                        <div v-show="!steam_bot">
+                                            <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
+                                        </div>
+                                    {% else %}
+                                        <div>
+                                            <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            {% if promotion %}
+                                <div class="promotion-wrapper">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-md-2 align-right">
+                                            <i class="fa fa-hand-o-right"></i>
+                                        </div>
+                                        <div class="col-xs-8 col-md-8">
+                                            {% if LANGUAGE_CODE == 'en' %}
+                                                <span class="promotion-body">{{ promotion.content_en }}</span>
                                             {% else %}
-                                                <button class="btn btn-primary coinflipCreate"><i
-                                                        class="fa fa-plus-square" aria-hidden="true"></i><span
-                                                        class="hidden-xs">{% trans 'Create new' %}</span></button>
+                                                <span class="promotion-body">{{ promotion.content }}</span>
                                             {% endif %}
                                         </div>
-                                        <div id="coinflipHistory" class="big"><i
-                                                class="fa fa-history"></i> {% trans 'History' %}</div>
-                                        <div class="depositSoon hidden">
-                                            {% trans 'Steambot is Down' %}
+                                        <div class="col-xs-2 col-md-2 align-left">
+                                            <i class="fa fa-hand-o-left"></i>
                                         </div>
                                     </div>
-                                    <div v-show="!steam_bot">
-                                        <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
-                                    </div>
-                                {% else %}
-                                    <div>
-                                        <p>{% trans 'The steam bot is down, please wait for a while.' %}</p>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        {% if promotion %}
-                            <div class="promotion-wrapper">
-                                <div class="row">
-                                    <div class="col-xs-2 col-md-2 align-right">
-                                        <i class="fa fa-hand-o-right"></i>
-                                    </div>
-                                    <div class="col-xs-8 col-md-8">
-                                        {% if LANGUAGE_CODE == 'en' %}
-                                            <span class="promotion-body">{{ promotion.content_en }}</span>
-                                        {% else %}
-                                            <span class="promotion-body">{{ promotion.content }}</span>
-                                        {% endif %}
-                                    </div>
-                                    <div class="col-xs-2 col-md-2 align-left">
-                                        <i class="fa fa-hand-o-left"></i>
-                                    </div>
                                 </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-xs-12">
+                            <table id="cf_games" class="coinflip-pots table">
+                                <thead>
+                                <tr>
+                                    <th>{% trans 'Players' %}</th>
+                                    <th>{% trans 'Items' %}</th>
+                                    <th>{% trans 'Total' %}</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                                </thead>
+                                <tbody is="transition-group" name="flip-list" enter-active-class="animated bounceIn"
+                                       leave-active-class="animated bounceOut">
+                                <tr is="cf-item" v-for="(item, index) in games" :key="item.gid" :item="item"
+                                    :index="index" class="flip-list-item"></tr>
+                                </tbody>
+                            </table>
+                            <div class="status-message">
+                                <h2 class="text-center">{% trans 'No games added right now' %}</h2>
                             </div>
-                        {% endif %}
-                    </div>
-                    <div class="col-xs-12">
-                        <table id="cf_games" class="coinflip-pots table">
-                            <thead>
-                            <tr>
-                                <th>{% trans 'Players' %}</th>
-                                <th>{% trans 'Items' %}</th>
-                                <th>{% trans 'Total' %}</th>
-                                <th>&nbsp;</th>
-                                <th>&nbsp;</th>
-                            </tr>
-                            </thead>
-                            <tbody is="transition-group" name="flip-list" enter-active-class="animated bounceIn"
-                                   leave-active-class="animated bounceOut">
-                            <tr is="cf-item" v-for="(item, index) in games" :key="item.gid" :item="item"
-                                :index="index" class="flip-list-item"></tr>
-                            </tbody>
-                        </table>
-                        <div class="status-message">
-                            <h2 class="text-center">{% trans 'No games added right now' %}</h2>
                         </div>
                     </div>
                 </div>
+                {% include 'common/chat/chat_room.html' %}
             </div>
-            {% include 'common/chat/chat_room.html' %}
-        </div>
-        </div>
-        <div id="noSocket">{% trans 'Connecting' %}...</div>
+            <div id="noSocket">{% trans 'Connecting' %}...</div>
+        {% else %}
+            <div class="col-xs-12">
+                <div class="steam-auth" style="text-align: center; margin: 150px auto 200px">
+                    {% blocktrans %}
+                        <p>Please login first.</p>
+                    {% endblocktrans %}
+                    <a href="{% url 'social:begin' 'steam' %}"><img
+                            src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png"
+                            alt="Login with Steam"></a>
+                </div>
+            </div>
+        {% endif %}
     </section>
     <div id="growls" class="tr"></div>
 {% endblock %}

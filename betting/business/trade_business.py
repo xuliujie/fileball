@@ -260,7 +260,6 @@ def confirm_send_items(uid, **kwargs):
     data = kwargs.get('data', {})
     record = SendRecord.objects.filter(uid=uid).first()
     if record:
-        item_del_owner(data.get('myItems', []), record.steamer)
         record.status = data.get('status', TradeStatus.Accepted.value)
         record.trade_no = data.get('trade_no', '')
         record.bot_status = data.get('bot_status', 0)
