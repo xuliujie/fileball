@@ -308,15 +308,15 @@ def resend_record(record_id):
         items_data = [PropItemSerializer(d).data for d in items]
         _logger.info(u're send {0} items to {1} on {2}'.format(
             len(items), steamer.personaname, steamer.tradeurl))
-        request_send(steamer=steamer, record=record)
+        request_send(steamer=steamer, record=record, items=items)
     except Exception as e:
         _logger.error(e)
 
 
-def create_send_record(steamer, items, game=None, roll_joiner=None):
+def create_send_record(steamer, items, game=None):
     security_code = id_generator(8)
-    send_record = SendRecord.objects.create(game=game, steamer=steamer, status=TradeStatus.Initialed.value,
-                                            security_code=security_code, roll_joiner=roll_joiner)
+    send_record = SendRecord.objects.create(
+        game=game, steamer=steamer, status=TradeStatus.Initialed.value, security_code=security_code)
     for i in items:
         i.send_record = send_record
         i.save()

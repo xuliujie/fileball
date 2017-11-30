@@ -31,11 +31,9 @@ from django.conf import settings
 _logger = logging.getLogger(__name__)
 
 
-def get_announcement(page_type):
+def get_announcement(anno_type):
     ret = None
-    announ_current = Announcement.objects.filter(page_type=page_type, enable=True).order_by('num').first()
-    announ_all = Announcement.objects.filter(page_type=5, enable=True).order_by('num').first()
-    announ = announ_current or announ_all
+    announ = Announcement.objects.filter(anno_type=anno_type, enable=True).order_by('num').first()
     if announ:
         ret = AnnouncementSerializer(announ).data
     return ret
@@ -111,7 +109,8 @@ class CoinFlipView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CoinFlipView, self).get_context_data(**kwargs)
         user = current_user(self.request)
-        context['anno'] = get_announcement(page_type=0)
+        context['banner'] = get_announcement(0)
+        context['promotion'] = get_announcement(1)
         context['nbar'] = 'coinflip'
         context['ranks'] = get_ranks(GameType.Coinflip.value)
         return context
@@ -125,7 +124,8 @@ class JackpotView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(JackpotView, self).get_context_data(**kwargs)
         user = current_user(self.request)
-        context['anno'] = get_announcement(page_type=1)
+        context['banner'] = get_announcement(0)
+        context['promotion'] = get_announcement(1)
         context['nbar'] = 'jackpot'
         context['ranks'] = get_ranks(GameType.Jackpot.value)
         return context

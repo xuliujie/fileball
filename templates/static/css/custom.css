@@ -38,3 +38,61 @@ header, .navbar-default {
     background-color: #5a8db2;
     border-color: #5a8db2;
 }
+
+.admin-messages .message {
+    color: #b3b3b3;
+    padding: 5px 60px 5px 20px;
+    background: #593e7e;
+    border-radius: 5px;
+}
+
+.promotion-wrapper {
+    color: #b3b3b3;
+    background: #593e7e;
+    border-radius: 10px;
+    font-size: 2rem;
+    margin: 20px auto;
+}
+
+.admin-messages .message .fa {
+    font-size: 1.5rem;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.pro-icon {
+    height: inherit;
+    vertical-align: middle;
+}
+
+#cfRoundView .row-header {
+    background: #202020;
+    color: white;
+    padding: 20px auto;
+    margin: 0 15px;
+}
+
+#cfRoundView .row-total {
+    background: #446d8d;
+}
+
+#cfRoundView .joiner-items {
+    background: #202020;
+    color: white;
+    padding: 0;
+}
+
+.dropdown-toggle .dropdown-icon {
+    font-size: 2rem;
+    color: #b3b2b4;
+    vertical-align: middle;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
+}

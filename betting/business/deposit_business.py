@@ -413,7 +413,10 @@ def get_game_winner(game):
 
 
 def get_ranks(game_type):
-    games = CoinFlipGame.objects.filter(game_type=game_type, end=1, win_ticket__gt=0).order_by('-total_amount').all()[:5]
+    dt_now = dt.now()
+    local_now = dt.localtime(dt_now)
+    local_begin = local_now.replace(hour=0, minute=0, second=0)
+    games = CoinFlipGame.objects.filter(game_type=game_type, create_time__gte=local_begin, end=1, win_ticket__gt=0).order_by('-total_amount').all()[:5]
     ranks = []
     for game in games:
         winner = get_game_winner(game)

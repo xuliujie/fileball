@@ -33,7 +33,7 @@
                         {% else %}
                             <div id="lang_drop_flag" class="flag flag-en-us"></div>
                         {% endif %}
-                        <span class="caret"></span>
+                        <i class="fa fa-angle-down dropdown-icon"></i>
                     </div>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="lang_drop">
                         <li role="presentation"><div class="flag flag-en-us lang-sel" data-lang="en" data-flag="flag-en-us"></div></li>
@@ -51,7 +51,7 @@
             <ul class="nav navbar-nav">
                 <li class="active dropdown">
                     <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ request.user.avatar }}" alt="" class="profile"><span class="caret"></span>
+                        <img src="{{ request.user.avatar }}" alt="" class="profile"><i class="fa fa-angle-down dropdown-icon"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a href="{% url 'tradeUrl' %}"><i class="fa fa-pencil"></i>{% trans 'Profile' %}</a></li>

@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'channels',
-    'betting',
     'social_auth',
     'social_django',
     'rest_framework',
+    'betting',
     'bootstrap_pagination'
 ]
 

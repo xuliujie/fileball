@@ -171,3 +171,8 @@ class UserAmountRecordAdmin(ReadOnlyAdmin):
 class GiveAwayAdmin(ModelAdmin):
     list_display = ('remark', 'title', 'enable', 'num')
     list_editable = ('enable', 'num')
+
+
+class AnnounceAdmin(ModelAdmin):
+    list_display = ('anno_type', 'content', 'enable', 'num')
+    list_editable = ('enable', 'num')

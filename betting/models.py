@@ -242,13 +242,12 @@ PAGE_TYPE = (
 )
 
 ANNO_TYPE = (
-    (0, _("Info")),
-    (1, _("Warning"))
+    (0, _("Banner")),
+    (1, _("Promotion"))
 )
 
 
 class Announcement(ModelBase):
-    page_type = models.SmallIntegerField(default=0, verbose_name=_("Page Type"), choices=PAGE_TYPE)
     anno_type = models.SmallIntegerField(default=0, verbose_name=_("Anno Type"), choices=ANNO_TYPE)
     content = models.TextField(verbose_name=_("Content(zh)"))
     content_en = models.TextField(verbose_name=_("Content(en)"))
