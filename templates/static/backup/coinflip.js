@@ -360,7 +360,7 @@ $(function () {
         for (var i = 0; i < that.games.length; i++) {
           totalAmt += that.games[i].total_amount;
           for (var j = 0; j < that.games[i].deposits.length; j++) {
-            if (mySteamID === that.games[i].deposits[j].steamer.steamID) {
+            if (mySteamID === that.games[i].deposits[j].steamer.steamid) {
               myAmount += that.games[i].deposits[j].amount;
             }
           }

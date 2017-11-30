@@ -116,6 +116,7 @@ function fillCoinflipData(cfData, isModal) {
   itemShows = itemShows.sort(compareItem);
   var maxCount = items.length < MAX_SHOW_ITEM ? items.length : MAX_SHOW_ITEM;
   cfFilledData['totalItems'] = items.length;
+  cfFilledData['total_amount'] = parseFloat(cfData.total_amount.toFixed(2));
   cfFilledData['itemsShow'] = itemShows.slice(0, maxCount);
   cfFilledData['itemsMore'] = items.length - cfFilledData['itemsShow'].length;
   cfFilledData['lastSeconds'] = 90;

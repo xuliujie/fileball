@@ -377,6 +377,7 @@ $(function () {
       var curGame = null;
       if (data[1] === 'new') {
         curGame = data[2];
+        curGame.total_amount = parseFloat(curGame.total_amount.toFixed(2));
         jackpotSummary.resetKnob();
         if (historyWrapper.histories.length >= 8) {
           historyWrapper.histories.pop();
@@ -384,8 +385,8 @@ $(function () {
         historyWrapper.histories.unshift(curGame);
         $('#my_jackpot_joining').text('Not in');
       } else if (data[1] === 'update') {
-
         curGame = data[2];
+        curGame.total_amount = parseFloat(curGame.total_amount.toFixed(2));
         historyWrapper.histories.splice(0, 1, curGame);
       } else if (data[1] === 'history') {
         curGame = data[2][0];
