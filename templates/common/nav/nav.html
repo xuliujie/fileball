@@ -46,7 +46,7 @@
 
             {% if request.user.is_anonymous %}
                 <div class="steam-auth pull-right">
-                  <a href="{% url 'social:begin' 'steam' %}"><img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png" alt="Login with Steam"></a>
+                  <a href="{% url 'social:begin' 'steam' %}"><img src="{% static 'img/sits_01.png' %}" alt="Login with Steam"></a>
                 </div>
             {% else %}
 

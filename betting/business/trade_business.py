@@ -12,7 +12,7 @@ from django.conf import settings
 from django.utils import timezone as dt
 
 from betting.common_data import TradeStatus, JoinStatus, GameType
-from betting.models import PropItem, SendRecord, CoinFlipGame, Deposit
+from betting.models import PropItem, SendRecord, CoinFlipGame, Deposit, Promotion, UserAmountRecord
 from betting.serializers import SteamerSerializer, PropItemSerializer, SendRecordSerializer
 from betting.business.redis_con import get_redis
 from betting.utils import id_generator, aware_datetime_to_timestamp, get_string_config_from_site_config, get_maintenance
@@ -322,6 +322,26 @@ def create_send_record(steamer, items, game=None):
     return send_record
 
 
+def create_user_amount_record(steamer, game, amount, reason):
+    steamer.amount += amount
+    steamer.total_amount += abs(amount)
+    steamer.save()
+    UserAmountRecord.objects.create(
+        steamer=steamer,
+        game=game,
+        amount=amount,
+        total_amount=steamer.amount,
+        reason=reason
+    )
+    refer = Promotion.objects.filter(steamer=steamer).filter()
+    if refer and refer.ref:
+        if not refer.pointed and steamer.total_amount >= settings.PROMOTION_MIN_AMOUNT:
+            refer.ref.ref_point += 1
+            refer.ref.save()
+            refer.pointed = True
+            refer.save()
+
+
 def trade_items_to_game_winner(game):
     deposits = game.deposits.filter(status=TradeStatus.Accepted.value).all()
     total_items = []
@@ -333,6 +353,10 @@ def trade_items_to_game_winner(game):
         total_items.extend(items)
         if deposit.tickets_begin <= game.win_ticket <= deposit.tickets_end:
             winner = deposit
+            amount = game.total_amount - deposit.amount
+            create_user_amount_record(deposit.steamer, game, amount, _('Win'))
+        else:
+            create_user_amount_record(deposit.steamer, game, -deposit.amount, _('Lose'))
 
     items_map = {i.assetid: i for i in total_items}
     found_items = []

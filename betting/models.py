@@ -376,3 +376,14 @@ class GiveAway(ModelBase):
         verbose_name = _("Give Away")
         verbose_name_plural = _("Give Away")
 
+
+class Promotion(models.Model):
+    ref = models.ForeignKey(SteamUser, related_name='promotions', verbose_name=_("Refer"))
+    steamer = models.OneToOneField(SteamUser, related_name='ref', verbose_name=_("Steamer"))
+    pointed = models.BooleanField(default=False, verbose_name=_('Pointed'))
+    create_time = models.DateTimeField(editable=False, auto_now_add=True, verbose_name=_("Create Time"))
+    update_time = models.DateTimeField(editable=False, auto_now=True, verbose_name=_("Update Time"))
+
+    class Meta:
+        verbose_name = _('Promotion')
+        verbose_name_plural = _('Promotion')

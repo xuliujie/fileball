@@ -24,7 +24,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from channels import Group
 from channels.sessions import channel_session
 
-from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message, SendRecord, SteamrobotApiItem, UserAmountRecord
+from social_auth.models import SteamUser
+from betting.models import CoinFlipGame, GameStatus, Deposit, TempGameHash, MarketItem, PropItem, Message
+from betting.models import SendRecord, SteamrobotApiItem, UserAmountRecord, Promotion
 from betting.serializers import DepositSerializer, SteamerSerializer, TempGameHashSerializer, MessageSerializer, SendRecordSerializer
 from betting.business.cache_manager import update_coinflip_game_in_cache, get_online, get_steam_bot_status, get_current_coinflip_games
 from betting.business.deposit_business import is_connection_usable
@@ -346,3 +348,13 @@ def get_current_all_coinflip_games():
     return all_games
 
 
+def create_promotion(ref_code, steamer):
+    last_ref = Promotion.objects.filter(steamer__steamid=steamer.steamid).first()
+    if last_ref is None:
+        ref = SteamUser.objects.filter(ref_code=ref_code).first()
+        if ref and ref != steamer:
+            Promotion.objects.create(ref=ref, steamer=steamer, pointed=False)
+
+
+def get_promotion_count(steamer):
+    return Promotion.objects.filter(ref=steamer).all().count()

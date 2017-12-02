@@ -1,8 +1,15 @@
+import string
+import random
+
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+
+
+def ref_generator(size=8, chars=string.ascii_uppercase):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 
 class SteamUserManager(BaseUserManager):
@@ -62,6 +69,9 @@ class SteamUser(AbstractBaseUser, PermissionsMixin):
     is_cheating = models.BooleanField(default=False, verbose_name=_('Cheating'))
     can_chat = models.BooleanField(default=True, verbose_name=_('Can Chat'))
     amount = models.FloatField(default=0.0, verbose_name=_('Amount'))
+    total_amount = models.FloatField(default=0.0, verbose_name=_('Total Amount'))
+    ref_code = models.CharField(max_length=32, default=ref_generator, verbose_name=_("Affiliate Code"))
+    ref_point = models.IntegerField(default=0, verbose_name=_('Affiliate Point'))
 
     def __unicode__(self):
         return self.personaname

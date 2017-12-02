@@ -8,80 +8,121 @@
 {% endblock %}
 
 {% block page_content %}
-    <section id="page">
-        {% with user=request.user %}
-        <div id="affiliate_wrapper" class="content-wrapper" style=" padding-bottom: 3em;">
+<section id="page">
+    {% if not request.user.is_anonymous %}
+    {% with user=request.user %}
+    <div id="affiliate_wrapper" class="content-wrapper" style=" padding-bottom: 3em;">
         <div class="container">
-                <div class="row content-body">
-                    <div class="col-xs-12 affiliate-logo text-center">
-                        <img class="" src="{% static 'img/logo_medium.png' %}">
-                    </div>
-                    <div class="col-xs-12 affiliate-title text-center">
-                        <span>{% trans 'Join dalaocsgo affiliate plane'  %}</span>
-                    </div>
-                    <div class="col-xs-12 affiliate-info">
+            <div class="row content-body">
+                <div class="col-xs-12 affiliate-logo text-center">
+                    <img class="" src="{% static 'img/logo_medium.png' %}">
+                </div>
+                <div class="col-xs-12 affiliate-title text-center">
+                    <span>{% trans 'Join dalaocsgo affiliate plane' %}</span>
+                </div>
+                <div class="col-xs-12 affiliate-info">
+                    {% blocktrans %}
                         <div class="info-title text-center">About Affiliate</div>
                         <p class="info-content">
-                            Everyone has a affiliate link, the other players visit our site through your link
+                            Everyone has a affiliate link, the other players visit our site through your
+                            link
                             and deposit at least 30 dollar, then you will get 1 affiliate point.
                             when you get as much point, you can contact us, we will send you a gift.
                         </p>
                         <div class="info-title text-center">Affiliate Steps</div>
                         <p class="info-content text-center">
-                            Share the link -> Player visit the site -> Play games -> Get points
+                            Share the link <i class="fa fa-arrow-right"></i> Player visit the site <i
+                                class="fa fa-arrow-right"></i> Play games <i class="fa fa-arrow-right"></i>
+                            Get
+                            points
                         </p>
-                        <div class="info-title text-center">About Gift</div>
-                        <table class="affiliate-table">
-                            <tr><td>5 Points</td><td>10 Points</td><td>18 Points</td><td>30 Points</td><td>50 Points</td><td>50 Points More</td></tr>
-                            <tr><td>10 dollar</td><td>25 dollar</td><td>40 dollar</td><td>60 dollar</td><td>100 dollar</td><td>200 dollar</td></tr>
+                    {% endblocktrans %}
+                    <div class="info-title text-center">{% trans 'About Gift' %}</div>
+                    <table class="affiliate-table">
+                        {% blocktrans %}
                             <tr>
-                                <td><img src="{% static 'img/affiliate/affiliate_01.png' %}"></td>
-                                <td><img src="{% static 'img/affiliate/affiliate_02.png' %}"></td>
-                                <td><img src="{% static 'img/affiliate/affiliate_03.png' %}"></td>
-                                <td><img src="{% static 'img/affiliate/affiliate_04.png' %}"></td>
-                                <td><img src="{% static 'img/affiliate/affiliate_05.png' %}"></td>
-                                <td><img src="{% static 'img/affiliate/affiliate_06.png' %}"></td>
+                                <td>5 Points</td>
+                                <td>10 Points</td>
+                                <td>18 Points</td>
+                                <td>30 Points</td>
+                                <td>50 Points</td>
+                                <td>50 Points More</td>
                             </tr>
-                        </table>
+                            <tr>
+                                <td>10 dollar</td>
+                                <td>25 dollar</td>
+                                <td>40 dollar</td>
+                                <td>60 dollar</td>
+                                <td>100 dollar</td>
+                                <td>200 dollar</td>
+                            </tr>
+                        {% endblocktrans %}
+                        <tr>
+                            <td><img src="{% static 'img/affiliate/affiliate_01.png' %}"></td>
+                            <td><img src="{% static 'img/affiliate/affiliate_02.png' %}"></td>
+                            <td><img src="{% static 'img/affiliate/affiliate_03.png' %}"></td>
+                            <td><img src="{% static 'img/affiliate/affiliate_04.png' %}"></td>
+                            <td><img src="{% static 'img/affiliate/affiliate_05.png' %}"></td>
+                            <td><img src="{% static 'img/affiliate/affiliate_06.png' %}"></td>
+                        </tr>
+                    </table>
+                </div>
+                {% endblocktrans %}
+                <div class="col-xs-12 affiliate-user">
+                    <div class="text-center"><span class="info-title">{% trans 'Affiliate link' %}</span>
                     </div>
-                    <div class="col-xs-12 affiliate-user">
-                        <div class="text-center"><span class="info-title">{% trans 'Affiliate link' %}</span></div>
-                        <div class="affiliate-links input-group">
-                            <div class="row">
-                                <div class="col-xs-offset-1 col-xs-8">
-                                    <input id="affiliate_url" name="affiliateUrl" type="text" readonly="readonly" class="validate"
-                               value="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/?ref={{ user.ref_code }}"/>
-                                </div>
-                                <div class="col-xs-2">
-                                    <button id="copy_affiliate_btn" class="btn btn-info" data-clipboard-target="#affiliate_url">{% trans 'Copy affiliate link' %}</button>
-                                </div>
+                    <div class="affiliate-links input-group">
+                        <div class="row">
+                            <div class="col-xs-offset-1 col-xs-8">
+                                <input id="affiliate_url" name="affiliateUrl" type="text"
+                                       readonly="readonly"
+                                       class="validate"
+                                       value="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/?ref={{ user.ref_code }}"/>
+                            </div>
+                            <div class="col-xs-2">
+                                <button id="copy_affiliate_btn" class="btn btn-info"
+                                        data-clipboard-target="#affiliate_url">{% trans 'Copy affiliate link' %}</button>
                             </div>
                         </div>
-                        <div class="affiliate-result">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img class="img-responsive" src="{% static 'img/affiliate/affiliate_slogan.png' %}">
-                                </div>
-                                <div class="col-xs-9">
-                                    <div class="result-item"><span>{% trans 'Your affiliate players' %}: </span></div>
-                                    <div class="result-item"><span>{% trans 'Your affiliate points' %}: </span></div>
-                                </div>
+                    </div>
+                    <div class="affiliate-result">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <img class="img-responsive"
+                                     src="{% static 'img/affiliate/affiliate_slogan.png' %}">
                             </div>
-
-
+                            <div class="col-xs-9">
+                                <div class="result-item">
+                                    <span>{% trans 'Your affiliate players' %}: {{ ref_count }}</span></div>
+                                <div class="result-item">
+                                    <span>{% trans 'Your affiliate points' %}: {{ ref_point }}</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-        </div>
+    </div>
     {% endwith %}
-    </section>
+    {% else %}
+    <div class="col-xs-12">
+        <div class="steam-auth" style="text-align: center; margin: 150px auto 200px">
+            {% blocktrans %}
+                <p>Please login first.</p>
+            {% endblocktrans %}
+            <a href="{% url 'social:begin' 'steam' %}"><img
+                    src="{% static 'img/sits_01.png' %}"
+                    alt="Login with Steam"></a>
+        </div>
+    </div>
+    {% endif %}
+</section>
 {% endblock %}
 
 {% block scripts %}
     <script type="application/javascript">
 
-    var clipboardBtn = new Clipboard('#copy_affiliate_btn');
+      var clipboardBtn = new Clipboard('#copy_affiliate_btn');
     </script>
 
 {% endblock %}

@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-30 14:18+0800\n"
+"POT-Creation-Date: 2017-12-02 17:33+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,20 +30,22 @@ msgid "Amount not matched"
 msgstr ""
 
 #: .\betting\business\deposit_business.py:326
+#: .\betting\business\trade_business.py:357
 #: .\templates\common\history\history_template.html:209
 msgid "Win"
 msgstr "勝利"
 
 #: .\betting\business\deposit_business.py:328
+#: .\betting\business\trade_business.py:359
 #: .\templates\common\history\history_template.html:210
 msgid "Lose"
 msgstr "失敗"
 
-#: .\betting\models.py:50
+#: .\betting\models.py:50 .\betting\models.py:384
 msgid "Create Time"
 msgstr "創建時間"
 
-#: .\betting\models.py:51
+#: .\betting\models.py:51 .\betting\models.py:385
 msgid "Update Time"
 msgstr "更新時間"
 
@@ -56,7 +58,7 @@ msgid "Label"
 msgstr "標簽"
 
 #: .\betting\models.py:97 .\betting\models.py:171 .\betting\models.py:196
-#: .\betting\models.py:347
+#: .\betting\models.py:349 .\betting\models.py:382
 msgid "Steamer"
 msgstr "玩家"
 
@@ -114,7 +116,7 @@ msgstr "遊戲類型"
 msgid "Run at"
 msgstr "遊戲開始時間"
 
-#: .\betting\models.py:141
+#: .\betting\models.py:141 .\social_auth\models.py:72
 msgid "Total Amount"
 msgstr "總金額"
 
@@ -178,11 +180,11 @@ msgstr ""
 msgid "Is Joined"
 msgstr ""
 
-#: .\betting\models.py:174 .\betting\models.py:195 .\betting\models.py:348
+#: .\betting\models.py:174 .\betting\models.py:195 .\betting\models.py:350
 msgid "Game"
 msgstr "遊戲"
 
-#: .\betting\models.py:176 .\social_auth\models.py:64
+#: .\betting\models.py:176 .\social_auth\models.py:71
 #: .\templates\common\history\history_template.html:192
 msgid "Amount"
 msgstr "數量"
@@ -288,9 +290,9 @@ msgstr "全部頁面"
 msgid "Banner"
 msgstr ""
 
-#: .\betting\models.py:246
+#: .\betting\models.py:246 .\betting\models.py:388 .\betting\models.py:389
 msgid "Promotion"
-msgstr ""
+msgstr "推广"
 
 #: .\betting\models.py:251
 msgid "Anno Type"
@@ -304,15 +306,15 @@ msgstr "內容（中文）"
 msgid "Content(en)"
 msgstr "內容（英文）"
 
-#: .\betting\models.py:254 .\betting\models.py:273 .\betting\models.py:367
+#: .\betting\models.py:254 .\betting\models.py:273 .\betting\models.py:369
 msgid "Enable"
 msgstr "是否啟用"
 
-#: .\betting\models.py:255 .\betting\models.py:366
+#: .\betting\models.py:255 .\betting\models.py:368
 msgid "Num."
 msgstr "序號"
 
-#: .\betting\models.py:256 .\betting\models.py:274 .\betting\models.py:368
+#: .\betting\models.py:256 .\betting\models.py:274 .\betting\models.py:370
 msgid "Remark"
 msgstr "備註"
 
@@ -380,63 +382,79 @@ msgstr "Jackpot最大金額"
 msgid "Betting Bots"
 msgstr "下註機器人"
 
-#: .\betting\models.py:349
+#: .\betting\models.py:351
 msgid "Profit"
 msgstr "收益"
 
-#: .\betting\models.py:350
+#: .\betting\models.py:352
 msgid "Total Profit"
 msgstr "總收益"
 
-#: .\betting\models.py:351
+#: .\betting\models.py:353
 msgid "Reason"
 msgstr ""
 
-#: .\betting\models.py:357 .\betting\models.py:358
+#: .\betting\models.py:359 .\betting\models.py:360
 msgid "UserAmountReocrds"
 msgstr "機器人收益記錄"
 
-#: .\betting\models.py:362
+#: .\betting\models.py:364
 msgid "Title"
 msgstr "广告标题"
 
-#: .\betting\models.py:363
+#: .\betting\models.py:365
 msgid "Img Url"
 msgstr "广告图片链接"
 
-#: .\betting\models.py:364
+#: .\betting\models.py:366
 msgid "Target Url"
 msgstr "广告跳转链接"
 
-#: .\betting\models.py:365
+#: .\betting\models.py:367
 msgid "Button"
 msgstr "按钮文字"
 
-#: .\betting\models.py:374 .\betting\models.py:375
+#: .\betting\models.py:376 .\betting\models.py:377
 msgid "Give Away"
 msgstr "广告"
 
-#: .\betting\views.py:252 .\betting\views.py:278
+#: .\betting\models.py:381
+msgid "Refer"
+msgstr ""
+
+#: .\betting\models.py:383
+msgid "Pointed"
+msgstr ""
+
+#: .\betting\views.py:264 .\betting\views.py:290
 msgid "The site in on maintenance, please wait for a while."
 msgstr "網站正在維護中，請稍等。"
 
-#: .\social_auth\models.py:55
+#: .\social_auth\models.py:62
 msgid "date joined"
 msgstr "加入時間"
 
-#: .\social_auth\models.py:57
+#: .\social_auth\models.py:64
 msgid "Is Staff"
 msgstr "职员"
 
-#: .\social_auth\models.py:62
+#: .\social_auth\models.py:69
 msgid "Cheating"
 msgstr "作弊"
 
-#: .\social_auth\models.py:63
+#: .\social_auth\models.py:70
 msgid "Can Chat"
 msgstr "允許聊天"
 
-#: .\social_auth\models.py:76 .\social_auth\models.py:77
+#: .\social_auth\models.py:73
+msgid "Affiliate Code"
+msgstr "推廣碼"
+
+#: .\social_auth\models.py:74
+msgid "Affiliate Point"
+msgstr "推廣點數"
+
+#: .\social_auth\models.py:86 .\social_auth\models.py:87
 msgid "SteamUsers"
 msgstr "玩家帳號"
 
@@ -470,7 +488,7 @@ msgstr ""
 
 #: .\templates\admin\submit_line.html:12
 msgid "Re-Send"
-msgstr ""
+msgstr "重发"
 
 #: .\templates\common\chat\chat_room.html:9
 msgid "chat rules"
@@ -702,11 +720,15 @@ msgstr ""
 "                        請點擊鏈接或檢查交易安全碼來確認您的報價。\n"
 "                        "
 
-#: .\templates\common\nav\nav.html:57
+#: .\templates\common\nav\nav.html:25
+msgid "Affiliate"
+msgstr "推廣"
+
+#: .\templates\common\nav\nav.html:59
 msgid "Profile"
 msgstr "個人主頁"
 
-#: .\templates\common\nav\nav.html:59
+#: .\templates\common\nav\nav.html:61
 msgid "Logout"
 msgstr "退出"
 
@@ -933,6 +955,125 @@ msgstr ""
 msgid "DaLaoCSGO"
 msgstr ""
 
+#: .\templates\pages\affiliate.html:21
+msgid "Join dalaocsgo affiliate plane"
+msgstr "加入dalaocsgo分享計劃"
+
+#: .\templates\pages\affiliate.html:24
+msgid ""
+"\n"
+"                        <div class=\"info-title text-center\">About "
+"Affiliate</div>\n"
+"                        <p class=\"info-content\">\n"
+"                            Everyone has a affiliate link, the other players "
+"visit our site through your\n"
+"                            link\n"
+"                            and deposit at least 30 dollar, then you will "
+"get 1 affiliate point.\n"
+"                            when you get as much point, you can contact us, "
+"we will send you a gift.\n"
+"                        </p>\n"
+"                        <div class=\"info-title text-center\">Affiliate "
+"Steps</div>\n"
+"                        <p class=\"info-content text-center\">\n"
+"                            Share the link <i class=\"fa fa-arrow-right\"></"
+"i> Player visit the site <i\n"
+"                                class=\"fa fa-arrow-right\"></i> Play games "
+"<i class=\"fa fa-arrow-right\"></i>\n"
+"                            Get\n"
+"                            points\n"
+"                        </p>\n"
+"                    "
+msgstr ""
+"\n"
+"                        <div class=\"info-title text-center\">About "
+"Affiliate</div>\n"
+"                        <p class=\"info-content\">\n"
+"                            每壹位玩家都擁有專屬的推廣鏈接，其他玩家通過您的推廣鏈接"
+"登陸網站並且對局總金額達到30美元以上作為1點有效點數.\n"
+"                            相應的點數可以獲得不同的獎勵.\n"
+"                        </p>\n"
+"                        <div class=\"info-title text-center\">推廣步驟"
+"</div>\n"
+"                        <p class=\"info-content text-center\">\n"
+"                            分享鏈接 <i class=\"fa fa-arrow-right\"></"
+"i> steam登陸 <i\n"
+"                                class=\"fa fa-arrow-right\"></i> 玩家遊戲 "
+"<i class=\"fa fa-arrow-right\"></i>\n"
+"                            獲取點數\n"
+"                        </p>\n"
+"                    "
+
+#: .\templates\pages\affiliate.html:40
+msgid "About Gift"
+msgstr "關於福利"
+
+#: .\templates\pages\affiliate.html:42
+msgid ""
+"\n"
+"                            <tr>\n"
+"                                <td>5 Points</td>\n"
+"                                <td>10 Points</td>\n"
+"                                <td>18 Points</td>\n"
+"                                <td>30 Points</td>\n"
+"                                <td>50 Points</td>\n"
+"                                <td>50 Points More</td>\n"
+"                            </tr>\n"
+"                            <tr>\n"
+"                                <td>10 dollar</td>\n"
+"                                <td>25 dollar</td>\n"
+"                                <td>40 dollar</td>\n"
+"                                <td>60 dollar</td>\n"
+"                                <td>100 dollar</td>\n"
+"                                <td>200 dollar</td>\n"
+"                            </tr>\n"
+"                        "
+msgstr ""
+"\n"
+"                            <tr>\n"
+"                                <td>推廣5點</td>\n"
+"                                <td>推廣10點</td>\n"
+"                                <td>推廣18點</td>\n"
+"                                <td>推廣30點</td>\n"
+"                                <td>推廣50點</td>\n"
+"                                <td>推廣50點以上</td>\n"
+"                            </tr>\n"
+"                            <tr>\n"
+"                                <td>獎勵10刀</td>\n"
+"                                <td>獎勵25刀</td>\n"
+"                                <td>獎勵40刀</td>\n"
+"                                <td>獎勵60刀</td>\n"
+"                                <td>獎勵100刀</td>\n"
+"                                <td>獎勵200刀</td>\n"
+"                            </tr>\n"
+"                        "
+
+#: .\templates\pages\affiliate.html:72
+msgid "Affiliate link"
+msgstr "推廣鏈接"
+
+#: .\templates\pages\affiliate.html:84
+msgid "Copy affiliate link"
+msgstr "拷貝推廣鏈接"
+
+#: .\templates\pages\affiliate.html:96
+msgid "Your affiliate players"
+msgstr "您目前推廣的人數為"
+
+#: .\templates\pages\affiliate.html:98
+msgid "Your affiliate points"
+msgstr "您目前推廣的點數為"
+
+#: .\templates\pages\affiliate.html:110
+msgid ""
+"\n"
+"                <p>Please login first.</p>\n"
+"            "
+msgstr ""
+"\n"
+"                        <p>請先登錄</p>\n"
+"                    "
+
 #: .\templates\pages\coinflip.html:47
 msgid "Total amount"
 msgstr "總金額"
@@ -955,7 +1096,7 @@ msgstr "歷史"
 
 #: .\templates\pages\coinflip.html:77
 msgid "Steambot is Down"
-msgstr ""
+msgstr "Steam機器人離線"
 
 #: .\templates\pages\coinflip.html:81 .\templates\pages\coinflip.html:85
 #: .\templates\pages\jackpot.html:130 .\templates\pages\jackpot.html:134

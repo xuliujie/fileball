@@ -13,7 +13,7 @@ from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 
 from betting.common_data import TradeStatus, GameType
-from betting.betting_business import get_all_coinflip_history
+from betting.betting_business import get_all_coinflip_history, create_promotion, get_promotion_count
 from betting.betting_business import get_my_coinflip_history, get_my_jackpot_history
 from betting.business.deposit_business import join_coinflip_game, join_jackpot_game, ws_send_cf_news, create_random_hash, getWins, get_ranks
 from betting.business.steam_business import get_user_inventories
@@ -87,12 +87,24 @@ def format_ranking_list(type='win', days=0):
 class HomePageView(TemplateView):
     template_name = 'pages/home.html'
 
+    def get_context_data(self, **kwargs):
+        if self.request.user.is_anonymous():
+            ref_code = self.request.GET.get('ref', None)
+            if ref_code:
+                self.request.session['ref_code'] = ref_code
+        else:
+            ref_code = self.request.session.get('ref_code', None)
+            if ref_code:
+                create_promotion(ref_code, self.request.user)
+        return super(HomePageView, self).get_context_data(**kwargs)
+
 
 home_page_view = HomePageView.as_view()
 
 
 class SupportView(TemplateView):
     template_name = 'common/site/support.html'
+
 
 support_view = SupportView.as_view()
 
@@ -469,6 +481,18 @@ query_user_lack_view = QueryUserLack.as_view()
 
 class AffiliatePageView(TemplateView):
     template_name = 'pages/affiliate.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AffiliatePageView, self).get_context_data(**kwargs)
+        user = current_user(self.request)
+        ref_point = 0
+        ref_count = 0
+        if user:
+            ref_point = user.ref_point
+            ref_count = get_promotion_count(user)
+        context['ref_point'] = ref_point
+        context['ref_count'] = ref_count
+        return context
 
 
 affiliate_page_view = AffiliatePageView.as_view()

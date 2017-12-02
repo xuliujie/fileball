@@ -157,7 +157,7 @@
                         <p>Please login first.</p>
                     {% endblocktrans %}
                     <a href="{% url 'social:begin' 'steam' %}"><img
-                            src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png"
+                            src="{% static 'img/sits_01.png' %}"
                             alt="Login with Steam"></a>
                 </div>
             </div>
