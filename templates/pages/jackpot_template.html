@@ -89,7 +89,7 @@
                         <div v-for="it in de.items" class="item">
                             <img v-if="it.classid"
                                  :src="'https://steamcommunity-a.akamaihd.net/economy/image/class/' + it.appid + '/' + it.classid + '/120fx100f'"
-                                 alt="it.name" class="img-responsive" rel="nofollow">
+                                 alt="it.market_name" class="img-responsive" rel="nofollow">
                             <img v-else src="{% static 'img/item-default.png' %}" alt="" class="img-responsive"
                                  rel="nofollow">
                             <div class="info">
