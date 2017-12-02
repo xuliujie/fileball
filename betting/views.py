@@ -465,3 +465,10 @@ class QueryUserLack(views.APIView):
 
 
 query_user_lack_view = QueryUserLack.as_view()
+
+
+class AffiliatePageView(TemplateView):
+    template_name = 'pages/affiliate.html'
+
+
+affiliate_page_view = AffiliatePageView.as_view()

@@ -22,6 +22,8 @@
             </li>
             <li {% if nbar == 'jackpot' %} class="active" {% endif %}><a href="{% url 'jackpot' %}"><i class="fa fa-circle-o-notch" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Jackpot' %}</b></span></a>
             </li>
+            <li {% if nbar == 'affiliate' %} class="active" {% endif %}><a href="{% url 'affiliate_page' %}"><i class="fa fa-circle-o-notch" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Affiliate' %}</b></span></a>
+            </li>
         </ul>
     {% if not maintenance %}
         <div id="steam-login" class="pull-right">

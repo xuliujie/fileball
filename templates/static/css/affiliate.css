@@ -1,0 +1,96 @@
+#affiliate_wrapper {
+
+}
+
+#affiliate_wrapper .content-body {
+    padding: 20px;
+}
+
+#affiliate_wrapper .affiliate-logo img {
+    width: 80%;
+}
+
+#affiliate_wrapper .affiliate-title {
+    color: #ffffff;
+    font-size: 3rem;
+    line-height: 3rem;
+    padding: 2rem 0;
+}
+
+#affiliate_wrapper .affiliate-info {
+    padding: 2rem 0;
+    color: #d6d6d6;
+}
+
+#affiliate_wrapper .affiliate-info .info-title {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+}
+
+#affiliate_wrapper .affiliate-info .info-content {
+    font-size: 1.5rem;
+}
+
+#affiliate_wrapper .affiliate-table {
+    width: 100%;
+    text-align: center;
+    border: 2px solid #cfa972;
+}
+
+#affiliate_wrapper .affiliate-table tr td {
+    padding: 1rem 0;
+    border: 1px solid #cfa972;
+}
+
+#affiliate_wrapper .affiliate-table img {
+    width: 80%;
+}
+
+#affiliate_wrapper .affiliate-links {
+    padding-top: 2rem;
+}
+
+#affiliate_wrapper .affiliate-user {
+    padding: 2rem 0;
+    color: #d6d6d6;
+}
+
+#affiliate_wrapper .affiliate-user .info-title {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+}
+
+#affiliate_wrapper .affiliate-links {
+    width: 100%;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+#affiliate_url {
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    color: white;
+    background: #2e2e2e;
+}
+
+#affiliate_wrapper .affiliate-result {
+    padding: 20px 60px;
+}
+
+#affiliate_wrapper .affiliate-result .result-item {
+    padding: 1rem;
+    font-size: 2rem;
+    line-height: 2rem;
+}

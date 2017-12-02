@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^index/', views.home_page_view, name='index'),
     url(r'^jackpot/', views.jackpot_view, name='jackpot'),
     url(r'^coinflip/', views.coinflip_view, name='coinflip'),
+    url(r'^affiliate/', views.affiliate_page_view, name='affiliate_page'),
     url(r'^api/coinflip/join/', views.join_coinflip_view),
     url(r'^api/jackpot/join/', views.join_jackpot_view),
     url(r'^api/user/inventory/', views.inventory_query_view, name='inventory_query'),
