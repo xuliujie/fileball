@@ -9,7 +9,7 @@ DEBUG = True
 
 ON_TEST = True
 
-RANDOM_PRICE = False
+RANDOM_PRICE = True
 
 REDIS_HOST = '127.0.0.1'
 REDIS_PASSWORD = ''

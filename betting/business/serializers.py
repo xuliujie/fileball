@@ -114,7 +114,7 @@ def format_coinflip_game(game, **kwargs):
         'total_amount': game.total_amount,
         'expires_at': expires_ts
     }
-    deposits = game.deposits.filter(join_status__gt=10).all()
+    deposits = game.deposits.filter(join_status__gt=10).order_by('create_time').all()
     if len(deposits) == 0:
         return None
 

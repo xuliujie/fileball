@@ -123,7 +123,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 joiner-items">
+            <div class="col-xs-6">
+                <div class="joiner-items">
                 <template v-if="item.deposits[0]">
                     <div class="row row-total">
                         <div class="col-xs-4"><i class="fa fa-dollar"></i> ^{item.deposits[0].amount}</div>
@@ -147,8 +148,10 @@
                         </template>
                     </div>
                 </template>
+                </div>
             </div>
             <div id="cfRoundOpponent" class="col-xs-6">
+                <div class="joiner-items">
                 <template v-if="item.deposits[1]">
                     <div class="row row-total">
                         <div class="col-xs-4"><i class="fa fa-dollar"></i> ^{item.deposits[1].amount}</div>
@@ -191,6 +194,7 @@
                         </p>
                     </template>
                 </template>
+                </div>
             </div>
         </div>
         <template v-if="!item.joined.status">

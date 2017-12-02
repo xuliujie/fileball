@@ -487,7 +487,7 @@ class AffiliatePageView(TemplateView):
         user = current_user(self.request)
         ref_point = 0
         ref_count = 0
-        if user:
+        if not user.is_anonymous():
             ref_point = user.ref_point
             ref_count = get_promotion_count(user)
         context['ref_point'] = ref_point

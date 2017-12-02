@@ -10,6 +10,7 @@ from social_auth.models import SteamUser
 from django.db import connection
 from django.conf import settings
 from django.utils import timezone as dt
+from django.utils.translation import ugettext_lazy as _
 
 from betting.common_data import TradeStatus, JoinStatus, GameType
 from betting.models import PropItem, SendRecord, CoinFlipGame, Deposit, Promotion, UserAmountRecord
@@ -333,7 +334,7 @@ def create_user_amount_record(steamer, game, amount, reason):
         total_amount=steamer.amount,
         reason=reason
     )
-    refer = Promotion.objects.filter(steamer=steamer).filter()
+    refer = Promotion.objects.filter(steamer=steamer).first()
     if refer and refer.ref:
         if not refer.pointed and steamer.total_amount >= settings.PROMOTION_MIN_AMOUNT:
             refer.ref.ref_point += 1

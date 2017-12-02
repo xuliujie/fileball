@@ -81,13 +81,23 @@ class PropItemAdmin(ModelAdmin):
         return False
 
 
+class PropItemInline(TabularInline):
+    model = PropItem
+    can_delete = False
+    extra = 0
+    fields = ('market_name', 'amount', 'appid', 'contextid', 'assetid')
+
+    def has_add_permission(self, request):
+        return False
+
+
 class DepositAdmin(ReadOnlyAdmin):
     list_display = ('uid', 'steamer', 'game', 'create_time')
     ordering = ('-create_time',)
     search_fields = ('uid', 'steamer__personaname', 'game__uid')
     date_hierarchy = 'create_time'
     list_filter = ('create_time', 'steamer')
-    inlines = []
+    inlines = [PropItemInline]
     list_per_page = 50
 
     def game(self, obj):
@@ -102,7 +112,7 @@ class SendRecordAdmin(ModelAdmin):
     ordering = ('-create_time',)
     list_filter = ('create_time', 'status')
     date_hierarchy = 'create_time'
-    inlines = []
+    inlines = [PropItemInline]
     list_per_page = 50
 
     def get_readonly_fields(self, request, obj=None):
@@ -176,3 +186,11 @@ class GiveAwayAdmin(ModelAdmin):
 class AnnounceAdmin(ModelAdmin):
     list_display = ('anno_type', 'content', 'enable', 'num')
     list_editable = ('enable', 'num')
+
+
+class PromotionAdmin(ReadOnlyAdmin):
+    list_display = ('ref', 'steamer', 'pointed')
+    list_filter = ('ref', 'pointed')
+    list_per_page = 50
+    search_fields = ('steamer__personaname',)
+    ordering = ('-create_time',)
