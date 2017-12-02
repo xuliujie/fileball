@@ -126,7 +126,7 @@
                                     :index="index" class="flip-list-item"></tr>
                                 </tbody>
                             </table>
-                            <div class="status-message">
+                            <div class="status-message" v-show="games.length === 0">
                                 <h2 class="text-center">{% trans 'No games added right now' %}</h2>
                             </div>
                         </div>
