@@ -281,20 +281,10 @@ def cancel_send_items(uid, **kwargs):
     data = kwargs.get('data', {})
     if uid:
         record = SendRecord.objects.get(uid=uid)
-        item_unlock(data.get('myItems', []), record.steamer)
         record.status = data.get('status', TradeStatus.Cancelled.value)
         record.bot_status = data.get('bot_status', 0)
         record.bot_msg = data.get('bot_msg', '')
         record.save()
-
-
-def item_unlock(items, steamer):
-    for i in items:
-        if i.get('assetid', None):
-            item = PropItem.objects.filter(assetid=i['assetid'], owner=steamer).first()
-            if item:
-                item.is_locked = False
-                item.save()
 
 
 def resend_record(record_id):

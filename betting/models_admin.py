@@ -106,7 +106,7 @@ class DepositAdmin(ReadOnlyAdmin):
     game.allow_tags = True
 
 
-class SendRecordAdmin(ModelAdmin):
+class SendRecordAdmin(ReadOnlyAdmin):
     list_display = ('uid', 'trade_no', 'status', 'security_code', 'steamer', 'create_time')
     search_fields = ('trade_no', 'security_code', 'steamer__personaname')
     ordering = ('-create_time',)
@@ -115,23 +115,15 @@ class SendRecordAdmin(ModelAdmin):
     inlines = [PropItemInline]
     list_per_page = 50
 
-    def get_readonly_fields(self, request, obj=None):
-        # make all fields readonly
-        readonly_fields = list(set(
-            [field.name for field in self.opts.local_fields] +
-            [field.name for field in self.opts.local_many_to_many]
-        ))
-        if 'status' in readonly_fields:
-            readonly_fields.remove('status')
-        return readonly_fields
+    def change_view(self, request, object_id, form_url='', extra_context=None):
+        extra_context = extra_context or dict()
+        extra_context['show_resend'] = True
+        if '_re_send' in request.POST:
+            resend_record(object_id)
+        return super(SendRecordAdmin, self).change_view(request, object_id, form_url, extra_context=extra_context)
 
-    def has_add_permission(self, request):
-        # Nobody is allowed to add
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        # Nobody is allowed to delete
-        return False
+    def has_change_permission(self, request, obj=None):
+        return True
 
 
 class SiteConfigAdmin(ModelAdmin):
