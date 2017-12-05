@@ -118,7 +118,7 @@
             {% trans 'Hash:' %} ^{item.hash} <span class="sep">|</span>
             {% trans 'Percentage:' %} ^{item.percentage}% <span class="sep">|</span>
             {% trans 'Secret:' %} ^{item.secret}
-            <a :href="'/provably-fair/' + item.hash + '-' + item.secret + '-' + item.percentage + '-' + item.totalTickets"
+            <a :href="'/provably-fair/' + item.hash + '-' + item.secret + '-' + item.percentage + '-' + item.total_tickets"
                rel="nofollow" target="_blank">
                 <i class="fa fa-question-circle" data-toggle="tooltip" title=""
                    data-original-title="Validate Round"></i>

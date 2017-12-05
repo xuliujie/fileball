@@ -65,7 +65,7 @@ def get_winner(game):
     }
     jackpot_winner = {
         'steamer': SteamerSerializer(winner).data,
-        'amount': game.total_amount,
+        'amount': round(game.total_amount, 2),
         'chance': '{0:.2f}'.format(win_deposit_amount / game.total_amount*100)
     }
     return coinflip_winner, jackpot_winner
@@ -87,8 +87,8 @@ def format_jackpot_joiners(game, winner):
             joiner['chance'] = joiner['amount'] / game.total_amount
     joiners = []
     for k, v in joiner_map.items():
-        joiners.extend([v for i in range(int(math.ceil(v['chance']/0.04)))])
-    win_index = random.randint(10, 25)
+        joiners.extend([v for i in range(int(math.ceil(v['chance']/0.01)))])
+    win_index = random.randint(80, 90)
     random.shuffle(joiners)
     joiners.insert(win_index, winner)
     return joiners, win_index
@@ -153,10 +153,13 @@ def format_coinflip_game(game, **kwargs):
         'status': 0,
     }
     if joiner:
+        joined_least = (dt_now - joiner.create_time).seconds
         joined.update({
             'status': 1,
             'expired': False,
             "ts": ts,
+            'least': settings.DEPOSIT_TIMEOUT - joined_least,
+            'max': settings.DEPOSIT_TIMEOUT,
             'steamer': SteamerSerializer(joiner.steamer).data
         })
     ret['joined'] = joined
@@ -165,8 +168,13 @@ def format_coinflip_game(game, **kwargs):
 
 def format_jackpot_game(game, animate=False, **kwargs):
     run_ts = None
+    dt_now = dt.now()
+    least_sec = settings.JACKPOT_COUNTDOWN
     if game.run_ts:
         run_ts = aware_datetime_to_timestamp(game.run_ts)
+        least_span = (dt_now - game.run_ts).seconds
+        if least_span < settings.JACKPOT_COUNTDOWN:
+            least_sec = settings.JACKPOT_COUNTDOWN - least_span
     ret = {
         'uid': game.uid,
         'hash': game.hash,
@@ -175,11 +183,12 @@ def format_jackpot_game(game, animate=False, **kwargs):
         'winner': None,
         'deposit': None,
         'deposits': [],
-        'total_amount': game.total_amount,
+        'total_amount': round(game.total_amount, 2),
         'total_items': game.total_items,
         'run_ts': run_ts,
         'totalTickets': game.total_tickets,
-        'countdown': settings.JACKPOT_COUNTDOWN
+        'countdown': settings.JACKPOT_COUNTDOWN,
+        'least_sec': least_sec
     }
 
     deposit_data = []

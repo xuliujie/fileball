@@ -173,12 +173,14 @@ Vue.component('cf-item', {
       var that = this;
       var gid = that.item.gid;
       var el = 'tr[data-id="' + gid + '"] input[class="cfRoundKnob"]';
-      init_cf_knob(el, 0, 90, 40, 40, "#b22020", "#f47d7d");
+      init_cf_knob(el, 0, 90, 40, 40, "#b22020", "#f47d7d", "#b22020");
       var tsNow = Math.floor((new Date()).getTime() / 1000);
-      var secondsSpan = tsNow - that.item.joined.ts;
-      secondsSpan = secondsSpan < 0 ? 0 : secondsSpan;
-      if (secondsSpan >= 0 && secondsSpan < 90) {
-        var leastSeconds = 90 - secondsSpan;
+      // var secondsSpan = tsNow - that.item.joined.ts;
+      // secondsSpan = secondsSpan < 0 ? 0 : secondsSpan;
+      var secondsSpan = that.item.joined.least;
+      if (secondsSpan >= 0 && secondsSpan <= 90) {
+        // var leastSeconds = 90 - secondsSpan;
+        var leastSeconds = secondsSpan;
         that.extraData.seconds = leastSeconds;
         that.timer = init_cf_timer(gid, leastSeconds, function () {
           that.extraData.seconds -= 1;
@@ -194,7 +196,7 @@ Vue.component('cf-item', {
       }
       var gid = that.item.gid;
       var el = 'tr[data-id="' + that.item.gid + '"] input[class="cfRoundKnob"]';
-      reset_cf_knob(el, 0, 10, 40, 40, "#2a6421", "#5db14f");
+      reset_cf_knob(el, 0, 10, 40, 40, "#2a6421", "#5db14f", "#2a6421");
       that.extraData.seconds = 10;
       that.timer = init_cf_timer(gid, 10, function () {
         var oldVal = that.extraData.seconds;

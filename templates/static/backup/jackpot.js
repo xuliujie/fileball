@@ -82,8 +82,9 @@ function setupCountdown(jk) {
   var totalSpan = jk.countdown;
   if (currentCounter.gid !== jk.uid && jk.run_ts) {
     var tsNow = Math.floor(Date.now() / 1000);
-    var pastSpan = tsNow - jk.run_ts;
-    var leastSpan = totalSpan - pastSpan;
+    // var pastSpan = tsNow - jk.run_ts;
+    // var leastSpan = totalSpan - pastSpan;
+    var leastSpan = jk.least_sec;
     if (leastSpan > 0) {
       currentCounter.timer.start({countdown: true, startValues: {seconds: leastSpan}});
     }
@@ -125,7 +126,6 @@ Vue.component('scroll-sel', {
 
   },
   mounted: function () {
-
     var that = this;
     var uid = that.deposit.uid;
     var slidee = $('#' + uid + ' .slidee');
@@ -133,8 +133,6 @@ Vue.component('scroll-sel', {
     var winIdx = that.deposit.win_index;
     var number = 1 + Math.floor(Math.random() * 79);
     var translateX = 240 - (winIdx * 80 + number);
-
-
     var translate = "translate(" + translateX + "px, 0)";
     setTimeout(function () {
       $('#rolling_audio')[0].play();

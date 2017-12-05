@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-02 17:59+0800\n"
+"POT-Creation-Date: 2017-12-05 18:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,13 +30,13 @@ msgid "Amount not matched"
 msgstr ""
 
 #: .\betting\business\deposit_business.py:326
-#: .\betting\business\trade_business.py:357
+#: .\betting\business\trade_business.py:348
 #: .\templates\common\history\history_template.html:209
 msgid "Win"
 msgstr "勝利"
 
 #: .\betting\business\deposit_business.py:328
-#: .\betting\business\trade_business.py:359
+#: .\betting\business\trade_business.py:350
 #: .\templates\common\history\history_template.html:210
 msgid "Lose"
 msgstr "失敗"
@@ -466,6 +466,21 @@ msgstr "未找到"
 msgid "Server Exception"
 msgstr "服務器異常"
 
+#: .\templates\admin\login.html:21
+msgid "Please correct the error below."
+msgstr ""
+
+#: .\templates\admin\login.html:21
+msgid "Please correct the errors below."
+msgstr ""
+
+#: .\templates\admin\login.html:37
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
 #: .\templates\admin\submit_line.html:3
 msgid "Save"
 msgstr ""
@@ -524,9 +539,17 @@ msgstr ""
 "        </ul>\n"
 "        "
 
-#: .\templates\common\footer\footer.html:15
-msgid "Custom Service"
-msgstr "客服"
+#: .\templates\common\footer\footer.html:16
+msgid "Links"
+msgstr "友情鏈接"
+
+#: .\templates\common\footer\footer.html:17
+msgid "5uskins"
+msgstr "无忧收货"
+
+#: .\templates\common\footer\footer.html:20
+msgid "Steambot Status:"
+msgstr "機器人狀態"
 
 #: .\templates\common\history\history_template.html:49
 msgid "Needs:"
@@ -544,23 +567,23 @@ msgstr "觀看"
 
 #: .\templates\common\history\history_template.html:118
 #: .\templates\pages\coinflip_template.html:89
-#: .\templates\pages\coinflip_template.html:326
+#: .\templates\pages\coinflip_template.html:330
 #: .\templates\pages\play_fair.html:55
 msgid "Hash:"
 msgstr "Hash"
 
 #: .\templates\common\history\history_template.html:119
 #: .\templates\pages\coinflip_template.html:91
-#: .\templates\pages\coinflip_template.html:327
-#: .\templates\pages\coinflip_template.html:369
+#: .\templates\pages\coinflip_template.html:331
+#: .\templates\pages\coinflip_template.html:373
 #: .\templates\pages\jackpot_template.html:47
 msgid "Percentage:"
 msgstr "Percentage:"
 
 #: .\templates\common\history\history_template.html:120
 #: .\templates\pages\coinflip_template.html:93
-#: .\templates\pages\coinflip_template.html:328
-#: .\templates\pages\coinflip_template.html:369
+#: .\templates\pages\coinflip_template.html:332
+#: .\templates\pages\coinflip_template.html:373
 #: .\templates\pages\jackpot_template.html:47
 #: .\templates\pages\play_fair.html:63
 msgid "Secret:"
@@ -690,7 +713,7 @@ msgid "Please go to this page to config your trade url first"
 msgstr "請先轉到此界面設置您的交易鏈接"
 
 #: .\templates\common\inventory\inventory_template.html:100
-#: .\templates\pages\coinflip_template.html:180
+#: .\templates\pages\coinflip_template.html:183
 #: .\templates\pages\profile_detail\package.html:102
 #: .\templates\pages\profile_detail\store.html:100
 msgid "We are sending your offer"
@@ -724,11 +747,15 @@ msgstr ""
 msgid "Affiliate"
 msgstr "推廣"
 
-#: .\templates\common\nav\nav.html:59
+#: .\templates\common\nav\nav.html:29
+msgid "Custom Service"
+msgstr "客服"
+
+#: .\templates\common\nav\nav.html:64
 msgid "Profile"
 msgstr "個人主頁"
 
-#: .\templates\common\nav\nav.html:61
+#: .\templates\common\nav\nav.html:66
 msgid "Logout"
 msgstr "退出"
 
@@ -986,8 +1013,8 @@ msgid ""
 "                                "
 msgstr ""
 "\n"
-"                        <div class=\"info-title text-center\">关于 "
-"推廣</div>\n"
+"                        <div class=\"info-title text-center\">关于 推廣</"
+"div>\n"
 "                        <p class=\"info-content\">\n"
 "                            每壹位玩家都擁有專屬的推廣鏈接，其他玩家通過您的"
 "推廣鏈接登陸網站並且對局總金額達到30美元以上作為1點有效點數.\n"
@@ -1119,11 +1146,11 @@ msgstr ""
 "                        <p>請先登錄</p>\n"
 "                    "
 
-#: .\templates\pages\coinflip_template.html:177
+#: .\templates\pages\coinflip_template.html:180
 msgid "User joining"
 msgstr "玩家加入中"
 
-#: .\templates\pages\coinflip_template.html:186
+#: .\templates\pages\coinflip_template.html:189
 msgid ""
 "\n"
 "                                    You will receive your offer's link here."
@@ -1138,11 +1165,11 @@ msgstr ""
 "com為您提供的交易鏈接 或檢查您的交易安全碼以防被騙。</span>\n"
 "                                "
 
-#: .\templates\pages\coinflip_template.html:197
+#: .\templates\pages\coinflip_template.html:201
 msgid "Expires at"
 msgstr "過期於:"
 
-#: .\templates\pages\coinflip_template.html:205
+#: .\templates\pages\coinflip_template.html:209
 #, python-format
 msgid ""
 "\n"
@@ -1213,31 +1240,31 @@ msgstr ""
 "                </p>\n"
 "            "
 
-#: .\templates\pages\coinflip_template.html:239
+#: .\templates\pages\coinflip_template.html:243
 msgid "Deposit information"
 msgstr "遊戲信息"
 
-#: .\templates\pages\coinflip_template.html:243
+#: .\templates\pages\coinflip_template.html:247
 msgid "Minimum amount per deposit:"
 msgstr "每局最低金額"
 
-#: .\templates\pages\coinflip_template.html:247
+#: .\templates\pages\coinflip_template.html:251
 msgid "Maximum items in a deposit:"
 msgstr "每局最多飾品數目"
 
-#: .\templates\pages\coinflip_template.html:251
+#: .\templates\pages\coinflip_template.html:255
 msgid "Maximum active rounds:"
 msgstr "每局最多飾品數目"
 
-#: .\templates\pages\coinflip_template.html:252
+#: .\templates\pages\coinflip_template.html:256
 msgid "not set"
 msgstr ""
 
-#: .\templates\pages\coinflip_template.html:255
+#: .\templates\pages\coinflip_template.html:259
 msgid "Coins:"
 msgstr "硬幣"
 
-#: .\templates\pages\coinflip_template.html:263
+#: .\templates\pages\coinflip_template.html:267
 msgid ""
 "\n"
 "                <h2>Create a game</h2>\n"
@@ -1284,11 +1311,11 @@ msgstr ""
 "                </p>\n"
 "            "
 
-#: .\templates\pages\coinflip_template.html:290
+#: .\templates\pages\coinflip_template.html:294
 msgid "Loading"
 msgstr "加載中"
 
-#: .\templates\pages\coinflip_template.html:365
+#: .\templates\pages\coinflip_template.html:369
 #, python-format, python-brace-format
 msgid ""
 "\n"

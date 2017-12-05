@@ -130,7 +130,7 @@ function floatStrip(number, fixed) {
   return (parseFloat(number).toFixed(fixed));
 }
 
-function init_cf_knob_el(el, min, max, width, height, fgColor, bgColor) {
+function init_cf_knob_el(el, min, max, width, height, fgColor, bgColor, inputColor) {
   el.knob({
     'min': min,
     'max': max,
@@ -138,11 +138,12 @@ function init_cf_knob_el(el, min, max, width, height, fgColor, bgColor) {
     'height': height,
     'fgColor': fgColor,
     'bgColor': bgColor,
+    'inputColor': inputColor,
     'readOnly': true
   });
 }
 
-function init_cf_knob(el, min, max, width, height, fgColor, bgColor) {
+function init_cf_knob(el, min, max, width, height, fgColor, bgColor, inputColor) {
   $(el).knob({
     'min': min,
     'max': max,
@@ -150,11 +151,12 @@ function init_cf_knob(el, min, max, width, height, fgColor, bgColor) {
     'height': height,
     'fgColor': fgColor,
     'bgColor': bgColor,
+    'inputColor': inputColor,
     'readOnly': true
   });
 }
 
-function reset_cf_knob(el, min, max, width, height, fgColor, bgColor) {
+function reset_cf_knob(el, min, max, width, height, fgColor, bgColor, inputColor) {
 
   init_cf_knob(el, min, max, width, height, fgColor, bgColor);
   $(el).trigger(
@@ -166,6 +168,7 @@ function reset_cf_knob(el, min, max, width, height, fgColor, bgColor) {
       'height': height,
       'fgColor': fgColor,
       'bgColor': bgColor,
+      'inputColor': inputColor,
       'readOnly': true
     }
   );

@@ -1,0 +1,21 @@
+#page .container {
+    color: white;
+}
+
+.panel {
+    color: white;
+    background-color: #282828;
+    border-color: #598db2;
+}
+
+.panel-default>.panel-heading {
+    color: white;
+    background-color: #282828;
+    border-color: #598db2;
+}
+
+.list-group-item {
+    color: white;
+    border-color: #598db2;
+    background-color: #282828;
+}

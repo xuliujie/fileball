@@ -27,6 +27,7 @@ footer .footer-body .footer-logo {
 }
 
 .footer-body .footer-contact {
+    padding-top: 1rem;
     text-align: center;
 }
 
@@ -45,3 +46,30 @@ footer .footer-body .footer-logo {
     border-right: 2px solid #949494;
 }
 
+.footer-contact .footer-span-item {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    padding: 0 1rem;
+}
+
+.footer-contact .footer-span-item a {
+    text-decoration: none;
+}
+
+footer .bot-status span.steambotOff {
+    background-color: #b83535;
+    font-size: 11px;
+    color: #eee;
+    border-radius: 20px;
+    padding: 2px 10px;
+    cursor: default
+}
+
+footer .bot-status span.steambotOn {
+    background-color: #1a6d1a;
+    font-size: 11px;
+    color: #eee;
+    border-radius: 20px;
+    padding: 2px 10px;
+    cursor: default;
+}

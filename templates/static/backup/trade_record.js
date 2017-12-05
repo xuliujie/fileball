@@ -87,7 +87,7 @@ Vue.component('trade-item', {
             var that = this;
             var gid = that.item.gid;
             var el = 'tr[data-id="' + gid + '"] input[class="cfRoundKnob"]';
-            init_cf_knob(el, 0, 90, 40, 40, "#b22020", "#f47d7d");
+            init_cf_knob(el, 0, 90, 40, 40, "#b22020", "#f47d7d", "#b22020");
             var tsNow = Math.floor((new Date()).getTime() / 1000);
             var secondsSpan = tsNow - that.item.joined.ts;
             secondsSpan = secondsSpan < 0 ? 0 : secondsSpan;
@@ -108,7 +108,7 @@ Vue.component('trade-item', {
 
             var gid = that.item.gid;
             var el = 'tr[data-id="' + that.item.gid + '"] input[class="cfRoundKnob"]';
-            reset_cf_knob(el, 0, 10, 40, 40, "#2a6421", "#5db14f");
+            reset_cf_knob(el, 0, 10, 40, 40, "#2a6421", "#5db14f", "#2a6421");
             that.extraData.seconds = 10;
             that.timer = init_cf_timer(gid, 10, function () {
                     that.extraData.seconds -= 1;

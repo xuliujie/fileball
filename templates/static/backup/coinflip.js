@@ -178,12 +178,12 @@ Vue.component('cf-view', {
     renderJoinCountdown: function () {
       var that = this;
       var el = 'div[id="cfRoundView"] input[class="cfRoundKnob"]';
-      init_cf_knob(el, 0, 90, 130, 130, "#b22020", "#f47d7d");
+      init_cf_knob(el, 0, 90, 130, 130, "#b22020", "#f47d7d", "#b22020");
     },
     renderEndCountdown: function () {
       var that = this;
       var el = 'div[id="cfRoundView"] input[class="cfRoundKnob"]';
-      reset_cf_knob(el, 0, 10, 130, 130, "#2a6421", "#5db14f");
+      reset_cf_knob(el, 0, 10, 130, 130, "#2a6421", "#5db14f", "#2a6421");
       that.endCounting = true;
     },
     renderWinner: function () {
@@ -273,12 +273,13 @@ $(function () {
   });
 
   var games = new Vue({
-    el: '#cf_games',
+    el: '#coinflip-wrapper',
     delimiters: ['^{', '}'],
     data: {
       games: [],
       totalAmount: 0,
       totalGames: 0,
+      totalItems: 0,
       joinGames: 0,
       myDepositAmount: 0,
       toBeClear: []
@@ -356,9 +357,11 @@ $(function () {
         var mySteamID = $("meta[name=steamid]").data('value');
         var totalAmt = 0;
         var myAmount = 0;
+        var totalItems = 0;
         var joinable = 0;
         for (var i = 0; i < that.games.length; i++) {
           totalAmt += that.games[i].total_amount;
+          totalItems += that.games[i].totalItems;
           for (var j = 0; j < that.games[i].deposits.length; j++) {
             if (mySteamID === that.games[i].deposits[j].steamer.steamid) {
               myAmount += that.games[i].deposits[j].amount;
@@ -370,6 +373,7 @@ $(function () {
         }
         that.totalAmount = totalAmt;
         that.joinGames = joinable;
+        that.totalItems = totalItems;
         that.totalGames = that.games.length;
         that.myDepositAmount = myAmount;
       }

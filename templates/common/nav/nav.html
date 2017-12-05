@@ -24,6 +24,11 @@
             </li>
             <li {% if nbar == 'affiliate' %} class="active" {% endif %}><a href="{% url 'affiliate_page' %}"><i class="fa fa-circle-o-notch" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Affiliate' %}</b></span></a>
             </li>
+            <li>
+                <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=ea73ac27d35f1a4cb9712fda8f0a1a9c59f7bab202d3436dd5cba1976d489e02">
+                    <i class="fa fa-qq" style="color:#5ad3d1;"></i> <span class="hidden-sm"><b>{% trans 'Custom Service' %}</b></span>
+                </a>
+            </li>
         </ul>
     {% if not maintenance %}
         <div id="steam-login" class="pull-right">
