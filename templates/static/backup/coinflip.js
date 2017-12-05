@@ -371,11 +371,11 @@ $(function () {
             joinable += 1;
           }
         }
-        that.totalAmount = totalAmt;
+        that.totalAmount = parseFloat(totalAmt.toFixed(2));
         that.joinGames = joinable;
         that.totalItems = totalItems;
         that.totalGames = that.games.length;
-        that.myDepositAmount = myAmount;
+        that.myDepositAmount = parseFloat(myAmount.toFixed(2));
       }
     }
   });

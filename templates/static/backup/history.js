@@ -28,7 +28,17 @@ Vue.component('cf-history', {
       histories: [],
       page: 1,
       totalCount: 0,
-      pages: 1
+      pages: 1,
+      total_summary: {
+        count: 0,
+        join: 0,
+        win: 0
+      },
+      today_summary: {
+        count: 0,
+        join: 0,
+        win: 0
+      }
     }
   },
   created: function () {
@@ -72,6 +82,8 @@ Vue.component('cf-history', {
             for (var i = 0; i < result.body.items.length; i++) {
               that.histories.push(fillCoinflipData(result.body.items[i], true));
             }
+            that.total_summary = result.body.total_summary;
+            that.today_summary = result.body.today_summary;
             that.page = result.body.page;
             that.totalCount = result.body.total_count;
             that.pages = Math.ceil(that.totalCount / 10);
@@ -201,8 +213,8 @@ Vue.component('cf-item', {
       that.timer = init_cf_timer(gid, 10, function () {
         var oldVal = that.extraData.seconds;
         var newVal = that.extraData.seconds - 1;
-        var coords = { x: oldVal };
-        var tween = new TWEEN.Tween(coords).to({ x: newVal }, 1000).onUpdate(function() {
+        var coords = {x: oldVal};
+        var tween = new TWEEN.Tween(coords).to({x: newVal}, 1000).onUpdate(function () {
           console.log('konb: ' + coords.x);
         }).start();
         that.extraData.seconds -= 1;

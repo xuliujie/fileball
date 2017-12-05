@@ -96,3 +96,7 @@ header, .navbar-default {
     height: 30px;
     line-height: 30px;
 }
+
+#historyPage {
+    color: white;
+}

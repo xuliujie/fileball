@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-05 18:45+0800\n"
+"POT-Creation-Date: 2017-12-05 23:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,13 +31,13 @@ msgstr ""
 
 #: .\betting\business\deposit_business.py:326
 #: .\betting\business\trade_business.py:348
-#: .\templates\common\history\history_template.html:209
+#: .\templates\common\history\history_template.html:234
 msgid "Win"
 msgstr "勝利"
 
 #: .\betting\business\deposit_business.py:328
 #: .\betting\business\trade_business.py:350
-#: .\templates\common\history\history_template.html:210
+#: .\templates\common\history\history_template.html:235
 msgid "Lose"
 msgstr "失敗"
 
@@ -185,7 +185,7 @@ msgid "Game"
 msgstr "遊戲"
 
 #: .\betting\models.py:176 .\social_auth\models.py:71
-#: .\templates\common\history\history_template.html:192
+#: .\templates\common\history\history_template.html:216
 msgid "Amount"
 msgstr "數量"
 
@@ -387,6 +387,7 @@ msgid "Profit"
 msgstr "收益"
 
 #: .\betting\models.py:352
+#: .\templates\common\history\history_template.html:155
 msgid "Total Profit"
 msgstr "總收益"
 
@@ -539,40 +540,44 @@ msgstr ""
 "        </ul>\n"
 "        "
 
-#: .\templates\common\footer\footer.html:16
+#: .\templates\common\footer\footer.html:17
+msgid "Get started"
+msgstr "教程"
+
+#: .\templates\common\footer\footer.html:18
 msgid "Links"
 msgstr "友情鏈接"
 
-#: .\templates\common\footer\footer.html:17
+#: .\templates\common\footer\footer.html:19
 msgid "5uskins"
 msgstr "无忧收货"
 
-#: .\templates\common\footer\footer.html:20
+#: .\templates\common\footer\footer.html:22
 msgid "Steambot Status:"
 msgstr "機器人狀態"
 
-#: .\templates\common\history\history_template.html:49
+#: .\templates\common\history\history_template.html:52
 msgid "Needs:"
 msgstr "需求:"
 
-#: .\templates\common\history\history_template.html:67
-#: .\templates\common\history\history_template.html:71
-#: .\templates\common\history\history_template.html:74
+#: .\templates\common\history\history_template.html:72
+#: .\templates\common\history\history_template.html:77
+#: .\templates\common\history\history_template.html:81
 msgid "Join"
 msgstr "加入"
 
-#: .\templates\common\history\history_template.html:108
+#: .\templates\common\history\history_template.html:116
 msgid "View"
 msgstr "觀看"
 
-#: .\templates\common\history\history_template.html:118
+#: .\templates\common\history\history_template.html:126
 #: .\templates\pages\coinflip_template.html:89
 #: .\templates\pages\coinflip_template.html:330
 #: .\templates\pages\play_fair.html:55
 msgid "Hash:"
 msgstr "Hash"
 
-#: .\templates\common\history\history_template.html:119
+#: .\templates\common\history\history_template.html:127
 #: .\templates\pages\coinflip_template.html:91
 #: .\templates\pages\coinflip_template.html:331
 #: .\templates\pages\coinflip_template.html:373
@@ -580,7 +585,7 @@ msgstr "Hash"
 msgid "Percentage:"
 msgstr "Percentage:"
 
-#: .\templates\common\history\history_template.html:120
+#: .\templates\common\history\history_template.html:128
 #: .\templates\pages\coinflip_template.html:93
 #: .\templates\pages\coinflip_template.html:332
 #: .\templates\pages\coinflip_template.html:373
@@ -589,40 +594,68 @@ msgstr "Percentage:"
 msgid "Secret:"
 msgstr "Secret:"
 
-#: .\templates\common\history\history_template.html:141
+#: .\templates\common\history\history_template.html:149
+msgid "Total Games"
+msgstr "總物品"
+
+#: .\templates\common\history\history_template.html:150
+msgid "Today Games"
+msgstr "今日遊戲"
+
+#: .\templates\common\history\history_template.html:151
+msgid "Total Join"
+msgstr "總參與"
+
+#: .\templates\common\history\history_template.html:152
+msgid "Today Join"
+msgstr "今日參與"
+
+#: .\templates\common\history\history_template.html:156
+msgid "Today Profit"
+msgstr "總收益"
+
+#: .\templates\common\history\history_template.html:157
+msgid "Total Win"
+msgstr "總共勝利"
+
+#: .\templates\common\history\history_template.html:158
+msgid "Today Win"
+msgstr "今日勝利"
+
+#: .\templates\common\history\history_template.html:165
 #: .\templates\pages\coinflip.html:116
 msgid "Players"
 msgstr "玩家"
 
-#: .\templates\common\history\history_template.html:142
-#: .\templates\common\history\history_template.html:191
+#: .\templates\common\history\history_template.html:166
+#: .\templates\common\history\history_template.html:215
 #: .\templates\pages\coinflip.html:117
 #: .\templates\pages\profile_detail\trade_record.html:28
 msgid "Items"
 msgstr "物品"
 
-#: .\templates\common\history\history_template.html:143
+#: .\templates\common\history\history_template.html:167
 #: .\templates\pages\coinflip.html:118
 #: .\templates\pages\profile_detail\trade_record.html:29
 msgid "Total"
 msgstr "總共"
 
-#: .\templates\common\history\history_template.html:155
+#: .\templates\common\history\history_template.html:179
 #: .\templates\pages\coinflip.html:130
 msgid "No games added right now"
 msgstr "暫無遊戲"
 
-#: .\templates\common\history\history_template.html:193
+#: .\templates\common\history\history_template.html:217
 msgid "Win/lose"
 msgstr "勝利/失敗"
 
-#: .\templates\common\history\history_template.html:194
+#: .\templates\common\history\history_template.html:218
 #: .\templates\pages\profile_detail\store.html:20
 #: .\templates\pages\profile_detail\trade_record.html:30
 msgid "Time"
 msgstr "時間"
 
-#: .\templates\common\history\history_template.html:221
+#: .\templates\common\history\history_template.html:246
 msgid "Not found rounds"
 msgstr "回合未找到"
 
@@ -759,7 +792,7 @@ msgstr "個人主頁"
 msgid "Logout"
 msgstr "退出"
 
-#: .\templates\common\site\get_started.html:6
+#: .\templates\common\site\get_started.html:7
 msgid "Get Started"
 msgstr "教程"
 
