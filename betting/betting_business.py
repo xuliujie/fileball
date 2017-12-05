@@ -104,7 +104,7 @@ def get_game_summary(user, game_type, dt_begin):
     amount_records = UserAmountRecord.objects.filter(
         steamer__steamid=user.steamid,
         game__game_type=game_type,
-        create_time__gte=dt_begin.date()
+        create_time__gte=dt_begin
     ).all()
     amounts = [i.amount for i in amount_records]
     amount = round(sum(amounts), 2)
@@ -124,8 +124,8 @@ def get_game_summary(user, game_type, dt_begin):
 def get_my_game_history(user, game_type, format_func, page=1, **kwargs):
     dt_now = dt.now()
     local_now = dt.localtime(dt_now)
-    dt_begin = dt_now - timedelta(days=6)
-    dt_end = dt_now + timedelta(days=1)
+    local_begin = local_now.replace(hour=0, minute=0, second=0)
+    dt_begin = local_begin - timedelta(days=6)
     items = []
     games = CoinFlipGame.objects.filter(
         game_type=game_type, end=1,
@@ -143,7 +143,7 @@ def get_my_game_history(user, game_type, format_func, page=1, **kwargs):
         if data:
             items.append(data)
     total_summary = get_game_summary(user, game_type, dt_begin)
-    today_summary = get_game_summary(user, game_type, local_now)
+    today_summary = get_game_summary(user, game_type, local_begin)
     ret = {
         'total_count': paginator.count,
         'items': items,
