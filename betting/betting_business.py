@@ -123,6 +123,7 @@ def get_game_summary(user, game_type, dt_begin):
 
 def get_my_game_history(user, game_type, format_func, page=1, **kwargs):
     dt_now = dt.now()
+    local_now = dt.localtime(dt_now)
     dt_begin = dt_now - timedelta(days=6)
     dt_end = dt_now + timedelta(days=1)
     items = []
@@ -142,7 +143,7 @@ def get_my_game_history(user, game_type, format_func, page=1, **kwargs):
         if data:
             items.append(data)
     total_summary = get_game_summary(user, game_type, dt_begin)
-    today_summary = get_game_summary(user, game_type, dt_now)
+    today_summary = get_game_summary(user, game_type, local_now)
     ret = {
         'total_count': paginator.count,
         'items': items,
