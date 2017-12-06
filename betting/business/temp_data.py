@@ -157,7 +157,7 @@ def temp_sender():
                 val = r.get(key)
                 if val:
                     deposit = json.loads(val, encoding='utf-8')
-                    if deposit.get('status', 0) == 0:
+                    if deposit.get('status', TradeStatus.Initialed.value) == TradeStatus.Initialed.value:
                         deposit['trade_no'] = last_no
                         last_no += 1
                         deposit['status'] = TradeStatus.Active.value

@@ -80,7 +80,7 @@ def request_store(record, steamer):
         'steamid': '',
     }
     r = get_redis()
-    key = 'trade_{0}_{1}'.format(record.uid, steamer.steamid)
+    key = 'trade_{0}_{1}_{2}'.format(record.uid, steamer.steamid, ts)
     r.set(key, json.dumps(trade_request, encoding='utf-8'))
     r.lpush(_trade_list_key, key)
     _logger.info(u'request trade {0} items from {1} on {2}'.format(len(items), steamer.personaname, steamer.tradeurl))
@@ -197,7 +197,7 @@ def request_send(record, steamer, items):
         'steamid': '',
     }
     r = get_redis()
-    key = 'send_{0}_{1}'.format(record.uid, steamer.steamid)
+    key = 'send_{0}_{1}_{2}'.format(record.uid, steamer.steamid, ts)
     r.set(key, json.dumps(trade_request, encoding='utf-8'))
     r.lpush(_send_list_key, key)
     _logger.info(u'send {0} items to {1} on {2} with recordId:{3}'.format(
@@ -290,13 +290,16 @@ def cancel_send_items(uid, **kwargs):
 def resend_record(record_id):
     try:
         record = SendRecord.objects.get(pk=record_id)
-        if record.status != 2:
+        if record.status != TradeStatus.Cancelled.value:
+            _logger.info(u'failed to resend record {0}, status: {1}'.format(record.uid, record.status))
             return
 
+        record.status = TradeStatus.Initialed.value
+        record.save()
         steamer = record.steamer
         items = record.items.all()
         items_data = [PropItemSerializer(d).data for d in items]
-        _logger.info(u're send {0} items to {1} on {2}'.format(
+        _logger.info(u'resend {0} items to {1} on {2}'.format(
             len(items), steamer.personaname, steamer.tradeurl))
         request_send(steamer=steamer, record=record, items=items)
     except Exception as e:
