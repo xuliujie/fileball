@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/coin.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/chat.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
-    {#        <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>#}
-    {#        <script type="text/javascript" src="{% static 'js/cf.js' %}"></script>#}
     {% if not request.user.is_anonymous %}
-    <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>
-    <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>
-    <script type="text/javascript" src="{% static 'backup/coinflip.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/app2.js' %}"></script>
+{#        <script type="text/javascript" src="{% static 'js/cf.js' %}"></script>#}
+{#        <script type="text/javascript" src="{% static 'backup/chat.js' %}"></script>#}
+{#        <script type="text/javascript" src="{% static 'backup/inventory.js' %}"></script>#}
+        <script type="text/javascript" src="{% static 'backup/coinflip.js' %}"></script>
     {% endif %}
     <title>DalaoCSGO-Coinflip</title>
 {% endblock %}

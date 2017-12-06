@@ -236,6 +236,16 @@ $(function () {
     text_close: 'Okay'
   };
 
+  var lastHistoryModalData = {
+    id: 'historyModal',
+    isFull: true,
+    title: 'Coinflip history (last 7 days)',
+    content_com: 'cf-history',
+    modal_icon: '',
+    text_save: '',
+    text_close: 'Okay'
+  };
+
   var initCoinflipData = {
     user: {
       join_amount: {
@@ -391,11 +401,11 @@ $(function () {
   });
 
   $('#coinflipHistory').click(function () {
-    modalArea.modalData = getHistoryModalData;
+    modalArea.modalData = lastHistoryModalData;
     modalArea.contentData = null;
     modalArea.extraData = {
       gameType: 'coinflip',
-      queryType: 'all',
+      queryType: 'myself',
       page: 1
     };
     Vue.nextTick(function () {
