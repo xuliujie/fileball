@@ -7,6 +7,7 @@ import random
 import threading
 from datetime import timedelta
 
+from django.conf import settings
 from django.utils import timezone as dt
 
 from betting.models import CoinFlipGame, GameStatus, BettingBot
@@ -14,8 +15,10 @@ from betting.business.deposit_business import join_coinflip_game, join_jackpot_g
 from betting.business.cache_manager import get_current_jackpot_id, get_steam_bot_status
 from betting.business.steam_business import get_user_inventories
 from betting.business.trade_business import get_user_package
-from betting.utils import get_maintenance
+from betting.utils import get_maintenance, get_string_config_from_site_config
 from betting.knapsack import knapsack
+from social_auth.models import SteamUser
+
 
 _logger = logging.getLogger(__name__)
 
@@ -40,6 +43,7 @@ def find_joinable_items(items, value_range):
     best_value, reconstruction = knapsack(k_items, max_value)
     if best_value >= value_range[0] and len(reconstruction) <= 12:
         found_items = [j[2] for j in reconstruction]
+    found_items = [item[u'assetid'] for item in found_items]
     return found_items
 
 
@@ -56,11 +60,13 @@ def bot_join_coinflip():
         if not game:
             continue
 
-        gamer = game.deposits.filter(is_joined=True).first()
+        gamer = game.deposits.filter(join_status__gt=10).first()
         if gamer and gamer.steamer.steamid == bot.steamer.steamid:
             continue
 
-        inventories = get_user_package(bot.steamer)
+        # inventories = get_user_package(bot.steamer)
+        package_steamid = get_string_config_from_site_config(settings.PACKAGE_STEAMER_KEY)
+        inventories = get_user_inventories(package_steamid)
         if inventories is None or inventories['total_count'] == 0:
             continue
 
@@ -75,14 +81,14 @@ def bot_join_coinflip():
                     'items': items,
                     'gid': gid
                 }
-                code, result = join_coinflip_game(data=data, steamer=bot.steamer)
+                code, result = join_coinflip_game(data=data, steamer=bot.steamer, package_steamid=package_steamid)
                 _logger.info(u'bot:{bot} join coinflip game:{gid}, code:{code}'.format(
                     bot=bot.steamer.steamid, gid=gid, code=code))
 
 
 def get_joinable_team(game):
     team = random.choice((0, 1))
-    deposits = game.deposits.filter(is_joined=True).all()
+    deposits = game.deposits.filter(join_status__gt=10).all()
     if len(deposits) == 1:
         team = 1 if deposits[0].team == 0 else 0
     return team
@@ -100,9 +106,9 @@ def bot_create_coinflip():
 
         created_games = CoinFlipGame.objects.filter(
             game_type=0, end=0, create_time__gte=dt_now-timedelta(minutes=60),
-            deposits__steamer__steamid=bot.steamer.steamid, deposits__is_creator=True
+            deposits__steamer__steamid=bot.steamer.steamid, deposits__join_status__gt=10
         ).exclude(status=GameStatus.Canceled.value).all()
-        if len(created_games) >= bot.coinflip_max_count:
+        if created_games.count() >= bot.coinflip_max_count:
             continue
 
         bot_range = (bot.coinflip_value_min, bot.coinflip_value_max)
@@ -113,7 +119,9 @@ def bot_create_coinflip():
         if not is_idle:
             continue
 
-        inventories = get_user_package(bot.steamer)
+        # inventories = get_user_package(bot.steamer)
+        package_steamid = get_string_config_from_site_config(settings.PACKAGE_STEAMER_KEY)
+        inventories = get_user_inventories(package_steamid)
         if inventories is None or inventories['total_count'] == 0:
             continue
 
@@ -127,8 +135,8 @@ def bot_create_coinflip():
                     'items': items,
                     'gid': None
                 }
-                code, result = join_coinflip_game(data=data, steamer=bot.steamer)
-                gid = None if code != 0 else result.game.uid
+                code, result = join_coinflip_game(data=data, steamer=bot.steamer, package_steamid=package_steamid)
+                gid = None if code != 0 else result['gid']
                 _logger.info(u'bot:{bot} create coinflip game:{gid}, code:{code}'.format(
                     bot=bot.steamer.steamid, gid=gid, code=code))
 
@@ -144,7 +152,7 @@ def bot_join_jackpot():
         return
 
     min_idle = 3600
-    deposits = game.deposits.filter(is_joined=True).all()
+    deposits = game.deposits.filter(join_status__gt=10).all()
     if len(deposits):
         for deposit in deposits:
             span = dt_now - deposit.create_time
@@ -158,7 +166,7 @@ def bot_join_jackpot():
         jackpot_enable=True, jackpot_join_idle__lte=min_idle
     ).all()
 
-    gamers = game.deposits.filter(is_joined=True).all()
+    gamers = game.deposits.filter(join_status__gt=10).all()
     gamer_ids = [g.steamer.steamid for g in gamers]
 
     if len(bots):
@@ -171,7 +179,9 @@ def bot_join_jackpot():
 
             bot_range = (bot.jackpot_value_min, bot.jackpot_value_max)
 
-            inventories = get_user_package(bot.steamer)
+            # inventories = get_user_inventories(bot.steamer.steamid)
+            package_steamid = get_string_config_from_site_config(settings.PACKAGE_STEAMER_KEY)
+            inventories = get_user_inventories(package_steamid)
             if inventories is None or inventories['total_count'] == 0:
                 continue
 
@@ -182,7 +192,7 @@ def bot_join_jackpot():
                     'team': 0,
                     'items': items
                 }
-                code, result = join_jackpot_game(data=data, steamer=bot.steamer)
+                code, result = join_jackpot_game(data=data, steamer=bot.steamer, package_steamid=package_steamid)
                 _logger.info(u'bot:{bot} join jackpot game:{gid}, code:{code}'.format(
                     bot=bot.steamer.steamid, gid=gid, code=code))
 

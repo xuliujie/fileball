@@ -74,7 +74,7 @@ def create_new_game_hash():
 
 
 # coinflip
-def join_coinflip_game(data, steamer):
+def join_coinflip_game(data, steamer, package_steamid=None):
     deposit_data = dict(data)
     items = deposit_data['items']
     if len(items) == 0:
@@ -83,7 +83,7 @@ def join_coinflip_game(data, steamer):
     if deposit_data['team'] not in (0, 1):
         return RespCode.InvalidParams, _('Invalid params')
 
-    store_items = read_inventory_from_cache(steamer.steamid, items)
+    store_items = read_inventory_from_cache(package_steamid or steamer.steamid, items)
     if len(store_items) != len(items):
         return RespCode.InvalidParams, _('Invalid params')
 
@@ -127,7 +127,8 @@ def join_coinflip_game(data, steamer):
 
     request_store(deposit, steamer)
     resp = {
-        'uid': deposit.uid
+        'uid': deposit.uid,
+        'gid': game.uid
     }
     return RespCode.Succeed.value, resp
 
@@ -251,7 +252,7 @@ def set_up_jackpot_countdown(gid, countdown=None):
     th.start()
 
 
-def join_jackpot_game(data, steamer):
+def join_jackpot_game(data, steamer, package_steamid=None):
     deposit_data = dict(data)
     items = deposit_data['items']
     if len(items) == 0:
@@ -260,7 +261,7 @@ def join_jackpot_game(data, steamer):
     if deposit_data['team'] not in (0, 1):
         return RespCode.InvalidParams.value, 'Invalid params'
 
-    store_items = read_inventory_from_cache(steamer.steamid, items)
+    store_items = read_inventory_from_cache(package_steamid or steamer.steamid, items)
     if len(store_items) != len(items):
         return RespCode.InvalidParams.value, 'Invalid params'
 

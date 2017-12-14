@@ -88,5 +88,6 @@ def read_inventory_from_cache(steam_id, assetids):
     key = 'inv_{0}'.format(steam_id)
     for assetid in assetids:
         json_data = r.hget(key, assetid) or None
-        ret.append(json.loads(json_data, encoding='utf-8') if json_data else None)
+        if json_data:
+            ret.append(json.loads(json_data, encoding='utf-8'))
     return ret

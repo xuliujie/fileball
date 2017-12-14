@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from django.conf import settings
 from django.contrib.admin import ModelAdmin, TabularInline, StackedInline
 from django.core import urlresolvers
 
-from betting.models import PropItem, Deposit
+from betting.models import PropItem, Deposit, BettingBot
 from betting.business.trade_business import resend_record
+from betting.utils import get_string_config_from_site_config
+from social_auth.models import SteamUser
 
 
 class ReadOnlyAdmin(ModelAdmin):
@@ -130,11 +133,30 @@ class SiteConfigAdmin(ModelAdmin):
     list_display = ('remark', 'key', 'enable', 'value', 'value_string')
     list_editable = ('enable', 'value', 'value_string')
 
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        if obj.key == settings.PACKAGE_STEAMER_KEY:
+            package_steamid = get_string_config_from_site_config(settings.PACKAGE_STEAMER_KEY)
+            package_steamer = SteamUser.objects.filter(steamid=package_steamid).first()
+            trade_url = package_steamer.tradeurl if package_steamer else None
+            betting_bot = BettingBot.objects.all()
+            for bot in betting_bot:
+                bot.steamer.tradeurl = trade_url
+                bot.steamer.save()
+
 
 class BettingBotAdmin(ModelAdmin):
     list_display = ('steamer', 'coinflip_enable', 'coinflip_joinable', 'coinflip_creatable',
-                    'jackpot_enable', 'jackpot_join_idle')
-    list_editable = ('coinflip_enable', 'jackpot_enable')
+                    'jackpot_enable')
+    list_editable = ('coinflip_enable', 'coinflip_joinable', 'coinflip_creatable', 'jackpot_enable')
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        package_steamid = get_string_config_from_site_config(settings.PACKAGE_STEAMER_KEY)
+        package_steamer = SteamUser.objects.filter(steamid=package_steamid).first()
+        trade_url = package_steamer.tradeurl if package_steamer else None
+        obj.steamer.tradeurl = trade_url
+        obj.steamer.save()
 
 
 class MarketItemAdmin(ModelAdmin):

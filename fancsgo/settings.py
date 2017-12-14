@@ -194,6 +194,8 @@ PROMOTION_MIN_AMOUNT = 30
 ON_TEST = False
 RANDOM_PRICE = False
 
+PACKAGE_STEAMER_KEY = 'betting bot package'
+
 # MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Static files (CSS, JavaScript, Images)
