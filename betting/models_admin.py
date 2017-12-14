@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import json
+from channels import Group
+
 from django.conf import settings
 from django.contrib.admin import ModelAdmin, TabularInline, StackedInline
 from django.core import urlresolvers
@@ -9,6 +12,7 @@ from betting.models import PropItem, Deposit, BettingBot
 from betting.business.trade_business import resend_record
 from betting.utils import get_string_config_from_site_config
 from social_auth.models import SteamUser
+from serializers import MessageSerializer
 
 
 class ReadOnlyAdmin(ModelAdmin):
@@ -219,10 +223,16 @@ class PromotionAdmin(ReadOnlyAdmin):
 
 class MessageAdmin(ModelAdmin):
     list_display = ('steamer', 'message', 'timestamp')
-    fields = ('steamer', 'message', 'timestamp')
+    # fields = ('steamer', 'message', 'timestamp')
 
     def get_readonly_fields(self, request, obj=None):
         if obj:
             return ('steamer', 'message', 'timestamp')
         else:
             return ()
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        m_data = MessageSerializer(obj).data
+        msg = ['message', [m_data]]
+        Group('chat_room').send({'text': json.dumps(msg)})
