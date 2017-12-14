@@ -215,3 +215,14 @@ class PromotionAdmin(ReadOnlyAdmin):
     list_per_page = 50
     search_fields = ('steamer__personaname',)
     ordering = ('-create_time',)
+
+
+class MessageAdmin(ModelAdmin):
+    list_display = ('steamer', 'message', 'timestamp')
+    fields = ('steamer', 'message', 'timestamp')
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ('steamer', 'message', 'timestamp')
+        else:
+            return ()

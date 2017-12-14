@@ -119,8 +119,8 @@ function fillCoinflipData(cfData, isModal) {
   cfFilledData['total_amount'] = parseFloat(cfData.total_amount.toFixed(2));
   cfFilledData['itemsShow'] = itemShows.slice(0, maxCount);
   cfFilledData['itemsMore'] = items.length - cfFilledData['itemsShow'].length;
-  cfFilledData['lastSeconds'] = 90;
-  var expireTime = moment.unix(cfData.ts_get + 30 * 60);
+  cfFilledData['lastSeconds'] = 120;
+  var expireTime = moment.unix(cfData.ts_get + 40 * 60);
   cfFilledData['expires'] = expireTime.format('a hh:mm');
   cfFilledData['isModal'] = isModal;
   return cfFilledData;

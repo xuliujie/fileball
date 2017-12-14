@@ -19,21 +19,21 @@
 <script id="chat-template" type="text/x-template">
     <li class="msg" :data-steamid="item.steamid" :data-id="item.id">
         <div class="header">
-            {% if ld %}
+{#            {% if ld %}#}
                 <a :href="'https://steamcommunity.com/profiles/' + item.steamid" target="_blank" title="Steam profile"
                    :class="{'name-admin': item.isAdmin}" rel="nofollow">
                     <img :src="item.icon" alt="" rel="nofollow">
                     <span class="name">^{item.name}</span>
                 </a>
-            {% else %}
-                <img :src="item.icon" alt="" rel="nofollow">
-                <span class="name">^{item.name}</span>
-            {% endif %}
-            {% if ld %}
-                <span v-if="item.isAdmin" class="group">(admin)</span>
-                <span v-if="item.isModerator" class="group">(moderator)</span>
-                <span v-if="item.isSupport" class="group">(support)</span>
-            {% endif %}
+{#            {% else %}#}
+{#                <img :src="item.icon" alt="" rel="nofollow">#}
+{#                <span class="name">^{item.name}</span>#}
+{#            {% endif %}#}
+{#            {% if ld %}#}
+{#                <span v-if="item.isAdmin" class="group">(admin)</span>#}
+{#                <span v-if="item.isModerator" class="group">(moderator)</span>#}
+{#                <span v-if="item.isSupport" class="group">(support)</span>#}
+{#            {% endif %}#}
         </div>
         <p ref="chat_msg_content" class="chat-msg">^{item.msg}</p>
     </li>

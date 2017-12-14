@@ -185,12 +185,12 @@ Vue.component('cf-item', {
       var that = this;
       var gid = that.item.gid;
       var el = 'tr[data-id="' + gid + '"] input[class="cfRoundKnob"]';
-      init_cf_knob(el, 0, 90, 40, 40, "#b22020", "#f47d7d", "#b22020");
+      init_cf_knob(el, 0, 120, 40, 40, "#b22020", "#f47d7d", "#b22020");
       var tsNow = Math.floor((new Date()).getTime() / 1000);
       // var secondsSpan = tsNow - that.item.joined.ts;
       // secondsSpan = secondsSpan < 0 ? 0 : secondsSpan;
       var secondsSpan = that.item.joined.least;
-      if (secondsSpan >= 0 && secondsSpan <= 90) {
+      if (secondsSpan >= 0 && secondsSpan <= 120) {
         // var leastSeconds = 90 - secondsSpan;
         var leastSeconds = secondsSpan;
         that.extraData.seconds = leastSeconds;

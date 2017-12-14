@@ -19,6 +19,7 @@ admin.site.register(models.BettingBot, models_admin.BettingBotAdmin)
 admin.site.register(models.MarketItem, models_admin.MarketItemAdmin)
 admin.site.register(models.UserAmountRecord, models_admin.UserAmountRecordAdmin)
 admin.site.register(models.Promotion, models_admin.PromotionAdmin)
+admin.site.register(models.Message, models_admin.MessageAdmin)
 # admin.site.register(models.GiveAway, models_admin.GiveAwayAdmin)
 
 admin.site.unregister(UserSocialAuth)

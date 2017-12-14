@@ -63,14 +63,14 @@ function init_team_selector() {
 
 function completeCoinflipData(cfData) {
   var cfCompletedData = cfData;
-  cfCompletedData['lastSeconds'] = 90;
+  cfCompletedData['lastSeconds'] = 120;
   cfCompletedData.totalAmount = floatStrip(cfCompletedData.totalAmount, 2);
   cfCompletedData.amount_o.min = floatStrip(cfCompletedData.amount_o.min, 2);
   cfCompletedData.amount_o.max = floatStrip(cfCompletedData.amount_o.max, 2);
   for (var i = 0; i < cfCompletedData.deposit.length; i++) {
     cfCompletedData.deposit[i].totalAmount = floatStrip(cfCompletedData.deposit[i].totalAmount, 2)
   }
-  var expireTime = moment.unix(cfData.ts_get + 30 * 60);
+  var expireTime = moment.unix(cfData.ts_get + 40 * 60);
   cfCompletedData['expires'] = expireTime.format('a hh:mm');
   return cfCompletedData;
 }
@@ -178,7 +178,7 @@ Vue.component('cf-view', {
     renderJoinCountdown: function () {
       var that = this;
       var el = 'div[id="cfRoundView"] input[class="cfRoundKnob"]';
-      init_cf_knob(el, 0, 90, 130, 130, "#b22020", "#f47d7d", "#b22020");
+      init_cf_knob(el, 0, 120, 130, 130, "#b22020", "#f47d7d", "#b22020");
     },
     renderEndCountdown: function () {
       var that = this;

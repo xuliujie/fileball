@@ -99,15 +99,19 @@ class Message(models.Model):
     message = models.TextField(verbose_name=_('Message'))
     timestamp = models.DateTimeField(default=dt.now, db_index=True, verbose_name=_('Timestamp'))
 
-    def __unicode__(self):
-        return '[{timestamp}] {handle}: {message}'.format(**self.as_dict())
+    # def __unicode__(self):
+    #     return '[{timestamp}] {handle}: {message}'.format(**self.as_dict())
 
     @property
     def formatted_timestamp(self):
         return self.timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
-    def as_dict(self):
-        return {'handle': self.handle, 'message': self.message, 'timestamp': self.formatted_timestamp}
+    # def as_dict(self):
+    #     return {'handle': self.handle, 'message': self.message, 'timestamp': self.formatted_timestamp}
+
+    class Meta:
+        verbose_name = _("聊天信息")
+        verbose_name_plural = _("聊天信息")
 
 
 class TempGameHash(models.Model):
