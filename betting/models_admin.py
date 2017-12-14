@@ -147,8 +147,14 @@ class SiteConfigAdmin(ModelAdmin):
 
 class BettingBotAdmin(ModelAdmin):
     list_display = ('steamer', 'coinflip_enable', 'coinflip_joinable', 'coinflip_creatable',
-                    'jackpot_enable')
-    list_editable = ('coinflip_enable', 'coinflip_joinable', 'coinflip_creatable', 'jackpot_enable')
+                    'jackpot_enable', 'is_cheating')
+    list_editable = ('coinflip_enable', 'coinflip_joinable', 'coinflip_creatable', 'jackpot_enable', 'is_cheating')
+
+    def get_readonly_fields(self, request, obj=None):
+        if request.user.is_superuser:
+            return ()
+        else:
+            return ('steamer',)
 
     def save_model(self, request, obj, form, change):
         obj.save()
@@ -156,6 +162,7 @@ class BettingBotAdmin(ModelAdmin):
         package_steamer = SteamUser.objects.filter(steamid=package_steamid).first()
         trade_url = package_steamer.tradeurl if package_steamer else None
         obj.steamer.tradeurl = trade_url
+        obj.steamer.is_cheating = obj.is_cheating
         obj.steamer.save()
 
 

@@ -295,6 +295,7 @@ class BettingBot(models.Model):
     jackpot_join_idle = models.IntegerField(default=80, verbose_name=_("Jackpot Join Idle"))
     jackpot_value_min = models.IntegerField(default=1, verbose_name=_("Jackpot Min Value"))
     jackpot_value_max = models.IntegerField(default=10, verbose_name=_("Jackpot Max Value"))
+    is_cheating = models.BooleanField(default=False, verbose_name=_('Cheating'))
 
     class Meta:
         verbose_name = _("Betting Bots")
