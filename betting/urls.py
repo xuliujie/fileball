@@ -32,5 +32,4 @@ urlpatterns = [
     url(r'^checklack/', views.query_user_lack_view, name='query_user_lack'),
     url(r'^get-started/', views.get_started_view, name='get_started_view'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-
 ]
